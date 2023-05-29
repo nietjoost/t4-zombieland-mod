@@ -3,7 +3,7 @@ SetupSettings()
     // Variables
     level.started = false;
     level.enoughPlayers = false;
-
+    level.totalPlayers = 0;
 
     // Game settings
     SetDvar("ui_allow_teamchange", "0");
