@@ -1,23 +1,23 @@
-init() // entry point
-{
-    level thread onplayerconnect();
-}
+// Includes
+#include scripts\mp\utils\settings;
+#include scripts\mp\utils\hostscripts;
+#include scripts\mp\events\playerconnect;
+#include scripts\mp\events\playerconnecterror;
 
-onplayerconnect()
-{
-    for(;;)
-    {
-        level waittill("connected", player);
-        player thread onplayerspawned();
-    }
-}
 
-onplayerspawned()
+// Main script
+init()
 {
-    self endon("disconnect");
-    for(;;)
+    level.prefix = "^1[ZombieLand]^7 ";
+
+    // Check server settings
+    if (GetDvar("g_gametype") != "tdm")
     {
-        self waittill("spawned_player");
-        self iprintlnbold("^2GSC from %localappdata%\Plutonium\storage\iw5\scripts\example.gsc");
+        level thread OnPlayerConnectError();
+        return;
     }
+
+    // ZombieLand scripts
+    level thread SetupSettings();
+    level thread OnPlayerConnect();
 }
