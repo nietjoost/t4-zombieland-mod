@@ -1,5 +1,7 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\events\gamelogic;
+#include scripts\mp\utils\player;
+#include scripts\mp\hud\moneylogic;
 
 // PLAYER connect functions
 OnPlayerConnect()
@@ -53,7 +55,6 @@ OnPlayerSpawned()
 
             if (self.type == "human")
             {
-                wait 1;
                 self thread playermessagemiddle("^3You are a Human! ^5Survive the ^1zombies ^5to win!");
             }
             else
@@ -61,6 +62,19 @@ OnPlayerSpawned()
                 self thread playermessagemiddle("^1You are a zombie now!");
             }
         }
+
+        // Loadout logic
+        if (self.type == "human")
+        {
+            self thread GivePlayerClass();
+        }
+        else
+        {
+            self thread GiveZombieClass();
+        }
+
+        // MENU logic
+        self thread CreateMoneyHUD();
     }
 }
 
