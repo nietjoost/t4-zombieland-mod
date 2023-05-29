@@ -1,4 +1,5 @@
 #include scripts\mp\hud\playermessage;
+#include scripts\mp\events\playerconnect;
 
 // Start the ZombieLand
 StartZombieLand()
@@ -41,5 +42,30 @@ StartZombieLand()
     }
 
     // Pick zombie logic
+    wait 1;
+    level.started = true;
+    level.enoughPlayers = true;
+    allplayermessagemiddle("^5The zombies are coming!");
+    level thread PickZombies();
+}
 
+PickZombies()
+{
+    if (level.players.size > 8)
+    {
+        level.zombie1 = "";
+        level.zombie2 = "";
+        while(level.zombie1 == level.zombie2)
+        {
+            level.zombie1 = level.players[RandomIntRange(0, level.players.size)];
+            level.zombie2 = level.players[RandomIntRange(0, level.players.size)];
+            level.zombie1 thread ChangeTeam("axis");
+            level.zombie2 thread ChangeTeam("axis");
+        } 
+        return;
+    }
+
+   // Chose only one infected
+   level.zombie1 = level.players[RandomIntRange(0, level.players.size)];
+   level.zombie1 thread ChangeTeam("axis");
 }
