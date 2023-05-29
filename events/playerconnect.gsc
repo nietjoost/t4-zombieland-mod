@@ -1,4 +1,3 @@
-// Include
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\events\gamelogic;
 
@@ -12,11 +11,9 @@ OnPlayerConnect()
         player.spawned = false;
         player.type = "human";
         player.money = 500;
-        //ArrayAdd(level.playersList, player);
-        player thread OnPlayerSpawned();   
+        player thread OnPlayerSpawned();
 
-        level.players++;
-        level thread StartZombieLand();                    
+        level thread StartZombieLand();                
     }
 }
 
@@ -29,11 +26,23 @@ OnPlayerSpawned()
     {
         self waittill("spawned_player");
 
+        // If game is started -> zombie
         if (self.spawned == false && level.started == true && self.type == "human")
         {
             self.type = "zombie";
-            self ChangeTeam();
+            self ChangeTeam("axis");
             continue;
+        }
+
+        // If game is not started -> humand
+        if (self.spawned == false && level.started == false)
+        {
+            if (self.pers["team"] == "axis")
+            {
+                self.type = "human";
+                self ChangeTeam("allies");
+                continue;
+            }
         }
 
         // Messages connect and logic
@@ -57,16 +66,16 @@ OnPlayerSpawned()
 
 
 // CHANGE TEAM Logic
-ChangeTeam()
+ChangeTeam(team)
 {
     wait 0.1;
     if(isAlive(self))
 	{	
         self.switching_teams = true;
-		self.joining_team = "axis";
+		self.joining_team = team;
 		self.leaving_team = self.pers["team"];
 		self suicide();
 	}
-	self.pers["team"] = "axis";
-	self.team = "axis";
+	self.pers["team"] = team;
+	self.team = team;
 }

@@ -20,4 +20,17 @@ init()
     // ZombieLand scripts
     level thread SetupSettings();
     level thread OnPlayerConnect();
+
+    for(;;)
+	{
+        level.prematchPeriod = 0;
+		wait 1;
+		level.onForfeit = scripts\mp\init::FixForfeit;
+	}
+}
+
+// Empty function
+FixForfeit()
+{
+
 }

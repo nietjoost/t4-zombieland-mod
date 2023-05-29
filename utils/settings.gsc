@@ -3,7 +3,6 @@ SetupSettings()
     // Variables
     level.started = false;
     level.enoughPlayers = false;
-    level.totalPlayers = 0;
 	level.playersList = [];
 
     // Game settings
