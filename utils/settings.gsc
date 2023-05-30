@@ -6,6 +6,7 @@ SetupSettings()
 	level.playersList = [];
 
     // Game settings
+	SetDvar("sv_cheats", "1");
     SetDvar("ui_allow_teamchange", "0");
 	SetDvar("ui_allow_classchange", "0");
 	SetDvar("party_autoteams", 0);

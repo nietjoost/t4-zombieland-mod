@@ -2,6 +2,9 @@
 playermessagemiddle(msg)
 {
     self iPrintlnBold(msg);
+
+    //WEAPON DEBUG
+    self iPrintln(self getCurrentWeapon());
 }
 
 allplayermessagemiddle(msg)
@@ -10,7 +13,6 @@ allplayermessagemiddle(msg)
     {	
         p = level.players[i];
         p thread playermessagemiddle(msg);
-        wait .5;
     }
 }
 

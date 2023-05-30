@@ -29,14 +29,13 @@ OnPlayerSpawned()
         self waittill("spawned_player");
 
         // If game is started -> zombie
-        if (self.spawned == false && level.started == true && self.type == "human")
+        if (self.spawned == true && level.started == true && self.type == "human")
         {
             self.type = "zombie";
             self ChangeTeam("axis");
-            continue;
         }
 
-        // If game is not started -> humand
+        // If game is not started -> human
         if (self.spawned == false && level.started == false)
         {
             if (self.pers["team"] == "axis")
