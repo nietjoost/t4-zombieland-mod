@@ -1,6 +1,8 @@
 // Includes
+#include scripts\mp\utils\utils;
 #include scripts\mp\utils\settings;
 #include scripts\mp\utils\hostscripts;
+#include scripts\mp\events\playerkilled;
 #include scripts\mp\events\playerconnect;
 #include scripts\mp\events\playerconnecterror;
 
@@ -17,6 +19,9 @@ init()
         return;
     }
 
+    // Replace functions
+    level.onPlayerKilled = ::OnPlayerKilled;
+
     // ZombieLand scripts
     level thread SetupSettings();
     level thread OnPlayerConnect();
@@ -25,12 +30,6 @@ init()
 	{
         level.prematchPeriod = 0;
 		wait 1;
-		level.onForfeit = scripts\mp\init::FixForfeit;
+		level.onForfeit = ::FixForfeit;
 	}
-}
-
-// Empty function
-FixForfeit()
-{
-
 }
