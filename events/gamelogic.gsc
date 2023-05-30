@@ -1,5 +1,6 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\events\playerconnect;
+#include scripts\mp\utils\player;
 
 // Start the ZombieLand
 StartZombieLand()

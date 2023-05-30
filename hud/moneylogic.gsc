@@ -14,3 +14,41 @@ CreateMoneyHUD()
     self.hud_money.hidewheninmenu = true;
     self.hud_money setText("$" + self.money);
 }
+
+// MONEY animation
+AnimateMoneyHUD(localMoney, color)
+{
+    self.hud_money_extra = newClientHudElem(self);
+    self.hud_money_extra.alignX = "left";
+    self.hud_money_extra.alignY = "left";
+    self.hud_money_extra.y = 115;
+    self.hud_money_extra.x = 95;
+    self.hud_money_extra.font = "hudbig";
+    self.hud_money_extra.fontscale = 2.5;
+    self.hud_money_extra.color = color;
+    self.hud_money_extra setText("$" + localMoney);
+    self.hud_money_extra moveOverTime(2);
+    self.hud_money_extra fadeOverTime(2);
+    self.hud_money_extra.y = 150;
+    self.hud_money_extra.x = 150;
+
+    wait 1.5;
+
+    self.hud_money_extra destroy();
+}
+
+// ADD money
+AddMoney(localMoney)
+{
+    self.money = self.money + localMoney;
+    self.hud_money setText("$" + self.money);
+    self thread AnimateMoneyHUD(localMoney, (0, 1, 0));
+}
+
+// REMOVE money
+RemoveMoney(localMoney)
+{
+    self.money = self.money - localMoney;
+    self.hud_money setText("$" + self.money);
+    self thread AnimateMoneyHUD(localMoney, (1, 0, 0));
+}

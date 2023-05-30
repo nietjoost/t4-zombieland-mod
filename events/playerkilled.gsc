@@ -1,6 +1,19 @@
+#include scripts\mp\hud\moneylogic;
+#include scripts\mp\utils\player;
+
 // PLAYER KILLED event
-OnPlayerKilled(_self, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration )
+OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeoffset, deathanimduration)
 {
-    _self.money = _self.money + 500;
-    _self.hud_money setText("$" + _self.money);
+    //DEBUG
+    //_self iPrintLn(_self);
+    //_self iPrintLn(inflictor);
+    //_self iPrintLn(attacker);
+
+    // Logic
+    if (type == "MOD_SUICIDE")
+    {
+        return;
+    }
+
+    _self thread AddMoney(500);
 }

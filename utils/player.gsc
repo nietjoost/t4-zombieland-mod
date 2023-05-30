@@ -21,3 +21,19 @@ GiveZombieClass()
     self setWeaponAmmoStock("colt_mp", 0);
     self setWeaponAmmoClip("colt_mp", 0);
 }
+
+
+// CHANGE TEAM Logic
+ChangeTeam(team)
+{
+    wait 0.1;
+    if(isAlive(self))
+	{
+        self.switching_teams = true;
+		self.joining_team = team;
+		self.leaving_team = self.pers["team"];
+		self suicide();
+	}
+	self.pers["team"] = team;
+	self.team = team;
+}
