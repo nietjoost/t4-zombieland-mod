@@ -5,7 +5,7 @@ SpawnFlag(pos1, pos2)
     startflag = Spawn("script_model", pos1);
     startflag SetModel(level.flag);
     startflag.pos2 = pos2;
-    level.flags[0] = startflag;
+    level.flags[level.flags.size] = startflag;
 
     // Spawn FX
     PlayFX(level.flagFx, pos1);
