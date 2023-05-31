@@ -1,3 +1,4 @@
+// SERVER Settings
 SetupSettings()
 {
     // Variables
@@ -17,4 +18,18 @@ SetupSettings()
 	SetDvar("g_customTeamName_Axis", "Zombies");
 	SetDvar("g_teamColor_Allies", "0 1 1");
 	SetDvar("g_ScoresColor_Allies", "0 1 1");
+}
+
+
+// Global level settings
+GlobalSetting()
+{
+	level.flag = "prop_flag_japanese";
+}
+
+
+// PRECACHE Objects
+PreCache()
+{
+	PrecacheModel(level.flag);
 }

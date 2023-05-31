@@ -1,5 +1,6 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\events\playerconnect;
+#include scripts\mp\utils\utils;
 #include scripts\mp\utils\player;
 
 // Start the ZombieLand
@@ -69,4 +70,35 @@ PickZombies()
    // Chose only one infected
    level.zombie1 = level.players[RandomIntRange(0, level.players.size)];
    level.zombie1 thread ChangeTeam("axis");
+}
+
+// END LOGIC
+CheckEnd()
+{
+    if (level.started == true && CalculateTotalHumans() == 0)
+    {
+        allplayermessagemiddle("^2The ^1Zombies ^2has won!");
+
+        for ( i = 0; i < level.players.size; i++ )
+        {	
+            p = level.players[i];
+            p FreezeControls(true);
+        }
+    }
+}
+
+
+CalculateTotalHumans()
+{
+    humanCount = 0;
+    for ( i = 0; i < level.players.size; i++ )
+    {	
+        p = level.players[i];
+        if (p.pers["team"] == "allies")
+        {
+            humanCount++;
+        }
+    }
+
+    return humanCount;
 }

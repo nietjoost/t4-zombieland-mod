@@ -9,6 +9,8 @@ GivePlayerClass()
 
     self giveWeapon("colt_mp");
     self giveMaxAmmo("colt_mp");
+
+    self FreezeControls(false);
 }
 
 

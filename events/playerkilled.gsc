@@ -1,5 +1,6 @@
 #include scripts\mp\hud\moneylogic;
 #include scripts\mp\utils\player;
+#include scripts\mp\events\gamelogic;
 
 // PLAYER KILLED event
 OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeoffset, deathanimduration)
@@ -16,4 +17,8 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
     }
 
     _self thread AddMoney(500);
+
+    // Check END
+    wait 15;
+    CheckEnd();
 }
