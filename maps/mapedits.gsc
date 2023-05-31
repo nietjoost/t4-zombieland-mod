@@ -1,4 +1,4 @@
-#include scripts\mp\utils\spawnlogic;
+#include scripts\mp\events\checkflags;
 
 // Load the map
 LoadMap()
