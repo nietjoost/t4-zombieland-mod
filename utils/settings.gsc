@@ -4,7 +4,8 @@ SetupSettings()
     // Variables
     level.started = false;
     level.enoughPlayers = false;
-	level.playersList = [];
+	level.flags = [];
+	level.objectId = 1;
 
     // Game settings
 	SetDvar("sv_cheats", "1");

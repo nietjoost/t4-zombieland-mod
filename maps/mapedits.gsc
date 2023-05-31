@@ -1,3 +1,5 @@
+#include scripts\mp\utils\spawnlogic;
+
 // Load the map
 LoadMap()
 {
@@ -10,4 +12,7 @@ LoadMap()
     {
         scripts\mp\maps\mp_airfield::Load();
     }
+
+    // Check for teleport flags
+    level thread CheckFlags();
 }
