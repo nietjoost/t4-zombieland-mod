@@ -25,6 +25,7 @@ SetupSettings()
 GlobalSetting()
 {
 	level.flag = "prop_flag_japanese";
+	level.flagFx = LoadFX("misc/ui_flagbase_red");
 }
 
 

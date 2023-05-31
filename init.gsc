@@ -7,7 +7,6 @@
 #include scripts\mp\events\playerconnect;
 #include scripts\mp\events\playerconnecterror;
 
-
 // Main script
 init()
 {
@@ -30,10 +29,19 @@ init()
     level thread OnPlayerConnect();
     level thread LoadMap();
 
+
     for(;;)
 	{
         level.prematchPeriod = 0;
 		wait 1;
 		level.onForfeit = ::FixForfeit;
+
+        //DEBUG
+        wait 5;
+        for ( i = 0; i < level.players.size; i++ )
+        {	
+            p = level.players[i];
+            p iPrintln(p.origin);
+        }
 	}
 }

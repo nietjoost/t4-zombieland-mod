@@ -1,7 +1,7 @@
-#include scripts\mp\hud\playermessage;
+#include scripts\mp\utils\spawnlogic;
 
 // MP_airfield
 Load()
 {
-    allplayermessagemiddle("MAP LOADED!");
+    SpawnFlag((1162, 719, -31), (1166, 536, -39));
 }

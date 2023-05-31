@@ -1,6 +1,8 @@
 // Load the map
 LoadMap()
 {
+    wait 5;
+
     // Get the mapname
     mapName = GetDvar("mapname");
 
