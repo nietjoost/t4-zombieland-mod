@@ -10,13 +10,17 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 
 ## Supported maps:
 
-| Map    | Map edits |
-| ------ | --------- |
-| No map | ✔️        |
+| Map         | Map edits |
+| ----------- | --------- |
+| mp_airfield | ✔️        |
 
 ## How
 
 ## Features
+
+- Infected like gamemode
+- In-game money
+- Teleport flags
 
 ## Showcase
 
