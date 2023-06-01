@@ -1,5 +1,5 @@
 // Say player message
-playermessagemiddle(msg)
+PlayerMessageMiddle(msg)
 {
     self iPrintlnBold(msg);
 
@@ -7,17 +7,17 @@ playermessagemiddle(msg)
     //self iPrintln(self getCurrentWeapon());
 }
 
-allplayermessagemiddle(msg)
+AllPlayerMessageMiddle(msg)
 {
     for ( i = 0; i < level.players.size; i++ )
     {	
         p = level.players[i];
-        p thread playermessagemiddle(msg);
+        p thread PlayerMessageMiddle(msg);
     }
 }
 
 // Say player message left under
-playermessageleftunder(msg)
+PlayerMessageLeftUnder(msg)
 {
     self iPrintln(level.prefix + msg);
 }

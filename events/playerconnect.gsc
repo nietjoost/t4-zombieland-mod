@@ -50,15 +50,15 @@ OnPlayerSpawned()
         if (self.spawned == false)
         {
             self.spawned = true;
-            self thread playermessagemiddle("^5Welcome to ^2RooieRonnie's ^1ZombieLand^5!");
+            self thread PlayerMessageMiddle("^5Welcome to ^2RooieRonnie's ^1ZombieLand^5!");
 
             if (self.type == "human")
             {
-                self thread playermessagemiddle("^3You are a Human! ^5Survive the ^1zombies ^5to win!");
+                self thread PlayerMessageMiddle("^3You are a Human! ^5Survive the ^1zombies ^5to win!");
             }
             else
             {
-                self thread playermessagemiddle("^1You are a zombie now!");
+                self thread PlayerMessageMiddle("^1You are a zombie now!");
             }
         }
 

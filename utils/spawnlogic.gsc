@@ -17,3 +17,15 @@ SpawnFlag(pos1, pos2)
     objective_position(level.objectId, pos1);
     level.objectId++;
 }
+
+
+// SPAWN ZipLine
+SpawnZipline(pos1, pos2)
+{
+    //Spawn hint string [needs model]
+    zipline = Spawn("script_model", pos1);
+    zipline SetModel(level.flag);
+    zipline.pos2 = pos2;
+    
+    level.ziplines[level.ziplines.size] = zipline;
+}

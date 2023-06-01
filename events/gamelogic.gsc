@@ -21,25 +21,25 @@ StartZombieLand()
 
     //Start the zombie choose logic
     wait 10;
-    allplayermessagemiddle("^1Choosing zombies in 20 seconds!");
+    AllPlayerMessageMiddle("^1Choosing zombies in 20 seconds!");
     wait 10;
-    allplayermessagemiddle("^1Choosing zombies in 10 seconds!");
+    AllPlayerMessageMiddle("^1Choosing zombies in 10 seconds!");
     wait 5;
-    allplayermessagemiddle("^15");
+    AllPlayerMessageMiddle("^15");
     wait 1;
-    allplayermessagemiddle("^14");
+    AllPlayerMessageMiddle("^14");
     wait 1;
-    allplayermessagemiddle("^13");
+    AllPlayerMessageMiddle("^13");
     wait 1;
-    allplayermessagemiddle("^12");
+    AllPlayerMessageMiddle("^12");
     wait 1;
-    allplayermessagemiddle("^11");
+    AllPlayerMessageMiddle("^11");
 
     if (level.players.size < 2)
     {
         level.enoughPlayers = false;
-        allplayermessagemiddle("^1There are not enough players!");
-        allplayermessagemiddle("^5Waiting for more players!");
+        AllPlayerMessageMiddle("^1There are not enough players!");
+        AllPlayerMessageMiddle("^5Waiting for more players!");
         return;
     }
 
@@ -47,7 +47,7 @@ StartZombieLand()
     wait 1;
     level.started = true;
     level.enoughPlayers = true;
-    allplayermessagemiddle("^5The zombies are coming!");
+    AllPlayerMessageMiddle("^5The zombies are coming!");
     level thread PickZombies();
 }
 
@@ -77,7 +77,7 @@ CheckEnd()
 {
     if (level.started == true && CalculateTotalHumans() == 0)
     {
-        allplayermessagemiddle("^2The ^1Zombies ^2has won!");
+        AllPlayerMessageMiddle("^2The ^1Zombies ^2has won!");
 
         for ( i = 0; i < level.players.size; i++ )
         {	

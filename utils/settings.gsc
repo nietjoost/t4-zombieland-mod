@@ -5,6 +5,7 @@ SetupSettings()
     level.started = false;
     level.enoughPlayers = false;
 	level.flags = [];
+	level.ziplines = [];
 	level.objectId = 1;
 
     // Game settings
