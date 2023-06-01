@@ -14,7 +14,7 @@ CheckZiplines()
                 //Set the hintstring
                 if (Distance(p.origin, z.origin) <= 50)
                 {
-                    p.hint = "^5Hold [{+melee}] To Use ZipLine";
+                    p.hint = "^5Hold ^1[{+melee}] ^5to use the ZipLine";
 
                     // Check for BUTTON press
                     if (p MeleeButtonPressed())
@@ -28,7 +28,7 @@ CheckZiplines()
                 }
 
                 // Remove the hintstring
-                if (Distance(p.origin, z.origin) > 50 && Distance(p.origin, z.origin) < 400)
+                if (Distance(p.origin, z.origin) > 50 && Distance(p.origin, z.origin) < 300)
                 {
                     p.hint = "";
                 }
@@ -44,8 +44,8 @@ HandleZipline(zipline)
     delay = Distance(self.origin, zipline.pos2) / 700;
 	ziplineEnt = Spawn("script_origin", self.origin);
 	self linkTo(ziplineEnt);
-	ziplineEnt moveTo(zipline.pos2, delay, .05, .05);
-    wait delay;
+	ziplineEnt moveTo(zipline.pos2, delay);
+    wait delay+0.2;
     self unlink();
     ziplineEnt Delete();
 }

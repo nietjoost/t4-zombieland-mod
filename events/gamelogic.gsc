@@ -77,6 +77,14 @@ CheckEnd()
 {
     if (level.started == true && CalculateTotalHumans() == 0)
     {
+        // Check for already triggerd
+        if (level.ended == true)
+        {
+            return;
+        }
+
+        level.ended = true;
+
         AllPlayerMessageMiddle("^2The ^1Zombies ^2has won!");
 
         for ( i = 0; i < level.players.size; i++ )

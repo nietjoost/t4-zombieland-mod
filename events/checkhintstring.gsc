@@ -20,10 +20,9 @@ SetHintString()
     self.hint_string destroy();
 
     self.hint_string = newClientHudElem(self);
-    self.hint_string.font = "hudbig";
-    self.hint_string.x = 150;
-    self.hint_string.y = 150;
-    self.hint_string.fontscale = 2.5;
+    self.hint_string.x = 175;
+    self.hint_string.y = 175;
+    self.hint_string.fontscale = 2;
     self.hint_string.archived = false;
     self.hint_string.color = (0, 0, 1);
     self.hint_string.hidewhendead = true;

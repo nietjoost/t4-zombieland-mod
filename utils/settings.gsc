@@ -4,6 +4,7 @@ SetupSettings()
     // Variables
     level.started = false;
     level.enoughPlayers = false;
+	level.ended = false;
 	level.flags = [];
 	level.ziplines = [];
 	level.objectId = 1;
@@ -27,7 +28,9 @@ SetupSettings()
 GlobalSetting()
 {
 	level.flag = "prop_flag_japanese";
-	level.flagFx = LoadFX("misc/ui_flagbase_red");
+	level.flagFx = LoadFX("misc/ui_flagbase_blue");
+	level.zipline = "prop_flag_neutral";
+	level.ziplineFx = LoadFX("misc/ui_flagbase_red");
 }
 
 
