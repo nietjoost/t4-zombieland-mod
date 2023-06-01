@@ -3,7 +3,7 @@ CheckFlags()
 {
     for(;;) 
     {
-        wait 0.1;
+        wait 0.3;
 
         for ( i = 0; i < level.players.size; i++ )
         {	
@@ -11,7 +11,7 @@ CheckFlags()
             {
                 p = level.players[i];
                 f = level.flags[k];
-                if (Distance(p.origin, f.origin) <= 50)
+                if (Distance(p.origin, f.origin) <= 60)
                 {
                     p SetOrigin(f.pos2);
                 }

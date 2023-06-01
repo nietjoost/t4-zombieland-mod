@@ -3,7 +3,7 @@ CheckZiplines()
 {
     for(;;) 
     {
-        wait 0.01;
+        wait 0.2;
         for ( i = 0; i < level.players.size; i++ )
         {	
             for ( k = 0; k < level.ziplines.size; k++ )

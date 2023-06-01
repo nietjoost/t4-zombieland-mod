@@ -3,7 +3,7 @@ CheckHintString()
 {
     for(;;) 
     {
-        wait 0.1;
+        wait 0.2;
 
         for ( i = 0; i < level.players.size; i++ )
         {	
