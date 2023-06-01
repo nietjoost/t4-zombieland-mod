@@ -3,7 +3,7 @@ CheckZiplines()
 {
     for(;;) 
     {
-        wait 0.1;
+        wait 0.01;
         for ( i = 0; i < level.players.size; i++ )
         {	
             for ( k = 0; k < level.ziplines.size; k++ )
@@ -19,7 +19,7 @@ CheckZiplines()
                     // Check for BUTTON press
                     if (p MeleeButtonPressed())
                     {
-                        wait 0.5;
+                        wait 0.1;
                         if (p MeleeButtonPressed())
                         {
                             p thread HandleZipline(z);
@@ -28,7 +28,7 @@ CheckZiplines()
                 }
 
                 // Remove the hintstring
-                if (Distance(p.origin, z.origin) > 50 && Distance(p.origin, z.origin) < 200)
+                if (Distance(p.origin, z.origin) > 50 && Distance(p.origin, z.origin) < 400)
                 {
                     p.hint = "";
                 }
@@ -41,10 +41,11 @@ CheckZiplines()
 //ZiplineLogic
 HandleZipline(zipline)
 {
+    delay = Distance(self.origin, zipline.pos2) / 700;
 	ziplineEnt = Spawn("script_origin", self.origin);
 	self linkTo(ziplineEnt);
-	ziplineEnt moveTo(zipline.pos2, 2);
-    wait 2;
+	ziplineEnt moveTo(zipline.pos2, delay, .05, .05);
+    wait delay;
     self unlink();
     ziplineEnt Delete();
 }
