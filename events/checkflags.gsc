@@ -1,21 +1,10 @@
 // Check Flags
-CheckFlags()
+CheckFlags(flag)
 {
-    for(;;) 
+    while (1)
     {
-        wait 0.3;
-
-        for ( i = 0; i < level.players.size; i++ )
-        {	
-            for ( k = 0; k < level.flags.size; k++ )
-            {
-                p = level.players[i];
-                f = level.flags[k];
-                if (Distance(p.origin, f.origin) <= 60)
-                {
-                    p SetOrigin(f.pos2);
-                }
-            }
-        }
+        wall_trigger_hint = Spawn( "trigger_radius", flag.pos1, 0, 32, 32);  
+        wall_trigger_hint waittill("trigger", player);
+        player SetOrigin(flag.pos2);
     }
 }

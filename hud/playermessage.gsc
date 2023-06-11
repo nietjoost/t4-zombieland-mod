@@ -21,3 +21,10 @@ PlayerMessageLeftUnder(msg)
 {
     self iPrintln(level.prefix + msg);
 }
+
+
+// Say player type writer text
+PlayerTypeWriterText(msg)
+{
+    self thread maps\mp\gametypes\_hud_message::hintMessage(msg);
+}

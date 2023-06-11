@@ -5,7 +5,6 @@ SetupSettings()
     level.started = false;
     level.enoughPlayers = false;
 	level.ended = false;
-	level.flags = [];
 	level.ziplines = [];
 	level.objectId = 1;
 
@@ -31,6 +30,9 @@ GlobalSetting()
 	level.flagFx = LoadFX("misc/ui_flagbase_blue");
 	level.zipline = "prop_flag_neutral";
 	level.ziplineFx = LoadFX("misc/ui_flagbase_red");
+
+	level.collision = "collision_wall_32x32x10";
+	level.collisionModel = "global_barrel_scummy";
 }
 
 
@@ -38,4 +40,8 @@ GlobalSetting()
 PreCache()
 {
 	PrecacheModel(level.flag);
+	PrecacheModel(level.zipline);
+
+	PrecacheModel(level.collision);
+	PrecacheModel(level.collisionModel);
 }

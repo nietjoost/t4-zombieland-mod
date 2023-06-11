@@ -20,7 +20,7 @@ SetHintString()
     self.hint_string destroy();
 
     self.hint_string = newClientHudElem(self);
-    self.hint_string.x = 175;
+    self.hint_string.x = 200;
     self.hint_string.y = 175;
     self.hint_string.fontscale = 2;
     self.hint_string.archived = false;
