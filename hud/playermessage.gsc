@@ -9,6 +9,8 @@ PlayerMessageMiddle(msg)
 
 AllPlayerMessageMiddle(msg)
 {
+    wait 10;
+
     for ( i = 0; i < level.players.size; i++ )
     {	
         p = level.players[i];
@@ -22,9 +24,26 @@ PlayerMessageLeftUnder(msg)
     self iPrintln(level.prefix + msg);
 }
 
+AllPlayerMessageLeftUnder(msg)
+{
+    for ( i = 0; i < level.players.size; i++ )
+    {	
+        p = level.players[i];
+        p thread PlayerTypeWriterText(msg);
+    }
+}
 
 // Say player type writer text
 PlayerTypeWriterText(msg)
 {
     self thread maps\mp\gametypes\_hud_message::hintMessage(msg);
+}
+
+AllPlayerTypeWriterText(msg)
+{
+    for ( i = 0; i < level.players.size; i++ )
+    {	
+        p = level.players[i];
+        p thread PlayerTypeWriterText(msg);
+    }
 }

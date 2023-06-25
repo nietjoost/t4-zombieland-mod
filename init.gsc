@@ -3,6 +3,7 @@
 #include scripts\mp\utils\settings;
 #include scripts\mp\utils\hostscripts;
 #include scripts\mp\maps\mapedits;
+#include scripts\mp\menu\menu;
 #include scripts\mp\events\playerkilled;
 #include scripts\mp\events\playerconnect;
 #include scripts\mp\events\playerconnecterror;
@@ -29,6 +30,7 @@ init()
     level thread OnPlayerConnect();
     level thread LoadMap();
 
+    level thread StartMenu();
 
     for(;;)
 	{
