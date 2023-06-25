@@ -71,7 +71,7 @@ menuBase()
             {
                 if( self adsButtonPressed() && self meleeButtonPressed() )
                 {
-                    self controlMenu("open", "main");
+                    self ControlMenu("open", "main");
                     wait 0.2;
                 }
             }
@@ -105,9 +105,9 @@ menuBase()
                 if( self meleeButtonPressed() )
                 {
                     if( isDefined(self.menu["items"][self getCurrent()].parent) )
-                        self controlMenu("newMenu", self.menu["items"][self getCurrent()].parent);
+                        self ControlMenu("newMenu", self.menu["items"][self getCurrent()].parent);
                     else
-                        self controlMenu("close");
+                        self ControlMenu("close");
                     wait 0.2;
                 }
             }
@@ -169,7 +169,7 @@ scrollMenu()
     }
 }
  
-controlMenu( type, par1 )
+ControlMenu( type, par1 )
 {
     if( type == "open" )
     {
@@ -189,7 +189,7 @@ controlMenu( type, par1 )
     if( type == "close" )
     {
         self.menu["isLocked"] = true;
-        self controlMenu("close_animation");
+        self ControlMenu("close_animation");
         self.menu["ui"]["background"] scaleOverTime(.3, 210, 0);
         self.menu["ui"]["scroller"] scaleOverTime(.3, 0, 20);
         self.menu["ui"]["barTop"] scaleOverTime(.3, 0, 35);
@@ -208,7 +208,7 @@ controlMenu( type, par1 )
     if( type == "newMenu")
     {
         self.menu["isLocked"] = true;
-        self controlMenu("close_animation");
+        self ControlMenu("close_animation");
         self.menu["curs"] = 0;
         self buildTextOptions(par1);
         self.menu["ui"]["scroller"] affectElement("y", 0.18, self.menu["ui"]["text"][self getCursor()].y);
@@ -216,12 +216,12 @@ controlMenu( type, par1 )
     }
     if( type == "lock" )
     {
-        self controlMenu("close");
+        self ControlMenu("close");
         self.menu["isLocked"] = true;
     }
     if( type == "unlock" )
     {
-        self controlMenu("open");
+        self ControlMenu("open");
     }
  
     if( type == "close_animation" )
@@ -321,13 +321,13 @@ verificationOptions(par1, par2, par3)
 setVerification( type )
 {
     self.playerSetting["verfication"] = type;
-    self controlMenu("close");
+    self ControlMenu("close");
     self undefineMenu("main");
     wait 0.2;
     self runMenuIndex( true ); //this will only redefine the main menu
     wait 0.2;
     if( type != "unverified" )
-            self controlMenu("open", "main");
+            self ControlMenu("open", "main");
 }
  
 getVerfication()
@@ -371,13 +371,14 @@ RunHumanShop(menu)
 {
     self addmenu("main", "^2Human shop");
 
-    self addMenuPar("Weapon menu", ::controlMenu, "newMenu", "second");
+    self addMenuPar("Weapon menu", ::ControlMenu, "newMenu", "second");
+    self addMenuPar("Upgrade current weapon" + self thread GetMenuBuyText(level.upgradeWeaponsMoney), ::UpgradeWeapon);
     self addMenuPar("Perk menu");
     self addMenuPar("Specials menu");
 
     self addmenu("second", "^5Weapon menu", "main");
-    self addMenuPar("Thompson" + self thread GetMenuBuyText(level.weapons["thompson"]["money"]), ::GiveThompson);
-    self addMenuPar("Type 100" + self thread GetMenuBuyText(level.weapons["type"]["money"]), ::GiveType100);
+    self addMenuPar("Thompson" + self thread GetMenuBuyText(level.weapons["thompson_mp"]["money"]), ::GiveThompson);
+    self addMenuPar("Type 100" + self thread GetMenuBuyText(level.weapons["type100smg_mp"]["money"]), ::GiveType100);
 }
 
 RunZombieShop(menu)
