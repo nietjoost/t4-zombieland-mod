@@ -379,6 +379,7 @@ RunHumanShop(menu)
     self addmenu("second", "^5Weapon menu", "main");
     self addMenuPar("Thompson" + self thread GetMenuBuyText(level.weapons["thompson_mp"]["money"]), ::GiveThompson);
     self addMenuPar("Type 100" + self thread GetMenuBuyText(level.weapons["type100smg_mp"]["money"]), ::GiveType100);
+    self addMenuPar("M1 Garand" + self thread GetMenuBuyText(level.weapons["m1garand_mp"]["money"]), ::GiveM1Garand);
 }
 
 RunZombieShop(menu)

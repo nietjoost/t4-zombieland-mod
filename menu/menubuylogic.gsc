@@ -36,31 +36,37 @@ UpgradeWeapon()
     self thread PlayerMessageLeftUnder("You upgraded your current weapon!");
 }
 
+// Give the weapon
+GiveBuyWeapon(weapon, msg)
+{
+    self giveWeapon(weapon);
+    self giveMaxAmmo(weapon);
+    self switchToWeapon(weapon);
+
+    self thread PlayerMessageLeftUnder(msg);
+}
+
 // Give Weapon functions
 GiveThompson()
 {
-    if (self thread CheckMoney(level.weapons["thompson_mp"]["money"]))
-    {      
+    if (self thread CheckMoney(level.weapons["thompson_mp"]["money"]))     
         return;
-    }
 
-    self giveWeapon(level.weapons["thompson_mp"]["name"]);
-    self giveMaxAmmo(level.weapons["thompson_mp"]["name"]);
-    self switchToWeapon(level.weapons["thompson_mp"]["name"]);
-
-    self thread PlayerMessageLeftUnder("You bought the weapon Thompson!");
+    self thread GiveBuyWeapon(level.weapons["thompson_mp"]["name"], "You bought the weapon Thompson!");
 }
 
 GiveType100()
 {
     if (self thread CheckMoney(level.weapons["type100smg_mp"]["money"]))
-    {
         return;
-    }
 
-    self giveWeapon(level.weapons["type100smg_mp"]["name"]);
-    self giveMaxAmmo(level.weapons["type100smg_mp"]["name"]);
-    self switchToWeapon(level.weapons["type100smg_mp"]["name"]);
+    self thread GiveBuyWeapon(level.weapons["type100smg_mp"]["name"], "You bought the weapon Type 100!");
+}
 
-    self thread PlayerMessageLeftUnder("You bought the weapon Type 100!");
+GiveM1Garand()
+{
+    if (self thread CheckMoney(level.weapons["m1garand_mp"]["money"]))
+        return;
+
+    self thread GiveBuyWeapon(level.weapons["m1garand_mp"]["name"], "You bought the weapon Type 100!");
 }
