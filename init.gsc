@@ -2,6 +2,7 @@
 #include scripts\mp\utils\utils;
 #include scripts\mp\utils\settings;
 #include scripts\mp\utils\hostscripts;
+#include scripts\mp\utils\weaponsettings;
 #include scripts\mp\maps\mapedits;
 #include scripts\mp\menu\menu;
 #include scripts\mp\events\playerkilled;
@@ -26,6 +27,7 @@ init()
     // ZombieLand scripts
     level thread SetupSettings();
     level thread GlobalSetting();
+    level thread SetupWeaponSettings();
     level thread PreCache();
     level thread OnPlayerConnect();
     level thread LoadMap();

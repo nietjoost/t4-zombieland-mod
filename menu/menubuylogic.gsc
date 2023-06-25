@@ -6,24 +6,38 @@ CheckMoney(cost)
 {
     if (cost <= self.money)
     {
-        RemoveMoney(cost);
-        return true;
+        self thread RemoveMoney(cost);
+        return false;
     }
     self thread PlayerMessageLeftUnder("You do not have enough money!");
-    return false;
+    return true;
 }
 
 // Give Weapon functions
 GiveThompson()
 {
-    if (self thread CheckMoney(100) == false)
+    if (self thread CheckMoney(level.weapons["thompson"]["money"]))
     {      
         return;
     }
 
-    self giveWeapon("thompson_mp");
-    self giveMaxAmmo("thompson_mp");
-    self switchToWeapon("thompson_mp");
+    self giveWeapon(level.weapons["thompson"]["name"]);
+    self giveMaxAmmo(level.weapons["thompson"]["name"]);
+    self switchToWeapon(level.weapons["thompson"]["name"]);
 
     self thread PlayerMessageLeftUnder("You bought the weapon Thompson!");
+}
+
+GiveType100()
+{
+    if (self thread CheckMoney(level.weapons["type"]["money"]))
+    {
+        return;
+    }
+
+    self giveWeapon(level.weapons["type"]["name"]);
+    self giveMaxAmmo(level.weapons["type"]["name"]);
+    self switchToWeapon(level.weapons["type"]["name"]);
+
+    self thread PlayerMessageLeftUnder("You bought the weapon Type 100!");
 }

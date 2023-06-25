@@ -6,19 +6,19 @@
 
 StartMenu()
 {
-    level thread onPlayerConnectMenu();
+    level thread OnPlayerConnectMenu();
 }
 
-onPlayerConnectMenu()
+OnPlayerConnectMenu()
 {
     for(;;)
     {
         level waittill("connecting", player);
-        player thread onPlayerSpawnedMenu();
+        player thread OnPlayerSpawnedMenu();
     }
 }
 
-onPlayerSpawnedMenu()
+OnPlayerSpawnedMenu()
 {
     self endon("disconnect");
     for(;;)
@@ -131,7 +131,6 @@ scrollMenu()
                 self.menu["ui"]["text"][a] affectElement("alpha", 0.18, .3);
         }
         self.menu["ui"]["text"][self getCursor()] affectElement("alpha", 0.18, 1);
-        self iPrintLn("hud move"); 
     }
     else
     {
@@ -273,7 +272,7 @@ addMenu(menu, title, parent)
             self.menu["items"][menu].parent = undefined;
     }
  
-    self.temp["memory"]["menu"]["currentmenu"] = menu; //this is a memory system feel free to use it
+    self.temp["memory"]["menu"]["currentmenu"] = menu;
 }
 
 addMenuPar(name, func, input1, input2, input3)
@@ -293,7 +292,7 @@ addMenuPar(name, func, input1, input2, input3)
 addAbnormalMenu(menu, title, parent, name, func, input1, input2, input3)
 {
     if( !isDefined(self.menu["items"][menu]) )
-            self addMenu(menu, title, parent); //title will never be changed after first menu is added.
+            self addMenu(menu, title, parent);
    
     count = self.menu["items"][menu].name.size;
     self.menu["items"][menu].name[count] = name;
@@ -377,8 +376,8 @@ RunHumanShop(menu)
     self addMenuPar("Specials menu");
 
     self addmenu("second", "^5Weapon menu", "main");
-    self addMenuPar("Thompson" + self thread GetMenuBuyText(100), ::GiveThompson);
-    self addMenuPar("RPG" + self thread GetMenuBuyText(2000));
+    self addMenuPar("Thompson" + self thread GetMenuBuyText(level.weapons["thompson"]["money"]), ::GiveThompson);
+    self addMenuPar("Type 100" + self thread GetMenuBuyText(level.weapons["type"]["money"]), ::GiveType100);
 }
 
 RunZombieShop(menu)
