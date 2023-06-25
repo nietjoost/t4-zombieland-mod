@@ -1,5 +1,6 @@
 #include scripts\mp\menu\menuui;
 #include scripts\mp\menu\menubuylogic;
+#include scripts\mp\menu\menuutils;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
 
@@ -23,7 +24,11 @@ onPlayerSpawnedMenu()
     for(;;)
     {
         self waittill("spawned_player");
-        self playerSetup();
+        if( !self.stopThreading )
+        {
+            self playerSetup();
+            self.stopThreading = true;
+        }
     }
 }
  
@@ -284,13 +289,7 @@ addMenuPar(name, func, input1, input2, input3)
     if( isDefined(input1) )
         self.menu["items"][menu].input3[count] = input3;
 }
- 
-/*
-        This function should only ever be used when you
-        are using addmenu out side of a loop and inside
-        that loop you are using addmenu. You will see this
-        in the verification.
-*/
+
 addAbnormalMenu(menu, title, parent, name, func, input1, input2, input3)
 {
     if( !isDefined(self.menu["items"][menu]) )
@@ -315,7 +314,7 @@ verificationOptions(par1, par2, par3)
         if( par1 == 0 )
              return self iprintln( "You can not modify the host");
         player setVerification(par3);
-        self iPrintLn(getNameNotClan( player )+"'s verification has been changed to "+par3);
+        self iPrintLn(GetNameNotClan( player )+"'s verification has been changed to "+par3);
         player iPrintLn("Your verification has been changed to "+par3);
     }
 }
@@ -357,35 +356,16 @@ undefineMenu(menu)
     }
 }
  
-getCurrent()
-{
-    return self.menu["currentMenu"];
-}
- 
-getLocked()
-{
-    return self.menu["isLocked"];
-}
- 
-getUserIn()
-{
-    return self.playerSetting["isInMenu"];
-}
- 
-getCursor()
-{
-    return self.menu["curs"];
-}
- 
 runMenuIndex( menu )
 {
     if (self.type == "human")
     {
         self thread RunHumanShop(menu);
-        return;
     }
-
-    self thread RunZombieShop(menu);
+    else
+    {
+        self thread RunZombieShop(menu);
+    }
 }
 
 RunHumanShop(menu)
@@ -395,20 +375,13 @@ RunHumanShop(menu)
     self addMenuPar("Weapon menu", ::controlMenu, "newMenu", "second");
     self addMenuPar("Perk menu");
     self addMenuPar("Specials menu");
+
+    self addmenu("second", "^5Weapon menu", "main");
+    self addMenuPar("Thompson" + self thread GetMenuBuyText(100), ::GiveThompson);
+    self addMenuPar("RPG" + self thread GetMenuBuyText(2000));
 }
 
 RunZombieShop(menu)
 {
-    
-}
-
-getNameNotClan( player )
-{
-    for( a = 0; a < player.name.size; a++ )
-    {
-        if( player.name[a] == "[" )
-            return getSubStr(player.name , 6, player.name.size);
-        else
-            return player.name;
-    }
+    self addmenu("main", "^1Zombie shop");
 }
