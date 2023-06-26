@@ -371,15 +371,28 @@ RunHumanShop(menu)
 {
     self addmenu("main", "^2Human shop");
 
-    self addMenuPar("Weapon menu", ::ControlMenu, "newMenu", "second");
-    self addMenuPar("Upgrade current weapon" + self thread GetMenuBuyText(level.upgradeWeaponsMoney), ::UpgradeWeapon);
-    self addMenuPar("Perk menu");
-    self addMenuPar("Specials menu");
+    // Main menu
+    self addMenuPar("Weapon menu", ::ControlMenu, "newMenu", "weapon_menu");
+    self addMenuPar("Perk menu", ::ControlMenu, "newMenu", "perk_menu");
+    self addMenuPar("Specials menu", ::ControlMenu, "newMenu", "specials_menu");
 
-    self addmenu("second", "^5Weapon menu", "main");
+    // Weapon menu
+    self addmenu("weapon_menu", "^5Weapon menu", "main");
+    self addMenuPar("Upgrade current weapon" + self thread GetMenuBuyText(level.upgradeWeaponsMoney), ::UpgradeWeapon);
     self addMenuPar("Thompson" + self thread GetMenuBuyText(level.weapons["thompson_mp"]["money"]), ::GiveThompson);
     self addMenuPar("Type 100" + self thread GetMenuBuyText(level.weapons["type100smg_mp"]["money"]), ::GiveType100);
     self addMenuPar("M1 Garand" + self thread GetMenuBuyText(level.weapons["m1garand_mp"]["money"]), ::GiveM1Garand);
+
+    // Perk menu
+    self addmenu("perk_menu", "^5Perk menu", "main");
+    self addMenuPar("Sleight of Hand", ::GivePerkSleight);
+    self addMenuPar("Stopping Power" , ::GivePerkBulletFlinch);
+    self addMenuPar("Juggernaut" , ::GivePerkSleight);
+    self addMenuPar("Extreme Conditioning" , ::GivePerkSprint);
+
+    // Special menu
+    self addmenu("specials_menu", "^5Specials menu", "main");
+
 }
 
 RunZombieShop(menu)

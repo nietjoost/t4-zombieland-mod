@@ -25,3 +25,15 @@ SetupWeaponSettings()
     level.weapons["m1garand_mp"]["money"] = 100;
     level.weapons["m1garand_mp"]["upgradeName"] = "m1garand_bayonet_mp";
 }
+
+// PERK Settings
+SetupPerkSettings()
+{
+    // Initialize
+    level.perks = [];
+    level.perks["init"] = [];
+
+    // Submachines settings
+    level.perks["specialty_longersprint"]["name"] = "specialty_longersprint";
+    level.perks["specialty_longersprint"]["money"] = 100;
+}

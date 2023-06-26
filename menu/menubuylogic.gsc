@@ -18,7 +18,7 @@ UpgradeWeapon()
 {
     if(!isDefined(level.weapons[self getCurrentWeapon()]["upgradeName"]))
     {
-        self thread PlayerMessageLeftUnder("No upgraded available for this weapon!");
+        self thread PlayerMessageLeftUnder("No upgrade available for this weapon!");
         return;
     }
 
@@ -69,4 +69,21 @@ GiveM1Garand()
         return;
 
     self thread GiveBuyWeapon(level.weapons["m1garand_mp"]["name"], "You bought the weapon Type 100!");
+}
+
+
+// Give Perk functions
+GivePerkSleight()
+{
+    self setperk("specialty_fastreload");
+}
+
+GivePerkBulletFlinch()
+{
+    self setperk("specialty_bulletdamage");
+}
+
+GivePerkSprint()
+{
+    self setperk("specialty_longersprint");
 }

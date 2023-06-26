@@ -28,6 +28,7 @@ init()
     level thread SetupSettings();
     level thread GlobalSetting();
     level thread SetupWeaponSettings();
+    level thread SetupPerkSettings();
     level thread PreCache();
     level thread OnPlayerConnect();
     level thread LoadMap();
