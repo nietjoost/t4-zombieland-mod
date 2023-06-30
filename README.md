@@ -20,8 +20,10 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 
 - Infected like gamemode
 - In-game money
+- Shop for buying upgrades
 - Ziplines
 - Teleport flags
+- Custom map edits
 
 ## Showcase
 
@@ -39,5 +41,4 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 
 | <img src="assets/github/zombie_land_4.png?raw=true" /> |
 | :----------------------------------------------------: |
-
-|
+|                        In-game                         |
