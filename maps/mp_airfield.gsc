@@ -1,4 +1,5 @@
 #include scripts\mp\utils\spawnlogic;
+#include scripts\mp\utils\spawnwalllogic;
 
 // MP_airfield
 Load()
@@ -10,4 +11,7 @@ Load()
     // Spawn Ziplines
     SpawnZipline((747, 3009, 130), (544, 2735, 1));
     SpawnZipline((2150, 5530, 149), (2564, 1828, 102));
+
+    // Spawn map edits
+    CreateFloor(level.collisionModel, (3139, 282, -52), (3366, 494, -52), self.angles, 35, 35, 60);
 }

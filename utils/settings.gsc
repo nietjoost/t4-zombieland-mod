@@ -20,6 +20,8 @@ SetupSettings()
 	SetDvar("g_customTeamName_Axis", "Zombies");
 	SetDvar("g_teamColor_Allies", "0 1 1");
 	SetDvar("g_ScoresColor_Allies", "0 1 1");
+
+	//SetExpFog(80, 612, 1, 0, 0, 10);
 }
 
 

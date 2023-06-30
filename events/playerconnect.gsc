@@ -66,6 +66,7 @@ OnPlayerSpawned()
         if (self.type == "human")
         {
             self thread GivePlayerClass();
+            //self thread maps\mp\gametypes\_hud_message::oldNotifyMessage("Welcome " + self.name + "!", "To nay1995's + Hawkins Zombieland", "hud_icon_ppsh", (1, 0, (55 / 255)), "mp_level_up", 5);
         }
         else
         {
