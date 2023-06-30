@@ -11,6 +11,7 @@ OnPlayerConnect()
         level waittill("connected", player);
 
         player.spawned = false;
+        player.usingZipline = false;
         player.type = "human";
         player.money = 500;
         player thread OnPlayerSpawned();

@@ -12,7 +12,7 @@ CheckZiplines()
                 z = level.ziplines[k];
 
                 //Set the hintstring
-                if (Distance(p.origin, z.origin) <= 50)
+                if (Distance(p.origin, z.origin) <= 50 && p.usingZipline == false)
                 {
                     p.hint = "^5Hold ^1[{+melee}] ^5to use the ZipLine";
 
@@ -41,6 +41,7 @@ CheckZiplines()
 //ZiplineLogic
 HandleZipline(zipline)
 {
+    self.usingZipline = true;
     delay = Distance(self.origin, zipline.pos2) / 700;
 	ziplineEnt = Spawn("script_origin", self.origin);
 	self linkTo(ziplineEnt);
@@ -48,4 +49,5 @@ HandleZipline(zipline)
     wait delay+0.2;
     self unlink();
     ziplineEnt Delete();
+    self.usingZipline = false;
 }

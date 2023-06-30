@@ -22,7 +22,7 @@ CreateFloor(model, start, end, angles, lengthspace, widthspace, heightspace)
         {
             for (h = 0; h <= blocksheight; h ++)
             {
-                block = SpawnEntityy("script_model", model, start + (originx * l, originy * w, originz * h), (0, 0, 0));                   
+                block = SpawnEntity("script_model", model, start + (originx * l, originy * w, originz * h), (0, 0, 0));                   
                 block LinkTo(center);
             }
         }
@@ -31,26 +31,20 @@ CreateFloor(model, start, end, angles, lengthspace, widthspace, heightspace)
     center.angles = angles;
 }
 
-// Spawn a solid barrel
-SpawnSolid(location, angles)
+//Spawn a ramp
+CreateRamp(model, start, end, lengthspace)
 {
-    block = SpawnEntity("script_model", level.collisionModel, location, angles);
-	solid = spawn("trigger_radius",location,0,64,50);
-	solid setContents(1);
-	solid.targetname = "script_collision";
+    length = Distance(start, end);
+   	blockslength = Ceil(length / lengthspace);
+
+    for (l = 0; l < blockslength; l ++)
+    {
+        block = SpawnEntity("script_model", model, (start + ((end - start) / blockslength) * l), VectorToAngles(start - end));
+    }
 }
 
-
+// Spawn function
 SpawnEntity(class, model, origin, angles)
-{
-    entity = Spawn(class, origin);
-    entity.angles = angles;
-    entity SetModel(model);
-   	
-    return entity;
-}
-
-SpawnEntityy(class, model, origin, angles)
 {
     entity = Spawn(class, origin);
     entity.angles = angles;
