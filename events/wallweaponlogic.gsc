@@ -1,9 +1,8 @@
 #include scripts\mp\menu\menubuylogic;
 
-CreateWallWeapon(model, location, angles, price)
+CreateWallWeapon(model, location, price)
 {
     weapon = Spawn("script_model", location + (0, 0, 50));
-    weapon.angles = angles;
     weapon SetModel(getWeaponModel(model));
 
     weapon.price = price;
@@ -14,6 +13,8 @@ CreateWallWeapon(model, location, angles, price)
 
 	// Spawn FX
     PlayFX(level.weaponFx, location);
+
+    weapon thread RotateWallWeapon(7.5);
 }
 
 HandleWallWeapon()
@@ -74,4 +75,14 @@ HandleWallWeapon()
             }
         }
     }
+}
+
+// Rotate the buy weapon
+RotateWallWeapon(duration)
+{
+	for(;;)
+	{
+  		self rotateYaw(360,duration);
+		wait ((duration)-0.1);
+	}
 }
