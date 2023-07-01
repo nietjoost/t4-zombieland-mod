@@ -1,3 +1,5 @@
+#include scripts\mp\menu\menu;
+
 // Classes
 GivePlayerClass()
 {
@@ -22,6 +24,8 @@ GiveZombieClass()
     self switchToWeapon("colt_mp");
     self setWeaponAmmoStock("colt_mp", 0);
     self setWeaponAmmoClip("colt_mp", 0);
+
+    self thread ResetMenu();
 
     // Disable weapon pickup
     self endon("death");

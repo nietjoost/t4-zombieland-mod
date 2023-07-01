@@ -26,31 +26,20 @@ OnPlayerSpawnedMenu()
         self waittill("spawned_player");
         if( !self.stopThreading )
         {
-            self playerSetup();
+            self PlayerSetup();
             self.stopThreading = true;
         }
     }
 }
  
-playerSetup()
+PlayerSetup()
 {
-    self defineVariables();
-    if( self == get_players()[0] && !isDefined(self.threaded) )
-    {
-        self.playerSetting["hasMenu"] = true;
-        self.playerSetting["verfication"] = "admin";
-        self thread menuBase();
-        self.threaded = true;
-    }
-    else
-    {
-        self.playerSetting["verfication"] = "unverified";
-        self thread menuBase();
-    }
-    self runMenuIndex();
+    self DefineVariables();
+    self thread MenuBase();
+    self RunMenuIndex();
 }
  
-defineVariables()
+DefineVariables()
 {
     self.menu["curs"] = 0;
     self.menu["currentMenu"] = "";
@@ -61,7 +50,14 @@ defineVariables()
     self.playerSetting["isInMenu"] = false;
 }
 
-menuBase()
+ResetMenu()
+{
+    self.menu = undefined;
+
+    PlayerSetup();
+}
+
+MenuBase()
 {
     while( true )
     {
@@ -324,7 +320,7 @@ setVerification( type )
     self ControlMenu("close");
     self undefineMenu("main");
     wait 0.2;
-    self runMenuIndex( true ); //this will only redefine the main menu
+    self RunMenuIndex( true ); //this will only redefine the main menu
     wait 0.2;
     if( type != "unverified" )
             self ControlMenu("open", "main");
@@ -355,7 +351,7 @@ undefineMenu(menu)
     }
 }
  
-runMenuIndex( menu )
+RunMenuIndex( menu )
 {
     if (self.type == "human")
     {
@@ -377,21 +373,21 @@ RunHumanShop(menu)
     self addMenuPar("Specials menu", ::ControlMenu, "newMenu", "specials_menu");
 
     // Weapon menu
-    self addmenu("weapon_menu", "^5Weapon menu", "main");
+    self addmenu("weapon_menu", "^5Weapon shop", "main");
     self addMenuPar("Upgrade current weapon" + self thread GetMenuBuyText(level.upgradeWeaponsMoney), ::UpgradeWeapon);
     self addMenuPar("Thompson" + self thread GetMenuBuyText(level.weapons["thompson_mp"]["money"]), ::GiveThompson);
     self addMenuPar("Type 100" + self thread GetMenuBuyText(level.weapons["type100smg_mp"]["money"]), ::GiveType100);
     self addMenuPar("M1 Garand" + self thread GetMenuBuyText(level.weapons["m1garand_mp"]["money"]), ::GiveM1Garand);
 
     // Perk menu
-    self addmenu("perk_menu", "^5Perk menu", "main");
+    self addmenu("perk_menu", "^5Perk shop", "main");
     self addMenuPar("Sleight of Hand", ::GivePerkSleight);
     self addMenuPar("Stopping Power" , ::GivePerkBulletFlinch);
     self addMenuPar("Juggernaut" , ::GivePerkSleight);
     self addMenuPar("Extreme Conditioning" , ::GivePerkSprint);
 
     // Special menu
-    self addmenu("specials_menu", "^5Specials menu", "main");
+    self addmenu("specials_menu", "^5Specials shop", "main");
 
 }
 
