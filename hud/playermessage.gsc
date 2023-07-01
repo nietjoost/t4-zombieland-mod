@@ -9,8 +9,6 @@ PlayerMessageMiddle(msg)
 
 AllPlayerMessageMiddle(msg)
 {
-    wait 10;
-
     for ( i = 0; i < level.players.size; i++ )
     {	
         p = level.players[i];

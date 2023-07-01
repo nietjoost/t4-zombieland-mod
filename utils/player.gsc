@@ -22,6 +22,13 @@ GiveZombieClass()
     self switchToWeapon("colt_mp");
     self setWeaponAmmoStock("colt_mp", 0);
     self setWeaponAmmoClip("colt_mp", 0);
+
+    // Disable weapon pickup
+    self endon("death");
+	self endon("disconnect");
+	self waittill("weapon_change");
+
+    self thread GiveZombieClass();
 }
 
 
