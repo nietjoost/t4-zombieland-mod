@@ -1,4 +1,5 @@
 #include scripts\mp\hud\playermessage;
+#include scripts\mp\events\elevatorlogic;
 
 // Spawn a floor
 CreateFloor(model, start, end, angles, lengthspace, widthspace, heightspace)
@@ -41,6 +42,19 @@ CreateRamp(model, start, end, lengthspace)
     {
         block = SpawnEntity("script_model", model, (start + ((end - start) / blockslength) * l), VectorToAngles(start - end));
     }
+}
+
+//Create elevator
+CreateElevator(model, start, end, angles, duration, waitduration)
+{
+    elevator = SpawnEntity("script_model", model, start, angles);
+    elevatorscriptorigin = Spawn("script_model", start);
+    elevator EnableLinkTo();
+	elevator LinkTo(elevatorscriptorigin);
+    solid = spawn("trigger_radius",start,0,64,50);
+	solid setContents(1);
+	solid.targetname = "script_collision";
+    elevatorscriptorigin thread ElevatorMonitor(solid, start, end, duration, waitduration);
 }
 
 // Spawn function

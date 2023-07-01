@@ -6,6 +6,7 @@ SetupSettings()
     level.enoughPlayers = false;
 	level.ended = false;
 	level.ziplines = [];
+	level.buyWeapons = [];
 	level.objectId = 1;
 
     // Game settings
@@ -32,6 +33,7 @@ GlobalSetting()
 	level.flagFx = LoadFX("misc/ui_flagbase_blue");
 	level.zipline = "prop_flag_neutral";
 	level.ziplineFx = LoadFX("misc/ui_flagbase_red");
+	level.weaponFx = LoadFX("misc/ui_flagbase_gold");
 
 	level.collision = "collision_wall_32x32x10";
 	level.collisionModel = "global_barrel_scummy";

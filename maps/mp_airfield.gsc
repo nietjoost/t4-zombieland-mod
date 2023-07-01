@@ -1,5 +1,6 @@
 #include scripts\mp\utils\spawnlogic;
 #include scripts\mp\utils\spawnwalllogic;
+#include scripts\mp\events\wallweaponlogic;
 
 // MP_airfield
 Load()
@@ -16,6 +17,8 @@ Load()
 
     // Spawn map edits
     //CreateFloor(level.collisionModel, (3139, 282, -52), (3366, 494, -52), self.angles, 35, 35, 60);
+    //CreateElevator(level.collisionModel, (3346, 2606, -61), (3346, 2606, 505), (0,0,0), 10, 2);
     CreateRamp(level.collisionModel, (1680, 3110, 116), (1506, 3005, 116), 35);
     CreateRamp(level.collisionModel, (712, 1792, 85), (973, 1822, 110), 35);
+    CreateWallWeapon("thompson_mp", (3346, 2606, -50), (0,0,0), 100);
 }
