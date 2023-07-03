@@ -108,7 +108,7 @@ MenuBase()
                 }
             }
         }
-        wait .05; //frame
+        wait .05;
     }
 }
 
