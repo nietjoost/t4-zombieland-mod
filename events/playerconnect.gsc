@@ -4,7 +4,7 @@
 #include scripts\mp\hud\moneylogic;
 
 // PLAYER connect functions
-OnPlayerConnect()
+OnPlayerConnectZL()
 {
     for(;;)
     {
@@ -14,7 +14,7 @@ OnPlayerConnect()
         player.usingZipline = false;
         player.type = "human";
         player.money = 500;
-        player thread OnPlayerSpawned();
+        player thread OnPlayerSpawnedZL();
 
         level thread StartZombieLand();                
     }
@@ -22,7 +22,7 @@ OnPlayerConnect()
 
 
 // ON Player spawn logic
-OnPlayerSpawned()
+OnPlayerSpawnedZL()
 {
     self endon("disconnect");
     for(;;)

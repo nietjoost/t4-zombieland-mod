@@ -30,7 +30,7 @@ init()
     level thread SetupWeaponSettings();
     level thread SetupPerkSettings();
     level thread PreCache();
-    level thread OnPlayerConnect();
+    level thread OnPlayerConnectZL();
     level thread LoadMap();
 
     level thread StartMenu();

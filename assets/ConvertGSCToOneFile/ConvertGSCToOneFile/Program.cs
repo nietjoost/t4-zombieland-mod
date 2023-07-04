@@ -53,6 +53,11 @@ foreach (var file in cleanedFiles)
             loadFunctionCount++;
         }
 
+        if (newLine.StartsWith("init()"))
+        {
+            newLine = newLine.Replace(newLine, "ZombieLand()");
+        }
+
         File.AppendAllLines(path, new[] { newLine });
     }
 }
