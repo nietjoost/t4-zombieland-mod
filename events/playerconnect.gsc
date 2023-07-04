@@ -76,5 +76,11 @@ OnPlayerSpawnedZL()
 
         // MENU logic
         self thread CreateMoneyHUD();
+
+        //PROMOD
+        self setClientDvar("cg_fov", "95");
+        self setClientDvar("cg_gun_x", "6");
+        self setclientdvar("cg_fovmin", "1");
+        self setClientDvar("cg_fovscale", "1.15");
     }
 }
