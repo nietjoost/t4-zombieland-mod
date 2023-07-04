@@ -368,9 +368,9 @@ RunHumanShop(menu)
     self addmenu("main", "^2Human shop");
 
     // Main menu
-    self addMenuPar("Weapon menu", ::ControlMenu, "newMenu", "weapon_menu");
-    self addMenuPar("Perk menu", ::ControlMenu, "newMenu", "perk_menu");
-    self addMenuPar("Specials menu", ::ControlMenu, "newMenu", "specials_menu");
+    self addMenuPar("Weapon shop", ::ControlMenu, "newMenu", "weapon_menu");
+    self addMenuPar("Perk shop", ::ControlMenu, "newMenu", "perk_menu");
+    self addMenuPar("Specials shop", ::ControlMenu, "newMenu", "specials_menu");
 
     // Weapon menu
     self addmenu("weapon_menu", "^5Weapon shop", "main");

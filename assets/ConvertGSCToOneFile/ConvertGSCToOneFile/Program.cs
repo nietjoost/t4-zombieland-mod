@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Welcome by the RooieRonnie's GSC project to one file converter");
+﻿using static System.Net.Mime.MediaTypeNames;
+
+Console.WriteLine("Welcome by the RooieRonnie's GSC project to one file converter");
 Console.WriteLine("Paste the folder URL:");
 
 var folderPlace = Console.ReadLine();
@@ -41,6 +43,11 @@ foreach (var file in cleanedFiles)
             continue;
         }
 
+        if (newLine.Contains("#include"))
+        {
+            continue;
+        }
+
         if (newLine.Contains("::Load();"))
         {
             newLine = newLine.Replace(newLine, $"Load{loadMapCount}();");
@@ -61,3 +68,7 @@ foreach (var file in cleanedFiles)
         File.AppendAllLines(path, new[] { newLine });
     }
 }
+
+string content = File.ReadAllText(path);
+content = "#include maps\\mp\\_utility;" + "\n" + "#include maps\\mp\\gametypes\\_hud_util;" + "\n" + content;
+File.WriteAllText(path, content);
