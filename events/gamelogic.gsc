@@ -1,5 +1,6 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\events\playerconnect;
+#include scripts\mp\events\botlogic;
 #include scripts\mp\utils\utils;
 #include scripts\mp\utils\player;
 
@@ -9,6 +10,9 @@ StartZombieLand()
     // Check total players
     if (level.players.size < 2)
     {
+        wait 10;
+        level thread AddTestClients(5);
+        AllPlayerMessageMiddle("^6Adding bots because there are not enough people!");
         return;
     }
 

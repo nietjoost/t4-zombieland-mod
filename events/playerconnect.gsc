@@ -14,6 +14,7 @@ OnPlayerConnectZL()
         player.usingZipline = false;
         player.type = "human";
         player.money = 500;
+
         player thread OnPlayerSpawnedZL();
 
         level thread StartZombieLand();                
