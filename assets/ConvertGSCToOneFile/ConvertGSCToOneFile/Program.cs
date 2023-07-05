@@ -15,6 +15,7 @@ var files = Directory.GetFiles(folderPlace, "*.*", SearchOption.AllDirectories);
 
 var cleanedFiles = files.Where(f => !f.Contains(".git"))
     .Where(f => !f.Contains("assets"))
+    .Where(f => !f.Contains("tools"))
     .Where(f => !f.Contains("README.md"))
     .Where(f => f.Contains(".gsc"))
     .ToList();
@@ -22,7 +23,7 @@ var cleanedFiles = files.Where(f => !f.Contains(".git"))
 var loadMapCount = 1;
 var loadFunctionCount = 1;
 
-string path = $"{folderPlace}/assets/exports/Export.txt";
+string path = $"{folderPlace}/tools/ConvertGSCToOneFile/exports/Export.txt";
 
 if (File.Exists(path))
 {
