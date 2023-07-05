@@ -77,17 +77,32 @@ GiveM1Garand()
 
 
 // Give Perk functions
-GivePerkSleight()
+GiveBuyPerk(perk, msg)
 {
-    self setperk("specialty_fastreload");
+    self setperk(perk);
+    self thread PlayerMessageLeftUnder(msg);
 }
 
-GivePerkBulletFlinch()
+GivePerkSleight()
 {
-    self setperk("specialty_bulletdamage");
+    if (self thread CheckMoney(level.perksMoney))
+        return;
+
+    self thread GiveBuyPerk(level.perks[1], "You bought the perk Sleight of Hand!");
 }
 
 GivePerkSprint()
 {
-    self setperk("specialty_longersprint");
+    if (self thread CheckMoney(level.perksMoney))
+        return;
+
+    self thread GiveBuyPerk(level.perks[2], "You bought the perk Longer Sprint!");
+}
+
+GivePerkStoppingPower()
+{
+    if (self thread CheckMoney(level.perksMoney))
+        return;
+
+    self thread GiveBuyPerk(level.perks[3], "You bought the perk Stopping Power!");
 }

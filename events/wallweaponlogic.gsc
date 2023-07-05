@@ -1,4 +1,5 @@
 #include scripts\mp\menu\menubuylogic;
+#include scripts\mp\hud\playermessage;
 
 CreateWallWeapon(model, location, price)
 {
@@ -47,6 +48,13 @@ HandleWallWeapon()
                         wait 0.1;
                         if (p UseButtonPressed())
                         {
+                            if (p.type == "zombie")
+                            {
+                                p thread PlayerMessageLeftUnder("Zombies can not buy a weapon!");
+                                p.hint = "";
+                                return;
+                            }
+
                             if (p thread CheckMoney(b.price))  
                             {  
                                 return;

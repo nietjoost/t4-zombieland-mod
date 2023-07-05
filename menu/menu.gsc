@@ -382,9 +382,8 @@ RunHumanShop(menu)
     // Perk menu
     self addmenu("perk_menu", "^5Perk shop", "main");
     self addMenuPar("Sleight of Hand", ::GivePerkSleight);
-    self addMenuPar("Stopping Power" , ::GivePerkBulletFlinch);
-    self addMenuPar("Juggernaut" , ::GivePerkSleight);
     self addMenuPar("Extreme Conditioning" , ::GivePerkSprint);
+    self addMenuPar("Stopping Power" , ::GivePerkStoppingPower);
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");

@@ -34,6 +34,7 @@ OnPlayerSpawnedZL()
         if (self.spawned == true && level.started == true && self.type == "human")
         {
             self.type = "zombie";
+            self.money = 200;
             self ChangeTeam("axis");
         }
 
