@@ -1,4 +1,4 @@
-# t4-zombieland-mod
+# t4-zombieland-mod (includes PS3 version)
 
 <p align="center">
     <img src="assets/github/banner.png?raw=true" />
@@ -15,7 +15,8 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | mp_airfield | ✔️        |
 
 ## How
-
+### Install on Plutonium
+### Install on CFW PS3
 ## Features
 
 - Infected like gamemode
