@@ -2,7 +2,7 @@
 #include scripts\mp\utils\spawnwalllogic;
 #include scripts\mp\events\wallweaponlogic;
 
-// MP_airfield
+// mp_airfield
 Load()
 {
     // Spawn flags

@@ -11,9 +11,10 @@ LoadMap()
     mapName = GetDvar("mapname");
 
     if (mapName == "mp_airfield")
-    {
         scripts\mp\maps\mp_airfield::Load();
-    }
+
+    if (mapName == "mp_castle")
+        scripts\mp\maps\mp_castle::Load();
 
     // Check for teleport flags
     level thread CheckZiplines();

@@ -6,6 +6,13 @@
 
 ## How use it
 
+- Start the 'ConvertGSCToOneFile.sln' in Visual Studio 2022 or later.
+- Start the program.
+- Paste the root folder of the scripts in the console.
+- Done!
+
 ## Features
 
--
+- Partly support for same function name
+- Removes import functions
+- Only looks for .GSC functions
