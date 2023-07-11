@@ -22,4 +22,6 @@ Load()
     // Spawn map edits
     CreateRamp(level.collisionModel, (-153, -3473, -50), (-152, -2642, -227), 35);
     CreateRamp(level.collisionModel, (446, -3420, -30), (446, -3420, -20), 35);
+    CreateWallWeapon("thompson_mp", (402, -2365, -204), 100);
+    CreateWallWeapon("type100smg_bigammo_mp", (3056, -2347, 155), 100);
 }
