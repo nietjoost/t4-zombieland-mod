@@ -387,7 +387,6 @@ RunHumanShop(menu)
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");
-
 }
 
 RunZombieShop(menu)
