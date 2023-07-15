@@ -381,9 +381,9 @@ RunHumanShop(menu)
 
     // Perk menu
     self addmenu("perk_menu", "^5Perk shop", "main");
-    self addMenuPar("Sleight of Hand", ::GivePerkSleight);
-    self addMenuPar("Extreme Conditioning" , ::GivePerkSprint);
-    self addMenuPar("Stopping Power" , ::GivePerkStoppingPower);
+    self addMenuPar("Sleight of Hand" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkSleight);
+    self addMenuPar("Extreme Conditioning" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkSprint);
+    self addMenuPar("Stopping Power" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkStoppingPower);
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");
