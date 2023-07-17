@@ -6,7 +6,7 @@ CreateMoneyHUD()
     self.hud_money = newClientHudElem(self);
     self.hud_money.alignX = "left";
     self.hud_money.alignY = "left";
-    self.hud_money.x = 115;
+    self.hud_money.x = 20;
     self.hud_money.y = 95;
     self.hud_money.font = "hudbig";
     self.hud_money.fontscale = 2.5;
@@ -15,6 +15,11 @@ CreateMoneyHUD()
     self.hud_money.hidewhendead = true;
     self.hud_money.hidewheninmenu = true;
     self.hud_money setText("$" + self.money);
+
+    if (self.type == "zombie")
+    {
+        self.hud_money.color = (1, 0, 0);
+    }
 }
 
 // MONEY animation
@@ -25,7 +30,7 @@ AnimateMoneyHUD(localMoney, color)
     self.hud_money_extra = newClientHudElem(self);
     self.hud_money_extra.alignX = "left";
     self.hud_money_extra.alignY = "left";
-    self.hud_money_extra.x = 115;
+    self.hud_money_extra.x = 20;
     self.hud_money_extra.y = 95;
     self.hud_money_extra.font = "hudbig";
     self.hud_money_extra.fontscale = 2.5;

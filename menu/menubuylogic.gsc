@@ -106,3 +106,18 @@ GivePerkStoppingPower()
 
     self thread GiveBuyPerk(level.perks[3], "You bought the perk Stopping Power!");
 }
+
+GivePerkNext()
+{
+    if (self.nextPerk > level.perks.size)
+    {
+        self thread PlayerMessageLeftUnder("You already have all perks!");
+        return;
+    }
+
+    if (self thread CheckMoney(level.perksMoney))
+        return;
+
+    self thread GiveBuyPerk(level.perks[self.nextPerk], "You bought the perk " + level.perks[self.nextPerk] + "!");
+    self.nextPerk++;
+}

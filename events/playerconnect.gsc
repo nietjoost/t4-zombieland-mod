@@ -13,7 +13,8 @@ OnPlayerConnectZL()
         player.spawned = false;
         player.usingZipline = false;
         player.type = "human";
-        player.money = 500;
+        player.money = 9900;
+        player.nextPerk = 4;
 
         player thread OnPlayerSpawnedZL();
 
@@ -31,7 +32,7 @@ OnPlayerSpawnedZL()
         self waittill("spawned_player");
 
         // If game is started -> zombie
-        if (self.spawned == true && level.started == true && self.type == "human")
+        if (level.started == true && self.type == "human")
         {
             self.type = "zombie";
             self.money = 200;

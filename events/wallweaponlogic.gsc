@@ -15,6 +15,7 @@ CreateWallWeapon(model, location, price)
 	// Spawn FX
     PlayFX(level.weaponFx, location);
 
+    // Handle in-game
     weapon thread RotateWallWeapon(7.5);
 }
 

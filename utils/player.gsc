@@ -32,6 +32,9 @@ GiveZombieClass()
 	self endon("disconnect");
 	self waittill("weapon_change");
 
+    if (self getCurrentWeapon() == "briefcase_bomb_defuse_mp")
+        return;
+
     self thread GiveZombieClass();
 }
 

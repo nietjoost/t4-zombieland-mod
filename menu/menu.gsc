@@ -1,6 +1,7 @@
 #include scripts\mp\menu\menuui;
 #include scripts\mp\menu\menubuylogic;
 #include scripts\mp\menu\menuutils;
+#include scripts\mp\hud\playermessage;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
 
@@ -53,6 +54,8 @@ DefineVariables()
 ResetMenu()
 {
     self.menu = undefined;
+    self.temp = undefined;
+    self.playerSetting = undefined;
 
     PlayerSetup();
 }
@@ -61,13 +64,23 @@ MenuBase()
 {
     while( true )
     {
-        if( !self getLocked() || self getVerfication() > 0 )
+        if( !self getLocked())
         {
             if( !self getUserIn() )
             {
                 if( self adsButtonPressed() && self meleeButtonPressed() )
                 {
+                    // BLOCK ZOMBIE MENU FOR NOW!
+                    if (self.type == "zombie")
+                    {
+                        self thread PlayerMessageLeftUnder("The zombie menu is blocked for now!");
+                        return;
+                    }
+
                     self ControlMenu("open", "main");
+                    self.weaponMenu = self getCurrentWeapon();
+                    self giveWeapon("briefcase_bomb_defuse_mp");
+                    self switchToWeapon("briefcase_bomb_defuse_mp");
                     wait 0.2;
                 }
             }
@@ -101,9 +114,14 @@ MenuBase()
                 if( self meleeButtonPressed() )
                 {
                     if( isDefined(self.menu["items"][self getCurrent()].parent) )
+                    {
                         self ControlMenu("newMenu", self.menu["items"][self getCurrent()].parent);
+                    }
                     else
+                    {
+                        self switchToWeapon(self.weaponMenu);
                         self ControlMenu("close");
+                    }
                     wait 0.2;
                 }
             }
@@ -111,7 +129,6 @@ MenuBase()
         wait .05;
     }
 }
-
 
 scrollMenu()
 {
@@ -284,86 +301,20 @@ addMenuPar(name, func, input1, input2, input3)
     if( isDefined(input1) )
         self.menu["items"][menu].input3[count] = input3;
 }
-
-addAbnormalMenu(menu, title, parent, name, func, input1, input2, input3)
-{
-    if( !isDefined(self.menu["items"][menu]) )
-            self addMenu(menu, title, parent);
-   
-    count = self.menu["items"][menu].name.size;
-    self.menu["items"][menu].name[count] = name;
-    self.menu["items"][menu].func[count] = func;
-    if( isDefined(input1) )
-        self.menu["items"][menu].input1[count] = input1;
-    if( isDefined(input1) )
-        self.menu["items"][menu].input2[count] = input2;
-    if( isDefined(input1) )
-        self.menu["items"][menu].input3[count] = input3;
-}
  
-verificationOptions(par1, par2, par3)
-{
-    player = get_players()[par1];
-    if( par2 == "changeVerification" )
-    {
-        if( par1 == 0 )
-             return self iprintln( "You can not modify the host");
-        player setVerification(par3);
-        self iPrintLn(GetNameNotClan( player )+"'s verification has been changed to "+par3);
-        player iPrintLn("Your verification has been changed to "+par3);
-    }
-}
- 
-setVerification( type )
-{
-    self.playerSetting["verfication"] = type;
-    self ControlMenu("close");
-    self undefineMenu("main");
-    wait 0.2;
-    self RunMenuIndex( true ); //this will only redefine the main menu
-    wait 0.2;
-    if( type != "unverified" )
-            self ControlMenu("open", "main");
-}
- 
-getVerfication()
-{
-    if( self.playerSetting["verfication"] == "admin" )
-        return 3;
-    if( self.playerSetting["verfication"] == "co-host" )
-        return 2;
-    if( self.playerSetting["verfication"] == "verified" )
-        return 1;
-    if( self.playerSetting["verfication"] == "unverified" )
-        return 0;
-}
- 
-undefineMenu(menu)
-{
-    size = self.menu["items"][menu].name.size;
-    for( a = 0; a < size; a++ )
-    {
-        self.menu["items"][menu].name[a] = undefined;
-        self.menu["items"][menu].func[a] = undefined;
-        self.menu["items"][menu].input1[a] = undefined;
-        self.menu["items"][menu].input2[a] = undefined;
-        self.menu["items"][menu].input3[a] = undefined;        
-    }
-}
- 
-RunMenuIndex( menu )
+RunMenuIndex()
 {
     if (self.type == "human")
     {
-        self thread RunHumanShop(menu);
+        self thread RunHumanShop();
     }
     else
     {
-        self thread RunZombieShop(menu);
+        self thread RunZombieShop();
     }
 }
 
-RunHumanShop(menu)
+RunHumanShop()
 {
     self addmenu("main", "^2Human shop");
 
@@ -381,6 +332,7 @@ RunHumanShop(menu)
 
     // Perk menu
     self addmenu("perk_menu", "^5Perk shop", "main");
+    self addMenuPar("Buy next perk" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkNext);
     self addMenuPar("Sleight of Hand" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkSleight);
     self addMenuPar("Extreme Conditioning" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkSprint);
     self addMenuPar("Stopping Power" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkStoppingPower);
@@ -389,7 +341,7 @@ RunHumanShop(menu)
     self addmenu("specials_menu", "^5Specials shop", "main");
 }
 
-RunZombieShop(menu)
+RunZombieShop()
 {
-    self addmenu("main", "^1Zombie shop");
+
 }
