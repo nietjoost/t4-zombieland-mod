@@ -9,6 +9,10 @@ SetupSettings()
 	level.buyWeapons = [];
 	level.objectId = 1;
 
+	// ICONS
+	PrecacheShader("specialty_gas_mask");
+	PrecacheShader("specialty_exposeenemy");
+
     // Game settings
 	SetDvar("sv_cheats", "1");
     SetDvar("ui_allow_teamchange", "0");
@@ -19,8 +23,12 @@ SetupSettings()
 	SetDvar("g_TeamName_Axis", "Zombies");
 	SetDvar("g_customTeamName_Allies", "Humans");
 	SetDvar("g_customTeamName_Axis", "Zombies");
-	SetDvar("g_teamColor_Allies", "0 1 1");
-	SetDvar("g_ScoresColor_Allies", "0 1 1");
+	SetDvar("g_teamColor_Allies", "0 1 0");
+	SetDvar("g_ScoresColor_Allies", "0 1 0");
+	SetDvar("g_teamColor_Axis", "1 0 0");
+	SetDvar("g_ScoresColor_Axis", "1 0 0");
+	SetDvar("g_TeamIcon_Allies", "specialty_gas_mask");
+	SetDvar("g_TeamIcon_Axis", "specialty_exposeenemy");
 
 	//SetExpFog(80, 612, 1, 0, 0, 10);
 }
@@ -43,6 +51,7 @@ GlobalSetting()
 // PRECACHE Objects
 PreCache()
 {
+	// MODELS
 	PrecacheModel(level.flag);
 	PrecacheModel(level.zipline);
 

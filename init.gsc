@@ -38,15 +38,11 @@ init()
     for(;;)
 	{
         level.prematchPeriod = 0;
-		wait 1;
-		level.onForfeit = ::FixForfeit;
+        wait 1;
+        level.onForfeit = ::FixForfeit;
 
         //DEBUG
-        wait 4;
-        for ( i = 0; i < level.players.size; i++ )
-        {	
-            p = level.players[i];
-            p iPrintln(p.origin);
-        }
+        wait 3;
+        level.players[0] iPrintln(level.players[0].origin);
 	}
 }
