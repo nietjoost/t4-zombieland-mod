@@ -28,11 +28,15 @@ GiveZombieClass()
     self thread ResetMenu();
 
     // Disable weapon pickup
-    level endon("stop_zombieland");
     self endon("death");
 	self endon("disconnect");
 	self waittill("weapon_change");
 
+    // Check for running mod
+	if (level.stopZombieLand)
+		return;
+
+    // Check if using menu
     if (self getCurrentWeapon() == "briefcase_bomb_defuse_mp")
         return;
 

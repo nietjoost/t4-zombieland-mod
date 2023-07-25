@@ -354,7 +354,7 @@ RunHumanShop()
 
 
     // HOST MENU
-    if (!self isHost())
+    if (!self IsHost())
         return;
 
     self addmenu("host_menu", "^5Host menu", "main");

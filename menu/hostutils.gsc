@@ -7,7 +7,7 @@ AllPlayersKilled()
     {
         p = level.players[i];
 
-        if (p isHost())
+        if (p IsHost())
             continue;
 
         p suicide();

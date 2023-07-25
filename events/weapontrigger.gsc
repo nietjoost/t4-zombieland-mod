@@ -1,7 +1,6 @@
 nukegun()
 {
     self endon("disconnect");
-    level endon("stop_zombieland");
     for(;;)
     {
         level endon("stop_zombieland");
