@@ -35,7 +35,7 @@ AllPlayerMessageLeftUnder(msg)
     for ( i = 0; i < level.players.size; i++ )
     {	
         p = level.players[i];
-        p thread PlayerTypeWriterText(msg);
+        p thread PlayerMessageLeftUnder(msg);
     }
 }
 

@@ -9,6 +9,8 @@ SetupSettings()
 	level.buyWeapons = [];
 	level.objectId = 1;
 	level.stopZombieLand = false;
+	level.spawnedModels = [];
+	level.spawnedModelsCount = 0;
 
 	// ICONS
 	PrecacheShader("specialty_gas_mask");

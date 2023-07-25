@@ -10,10 +10,12 @@ CreateWallWeapon(model, location, price)
     weapon.name = model;
 
     level.buyWeapons[level.buyWeapons.size] = weapon;
-   	level.amountofmodels ++;
+   	level.amountofmodels++;
 
 	// Spawn FX
-    PlayFX(level.weaponFx, location);
+    fx = PlayFX(level.weaponFx, location);
+    level.spawnedModels[level.spawnedModelsCount] = fx;
+	level.spawnedModelsCount++;
 
     // Handle in-game
     weapon thread RotateWallWeapon(7.5);

@@ -13,7 +13,9 @@ SpawnFlag(pos1, pos2, showIcon)
     startFlag.pos2 = pos2;
 
     // Spawn FX
-    PlayFX(level.flagFx, pos1);
+    fx = PlayFX(level.flagFx, pos1);
+    level.spawnedModels[level.spawnedModelsCount] = fx;
+	level.spawnedModelsCount++;
 
     // Spawn UI Icon
     if (showIcon)
@@ -27,6 +29,9 @@ SpawnFlag(pos1, pos2, showIcon)
     
     //Check TP
     level thread CheckFlags(startFlag);
+
+    level.spawnedModels[level.spawnedModelsCount] = startFlag;
+	level.spawnedModelsCount++;
 }
 
 
@@ -47,7 +52,9 @@ SpawnZiplineBoth(pos1, pos2)
     level.ziplines[level.ziplines.size] = zipline;
 
     // Spawn FX
-    PlayFX(level.ziplineFx, pos1);
+    fx = PlayFX(level.ziplineFx, pos1);
+    level.spawnedModels[level.spawnedModelsCount] = fx;
+	level.spawnedModelsCount++;
 
     // Spawn UI Icon
     objective_add(level.objectId, "active", "invisible", 0, 0, 0);
@@ -55,4 +62,7 @@ SpawnZiplineBoth(pos1, pos2)
     objective_state(level.objectId, "active");
     objective_position(level.objectId, pos1);
     level.objectId++;
+
+    level.spawnedModels[level.spawnedModelsCount] = zipline;
+	level.spawnedModelsCount++;
 }
