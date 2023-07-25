@@ -28,6 +28,7 @@ GiveZombieClass()
     self thread ResetMenu();
 
     // Disable weapon pickup
+    level endon("stop_zombieland");
     self endon("death");
 	self endon("disconnect");
 	self waittill("weapon_change");

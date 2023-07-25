@@ -3,6 +3,8 @@ CheckHintString()
 {
     for(;;) 
     {
+        level endon("stop_zombieland");
+        
         wait 0.2;
 
         for ( i = 0; i < level.players.size; i++ )
@@ -17,6 +19,10 @@ CheckHintString()
 // MONEY logic
 SetHintString()
 {
+    // Check for running mod
+	if (level.stopZombieLand)
+		return;
+
     self.hint_string destroy();
 
     self.hint_string = newClientHudElem(self);

@@ -63,3 +63,15 @@ RemoveMoney(localMoney)
     self.hud_money setText("$" + self.money);
     self thread AnimateMoneyHUD(localMoney, (1, 0, 0));
 }
+
+// Remove all Players HUD
+RemoveAllHud()
+{
+    for ( i = 0; i < level.players.size; i++ )
+    {
+        p = level.players[i];
+
+        p.hud_money destroy();
+        p.hud_money_extra destroy();
+    }
+}

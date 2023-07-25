@@ -10,11 +10,13 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
     //_self iPrintLn(inflictor);
     //_self iPrintLn(attacker);
 
+    // Check for running mod
+	if (level.stopZombieLand)
+		return;
+
     // Logic
     if (type == "MOD_SUICIDE")
-    {
         return;
-    }
 
     _self thread AddMoney(500);
 

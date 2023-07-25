@@ -8,6 +8,7 @@ OnPlayerConnectZL()
 {
     for(;;)
     {
+        level endon("stop_zombieland");
         level waittill("connected", player);
 
         player.spawned = false;
@@ -27,8 +28,11 @@ OnPlayerConnectZL()
 OnPlayerSpawnedZL()
 {
     self endon("disconnect");
+    level endon("stop_zombieland");
+    
     for(;;)
     {
+        level endon("stop_zombieland");
         self waittill("spawned_player");
 
         // If game is started -> zombie

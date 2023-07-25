@@ -1,6 +1,7 @@
 #include scripts\mp\menu\menuui;
 #include scripts\mp\menu\menubuylogic;
 #include scripts\mp\menu\menuutils;
+#include scripts\mp\menu\hostutils;
 #include scripts\mp\hud\playermessage;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
@@ -14,6 +15,7 @@ OnPlayerConnectMenu()
 {
     for(;;)
     {
+        level endon("stop_zombieland");
         level waittill("connecting", player);
         player thread OnPlayerSpawnedMenu();
     }
@@ -24,6 +26,7 @@ OnPlayerSpawnedMenu()
     self endon("disconnect");
     for(;;)
     {
+        level endon("stop_zombieland");
         self waittill("spawned_player");
         if( !self.stopThreading )
         {
@@ -35,6 +38,10 @@ OnPlayerSpawnedMenu()
  
 PlayerSetup()
 {
+    // Check for running mod
+	if (level.stopZombieLand)
+		return;
+
     self DefineVariables();
     self thread MenuBase();
     self RunMenuIndex();
@@ -70,6 +77,10 @@ MenuBase()
             {
                 if( self adsButtonPressed() && self meleeButtonPressed() )
                 {
+                    // Check for running mod
+                    if (level.stopZombieLand)
+                        return;
+
                     // BLOCK ZOMBIE MENU FOR NOW!
                     if (self.type == "zombie")
                     {
@@ -322,6 +333,7 @@ RunHumanShop()
     self addMenuPar("Weapon shop", ::ControlMenu, "newMenu", "weapon_menu");
     self addMenuPar("Perk shop", ::ControlMenu, "newMenu", "perk_menu");
     self addMenuPar("Specials shop", ::ControlMenu, "newMenu", "specials_menu");
+    self addMenuPar("Host menu", ::ControlMenu, "newMenu", "host_menu");
 
     // Weapon menu
     self addmenu("weapon_menu", "^5Weapon shop", "main");
@@ -339,6 +351,15 @@ RunHumanShop()
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");
+
+
+    // HOST MENU
+    if (!self isHost())
+        return;
+
+    self addmenu("host_menu", "^5Host menu", "main");
+    self addMenuPar("Kill all players", ::AllPlayersKilled);
+    self addMenuPar("Stop ^1ZombieLand", ::StopZombieLand);
 }
 
 RunZombieShop()

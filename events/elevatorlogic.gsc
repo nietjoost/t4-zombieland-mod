@@ -3,6 +3,8 @@ ElevatorMonitor(solid, start, end, duration, waitduration)
 {
 	while (IsDefined(self))
     {
+        level endon("stop_zombieland");
+
     	if (self.origin == start)
         {
 			self MoveTo(end, duration);

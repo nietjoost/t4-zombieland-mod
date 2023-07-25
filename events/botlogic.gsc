@@ -1,6 +1,10 @@
 // BOTS logic script for testing
 AddTestClients()
 {
+	// Check for running mod
+	if (level.stopZombieLand)
+		return;
+
     setDvar("sv_botsPressAttackBtn", "1");
     setDvar("sv_botsRandomInput", "1");
 
@@ -35,6 +39,7 @@ TestClient(team)
 	assert( okclasses.size );
 	while( 1 )
 	{
+		level endon("stop_zombieland");
 		class = okclasses[ randomint( okclasses.size ) ];
 		if ( !level.oldschool )
 		self notify("menuresponse", "changeclass", class);

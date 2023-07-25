@@ -8,10 +8,28 @@ SetupSettings()
 	level.ziplines = [];
 	level.buyWeapons = [];
 	level.objectId = 1;
+	level.stopZombieLand = false;
 
 	// ICONS
 	PrecacheShader("specialty_gas_mask");
 	PrecacheShader("specialty_exposeenemy");
+
+	// Save Game settings for reset
+	level.sv_cheats = GetDvar("sv_cheats");
+    level.ui_allow_teamchange = GetDvar("ui_allow_teamchange");
+	level.ui_allow_classchange = GetDvar("ui_allow_classchange");
+	level.party_autoteams = GetDvar("party_autoteams");
+	level.scr_teambalance = GetDvar("scr_teambalance");
+	level.g_TeamName_Allies = GetDvar("g_TeamName_Allies");
+	level.g_TeamName_Axis = GetDvar("g_TeamName_Axis");
+	level.g_customTeamName_Allies = GetDvar("g_customTeamName_Allies");
+	level.g_customTeamName_Axis = GetDvar("g_customTeamName_Axis");
+	level.g_teamColor_Allies = GetDvar("g_teamColor_Allies");
+	level.g_ScoresColor_Allies = GetDvar("g_ScoresColor_Allies");
+	level.g_teamColor_Axis = GetDvar("g_teamColor_Axis");
+	level.g_ScoresColor_Axis = GetDvar("g_ScoresColor_Axis");
+	level.g_TeamIcon_Allies = GetDvar("g_TeamIcon_Allies");
+	level.g_TeamIcon_Axis = GetDvar("g_TeamIcon_Axis");
 
     // Game settings
 	SetDvar("sv_cheats", "1");

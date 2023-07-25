@@ -7,15 +7,9 @@
 // Start the ZombieLand
 StartZombieLand()
 {
-    // Check total players
-    if (level.players.size < 2)
-    {
-        wait 10;
-        level thread AddTestClients(5);
-        AllPlayerMessageMiddle("^6Adding bots because there are not enough people!");
-        return;
-    }
-
+    //Check for bots
+    level thread BotLogic();
+    
     // Stop logic when another player joins
     if (level.enoughPlayers == true)
     {
@@ -38,6 +32,10 @@ StartZombieLand()
     AllPlayerMessageMiddle("^12");
     wait 1;
     AllPlayerMessageMiddle("^11");
+    
+    // Check for running mod
+	if (level.stopZombieLand)
+		return;
 
     if (level.players.size < 2)
     {
@@ -96,9 +94,44 @@ CheckEnd()
             p = level.players[i];
             p FreezeControls(true);
         }
+
+        wait 5;
+
+        level thread ChooseRandomMap();
     }
 }
 
+ChooseRandomMap()
+{
+    // level.maps = [];
+    // level.maps[0] = "mp_airfield";
+    // level.maps[1] = "mp_suburban";
+    // level.maps[2] = "mp_asylum";
+    // level.maps[3] = "mp_kwai";
+    // level.maps[4] = "mp_drum";
+    // level.maps[5] = "mp_bgate";
+    // level.maps[6] = "mp_castle";
+    // level.maps[7] = "mp_shrine";
+    // level.maps[8] = "mp_stalingrad";
+    // level.maps[9] = "mp_courtyard";
+    // level.maps[10] = "mp_dome";
+    // level.maps[11] = "mp_downfall";
+    // level.maps[12] = "mp_hangar";
+    // level.maps[13] = "mp_kneedeep";
+    // level.maps[14] = "mp_makin";
+    // level.maps[15] = "mp_makin_day";
+    // level.maps[16] = "mp_nachtfeuer";
+    // level.maps[17] = "mp_outskirts";
+    // level.maps[18] = "mp_vodka";
+    // level.maps[19] = "mp_roundhouse";
+    // level.maps[20] = "mp_seelow";
+    // level.maps[21] = "mp_subway";
+    // level.maps[22] = "mp_docks";
+    // map = level.maps[RandomIntRange(0, level.maps.size)];
+    // map(map, true);
+
+    level thread maps\mp\gametypes\_globallogic::forceend();
+}
 
 CalculateTotalHumans()
 {
@@ -113,4 +146,18 @@ CalculateTotalHumans()
     }
 
     return humanCount;
+}
+
+BotLogic()
+{
+    wait 10;
+
+    // Check total players
+    if (level.players.size < 2)
+    {
+        wait 10;
+        level thread AddTestClients(5);
+        AllPlayerMessageMiddle("^6Adding bots because there are not enough people!");
+        return;
+    }
 }
