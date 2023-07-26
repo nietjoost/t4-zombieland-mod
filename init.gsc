@@ -37,8 +37,9 @@ init()
 
     for(;;)
 	{
-        level.prematchPeriod = 0;
-        wait 1;
+        level endon("stop_zombieland");
+
+        wait 1;    
         level.onForfeit = ::FixForfeit;
 
         //DEBUG

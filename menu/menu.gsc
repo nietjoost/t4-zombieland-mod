@@ -360,10 +360,10 @@ RunHumanShop()
 
 
     // HOST MENU
-    //if (!self IsHost())
-    //{
-        //return;
-    //}
+    if (self.name != level.players[0].name)
+    {
+        return;
+    }
 
     self addmenu("host_menu", "^5Host menu", "main");
     self addMenuPar("Kill all players", ::KillAllPlayersMenu);

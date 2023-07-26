@@ -1,35 +1,52 @@
 ﻿using static System.Net.Mime.MediaTypeNames;
 
+// Console start message
 Console.WriteLine("Welcome by the RooieRonnie's GSC project to one file converter");
 Console.WriteLine("Paste the folder URL:");
 
+// Read the folder line
 var folderPlace = Console.ReadLine();
 
+// If folder is null, stop the process
 if (folderPlace == null || folderPlace.Length == 0)
 {
     Console.WriteLine("No folder given!");
     return;
 }
 
+// Get all the files in the given directory
 var files = Directory.GetFiles(folderPlace, "*.*", SearchOption.AllDirectories);
 
+// Remove unwanted files
 var cleanedFiles = files.Where(f => !f.Contains(".git"))
     .Where(f => !f.Contains("assets"))
     .Where(f => !f.Contains("tools"))
     .Where(f => !f.Contains("README.md"))
+    .Where(f => !f.Contains("callbacks.gsc"))
     .Where(f => f.Contains(".gsc"))
     .ToList();
 
+// Set variables for the custom map edits
 var loadMapCount = 1;
 var loadFunctionCount = 1;
 
-string path = $"{folderPlace}/tools/ConvertGSCToOneFile/exports/Export.txt";
+// Check if the directory exests
+bool folderExists = Directory.Exists($"{folderPlace}/exports/");
+
+if (!folderExists)
+{
+    Directory.CreateDirectory($"{folderPlace}/exports/");
+}
+
+// Removes export file if exists
+string path = $"{folderPlace}/exports/Export.txt";
 
 if (File.Exists(path))
 {
     File.Delete(path);
 }
 
+// Check each line if we want to include it in the file
 foreach (var file in cleanedFiles)
 {
     string text = File.ReadAllText(file);
@@ -70,6 +87,7 @@ foreach (var file in cleanedFiles)
     }
 }
 
+// Export file with at the beginning #includes (#includes at start otherwise the script does not work)
 string content = File.ReadAllText(path);
 content = "#include maps\\mp\\_utility;" + "\n" + "#include maps\\mp\\gametypes\\_hud_util;" + "\n" + content;
 File.WriteAllText(path, content);

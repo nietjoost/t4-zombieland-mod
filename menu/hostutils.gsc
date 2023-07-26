@@ -7,10 +7,10 @@ KillAllPlayersMenu()
     {
         p = level.players[i];
 
-        //if (!p IsHost())
-        //{
-            //p suicide();
-        //}
+        if (p.name != level.players[0].name)
+        {
+            p suicide();
+        }
     }
 
     self thread PlayerMessageLeftUnder("All players have been ^1killed!");

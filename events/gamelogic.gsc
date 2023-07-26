@@ -105,7 +105,7 @@ CheckEnd()
 
 ChooseRandomMap()
 {
-    
+    level thread maps\mp\gametypes\_globallogic::forceend();
 }
 
 CalculateTotalHumans()
