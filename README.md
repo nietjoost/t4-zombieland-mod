@@ -15,8 +15,11 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | mp_airfield | ✔️        |
 
 ## How
+
 ### Install on Plutonium
+
 ### Install on CFW PS3
+
 ## Features
 
 - Infected like gamemode
@@ -26,20 +29,42 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 - Teleport flags
 - Custom map edits
 
-## Showcase
+## Showcase PC
 
-| <img src="assets/github/zombie_land_1.png?raw=true" /> |
-| :----------------------------------------------------: |
-|                        In-game                         |
+| <img src="assets/github/PC/zombie_land_1.png?raw=true" /> |
+| :-------------------------------------------------------: |
+|                          In-game                          |
 
-| <img src="assets/github/zombie_land_2.png?raw=true" /> |
-| :----------------------------------------------------: |
-|                        In-game                         |
+| <img src="assets/github/PC/zombie_land_2.png?raw=true" /> |
+| :-------------------------------------------------------: |
+|                          In-game                          |
 
-| <img src="assets/github/zombie_land_3.png?raw=true" /> |
-| :----------------------------------------------------: |
-|                        In-game                         |
+| <img src="assets/github/PC/zombie_land_3.png?raw=true" /> |
+| :-------------------------------------------------------: |
+|                          In-game                          |
 
-| <img src="assets/github/zombie_land_4.png?raw=true" /> |
-| :----------------------------------------------------: |
-|                        In-game                         |
+| <img src="assets/github/PC/zombie_land_4.png?raw=true" /> |
+| :-------------------------------------------------------: |
+|                          In-game                          |
+
+## Showcase PS3
+
+| <img src="assets/github/PS3/zombie_land_1.png?raw=true" /> |
+| :--------------------------------------------------------: |
+|                          In-game                           |
+
+| <img src="assets/github/PS3/zombie_land_2.png?raw=true" /> |
+| :--------------------------------------------------------: |
+|                          In-game                           |
+
+| <img src="assets/github/PS3/zombie_land_3.png?raw=true" /> |
+| :--------------------------------------------------------: |
+|                          In-game                           |
+
+| <img src="assets/github/PS3/zombie_land_4.png?raw=true" /> |
+| :--------------------------------------------------------: |
+|                          In-game                           |
+
+| <img src="assets/github/PS3/zombie_land_5.png?raw=true" /> |
+| :--------------------------------------------------------: |
+|                          In-game                           |

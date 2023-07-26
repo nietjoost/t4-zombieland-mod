@@ -33,12 +33,14 @@ StopZombieLand()
     level.stopZombieLand = true;
     level thread RemoveAllMoneyHud();
 
+    wait 1;
     // Delete the mini-map icons
     for ( i = 0; i < level.objectId; i++ )
     {
         objective_delete(i);
     }
 
+    wait 1;
     // Delete all spawned models
     for ( i = 0; i < level.spawnedModelsCount; i++ )
     {
@@ -46,6 +48,7 @@ StopZombieLand()
         model Delete();
     }
 
+    wait 1;
     // Resetting DVar
     SetDvar("sv_cheats", level.sv_cheats);
     SetDvar("ui_allow_teamchange", level.ui_allow_teamchange);
