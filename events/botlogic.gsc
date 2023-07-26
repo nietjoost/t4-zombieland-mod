@@ -2,8 +2,10 @@
 AddTestClients()
 {
 	// Check for running mod
-	if (level.stopZombieLand)
+	if (level.stopZombieLand == true)
+	{
 		return;
+	}
 
     setDvar("sv_botsPressAttackBtn", "1");
     setDvar("sv_botsRandomInput", "1");

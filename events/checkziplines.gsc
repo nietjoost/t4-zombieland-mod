@@ -1,10 +1,10 @@
 // CHECK Ziplines
 CheckZiplines()
 {
+    level endon("stop_zombieland");
+
     for(;;) 
     {
-        level endon("stop_zombieland");
-
         wait 0.2;
         for ( i = 0; i < level.players.size; i++ )
         {	

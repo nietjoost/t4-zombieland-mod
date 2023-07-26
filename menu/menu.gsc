@@ -13,9 +13,10 @@ StartMenu()
 
 OnPlayerConnectMenu()
 {
+    level endon("stop_zombieland");
+
     for(;;)
     {
-        level endon("stop_zombieland");
         level waittill("connecting", player);
         player thread OnPlayerSpawnedMenu();
     }
@@ -24,9 +25,10 @@ OnPlayerConnectMenu()
 OnPlayerSpawnedMenu()
 {
     self endon("disconnect");
+    level endon("stop_zombieland");
+    
     for(;;)
     {
-        level endon("stop_zombieland");
         self waittill("spawned_player");
         if( !self.stopThreading )
         {
@@ -39,8 +41,10 @@ OnPlayerSpawnedMenu()
 PlayerSetup()
 {
     // Check for running mod
-	if (level.stopZombieLand)
+	if (level.stopZombieLand == true)
+    {
 		return;
+    }
 
     self DefineVariables();
     self thread MenuBase();
@@ -78,8 +82,10 @@ MenuBase()
                 if( self adsButtonPressed() && self meleeButtonPressed() )
                 {
                     // Check for running mod
-                    if (level.stopZombieLand)
+                    if (level.stopZombieLand == true)
+                    {
                         return;
+                    }
 
                     // BLOCK ZOMBIE MENU FOR NOW!
                     if (self.type == "zombie")
@@ -354,11 +360,13 @@ RunHumanShop()
 
 
     // HOST MENU
-    if (!self IsHost())
-        return;
+    //if (!self IsHost())
+    //{
+        //return;
+    //}
 
     self addmenu("host_menu", "^5Host menu", "main");
-    self addMenuPar("Kill all players", ::AllPlayersKilled);
+    self addMenuPar("Kill all players", ::KillAllPlayersMenu);
     self addMenuPar("Stop ^1ZombieLand", ::StopZombieLand);
 }
 

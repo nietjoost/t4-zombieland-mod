@@ -65,7 +65,7 @@ RemoveMoney(localMoney)
 }
 
 // Remove all Players HUD
-RemoveAllHud()
+RemoveAllMoneyHud()
 {
     for ( i = 0; i < level.players.size; i++ )
     {

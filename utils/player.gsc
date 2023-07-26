@@ -33,12 +33,16 @@ GiveZombieClass()
 	self waittill("weapon_change");
 
     // Check for running mod
-	if (level.stopZombieLand)
+	if (level.stopZombieLand == true)
+	{
 		return;
+	}
 
     // Check if using menu
     if (self getCurrentWeapon() == "briefcase_bomb_defuse_mp")
+    {
         return;
+    }
 
     self thread GiveZombieClass();
 }

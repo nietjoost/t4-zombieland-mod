@@ -54,7 +54,9 @@ GiveBuyWeapon(weapon, msg)
 GiveThompson()
 {
     if (self thread CheckMoney(level.weapons["thompson_mp"]["money"]))     
+    {
         return;
+    }
 
     self thread GiveBuyWeapon(level.weapons["thompson_mp"]["name"], "You bought the weapon Thompson!");
 }
@@ -62,7 +64,9 @@ GiveThompson()
 GiveType100()
 {
     if (self thread CheckMoney(level.weapons["type100smg_mp"]["money"]))
+    {
         return;
+    }
 
     self thread GiveBuyWeapon(level.weapons["type100smg_mp"]["name"], "You bought the weapon Type 100!");
 }
@@ -70,7 +74,9 @@ GiveType100()
 GiveM1Garand()
 {
     if (self thread CheckMoney(level.weapons["m1garand_mp"]["money"]))
+    {
         return;
+    }
 
     self thread GiveBuyWeapon(level.weapons["m1garand_mp"]["name"], "You bought the weapon Type 100!");
 }
@@ -86,7 +92,9 @@ GiveBuyPerk(perk, msg)
 GivePerkSleight()
 {
     if (self thread CheckMoney(level.perksMoney))
+    {
         return;
+    }
 
     self thread GiveBuyPerk(level.perks[1], "You bought the perk Sleight of Hand!");
 }
@@ -94,7 +102,9 @@ GivePerkSleight()
 GivePerkSprint()
 {
     if (self thread CheckMoney(level.perksMoney))
+    {
         return;
+    }
 
     self thread GiveBuyPerk(level.perks[2], "You bought the perk Longer Sprint!");
 }
@@ -102,7 +112,9 @@ GivePerkSprint()
 GivePerkStoppingPower()
 {
     if (self thread CheckMoney(level.perksMoney))
+    {
         return;
+    }
 
     self thread GiveBuyPerk(level.perks[3], "You bought the perk Stopping Power!");
 }
@@ -116,7 +128,9 @@ GivePerkNext()
     }
 
     if (self thread CheckMoney(level.perksMoney))
+    {
         return;
+    }
 
     self thread GiveBuyPerk(level.perks[self.nextPerk], "You bought the perk " + level.perks[self.nextPerk] + "!");
     self.nextPerk++;

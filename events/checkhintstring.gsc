@@ -20,8 +20,10 @@ CheckHintString()
 SetHintString()
 {
     // Check for running mod
-	if (level.stopZombieLand)
+	if (level.stopZombieLand == true)
+    {
 		return;
+    }
 
     self.hint_string destroy();
 

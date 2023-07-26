@@ -10,8 +10,10 @@ PlayerMessageMiddle(msg)
 AllPlayerMessageMiddle(msg)
 {
     // Check for running mod
-	if (level.stopZombieLand)
+	if (level.stopZombieLand == true)
+	{
 		return;
+	}
 
     for ( i = 0; i < level.players.size; i++ )
     {	
@@ -29,8 +31,10 @@ PlayerMessageLeftUnder(msg)
 AllPlayerMessageLeftUnder(msg)
 {
     // Check for running mod
-	if (level.stopZombieLand)
+	if (level.stopZombieLand == true)
+	{
 		return;
+	}
 
     for ( i = 0; i < level.players.size; i++ )
     {	
@@ -48,8 +52,10 @@ PlayerTypeWriterText(msg)
 AllPlayerTypeWriterText(msg)
 {
     // Check for running mod
-	if (level.stopZombieLand)
+	if (level.stopZombieLand == true)
+	{
 		return;
+	}
 
     for ( i = 0; i < level.players.size; i++ )
     {	

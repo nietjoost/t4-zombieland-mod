@@ -1,16 +1,16 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\moneylogic;
 
-AllPlayersKilled()
+KillAllPlayersMenu()
 {
     for ( i = 0; i < level.players.size; i++ )
     {
         p = level.players[i];
 
-        if (p IsHost())
-            continue;
-
-        p suicide();
+        //if (!p IsHost())
+        //{
+            //p suicide();
+        //}
     }
 
     self thread PlayerMessageLeftUnder("All players have been ^1killed!");
@@ -18,7 +18,7 @@ AllPlayersKilled()
 
 StopZombieLand()
 {
-    if (level.stopZombieLand)
+    if (level.stopZombieLand == true)
     {
         self thread PlayerMessageLeftUnder("The ^1 ZombieLand ^5 mod ^7is already stopped!");
         return;
@@ -31,7 +31,7 @@ StopZombieLand()
 
     // Stopping the messages and functions
     level.stopZombieLand = true;
-    level thread RemoveAllHud();
+    level thread RemoveAllMoneyHud();
 
     // Delete the mini-map icons
     for ( i = 0; i < level.objectId; i++ )
