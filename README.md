@@ -13,12 +13,24 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | Map         | Map edits |
 | ----------- | --------- |
 | mp_airfield | ✔️        |
+| mp_castle   | ✔️        |
 
 ## How
 
 ### Install on Plutonium
 
+- Step 1: Clone the repository
+- Step 2: Place the files in 'C:\Users\{user}\AppData\Local\Plutonium\storage\t4\raw\scripts\mp'
+- Step 3: Start a Private Match use the mod.
+  (For info to come for a Dedicated Server, or search online)
+
 ### Install on CFW PS3
+
+- Step 1: Download the file 'patch*mp_PS3*{version}.ff' on the GitHub page releases
+- Step 2: Go to the folder on the FTP: /dev_hdd0/game/BLES00354/USRDIR/english (BLES00354 or any COD: WAW game code)(english or any language)
+- Step 3: Delete the file patch_mp.ff
+- Step 4: Upload the downloaded file 'patch*mp_PS3*{version}.ff' to the directory and rename the file to 'patch_mp'.
+- Step 5: Start a Private Match or be the host in an online game to use the mod.
 
 ## Features
 
