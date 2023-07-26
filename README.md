@@ -29,7 +29,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 - Step 1: Download the file 'patch*mp_PS3*{version}.ff' on the GitHub page releases
 - Step 2: Go to the folder on the FTP: /dev_hdd0/game/BLES00354/USRDIR/english (BLES00354 or any COD: WAW game code)(english or any language)
 - Step 3: Delete the file patch_mp.ff
-- Step 4: Upload the downloaded file 'patch*mp_PS3*{version}.ff' to the directory and rename the file to 'patch_mp'.
+- Step 4: Upload the downloaded file 'patch*mp_PS3*{version}.ff' to the directory and rename the file to 'patch_mp.ff'.
 - Step 5: Start a Private Match or be the host in an online game to use the mod.
 
 ## Features
@@ -40,6 +40,10 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 - Ziplines
 - Teleport flags
 - Custom map edits
+- Wall weapons
+- Ending game when a team has won
+- Able to disable the mod as a host
+- No extra advantages for the host
 
 ## Showcase PC
 
