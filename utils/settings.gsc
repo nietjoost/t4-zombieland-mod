@@ -49,6 +49,8 @@ SetupSettings()
 	SetDvar("g_ScoresColor_Axis", "1 0 0");
 	SetDvar("g_TeamIcon_Allies", "specialty_gas_mask");
 	SetDvar("g_TeamIcon_Axis", "specialty_exposeenemy");
+	SetDvar("bg_fallDamageMinHeight", 99999999);
+	SetDvar("bg_fallDamageMaxHeight ", 99999999);
 
 	//SetExpFog(80, 612, 1, 0, 0, 10);
 }
@@ -62,6 +64,8 @@ GlobalSetting()
 	level.zipline = "prop_flag_neutral";
 	level.ziplineFx = LoadFX("misc/ui_flagbase_red");
 	level.weaponFx = LoadFX("misc/ui_flagbase_gold");
+	level.boost = "prop_flag_american";
+	level.boostFx = LoadFX("misc/ui_flagbase_silver");
 
 	level.collision = "collision_wall_32x32x10";
 	level.collisionModel = "global_barrel_scummy";
@@ -74,6 +78,7 @@ PreCache()
 	// MODELS
 	PrecacheModel(level.flag);
 	PrecacheModel(level.zipline);
+	PrecacheModel(level.boost);
 
 	PrecacheModel(level.collision);
 	PrecacheModel(level.collisionModel);

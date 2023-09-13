@@ -13,6 +13,9 @@ LoadMap()
     if (mapName == "mp_airfield")
         scripts\mp\maps\mp_airfield::Load();
 
+    if (mapName == "mp_asylum")
+        scripts\mp\maps\mp_asylum::Load();
+
     if (mapName == "mp_castle")
         scripts\mp\maps\mp_castle::Load();
 
