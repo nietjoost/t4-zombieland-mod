@@ -65,6 +65,8 @@ StopZombieLand()
 	SetDvar("g_ScoresColor_Axis", level.g_ScoresColor_Axis);
 	SetDvar("g_TeamIcon_Allies", level.g_TeamIcon_Allies);
 	SetDvar("g_TeamIcon_Axis", level.g_TeamIcon_Axis);
+    SetDvar("bg_fallDamageMinHeight", level.bg_fallDamageMinHeight);
+	SetDvar("bg_fallDamageMaxHeight", level.bg_fallDamageMaxHeight);
 
     self thread PlayerMessageLeftUnder("Stopped all ^1ZombieLand ^5mod ^7 related stuff!");
 }

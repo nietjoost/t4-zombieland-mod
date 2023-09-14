@@ -73,6 +73,8 @@ SpawnBoost(pos, height)
     // Spawn Model
     booster = Spawn("script_model", pos);
 	booster SetModel(level.boost);
+    level.spawnedModels[level.spawnedModelsCount] = booster;
+	level.spawnedModelsCount++;
 	wait .05;
 
     // Spawn FX

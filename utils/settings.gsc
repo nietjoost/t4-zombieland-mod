@@ -32,6 +32,8 @@ SetupSettings()
 	level.g_ScoresColor_Axis = GetDvar("g_ScoresColor_Axis");
 	level.g_TeamIcon_Allies = GetDvar("g_TeamIcon_Allies");
 	level.g_TeamIcon_Axis = GetDvar("g_TeamIcon_Axis");
+	level.bg_fallDamageMinHeight = GetDvar("bg_fallDamageMinHeight");
+	level.bg_fallDamageMaxHeight = GetDvar("bg_fallDamageMaxHeight ");
 
     // Game settings
 	SetDvar("sv_cheats", "1");
@@ -49,8 +51,9 @@ SetupSettings()
 	SetDvar("g_ScoresColor_Axis", "1 0 0");
 	SetDvar("g_TeamIcon_Allies", "specialty_gas_mask");
 	SetDvar("g_TeamIcon_Axis", "specialty_exposeenemy");
-	SetDvar("bg_fallDamageMinHeight", 99999999);
+	SetDvar("bg_fallDamageMinHeight", 9999999);
 	SetDvar("bg_fallDamageMaxHeight ", 99999999);
+	SetDvar("motd ", "^3You Played COD5 Zombieland, ^2Created by RooieRonnie!");
 
 	//SetExpFog(80, 612, 1, 0, 0, 10);
 }

@@ -57,23 +57,27 @@ StartZombieLand()
 
 PickZombies()
 {
-    if (level.players.size > 8)
+    if (level.players.size > 6)
     {
         level.zombie1 = "";
         level.zombie2 = "";
-        while(level.zombie1 == level.zombie2)
+        while(level.zombie1 == level.zombie2 && level.zombie1 == level.players[0] && level.zombie2 == level.players[0])
         {
             level.zombie1 = level.players[RandomIntRange(0, level.players.size)];
             level.zombie2 = level.players[RandomIntRange(0, level.players.size)];
-            level.zombie1 thread ChangeTeam("axis");
-            level.zombie2 thread ChangeTeam("axis");
-        } 
+        }
+
+        level.zombie1 thread ChangeTeam("axis");
+        level.zombie2 thread ChangeTeam("axis");
         return;
     }
 
-   // Chose only one infected
-   level.zombie1 = level.players[RandomIntRange(0, level.players.size)];
-   level.zombie1 thread ChangeTeam("axis");
+    // Chose only one infected
+    while(level.zombie1 == level.players[0])
+    {
+        level.zombie1 = level.players[RandomIntRange(0, level.players.size)];
+    }
+    level.zombie1 thread ChangeTeam("axis");
 }
 
 // END LOGIC
