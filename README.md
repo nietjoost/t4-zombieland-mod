@@ -13,6 +13,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | Map         | Map edits |
 | ----------- | --------- |
 | mp_airfield | ✔️        |
+| mp_asylum   | ✔️        |
 | mp_castle   | ✔️        |
 
 ## How
@@ -39,7 +40,8 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 - Shop for buying upgrades
 - Ziplines
 - Teleport flags
-- Custom map edits
+- Boosters
+- Custom map edits (floors, walls)
 - Wall weapons
 - Ending game when a team has won
 - Able to disable the mod as a host
