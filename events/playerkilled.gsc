@@ -23,6 +23,7 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
     }
 
     _self thread AddMoney(500);
+    _self.kills++;
 
     // Check END
     wait 15;

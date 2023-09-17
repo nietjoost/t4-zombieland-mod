@@ -3,6 +3,7 @@
 #include scripts\mp\events\botlogic;
 #include scripts\mp\utils\utils;
 #include scripts\mp\utils\player;
+#include scripts\mp\utils\clock;
 
 // Start the ZombieLand
 StartZombieLand()
@@ -52,6 +53,7 @@ StartZombieLand()
     level.started = true;
     level.enoughPlayers = true;
     AllPlayerMessageMiddle("^5The zombies are coming!");
+    level thread CalculateGameTime();
     level thread PickZombies();
 }
 
@@ -92,16 +94,22 @@ CheckEnd()
         }
 
         level.ended = true;
+        visionSetNaked( "mpOutro", 2.0 );
 
-        AllPlayerMessageMiddle("^2The ^1Zombies ^2has won!");
+        // Messages and player utils
+        AllPlayerTypeWriterText("^2The ^1Zombies ^2has won!");
 
+        wait 1;
+        AllPlayerMessageMiddle("^2Player ^7" + GetPlayerWithMostKills().name + " ^2had the most kills!");
+        AllPlayerMessageMiddle("^5The Humans Survived: ^7"+ level.minutes +" ^5mins and ^7"+ level.seconds +" ^5secs.");
         for ( i = 0; i < level.players.size; i++ )
         {	
             p = level.players[i];
             p FreezeControls(true);
+            p PlaySound("mp_defeat");
         }
 
-        wait 5;
+        wait 10;
 
         level thread ChooseRandomMap();
     }
@@ -112,36 +120,8 @@ ChooseRandomMap()
     level thread maps\mp\gametypes\_globallogic::forceend();
 }
 
-CalculateTotalHumans()
-{
-    humanCount = 0;
-    for ( i = 0; i < level.players.size; i++ )
-    {	
-        p = level.players[i];
-        if (p.pers["team"] == "allies")
-        {
-            humanCount++;
-        }
-    }
 
-    return humanCount;
-}
-
-CalculateTotalZombies()
-{
-    zombieCount = 0;
-    for ( i = 0; i < level.players.size; i++ )
-    {	
-        p = level.players[i];
-        if (p.pers["team"] == "axis")
-        {
-            zombieCount++;
-        }
-    }
-
-    return zombieCount;
-}
-
+// Gamelogic Utils
 SpawnBot()
 {
     wait 10;

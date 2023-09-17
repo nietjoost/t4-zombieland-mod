@@ -1,16 +1,19 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\moneylogic;
 #include scripts\mp\events\gamelogic;
+#include scripts\mp\utils\utils;
 
 // Mega ZombieCode
 WatchZombieBoss()
 {
 	while(1)
 	{
+		level endon ("stop_zombieland");
+
 		// Check if enough Zombies
 		if (CalculateTotalZombies() < 3 || level.zombieBoss == true)
 		{
-			wait 10;
+			wait 30;
 		}
 		else
 		{
@@ -20,58 +23,54 @@ WatchZombieBoss()
 			zpos = 0;
 
 			// Set ZombieBoss position
-			for ( i = 0; i < level.players.size; i++ )
+			zombies = GetPlayerZombies();
+			for ( i = 0; i < zombies.size; i++ )
 			{	
-				p = level.players[i];
-				if (p IsHuman() == false) 
-				{
-					if(zpos == 0) level.zbdriver = p;
-					p.zpos = zpos;
-					zpos++;
-					p FreezeControls(true);
-					p GiveMegaZombieClass();
-				}
+				p = zombies[i];
+
+				if(zpos == 0) level.zbdriver = p;
+				p.zpos = zpos;
+				zpos++;
+				p FreezeControls(true);
+				p GiveMegaZombieClass();
 			}
 			
 			// Start MegaZombie
 			AllPlayerMessageMiddle("^3The zombies are forming a MegaZombie!");
 
-			level thread StartZombieBoss();
+			level thread StartZombieBoss(zombies);
 		}
 	}
 }
 
-StartZombieBoss()
+StartZombieBoss(zombies)
 {
 	// Link Zombies to ZombieBoss
 	level.mzs = Spawn("script_origin", level.zbdriver.origin);
 	level.mzs LinkTo(level.zbdriver);
 	
-	for ( i = 0; i < level.players.size; i++ )
+	for ( i = 0; i < zombies.size; i++ )
 	{
-		p = level.players[i];
-		if (p IsHuman() == false) 
-		{
-			if(p.zpos == 1) p.newPos = (level.mzs.origin + (0,0,90));
-			if(p.zpos == 2) p.newPos = (level.mzs.origin + (0,-40,130));
-			if(p.zpos == 3) p.newPos = (level.mzs.origin + (0,40,130));
-			if(p.zpos == 4) p.newPos = (level.mzs.origin + (0,0,180));
-			if(p.zpos == 5) p.newPos = (level.mzs.origin + (0,60,0));
-			if(p.zpos == 6) p.newPos = (level.mzs.origin + (0,-60,0));
-			if(p.zpos == 7) p.newPos = (level.mzs.origin + (0,-80,100));
-			if(p.zpos == 8) p.newPos = (level.mzs.origin + (0,80,100));
-			if(p.zpos == 9) p.newPos = (level.mzs.origin + (0,0,240));
-			if(p.zpos == 10) p.newPos = (level.mzs.origin + (0,60,250));
-			if(p.zpos == 11) p.newPos = (level.mzs.origin + (0,-60,250));
-			if(p.zpos == 12) p.newPos = (level.mzs.origin + (0,-0,320));
-			if(p.zpos != 0)	p SetOrigin(p.newPos);
-			if(p.zpos != 0)	p LinkTo(level.mzs);
+		p = zombies[i];
+		if(p.zpos == 1) p.newPos = (level.mzs.origin + (0,0,90));
+		if(p.zpos == 2) p.newPos = (level.mzs.origin + (0,-40,130));
+		if(p.zpos == 3) p.newPos = (level.mzs.origin + (0,40,130));
+		if(p.zpos == 4) p.newPos = (level.mzs.origin + (0,0,180));
+		if(p.zpos == 5) p.newPos = (level.mzs.origin + (0,60,0));
+		if(p.zpos == 6) p.newPos = (level.mzs.origin + (0,-60,0));
+		if(p.zpos == 7) p.newPos = (level.mzs.origin + (0,-80,100));
+		if(p.zpos == 8) p.newPos = (level.mzs.origin + (0,80,100));
+		if(p.zpos == 9) p.newPos = (level.mzs.origin + (0,0,240));
+		if(p.zpos == 10) p.newPos = (level.mzs.origin + (0,60,250));
+		if(p.zpos == 11) p.newPos = (level.mzs.origin + (0,-60,250));
+		if(p.zpos == 12) p.newPos = (level.mzs.origin + (0,-0,320));
+		if(p.zpos != 0)	p SetOrigin(p.newPos);
+		if(p.zpos != 0)	p LinkTo(level.mzs);
 
-			// ZombieBoss health logic
-			p.maxhealth = 99999999;
-        	p.health = p.maxhealth;
-			p thread CheckZombieBossHealth();
-		}
+		// ZombieBoss health logic
+		p.maxhealth = 99999999;
+		p.health = p.maxhealth;
+		p thread CheckZombieBossHealth();
 	}
 
 	level thread ZombieBossTimer();
@@ -80,15 +79,20 @@ StartZombieBoss()
 	level.zbdriver PlayerMessageMiddle("^5You are the head ^1MegaZombie!");
 	level.zbdriver PlayerMessageMiddle("^2You ^1lead ^2the ^5MegaZombie");
 	level.zbdriver SetMoveSpeedScale(0.6);
+	EarthQuake(0.8, 3, level.zbdriver.origin, 99999999);
 	wait 5;
 	level.zbdriver FreezeControls(false);
 }
 
 ZombieBossTimer()
 {
-	wait 90;
-	AllPlayerMessageMiddle("^3MegaZombie ^1timer is up!");
-	HandleZombieBossDeath();
+	while(1)
+	{
+		level endon ("stop_zombieboss");
+		wait 90;
+		AllPlayerMessageMiddle("^3MegaZombie ^1timer is up!");
+		HandleZombieBossDeath();
+	}
 }
 
 CheckZombieBossHealth()
@@ -114,10 +118,6 @@ CheckZombieBossHealth()
 
 HandleZombieBossDeath()
 {
-	// Clean-up MegaZombie
-	level.mzs Delete();
-	level notify ("stop_zombieboss");
-
 	// Reset Fog
 	SetExpFog(200, 800, 0.5, 0.5, 0.5, 10);
 
@@ -138,6 +138,10 @@ HandleZombieBossDeath()
 			p AddMoney(500);
 		}
 	}
+
+	// Clean-up MegaZombie
+	level.mzs Delete();
+	level notify ("stop_zombieboss");
 
 	// Start new MegaZombie in X seconds
 	wait 240;

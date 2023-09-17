@@ -22,6 +22,24 @@ AllPlayerMessageMiddle(msg)
     }
 }
 
+TeamPlayerMessageMiddle(team, msg)
+{
+    // Check for running mod
+	if (level.stopZombieLand == true)
+	{
+		return;
+	}
+
+    for ( i = 0; i < level.players.size; i++ )
+    {	
+        p = level.players[i];
+        if (self.pers["team"] == team)
+        {
+            p thread PlayerMessageMiddle(msg);
+        } 
+    }
+}
+
 // Say player message left under
 PlayerMessageLeftUnder(msg)
 {

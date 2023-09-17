@@ -17,6 +17,7 @@ OnPlayerConnectZL()
         player.type = "human";
         player.money = 9900;
         player.nextPerk = 4;
+        player.kills = 0;
 
         player thread OnPlayerSpawnedZL();
 
