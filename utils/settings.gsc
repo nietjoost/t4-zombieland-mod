@@ -11,6 +11,7 @@ SetupSettings()
 	level.stopZombieLand = false;
 	level.spawnedModels = [];
 	level.spawnedModelsCount = 0;
+	level.zombieBoss = false;
 
 	// ICONS
 	PrecacheShader("specialty_gas_mask");

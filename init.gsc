@@ -8,6 +8,7 @@
 #include scripts\mp\events\playerkilled;
 #include scripts\mp\events\playerconnect;
 #include scripts\mp\events\playerconnecterror;
+#include scripts\mp\events\megazombie;
 
 // Main script
 init()
@@ -32,9 +33,16 @@ init()
     level thread PreCache();
     level thread OnPlayerConnectZL();
     level thread LoadMap();
+    level thread WatchZombieBoss();
 
     level thread StartMenu();
 
+    // DEBUG
+    level thread debug();
+}
+
+debug()
+{
     for(;;)
 	{
         level endon("stop_zombieland");
