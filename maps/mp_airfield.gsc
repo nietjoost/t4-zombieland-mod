@@ -1,3 +1,4 @@
+#include scripts\mp\utils\doorlogic;
 #include scripts\mp\utils\spawnlogic;
 #include scripts\mp\utils\spawnwalllogic;
 #include scripts\mp\events\wallweaponlogic;
@@ -20,5 +21,10 @@ Load()
     //CreateElevator(level.collisionModel, (3346, 2606, -61), (3346, 2606, 505), (0,0,0), 10, 2);
     CreateRamp(level.collisionModel, (1680, 3110, 116), (1506, 3005, 116), 35);
     CreateRamp(level.collisionModel, (712, 1792, 85), (973, 1822, 110), 35);
+
+    // Spawn weapons
     CreateWallWeapon("thompson_mp", (1322, 5320, 145), 100);
+
+    // Spawn doors
+    SpawnDoor((2407, 1417, 104), (2330, 1491, 103), (0, 0, 120));
 }

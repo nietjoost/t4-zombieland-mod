@@ -67,7 +67,7 @@ SpawnZiplineBoth(pos1, pos2)
 	level.spawnedModelsCount++;
 }
 
-// Spawn Boos
+// Spawn Booster
 SpawnBoost(pos, height)
 {
     // Spawn Model
