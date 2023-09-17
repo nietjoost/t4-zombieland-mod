@@ -16,25 +16,25 @@ WatchDoorHealth(door, doorPos)
 
     while(1)
     {
+        level endon ("stop_zombieland");
         self waittill("trigger", player);
         if (player MeleeButtonPressed())
         {
             doorHealth -= 1;
+
+            player thread PlayerMessageLeftUnder("^5You did ^110 damage ^5to the ^2door!");
             if (doorHealth == 0)
             {
                 player thread PlayerMessageMiddle("^2The door is broken!");
                 door[0] MoveTo(door[0].origin + doorPos, 2);
+                self Delete();
 
                 for (i = 0; i < door.size; i++)
                 {
                     door[i].solid setContents(0);
                 }
             }
-            else
-            {
-                player thread PlayerMessageMiddle("^1DAMAGE");
-            }
-            wait 1;
+            wait 0.7;
         }
     }
 }
