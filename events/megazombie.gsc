@@ -74,12 +74,21 @@ StartZombieBoss()
 		}
 	}
 
+	level thread ZombieBossTimer();
+
 	// Zombie Driver
 	level.zbdriver PlayerMessageMiddle("^5You are the head ^1MegaZombie!");
 	level.zbdriver PlayerMessageMiddle("^2You ^1lead ^2the ^5MegaZombie");
-	level.zbdriver SetMoveSpeedScale(0.4);
+	level.zbdriver SetMoveSpeedScale(0.6);
 	wait 5;
 	level.zbdriver FreezeControls(false);
+}
+
+ZombieBossTimer()
+{
+	wait 90;
+	AllPlayerMessageMiddle("^3MegaZombie ^1timer is up!");
+	HandleZombieBossDeath();
 }
 
 CheckZombieBossHealth()
@@ -91,7 +100,7 @@ CheckZombieBossHealth()
 
 		self waittill ( "damage", damage, attacker, direction_vec, point, type, modelName, tagName, partName, iDFlags );
 		if(attacker.team != "axis")
-		{	
+		{
 			level.zombieBossHealth -= 1;
 		}
 
