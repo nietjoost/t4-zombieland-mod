@@ -1,7 +1,7 @@
 // Check Flags
 CheckFlags(flag)
 {
-    level endon("stop_zombieland");
+    level endon ("stop_zombieland");
     
     while (1)
     {   

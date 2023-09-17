@@ -23,7 +23,7 @@ CreateWallWeapon(model, location, price)
 
 HandleWallWeapon()
 {
-    level endon("stop_zombieland");
+    level endon ("stop_zombieland");
     
     for(;;) 
     {      

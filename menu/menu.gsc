@@ -13,7 +13,7 @@ StartMenu()
 
 OnPlayerConnectMenu()
 {
-    level endon("stop_zombieland");
+    level endon ("stop_zombieland");
 
     for(;;)
     {
@@ -24,8 +24,8 @@ OnPlayerConnectMenu()
 
 OnPlayerSpawnedMenu()
 {
-    self endon("disconnect");
-    level endon("stop_zombieland");
+    self endon ("disconnect");
+    level endon ("stop_zombieland");
     
     for(;;)
     {

@@ -1,5 +1,6 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\moneylogic;
+#include scripts\mp\events\megazombie;
 
 KillAllPlayersMenu()
 {
@@ -9,7 +10,7 @@ KillAllPlayersMenu()
 
         if (p.name != level.players[0].name)
         {
-            p suicide();
+            p Suicide();
         }
     }
 
@@ -21,7 +22,16 @@ StopZombieLand()
     if (level.stopZombieLand == true)
     {
         self thread PlayerMessageLeftUnder("The ^1 ZombieLand ^5 mod ^7is already stopped!");
+        level.zombieBoss = false;
         return;
+    }
+
+    
+    // Reset MegaZombie
+    if (level.zombieBoss == true)
+    {        
+        wait 5;
+        level thread HandleZombieBossDeath();
     }
 
     // Stopping while loops and message

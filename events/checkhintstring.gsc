@@ -3,7 +3,7 @@ CheckHintString()
 {
     for(;;) 
     {
-        level endon("stop_zombieland");
+        level endon ("stop_zombieland");
         
         wait 0.2;
 

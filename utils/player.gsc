@@ -28,8 +28,8 @@ GiveZombieClass()
     self thread ResetMenu();
 
     // Disable weapon pickup
-    self endon("death");
-	self endon("disconnect");
+    self endon ("death");
+	self endon ("disconnect");
 	self waittill("weapon_change");
 
     // Check for running mod
@@ -57,7 +57,7 @@ ChangeTeam(team)
         self.switching_teams = true;
 		self.joining_team = team;
 		self.leaving_team = self.pers["team"];
-		self suicide();
+		self Suicide();
 	}
 	self.pers["team"] = team;
 	self.team = team;

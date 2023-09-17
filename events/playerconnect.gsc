@@ -6,7 +6,7 @@
 // PLAYER connect functions
 OnPlayerConnectZL()
 {
-    level endon("stop_zombieland");
+    level endon ("stop_zombieland");
 
     for(;;)
     {
@@ -28,8 +28,8 @@ OnPlayerConnectZL()
 // ON Player spawn logic
 OnPlayerSpawnedZL()
 {
-    self endon("disconnect");
-    level endon("stop_zombieland");
+    self endon ("disconnect");
+    level endon ("stop_zombieland");
     
     for(;;)
     {

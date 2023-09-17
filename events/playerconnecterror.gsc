@@ -9,7 +9,7 @@ OnPlayerConnectError()
 
 OnPlayerSpawnedError()
 {
-    self endon("disconnect");
+    self endon ("disconnect");
     for(;;)
     {
         self waittill("spawned_player");

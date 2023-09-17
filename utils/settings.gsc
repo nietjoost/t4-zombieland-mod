@@ -12,6 +12,7 @@ SetupSettings()
 	level.spawnedModels = [];
 	level.spawnedModelsCount = 0;
 	level.zombieBoss = false;
+	level.zombieBossHealth = 100;
 
 	// ICONS
 	PrecacheShader("specialty_gas_mask");
@@ -56,7 +57,8 @@ SetupSettings()
 	SetDvar("bg_fallDamageMaxHeight ", 99999999);
 	SetDvar("motd ", "^3You Played COD5 Zombieland, ^2Created by RooieRonnie!");
 
-	//SetExpFog(80, 612, 1, 0, 0, 10);
+	// Set Fog
+	SetExpFog(200, 800, 0.5, 0.5, 0.5, 10);
 }
 
 

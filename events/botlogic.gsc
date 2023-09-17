@@ -26,7 +26,7 @@ AddTestClients()
 
 TestClient(team)
 {
-    self endon( "disconnect" );
+    self endon ( "disconnect" );
 	while(!isdefined(self.pers["team"]))
 	wait .05;
 	self notify("menuresponse", game["menu_team"], team);
@@ -41,7 +41,7 @@ TestClient(team)
 	assert( okclasses.size );
 	while( 1 )
 	{
-		level endon("stop_zombieland");
+		level endon ("stop_zombieland");
 		class = okclasses[ randomint( okclasses.size ) ];
 		if ( !level.oldschool )
 		self notify("menuresponse", "changeclass", class);

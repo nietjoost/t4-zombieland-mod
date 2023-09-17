@@ -4,7 +4,7 @@ PlayerMessageMiddle(msg)
     self iPrintlnBold(msg);
 
     //WEAPON DEBUG
-    self iPrintln(self getCurrentWeapon());
+    //self iPrintln(self getCurrentWeapon());
 }
 
 AllPlayerMessageMiddle(msg)

@@ -1,7 +1,7 @@
 // CHECK Ziplines
 CheckZiplines()
 {
-    level endon("stop_zombieland");
+    level endon ("stop_zombieland");
 
     for(;;) 
     {

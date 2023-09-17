@@ -1,9 +1,9 @@
 nukegun()
 {
-    self endon("disconnect");
+    self endon ("disconnect");
     for(;;)
     {
-        level endon("stop_zombieland");
+        level endon ("stop_zombieland");
         self waittill("weapon_fired");
         trace=bullettrace(self gettagorigin("j_head"),self gettagorigin("j_head")+anglestoforward(self getplayerangles())*100000,1,self)["position"];
         nuke=loadfx("maps/mp_maps/fx_mp_nuked_nuclear_explosion");
