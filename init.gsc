@@ -5,6 +5,7 @@
 #include scripts\mp\utils\weaponsettings;
 #include scripts\mp\maps\mapedits;
 #include scripts\mp\menu\menu;
+#include scripts\mp\events\broadcaster;
 #include scripts\mp\events\playerkilled;
 #include scripts\mp\events\playerconnect;
 #include scripts\mp\events\playerconnecterror;
@@ -34,6 +35,7 @@ init()
     level thread OnPlayerConnectZL();
     level thread LoadMap();
     level thread WatchZombieBoss();
+    level thread Broadcast();
 
     level thread StartMenu();
 

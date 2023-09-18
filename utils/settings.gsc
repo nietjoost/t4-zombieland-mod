@@ -15,6 +15,7 @@ SetupSettings()
 
 	// Variables you can change
 	level.zombieBossHealth = 100;
+	level.zombieBossTimer = 60;
 	level.doorHealth = 100;
 
 	// ICONS

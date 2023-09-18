@@ -89,7 +89,7 @@ ZombieBossTimer()
 	while(1)
 	{
 		level endon ("stop_zombieboss");
-		wait 90;
+		wait level.zombieBossTimer;
 		AllPlayerMessageMiddle("^3MegaZombie ^1timer is up!");
 		HandleZombieBossDeath();
 	}
