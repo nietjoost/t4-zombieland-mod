@@ -44,6 +44,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 - Custom map edits (floors, walls)
 - Wall weapons
 - MegaZombie
+- Breakable doors
 - Ending game when a team has won
 - Able to disable the mod as a host
 - No extra advantages for the host

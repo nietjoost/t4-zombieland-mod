@@ -149,15 +149,6 @@ HandleZombieBossDeath()
 }
 
 // MegaZombie Utils
-IsHuman()
-{
-	if (self.pers["team"] == "allies")
-	{
-		return true;
-	}
-	return false;
-}
-
 GiveMegaZombieClass()
 {
 	self ClearPerks();

@@ -12,7 +12,10 @@ SetupSettings()
 	level.spawnedModels = [];
 	level.spawnedModelsCount = 0;
 	level.zombieBoss = false;
+
+	// Variables you can change
 	level.zombieBossHealth = 100;
+	level.doorHealth = 100;
 
 	// ICONS
 	PrecacheShader("specialty_gas_mask");

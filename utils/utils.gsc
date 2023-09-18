@@ -66,6 +66,15 @@ GetPlayerZombies()
     return zombies;
 }
 
+IsHuman()
+{
+	if (self.pers["team"] == "allies")
+	{
+		return true;
+	}
+	return false;
+}
+
 GetPlayerWithMostKills()
 {
     winner = level.players[0];
