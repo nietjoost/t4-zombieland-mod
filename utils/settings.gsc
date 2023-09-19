@@ -57,8 +57,8 @@ SetupSettings()
 	SetDvar("g_ScoresColor_Axis", "1 0 0");
 	SetDvar("g_TeamIcon_Allies", "specialty_gas_mask");
 	SetDvar("g_TeamIcon_Axis", "specialty_exposeenemy");
-	SetDvar("bg_fallDamageMinHeight", 9999999);
-	SetDvar("bg_fallDamageMaxHeight ", 99999999);
+	SetDvar("bg_fallDamageMinHeight", 9990);
+	SetDvar("bg_fallDamageMaxHeight ", 9999);
 	SetDvar("motd ", "^3You Played COD5 Zombieland, ^2Created by RooieRonnie!");
 
 	// Set Fog

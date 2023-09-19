@@ -1,5 +1,6 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\moneylogic;
+#include scripts\mp\hud\healthlogic;
 #include scripts\mp\events\megazombie;
 
 KillAllPlayersMenu()
@@ -42,6 +43,7 @@ StopZombieLand()
     // Stopping the messages and functions
     level.stopZombieLand = true;
     level thread RemoveAllMoneyHud();
+    level thread RemoveAllHealthHud();
 
     wait 1;
     // Delete the mini-map icons

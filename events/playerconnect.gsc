@@ -2,6 +2,7 @@
 #include scripts\mp\events\gamelogic;
 #include scripts\mp\utils\player;
 #include scripts\mp\hud\moneylogic;
+#include scripts\mp\hud\healthlogic;
 
 // PLAYER connect functions
 OnPlayerConnectZL()
@@ -16,6 +17,7 @@ OnPlayerConnectZL()
         player.usingZipline = false;
         player.type = "human";
         player.money = 9900;
+        player.health = 100;
         player.nextPerk = 4;
         player.kills = 0;
 
@@ -84,6 +86,7 @@ OnPlayerSpawnedZL()
 
         // MENU logic
         self thread CreateMoneyHUD();
+        self thread CreateHealthHUD();
 
         //PROMOD
         self setClientDvar("cg_fov", "95");

@@ -16,7 +16,7 @@ CheckZiplines()
                 //Set the hintstring
                 if (Distance(p.origin, z.origin) <= 50 && p.usingZipline == false)
                 {
-                    p.hint = "^5Hold ^1[{+melee}] ^5to use the ZipLine";
+                    p.hint = "^5Hold ^1[[{+melee}]] ^5to use the ZipLine";
 
                     // Check for BUTTON press
                     if (p MeleeButtonPressed())

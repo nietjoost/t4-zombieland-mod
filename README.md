@@ -48,6 +48,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 - Ending game when a team has won
 - Able to disable the mod as a host
 - No extra advantages for the host
+- Broadcast messages
 
 ## Showcase PC
 

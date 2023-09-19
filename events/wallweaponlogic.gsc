@@ -40,11 +40,11 @@ HandleWallWeapon()
                 {
                     if (p hasWeapon(b.name))
                     {
-                        p.hint = "^5Hold ^1[{+activate}] ^5to buy ammo";
+                        p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
                     }
                     else
                     {
-                        p.hint = "^5Hold ^1[{+activate}] ^5to buy weapon";
+                        p.hint = "^5Hold ^1[[{+activate}]] ^5to buy weapon";
                     }
 
                     // Check for BUTTON press
@@ -74,7 +74,7 @@ HandleWallWeapon()
                                 p thread GiveBuyWeapon(b.name, "You bought the weapon!");
                             }
                             
-                            p.hint = "^5Hold ^1[{+activate}] ^5to buy ammo";
+                            p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
                             wait 0.2;
                         }
                     }

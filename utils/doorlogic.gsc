@@ -24,7 +24,7 @@ WatchDoorHealth(door, destroyLocation)
         self waittill("trigger", player);
         if (player MeleeButtonPressed())
         {
-            if (player IsHuman())
+            if (player IsHuman() || self.closed == false)
             {
                 continue;
             }
@@ -67,11 +67,11 @@ WatchDoorHuman(door, openLocation)
             {
                 if (self.closed)
                 {
-                    p.hint = "^5Hold ^1[{+melee}] ^5to open the door";
+                    p.hint = "^5Hold ^1[[{+melee}]] ^5to open the door";
                 }
                 else
                 {
-                    p.hint = "^5Hold ^1[{+melee}] ^5to close the door";
+                    p.hint = "^5Hold ^1[[{+melee}]] ^5to close the door";
                 }
 
                 // Check for BUTTON press
