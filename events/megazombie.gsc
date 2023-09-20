@@ -11,7 +11,7 @@ WatchZombieBoss()
 		level endon ("stop_zombieland");
 
 		// Check if enough Zombies
-		if (CalculateTotalZombies() < 3 || level.zombieBoss == true)
+		if (CalculateTotalZombies() < 3 || level.zombieBoss == true || level.zombieBossFinal == true)
 		{
 			wait 30;
 		}
@@ -19,6 +19,7 @@ WatchZombieBoss()
 		{
 			// Set ZombieLand Settings
 			level.zombieBoss = true;
+			level.zombieBossFinal = true;
 			SetExpFog(200, 1000, 0.5, 0.4, 0.4, 6);
 			zpos = 0;
 
@@ -68,7 +69,8 @@ StartZombieBoss(zombies)
 		if(p.zpos != 0)	p LinkTo(level.mzs);
 
 		// ZombieBoss health logic
-		p.maxhealth = 99999999;
+		p.phealth = 99999;
+		p.maxhealth = p.phealth;
 		p.health = p.maxhealth;
 		p thread CheckZombieBossHealth();
 	}
@@ -97,6 +99,8 @@ ZombieBossTimer()
 
 CheckZombieBossHealth()
 {
+	level.zombieBossHealthLocal = level.zombieBossHealth;
+
 	while(1)
 	{
 		level endon ("stop_zombieboss");
@@ -105,10 +109,10 @@ CheckZombieBossHealth()
 		self waittill ( "damage", damage, attacker, direction_vec, point, type, modelName, tagName, partName, iDFlags );
 		if(attacker.team != "axis")
 		{
-			level.zombieBossHealth -= 1;
+			level.zombieBossHealthLocal -= 1;
 		}
 
-		if (level.zombieBossHealth < 5)
+		if (level.zombieBossHealthLocal < 5)
 		{
 			level thread HandleZombieBossDeath();
 		}
@@ -127,7 +131,9 @@ HandleZombieBossDeath()
 		p = level.players[i];
 		if (p IsHuman() == false) 
 		{
-			p.health = 100;
+			p.phealth = level.resetHealth;
+			p.maxhealth = p.phealth;
+			p.health = p.maxhealth;
 			p Suicide();
 			p UnLink(level.mzs);
 		}
@@ -144,8 +150,9 @@ HandleZombieBossDeath()
 	level notify ("stop_zombieboss");
 
 	// Start new MegaZombie in X seconds
-	wait 240;
 	level.zombieBoss = false;
+	wait 240;
+	level.zombieBossFinal = false;
 }
 
 // MegaZombie Utils

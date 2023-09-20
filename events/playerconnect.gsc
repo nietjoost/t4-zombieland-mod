@@ -16,8 +16,7 @@ OnPlayerConnectZL()
         player.spawned = false;
         player.usingZipline = false;
         player.type = "human";
-        player.money = 9900;
-        player.health = 100;
+        player.money = 2000;
         player.nextPerk = 4;
         player.kills = 0;
 
@@ -42,7 +41,7 @@ OnPlayerSpawnedZL()
         if (level.started == true && self.type == "human")
         {
             self.type = "zombie";
-            self.money = 200;
+            self.money = 100;
             self ChangeTeam("axis");
         }
 
@@ -84,9 +83,15 @@ OnPlayerSpawnedZL()
             self thread GiveZombieClass();
         }
 
+        // Player settings reset on spawn
+        self.phealth = level.resetHealth;
+        self.maxhealth = self.phealth;
+        self.health = self.maxhealth;
+
         // MENU logic
         self thread CreateMoneyHUD();
         self thread CreateHealthHUD();
+        self thread WatchHealth();
 
         //PROMOD
         self setClientDvar("cg_fov", "95");

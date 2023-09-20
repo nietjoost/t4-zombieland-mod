@@ -3,6 +3,7 @@
 #include scripts\mp\menu\menuutils;
 #include scripts\mp\menu\hostutils;
 #include scripts\mp\hud\playermessage;
+#include scripts\mp\hud\healthlogic;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
 
@@ -357,6 +358,7 @@ RunHumanShop()
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");
+    self addMenuPar("Health" + self thread GetMenuBuyText(level.buyHealthCost), ::AddHealthMenu);
 
 
     // HOST MENU

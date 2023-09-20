@@ -1,3 +1,5 @@
+#include scripts\mp\menu\menubuylogic;
+
 // HEALTH logic
 CreateHealthHUD()
 {
@@ -15,21 +17,55 @@ CreateHealthHUD()
     self.hud_health.color = (1, 0, 0);
     self.hud_health.hidewhendead = true;
     self.hud_health.hidewheninmenu = true;
-    self.hud_health SetText("Health: " + self.health);
+    self.hud_health SetText("Health: " + self.phealth);
 }
 
 // ADD money
 AddHealth(localHealth)
 {
-    self.health += localHealth;
+    self.phealth += localHealth;
+    self.maxhealth = self.phealth;
+    self.health = self.maxhealth;
     self thread CreateHealthHUD();
+}
+
+AddHealthMenu()
+{
+    if (self thread CheckMoney(level.buyHealthCost))
+    {
+        return;
+    }
+
+    self AddHealth(level.getHealthCost);
 }
 
 // REMOVE money
 RemoveHealth(localHealth)
 {
-    self.health -= localHealth;
-    self thread CreateHealthHUD(localHealth);
+    self.phealth -= localHealth;
+    self.maxhealth = self.phealth;
+    self.health = self.maxhealth;
+    self thread CreateHealthHUD();
+}
+
+// Watch Health logic
+WatchHealth()
+{
+    while(1)
+	{
+		level endon ("death");
+		level endon ("stop_zombieland");
+
+		self waittill ( "damage", damage, attacker, direction_vec, point, type, modelName, tagName, partName, iDFlags );
+
+        // Cancel health if ZombieBoss is enabled
+        if (level.zombieBoss == true)
+        {
+            continue;
+        }
+
+        self RemoveHealth(damage);
+	}
 }
 
 // Remove all Players HUD - Health
