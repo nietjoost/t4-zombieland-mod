@@ -27,21 +27,22 @@ StopZombieLand()
         return;
     }
 
+    level.stopZombieLand = true;
     
     // Reset MegaZombie
     if (level.zombieBoss == true)
     {        
-        wait 5;
         level thread HandleZombieBossDeath();
+        wait 5;
     }
 
     // Stopping while loops and message
     level thread AllPlayerMessageLeftUnder("^1ZombieLand ^5mod ^7was running but is stopped by the Host!");
     level notify("stop_zombieland");
     self thread PlayerMessageLeftUnder("Stopping the ^1ZombieLand ^5mod!");
+    wait 1;
 
     // Stopping the messages and functions
-    level.stopZombieLand = true;
     level thread RemoveAllMoneyHud();
     level thread RemoveAllHealthHud();
 
@@ -54,10 +55,11 @@ StopZombieLand()
 
     wait 1;
     // Delete all spawned models
-    for ( i = 0; i < level.spawnedModelsCount; i++ )
+    for ( i = 0; i < level.spawnedModels.size; i++ )
     {
         model = level.spawnedModels[i];
         model Delete();
+        wait 0.01;
     }
 
     wait 1;
@@ -80,5 +82,5 @@ StopZombieLand()
     SetDvar("bg_fallDamageMinHeight", level.bg_fallDamageMinHeight);
 	SetDvar("bg_fallDamageMaxHeight", level.bg_fallDamageMaxHeight);
 
-    self thread PlayerMessageLeftUnder("Stopped all ^1ZombieLand ^5mod ^7 related stuff!");
+    self thread PlayerMessageLeftUnder("Stopped all ^1ZombieLand ^5mod ^7related stuff!");
 }

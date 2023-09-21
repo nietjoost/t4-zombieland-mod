@@ -1,7 +1,6 @@
 // Includes
 #include scripts\mp\utils\utils;
 #include scripts\mp\utils\settings;
-#include scripts\mp\utils\hostscripts;
 #include scripts\mp\utils\weaponsettings;
 #include scripts\mp\maps\mapedits;
 #include scripts\mp\menu\menu;
@@ -9,6 +8,7 @@
 #include scripts\mp\events\playerkilled;
 #include scripts\mp\events\playerconnect;
 #include scripts\mp\events\playerconnecterror;
+#include scripts\mp\events\randomdroplogic;
 #include scripts\mp\events\megazombie;
 
 // Main script
@@ -36,6 +36,7 @@ init()
     level thread LoadMap();
     level thread WatchZombieBoss();
     level thread Broadcast();
+    level thread WatchRandomDrop();
 
     level thread StartMenu();
 

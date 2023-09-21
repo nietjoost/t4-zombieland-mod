@@ -141,13 +141,8 @@ SpawnDoorEntity(class, model, origin, angles)
 	solid.targetname = "script_collision";
     solid LinkTo(entity);
     entity.solid = solid;
-   	level.amountofmodels++;
     
-    level.spawnedModels[level.spawnedModelsCount] = entity;
-	level.spawnedModelsCount++;
-
-    level.spawnedModels[level.spawnedModelsCount] = solid;
-	level.spawnedModelsCount++;
-
+    level.spawnedModels[level.spawnedModels.size] = entity;
+    level.spawnedModels[level.spawnedModels.size] = solid;
     return entity;
 }

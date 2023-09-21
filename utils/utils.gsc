@@ -57,7 +57,7 @@ GetPlayerZombies()
     for ( i = 0; i < level.players.size; i++ )
     {
         p = level.players[i];
-        if (p.pers["team"] == "axis")
+        if (p.pers["team"] == "axis" && IsAlive(p))
         {
             zombies[zombiesCount] = p;
             zombiesCount++;

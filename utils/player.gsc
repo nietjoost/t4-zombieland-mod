@@ -1,4 +1,6 @@
 #include scripts\mp\menu\menu;
+#include scripts\mp\hud\healthlogic;
+#include scripts\mp\hud\playermessage;
 
 // Classes
 GivePlayerClass()
@@ -61,4 +63,43 @@ ChangeTeam(team)
 	}
 	self.pers["team"] = team;
 	self.team = team;
+}
+
+
+// PLAYER buy function
+GiveInvisible(time)
+{
+    if (self.isInvisible == true)
+    {
+        self thread PlayerMessageLeftUnder("^1You are already invisible!");
+        return;
+    }
+
+    self thread PlayerMessageLeftUnder("You are now ^2invisible ^7for " + time + " seconds");
+    self.isInvisible = true;
+    self Hide();
+    wait time;
+    self Show();
+    self.isInvisible = false;
+    self thread PlayerMessageLeftUnder("You are ^1no longer ^7invisible");
+}
+
+GiveFlickering(time)
+{
+    self thread PlayerMessageLeftUnder("You are now ^2flickering ^7for " + time + " seconds");
+    wait time;
+    self thread PlayerMessageLeftUnder("You are ^1no longer ^72flickering");
+}
+
+GivePlayerMaxAmmo()
+{
+    self thread PlayerMessageLeftUnder("You got ^2max ammo ^7for your current weapon");
+    self SetWeaponAmmoClip(self GetCurrentWeapon(), WeaponClipSize(self GetCurrentWeapon()));
+	self GiveMaxAmmo(self GetCurrentWeapon());
+}
+
+GivePlayerHealth(localHealth)
+{
+    self thread PlayerMessageLeftUnder("You got ^2" + localHealth + " ^7extra ^1health");
+    self AddHealth(localHealth);
 }

@@ -19,6 +19,7 @@ OnPlayerConnectZL()
         player.money = 2000;
         player.nextPerk = 4;
         player.kills = 0;
+        player.isInvisible = false;
 
         player thread OnPlayerSpawnedZL();
 
@@ -41,6 +42,13 @@ OnPlayerSpawnedZL()
         if (level.started == true && self.type == "human")
         {
             self.type = "zombie";
+            self.money = 100;
+            self ChangeTeam("axis");
+        }
+
+        // If game is started and zombie joins Humans
+        if (level.started == true && self.type == "zombie" && self.pers["team"] == "allies")
+        {
             self.money = 100;
             self ChangeTeam("axis");
         }

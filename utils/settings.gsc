@@ -10,7 +10,6 @@ SetupSettings()
 	level.objectId = 1;
 	level.stopZombieLand = false;
 	level.spawnedModels = [];
-	level.spawnedModelsCount = 0;
 	level.zombieBoss = false;
 	level.zombieBossFinal = false;
 

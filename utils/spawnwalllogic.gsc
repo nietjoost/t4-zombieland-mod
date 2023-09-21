@@ -31,8 +31,7 @@ CreateFloor(model, start, end, angles, lengthspace, widthspace, heightspace)
     
     center.angles = angles;
 
-    level.spawnedModels[level.spawnedModelsCount] = center;
-	level.spawnedModelsCount++;
+    level.spawnedModels[level.spawnedModels.size] = center;
 }
 
 //Spawn a ramp
@@ -59,11 +58,8 @@ CreateElevator(model, start, end, angles, duration, waitduration)
 	solid.targetname = "script_collision";
     elevatorscriptorigin thread ElevatorMonitor(solid, start, end, duration, waitduration);
 
-    level.spawnedModels[level.spawnedModelsCount] = elevatorscriptorigin;
-	level.spawnedModelsCount++;
-
-    level.spawnedModels[level.spawnedModelsCount] = solid;
-	level.spawnedModelsCount++;
+    level.spawnedModels[level.spawnedModels.size] = elevatorscriptorigin;
+    level.spawnedModels[level.spawnedModels.size] = solid;
 }
 
 // Spawn function
@@ -76,13 +72,8 @@ SpawnEntity(class, model, origin, angles)
     solid = spawn("trigger_radius",origin,0,64,50);
 	solid setContents(1);
 	solid.targetname = "script_collision";
-   	level.amountofmodels++;
     
-    level.spawnedModels[level.spawnedModelsCount] = entity;
-	level.spawnedModelsCount++;
-
-    level.spawnedModels[level.spawnedModelsCount] = solid;
-	level.spawnedModelsCount++;
-
+    level.spawnedModels[level.spawnedModels.size] = entity;
+    level.spawnedModels[level.spawnedModels.size] = solid;
     return entity;
 }

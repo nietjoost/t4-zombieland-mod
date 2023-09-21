@@ -53,6 +53,5 @@ HandleZipline(zipline)
     ziplineEnt Delete();
     self.usingZipline = false;
 
-    level.spawnedModels[level.spawnedModelsCount] = ziplineEnt;
-	level.spawnedModelsCount++;
+    level.spawnedModels[level.spawnedModels.size] = ziplineEnt;
 }

@@ -14,8 +14,7 @@ SpawnFlag(pos1, pos2, showIcon)
 
     // Spawn FX
     fx = PlayFX(level.flagFx, pos1);
-    level.spawnedModels[level.spawnedModelsCount] = fx;
-	level.spawnedModelsCount++;
+    level.spawnedModels[level.spawnedModels.size] = fx;
 
     // Spawn UI Icon
     if (showIcon)
@@ -30,8 +29,7 @@ SpawnFlag(pos1, pos2, showIcon)
     //Check TP
     level thread CheckFlags(startFlag);
 
-    level.spawnedModels[level.spawnedModelsCount] = startFlag;
-	level.spawnedModelsCount++;
+    level.spawnedModels[level.spawnedModels.size] = startFlag;
 }
 
 
@@ -53,8 +51,7 @@ SpawnZiplineBoth(pos1, pos2)
 
     // Spawn FX
     fx = PlayFX(level.ziplineFx, pos1);
-    level.spawnedModels[level.spawnedModelsCount] = fx;
-	level.spawnedModelsCount++;
+    level.spawnedModels[level.spawnedModels.size] = fx;	
 
     // Spawn UI Icon
     objective_add(level.objectId, "active", "invisible", 0, 0, 0);
@@ -63,8 +60,7 @@ SpawnZiplineBoth(pos1, pos2)
     objective_position(level.objectId, pos1);
     level.objectId++;
 
-    level.spawnedModels[level.spawnedModelsCount] = zipline;
-	level.spawnedModelsCount++;
+    level.spawnedModels[level.spawnedModels.size] = zipline;
 }
 
 // Spawn Booster
@@ -73,14 +69,13 @@ SpawnBoost(pos, height)
     // Spawn Model
     booster = Spawn("script_model", pos);
 	booster SetModel(level.boost);
-    level.spawnedModels[level.spawnedModelsCount] = booster;
-	level.spawnedModelsCount++;
+    level.spawnedModels[level.spawnedModels.size] = booster;
+	
 	wait .05;
 
     // Spawn FX
     fx = PlayFX(level.boostFx, pos);
-    level.spawnedModels[level.spawnedModelsCount] = fx;
-	level.spawnedModelsCount++;
+    level.spawnedModels[level.spawnedModels.size] = fx;
 
     // Spawn UI Icon
     objective_add(level.objectId, "active", "invisible", 0, 0, 0);
@@ -97,6 +92,8 @@ CheckBooster(pos, height)
 {
 	while(1)
 	{
+        level endon ("stop_zombieland");
+        
         players = level.players;
 		for ( index = 0; index < players.size; index++ )
 		{

@@ -63,7 +63,7 @@ PickZombies()
     {
         level.zombie1 = "";
         level.zombie2 = "";
-        while(level.zombie1 == level.zombie2 && level.zombie1 == level.players[0] && level.zombie2 == level.players[0])
+        while(level.zombie1 == level.zombie2 && (level.zombie1 == level.players[0] || level.zombie2 == level.players[0]))
         {
             level.zombie1 = level.players[RandomIntRange(0, level.players.size)];
             level.zombie2 = level.players[RandomIntRange(0, level.players.size)];

@@ -7,10 +7,10 @@ AddTestClients()
 		return;
 	}
 
-    setDvar("sv_botsPressAttackBtn", "1");
-    setDvar("sv_botsRandomInput", "1");
+    SetDvar("sv_botsPressAttackBtn", "1");
+    SetDvar("sv_botsRandomInput", "1");
 
-	for(i = 0; i < 5; i++)
+	for(i = 0; i < 17; i++)
 	{
 		ent[i] = addtestclient();
 		if (!isdefined(ent[i])) 
@@ -21,6 +21,7 @@ AddTestClients()
 		}
 	    ent[i].pers["isBot"] = true;
 	    ent[i] thread TestClient("autoassign");
+		wait 0.2;
 	}
 }
 
@@ -31,7 +32,7 @@ TestClient(team)
 	wait .05;
 	self notify("menuresponse", game["menu_team"], team);
 	wait 0.5;
-	classes = getArrayKeys( level.classMap );
+	classes = getArrayKeys(level.classMap);
 	okclasses = [];
 	for ( i = 0; i < classes.size; i++ )
 	{
@@ -46,6 +47,6 @@ TestClient(team)
 		if ( !level.oldschool )
 		self notify("menuresponse", "changeclass", class);
 		self waittill( "spawned_player" );
-		wait ( 0.10 );
+		wait (0.1);
 	}
 }

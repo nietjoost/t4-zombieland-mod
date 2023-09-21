@@ -1,3 +1,4 @@
+#include scripts\mp\utils\doorlogic;
 #include scripts\mp\utils\spawnlogic;
 #include scripts\mp\utils\spawnwalllogic;
 #include scripts\mp\events\wallweaponlogic;
@@ -10,6 +11,7 @@ Load()
     SpawnFlag((-1625, -1040, 13), (-1458, -1034, 24));
     SpawnFlag((1815, 1876, 153), (1994, 1960, 162));
     SpawnFlag((466, 680, 358), (451, 15, 23));
+    SpawnFlag((1618, 205, 32), (933, -517, 194));
 
     // Spawn Ziplines
     SpawnZipline((-1939, -1731, -37), (-1821, -1029, 16));
@@ -20,6 +22,9 @@ Load()
     // Spawn Boost
     SpawnBoost((320, 142, 26), 400);
     SpawnBoost((-1478, -11, 40), 650);
+
+    // Spawn door
+    SpawnDoor((869, -303, 201), (997, -303, 207), (0, 0, 120), (1233, 308, 201));
 
     // Spawn map edits
     CreateRamp(level.collisionModel, (-1644, 363, 65), (-1455, 366, 65), 35);
