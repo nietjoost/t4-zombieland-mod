@@ -95,6 +95,8 @@ OnPlayerSpawnedZL()
         self.phealth = level.resetHealth;
         self.maxhealth = self.phealth;
         self.health = self.maxhealth;
+        self.hint = "";
+        self.subHint = "";
 
         // MENU logic
         self thread CreateMoneyHUD();

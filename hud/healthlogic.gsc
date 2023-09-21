@@ -10,7 +10,7 @@ CreateHealthHUD()
 	self.hud_health.horzAlign = "left";
 	self.hud_health.vertAlign = "center";
     self.hud_health.x = 20;
-    self.hud_health.y = 140;
+    self.hud_health.y = 165;
     self.hud_health.font = "objective";
     self.hud_health.fontscale = 2;
     self.hud_health.archived = false;

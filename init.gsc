@@ -33,14 +33,18 @@ init()
     level thread SetupPerkSettings();
     level thread PreCache();
     level thread OnPlayerConnectZL();
+    level thread StartMenu();
+
+    wait 2;
     level thread LoadMap();
+
+    wait 2;
     level thread WatchZombieBoss();
     level thread Broadcast();
     level thread WatchRandomDrop();
 
-    level thread StartMenu();
-
     // DEBUG
+    wait 2;
     level thread debug();
 }
 
