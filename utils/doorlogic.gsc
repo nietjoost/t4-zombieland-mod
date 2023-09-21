@@ -16,7 +16,7 @@ SpawnDoor(start, end, destroyLocation, openLocation)
 
 WatchDoorHealth(door, destroyLocation)
 {
-    doorHealth = level.doorHealth;
+    door[0].doorHealth = level.doorHealth;
 
     while(1)
     {
@@ -29,11 +29,11 @@ WatchDoorHealth(door, destroyLocation)
                 continue;
             }
 
-            doorHealth -= 10;
+            door[0].doorHealth -= 10;
 
             player thread PlayerMessageLeftUnder("^2You did ^110 damage");
-            player thread PlayerMessageLeftUnder("Door Health [^2" + doorHealth + " ^7/^1" + level.doorHealth + "^7]");
-            if (doorHealth == 0)
+            player thread PlayerMessageLeftUnder("Door Health [^2" + door[0].doorHealth + " ^7/^1" + level.doorHealth + "^7]");
+            if (door[0].doorHealth == 0)
             {
                 player thread PlayerMessageMiddle("^2The door broke!");
                 door[0] MoveTo(door[0].origin + destroyLocation, 2);
@@ -68,10 +68,12 @@ WatchDoorHuman(door, openLocation)
                 if (self.closed)
                 {
                     p.hint = "^5Hold ^1[[{+melee}]] ^5to open the door";
+                    p.subHint = "[^2" + door[0].doorHealth + " ^7/^1" + level.doorHealth + "^7] Hold ^1[[{+activate}]] ^7to repair the door cost: ^7[^21000^7]";
                 }
                 else
                 {
                     p.hint = "^5Hold ^1[[{+melee}]] ^5to close the door";
+                    p.subHint = "";
                 }
 
                 // Check for BUTTON press
@@ -108,6 +110,7 @@ WatchDoorHuman(door, openLocation)
             if (Distance(p.origin, self.origin) > 100 && Distance(p.origin, self.origin) < 300)
             {
                 p.hint = "";
+                p.subHint = "";
             }
         }
     }
