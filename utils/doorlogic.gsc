@@ -119,12 +119,16 @@ CreateDoor(model, start, end, lengthspace)
     length = Distance(start, end);
    	blockslength = Ceil(length / lengthspace);
     blocks = [];
+    blocksCount = 0;
 
-    for (l = 0; l < blockslength; l ++)
+    for (l = 0; l < blockslength; l++)
     {
-        blocks[l] = SpawnDoorEntity("script_model", model, (start + ((end - start) / blockslength) * l), VectorToAngles(start - end));
-        
-        if (l !=0) blocks[l] LinkTo(blocks[0]);
+        blocks[blocksCount] = SpawnDoorEntity("script_model", model, (start + ((end - start) / blockslength) * l), VectorToAngles(start - end));    
+        if (blocksCount !=0) blocks[blocksCount] LinkTo(blocks[0]);
+        blocksCount++;
+        blocks[blocksCount] = SpawnDoorEntity("script_model", model, (start + ((end - start) / blockslength) * l) + (0, 0, 70), VectorToAngles(start - end));
+        blocks[blocksCount] LinkTo(blocks[0]);
+        blocksCount++;
     }
 
     return blocks;
@@ -136,8 +140,8 @@ SpawnDoorEntity(class, model, origin, angles)
     entity.angles = angles;
     entity SetModel(model);
     entity.pickup = false;
-    solid = spawn("trigger_radius",origin,0,64,50);
-	solid setContents(1);
+    solid = Spawn("trigger_radius",origin,0,64,50);
+	solid SetContents(1);
 	solid.targetname = "script_collision";
     solid LinkTo(entity);
     entity.solid = solid;

@@ -14,6 +14,7 @@ SetupSettings()
 	level.zombieBossFinal = false;
 
 	// Variables you can change
+	level.wallWeaponCost = 500;
 	level.zombieBossHealth = 100;
 	level.zombieBossTimer = 60;
 	level.doorHealth = 100;
@@ -82,6 +83,10 @@ GlobalSetting()
 
 	level.collision = "collision_wall_32x32x10";
 	level.collisionModel = "global_barrel_scummy";
+
+	// Custom map models
+	if (GetDvar("mapname") == "mp_asylum")
+		level.collisionModel = "dest_opel_blitz_tire_front_left_dmg1";
 }
 
 

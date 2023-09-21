@@ -6,8 +6,7 @@
 WatchRandomDrop()
 {
     // Wait 1 minute before giving random drops
-    //wait 60;
-    wait 5;
+    wait 60;
 
     // Start Random Drops
     while(1)
@@ -32,8 +31,7 @@ WatchRandomDrop()
             wait 0.1;
         }
 
-        //wait RandomIntRange(45, 75);
-        wait 15;
+        wait RandomIntRange(45, 75);
     }
 }
 

@@ -24,7 +24,10 @@ Load()
     SpawnBoost((-1478, -11, 40), 650);
 
     // Spawn door
-    SpawnDoor((869, -303, 201), (997, -303, 207), (0, 0, 120), (1233, 308, 201));
+    SpawnDoor((869, -303, 215), (997, -303, 215), (0, 0, 120), (869, -303, 335));
+
+    // Spawn weapons
+    CreateWallWeapon("thompson_mp", (-418, -279, 28), level.wallWeaponCost);
 
     // Spawn map edits
     CreateRamp(level.collisionModel, (-1644, 363, 65), (-1455, 366, 65), 35);
