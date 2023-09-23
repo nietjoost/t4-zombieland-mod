@@ -10,7 +10,8 @@ AddTestClients()
     SetDvar("sv_botsPressAttackBtn", "1");
     SetDvar("sv_botsRandomInput", "1");
 
-	for(i = 0; i < 17; i++)
+	currentPlayersCount = level.players.size;
+	for(i = 0; i < (18-currentPlayersCount); i++)
 	{
 		ent[i] = addtestclient();
 		if (!isdefined(ent[i])) 

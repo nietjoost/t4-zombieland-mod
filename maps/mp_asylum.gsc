@@ -27,6 +27,7 @@ Load()
     SpawnDoor((869, -303, 215), (997, -303, 215), (0, 0, 120), (869, -303, 335));
 
     // Spawn weapons
+    wait 1;
     CreateWallWeapon("thompson_mp", (-418, -279, 28), level.wallWeaponCost);
 
     // Spawn map edits

@@ -10,6 +10,8 @@ SetupSettings()
 	level.zombieBossHealth = 100;
 	level.zombieBossTimer = 60;
 	level.doorHealth = 100;
+	level.doorDamage = 10;
+	level.doorDamageCost = 25;
 	level.doorRepairCost = 1000;
 	level.resetHealth = 100;
 	level.buyHealthCost = 100;
@@ -49,7 +51,8 @@ SetupSettings()
 	level.g_TeamIcon_Axis = GetDvar("g_TeamIcon_Axis");
 	level.bg_fallDamageMinHeight = GetDvar("bg_fallDamageMinHeight");
 	level.bg_fallDamageMaxHeight = GetDvar("bg_fallDamageMaxHeight ");
-	level.scr_disable_weapondrop = GetDvar("scr_disable_weapondrop", 1);
+	level.scr_disable_weapondrop = GetDvar("scr_disable_weapondrop");
+	level.scr_tdm_scorelimit = GetDvar("scr_tdm_scorelimit");
 
     // Game settings
 	SetDvar("sv_cheats", "1");
@@ -71,6 +74,7 @@ SetupSettings()
 	SetDvar("bg_fallDamageMaxHeight ", 999999);
 	SetDvar("motd ", "^3You Played COD5 Zombieland, ^2Created by RooieRonnie!");
 	SetDvar("scr_disable_weapondrop", 1);
+	SetDvar("scr_tdm_scorelimit", 0);
 
 	// Set Fog
 	SetExpFog(200, 800, 0.5, 0.5, 0.5, 10);

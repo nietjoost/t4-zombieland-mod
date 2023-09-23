@@ -21,11 +21,11 @@ CreateWallWeapon(model, location, price)
 
 HandleWallWeapon()
 {
-    level endon ("stop_zombieland");
-    
-    for(;;) 
-    {      
-        wait 0.2;
+    while(1) 
+    {
+        level endon ("stop_zombieland");
+
+        wait 0.1;
         for ( i = 0; i < level.players.size; i++ )
         {	
             for ( k = 0; k < level.buyWeapons.size; k++ )
@@ -34,7 +34,7 @@ HandleWallWeapon()
                 b = level.buyWeapons[k];
 
                 //Set the hintstring
-                if (Distance(p.origin, b.origin) <= 70)
+                if (Distance(p.origin, b.origin) < 70)
                 {
                     if (p hasWeapon(b.name))
                     {
@@ -66,10 +66,12 @@ HandleWallWeapon()
                             if (p hasWeapon(b.name))
                             {
                                 p thread GiveBuyWeapon(b.name, "You bought ammo!");
+                                p.hint = "";
                             }
                             else
                             {
                                 p thread GiveBuyWeapon(b.name, "You bought the weapon!");
+                                p.hint = "";
                             }
                             
                             p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
@@ -91,7 +93,7 @@ HandleWallWeapon()
 // Rotate the buy weapon
 RotateWallWeapon(duration)
 {
-	for(;;)
+	while(1)
 	{
   		self rotateYaw(360,duration);
 		wait ((duration)-0.1);

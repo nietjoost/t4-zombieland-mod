@@ -1,4 +1,5 @@
 #include scripts\mp\hud\playermessage;
+#include scripts\mp\hud\moneylogic;
 #include scripts\mp\menu\menubuylogic;
 #include scripts\mp\utils\utils;
 
@@ -17,7 +18,7 @@ SpawnDoor(start, end, destroyLocation, openLocation)
 
 WatchDoorHealth(door, destroyLocation)
 {
-    door[0].doorHealth = level.doorHealth - 40;
+    door[0].doorHealth = level.doorHealth;
 
     while(1)
     {
@@ -30,9 +31,10 @@ WatchDoorHealth(door, destroyLocation)
                 continue;
             }
 
-            door[0].doorHealth -= 10;
+            door[0].doorHealth -= level.doorDamage;
 
-            player thread PlayerMessageLeftUnder("^2You did ^110 damage");
+            player thread PlayerMessageLeftUnder("^2You did ^1" + level.doorDamage + " damage");
+            player thread AddMoney(level.doorDamageCost);
             player thread PlayerMessageLeftUnder("Door Health [^2" + door[0].doorHealth + " ^7/^1" + level.doorHealth + "^7]");
             if (door[0].doorHealth == 0)
             {
