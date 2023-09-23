@@ -22,7 +22,14 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
         return;
     }
 
-    _self thread AddMoney(500);
+    if (_self.type == "human")
+    {
+        _self thread AddMoney(level.humanKillMoney);
+    }
+    else
+    {
+        _self thread AddMoney(level.zombieKillMoney);
+    }
     _self.kills++;
 
     // Check END

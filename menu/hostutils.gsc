@@ -81,6 +81,7 @@ StopZombieLand()
 	SetDvar("g_TeamIcon_Axis", level.g_TeamIcon_Axis);
     SetDvar("bg_fallDamageMinHeight", level.bg_fallDamageMinHeight);
 	SetDvar("bg_fallDamageMaxHeight", level.bg_fallDamageMaxHeight);
+    SetDvar("scr_disable_weapondrop", level.scr_disable_weapondrop);
 
     self thread PlayerMessageLeftUnder("Stopped all ^1ZombieLand ^5mod ^7related stuff!");
 }

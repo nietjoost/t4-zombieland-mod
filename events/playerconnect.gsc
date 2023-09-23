@@ -13,10 +13,11 @@ OnPlayerConnectZL()
     {
         level waittill("connected", player);
 
+        // Set Player settings
         player.spawned = false;
         player.usingZipline = false;
         player.type = "human";
-        player.money = 2000;
+        player.money = level.humanStartMoney;
         player.nextPerk = 4;
         player.kills = 0;
         player.isInvisible = false;
@@ -42,14 +43,14 @@ OnPlayerSpawnedZL()
         if (level.started == true && self.type == "human")
         {
             self.type = "zombie";
-            self.money = 100;
+            self.money = level.zombieStartMoney;
             self ChangeTeam("axis");
         }
 
-        // If game is started and zombie joins Humans
+        // If game is started and zombie joins Humans -> zombie
         if (level.started == true && self.type == "zombie" && self.pers["team"] == "allies")
         {
-            self.money = 100;
+            self.money = level.zombieStartMoney;
             self ChangeTeam("axis");
         }
 

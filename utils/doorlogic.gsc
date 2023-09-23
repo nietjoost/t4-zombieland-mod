@@ -1,4 +1,5 @@
 #include scripts\mp\hud\playermessage;
+#include scripts\mp\menu\menubuylogic;
 #include scripts\mp\utils\utils;
 
 // Door logic
@@ -16,7 +17,7 @@ SpawnDoor(start, end, destroyLocation, openLocation)
 
 WatchDoorHealth(door, destroyLocation)
 {
-    door[0].doorHealth = level.doorHealth;
+    door[0].doorHealth = level.doorHealth - 40;
 
     while(1)
     {
@@ -68,7 +69,7 @@ WatchDoorHuman(door, openLocation)
                 if (self.closed)
                 {
                     p.hint = "^5Hold ^1[[{+melee}]] ^5to open the door";
-                    p.subHint = "[^2" + door[0].doorHealth + " ^7/^1" + level.doorHealth + "^7] Hold ^1[[{+activate}]] ^7to repair the door cost: ^7[^21000^7]";
+                    p.subHint = "[^2" + door[0].doorHealth + " ^7/^1" + level.doorHealth + "^7] Hold ^1[[{+activate}]] ^7to repair the door cost: ^7[^2" + level.doorRepairCost + "^7]";
                 }
                 else
                 {
@@ -103,6 +104,24 @@ WatchDoorHuman(door, openLocation)
                         }
                         wait 1;
                     }
+                }
+
+                if(p UseButtonPressed())
+                {
+                    if(door[0].doorHealth == level.doorHealth)
+                    {
+                        p PlayerMessageMiddle("^1The door is already at max health!");
+                        continue;
+                    }
+                    
+                    if (p thread CheckMoney(level.doorRepairCost))
+                    {
+                        continue;
+                    }
+
+                    p PlayerMessageLeftUnder("^2You repaired the door!");
+                    door[0].doorHealth = level.doorHealth;
+                    wait 1;
                 }
             }
 

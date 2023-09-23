@@ -1,6 +1,20 @@
 // SERVER Settings
 SetupSettings()
 {
+	// Variables you can change
+	level.humanStartMoney = 500;
+	level.humanKillMoney = 100;
+	level.zombieStartMoney = 50;
+	level.zombieKillMoney = 50;
+	level.wallWeaponCost = 500;
+	level.zombieBossHealth = 100;
+	level.zombieBossTimer = 60;
+	level.doorHealth = 100;
+	level.doorRepairCost = 1000;
+	level.resetHealth = 100;
+	level.buyHealthCost = 100;
+	level.getHealthCost = 50;
+
     // Variables
     level.started = false;
     level.enoughPlayers = false;
@@ -12,15 +26,6 @@ SetupSettings()
 	level.spawnedModels = [];
 	level.zombieBoss = false;
 	level.zombieBossFinal = false;
-
-	// Variables you can change
-	level.wallWeaponCost = 500;
-	level.zombieBossHealth = 100;
-	level.zombieBossTimer = 60;
-	level.doorHealth = 100;
-	level.resetHealth = 100;
-	level.buyHealthCost = 100;
-	level.getHealthCost = 50;
 
 	// ICONS
 	PrecacheShader("specialty_gas_mask");
@@ -44,6 +49,7 @@ SetupSettings()
 	level.g_TeamIcon_Axis = GetDvar("g_TeamIcon_Axis");
 	level.bg_fallDamageMinHeight = GetDvar("bg_fallDamageMinHeight");
 	level.bg_fallDamageMaxHeight = GetDvar("bg_fallDamageMaxHeight ");
+	level.scr_disable_weapondrop = GetDvar("scr_disable_weapondrop", 1);
 
     // Game settings
 	SetDvar("sv_cheats", "1");
@@ -64,6 +70,7 @@ SetupSettings()
 	SetDvar("bg_fallDamageMinHeight", 999999);
 	SetDvar("bg_fallDamageMaxHeight ", 999999);
 	SetDvar("motd ", "^3You Played COD5 Zombieland, ^2Created by RooieRonnie!");
+	SetDvar("scr_disable_weapondrop", 1);
 
 	// Set Fog
 	SetExpFog(200, 800, 0.5, 0.5, 0.5, 10);

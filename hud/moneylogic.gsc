@@ -16,11 +16,6 @@ CreateMoneyHUD()
     self.hud_money.hidewhendead = true;
     self.hud_money.hidewheninmenu = true;
     self.hud_money SetText("Money: " + self.money);
-
-    //if (self.type == "zombie")
-    //{
-        //self.hud_money.color = (1, 0, 0);
-    //}
 }
 
 // MONEY animation
