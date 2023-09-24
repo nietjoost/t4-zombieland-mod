@@ -8,7 +8,7 @@ SpawnDoor(start, end, destroyLocation, openLocation)
 {
     door = CreateDoor(level.collisionModel, start, end, 35);      
 
-    doorTrigger = spawn("trigger_radius", door[0].origin, 0, 150, 150);
+    doorTrigger = Spawn("trigger_radius", door[0].origin, 0, 150, 150);
     doorTrigger.closed = true;
     doorTrigger.closedPos = doorTrigger.origin;
     doorTrigger thread WatchDoorHealth(door, destroyLocation);

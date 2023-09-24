@@ -1,4 +1,5 @@
 #include scripts\mp\utils\doorlogic;
+#include scripts\mp\utils\mysterybox;
 #include scripts\mp\utils\spawnlogic;
 #include scripts\mp\utils\spawnwalllogic;
 #include scripts\mp\events\wallweaponlogic;
@@ -28,7 +29,8 @@ Load()
 
     // Spawn weapons
     wait 1;
-    CreateWallWeapon("thompson_mp", (-418, -279, 28), level.wallWeaponCost);
+    //CreateWallWeapon("thompson_mp", (-418, -279, 28), level.wallWeaponCost);
+    SpawnMysteryBox((-418, -279, 28), (0,0,0));
 
     // Spawn map edits
     CreateRamp(level.collisionModel, (-1644, 363, 65), (-1455, 366, 65), 35);

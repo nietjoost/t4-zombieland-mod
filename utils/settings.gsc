@@ -16,6 +16,7 @@ SetupSettings()
 	level.resetHealth = 100;
 	level.buyHealthCost = 100;
 	level.getHealthCost = 50;
+	level.mysteryBoxCost = 950;
 
     // Variables
     level.started = false;
