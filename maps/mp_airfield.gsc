@@ -24,8 +24,8 @@ Load()
     CreateWallWeapon("bar_mp", (2989, 2277, -60), level.wallWeaponCost);
 
     // Spawn doors
-    SpawnDoor((2407, 1417, 104), (2303, 1498, 104), (0, 0, 120), (2488, 1331, 104));
-    SpawnDoor((2950, 1649, -43), (2834, 1741, -43), (0, 0, 200), (2799, 1742, -43));
+    SpawnDoor((2407, 1417, 104), (2303, 1498, 104), (0, 0, 120));
+    SpawnDoor((2950, 1649, -43), (2834, 1741, -43), (0, 0, 200));
 
     // Spawn map edits
     //CreateFloor(level.collisionModel, (3139, 282, -52), (3366, 494, -52), self.angles, 35, 35, 60);

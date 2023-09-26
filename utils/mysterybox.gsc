@@ -60,6 +60,7 @@ WatchMBHuman()
                     {
                         if (p IsHuman() == false)
                         {
+                            p thread PlayerMessageLeftUnder("Zombies can not use the Mystery Box!");
                             continue;
                         }
 

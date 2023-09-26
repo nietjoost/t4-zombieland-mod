@@ -4,19 +4,19 @@
 #include scripts\mp\utils\utils;
 
 // Door logic
-SpawnDoor(start, end, destroyLocation, openLocation)
+SpawnDoor(start, end, openLocation)
 {
     door = CreateDoor(level.collisionModel, start, end, 35);      
 
     doorTrigger = Spawn("trigger_radius", door[0].origin, 0, 150, 150);
     doorTrigger.closed = true;
     doorTrigger.closedPos = doorTrigger.origin;
-    doorTrigger thread WatchDoorHealth(door, destroyLocation);
+    doorTrigger thread WatchDoorHealth(door, openLocation);
     doorTrigger thread WatchDoorHuman(door, openLocation);
 }
 
 
-WatchDoorHealth(door, destroyLocation)
+WatchDoorHealth(door, openLocation)
 {
     door[0].doorHealth = level.doorHealth;
 
@@ -39,7 +39,7 @@ WatchDoorHealth(door, destroyLocation)
             if (door[0].doorHealth == 0)
             {
                 player thread PlayerMessageMiddle("^2The door broke!");
-                door[0] MoveTo(door[0].origin + destroyLocation, 2);
+                door[0] MoveTo(door[0].origin + openLocation, 2);
                 self Delete();
 
                 for (i = 0; i < door.size; i++)
@@ -87,7 +87,7 @@ WatchDoorHuman(door, openLocation)
                     {
                         if (self.closed)
                         {                
-                            door[0] MoveTo(openLocation, 2);
+                            door[0] MoveTo(door[0].origin + openLocation, 2);
                             for (i = 0; i < door.size; i++)
                             {
                                 door[i].solid setContents(0);
