@@ -8,7 +8,7 @@ SpawnMysteryBox(location, angle)
 {
     mb = Spawn("script_model", location);
     mb.angles = angle;
-	mb SetModel(level.collisionModel);
+	mb SetModel(level.mysteryBoxModel);
 
     mbTrigger = Spawn("trigger_radius", location, 0, 50, 50);
     mb thread WatchMBHuman();
@@ -39,11 +39,12 @@ WatchMBHuman()
                     {
                         wait 0.1;
                         if (p MeleeButtonPressed())
-                        {               
+                        {
                             p GiveWeapon(self.randomWeapon);
                             p GiveMaxAmmo(self.randomWeapon);
                             p SwitchToWeapon(self.randomWeapon);
                             p PlayerMessageLeftUnder("^5You got the weapon!");
+                            p PlaySound("carbine_first_raise");
                             self.currentWeapon Delete();     
                             p.hint = "";        
                             wait 2;
@@ -73,6 +74,7 @@ WatchMBHuman()
                         self.user = p.name;
                         self.totalUses++;
                         p PlayerMessageLeftUnder("^5You purchased the ^1Mystery Box^5!");
+                        p PlaySound("flare_exp");
                         p.hint = "";
 
                         // Mystery Box show logic
@@ -86,7 +88,8 @@ WatchMBHuman()
                         {
                             self.randomWeapon = level.mbweapons[RandomIntRange(0, level.mbweapons.size)];
                             self.currentWeapon SetModel(GetWeaponModel(self.randomWeapon));
-                            wait 0.30;
+                            p PlaySound("ui_mp_suitcasebomb_timer");
+                            wait 0.3;
                         }
                         self.currentWeapon MoveTo(self.currentWeapon.origin + (0, 0, -30), 30, 2, 2);
                         self.inAnimation = false;
