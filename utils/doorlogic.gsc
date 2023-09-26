@@ -164,7 +164,7 @@ SpawnDoorEntity(class, model, origin, angles)
     entity.angles = angles;
     entity SetModel(model);
     entity.pickup = false;
-    solid = Spawn("trigger_radius",origin,0,64,50);
+    solid = Spawn("trigger_radius",origin,0,64,30);
 	solid SetContents(1);
 	solid.targetname = "script_collision";
     solid LinkTo(entity);

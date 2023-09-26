@@ -74,8 +74,9 @@ SetupSettings()
 	SetDvar("bg_fallDamageMinHeight", 999999);
 	SetDvar("bg_fallDamageMaxHeight ", 999999);
 	SetDvar("motd ", "^3You Played COD5 Zombieland, ^2Created by RooieRonnie!");
-	SetDvar("scr_disable_weapondrop", 1);
 	SetDvar("scr_tdm_scorelimit", 0);
+	SetDvar("scr_showperksonspawn", 0);
+	SetDvar("scr_game_hardpoints", 0); //Disable killstreaks
 
 	// Set Fog
 	SetExpFog(200, 800, 0.5, 0.5, 0.5, 10);
