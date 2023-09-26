@@ -2,7 +2,7 @@
 SetupSettings()
 {
 	// Variables you can change
-	level.humanStartMoney = 500;
+	level.humanStartMoney = 3000;
 	level.humanKillMoney = 100;
 	level.zombieStartMoney = 50;
 	level.zombieKillMoney = 50;
@@ -95,6 +95,7 @@ GlobalSetting()
 
 	level.collision = "collision_wall_32x32x10";
 	level.collisionModel = "global_barrel_scummy";
+	level.mysteryBoxModel = "test_sphere_silver";
 
 	// Custom map models
 	if (GetDvar("mapname") == "mp_asylum")
@@ -112,4 +113,5 @@ PreCache()
 
 	PrecacheModel(level.collision);
 	PrecacheModel(level.collisionModel);
+	PrecacheModel(level.mysteryBoxModel);
 }
