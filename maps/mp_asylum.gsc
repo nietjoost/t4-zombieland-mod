@@ -25,13 +25,17 @@ Load()
     SpawnBoost((-1478, -11, 40), 650);
 
     // Spawn door
+    wait 1;
     SpawnDoor((869, -303, 215), (1025, -303, 215), (0, 0, 120));
     SpawnDoor((71, -446, 220), (69, -709, 220), (0, 0, 120));
 
     // Spawn weapons
     wait 1;
     CreateWallWeapon("thompson_mp", (-418, -279, 28), level.wallWeaponCost);
-    SpawnMysteryBox((934, 202, 194), (0,0,0));
+    CreateWallWeapon("bar_mp", (218, -1454, -20), level.wallWeaponCost);
+    CreateWallWeapon("ppsh_bigammo_mp", (-459, 757, 358), level.wallWeaponCost);
+    CreateWallWeapon("fg42_telescopic_mp", (824, 587, 32), level.wallWeaponCost);
+    SpawnMysteryBox((934, 202, 194), (0, 90, 0));
 
     // Spawn map edits
     CreateRamp(level.collisionModel, (-1644, 363, 65), (-1455, 366, 65), 35);
