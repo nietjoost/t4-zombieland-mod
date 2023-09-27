@@ -16,86 +16,83 @@ CreateWallWeapon(model, location, price)
     level.spawnedModels[level.spawnedModels.size] = fx;
 
     // Handle in-game
-    weapon thread RotateWallWeapon(7.5);
+    weapon thread RotateWallWeapon();
+    weapon thread WatchBuyWallWeapon();
 }
 
-HandleWallWeapon()
+WatchBuyWallWeapon()
 {
     while(1) 
     {
         level endon ("stop_zombieland");
 
-        wait 0.1;
         for ( i = 0; i < level.players.size; i++ )
-        {	
-            for ( k = 0; k < level.buyWeapons.size; k++ )
+        {
+            p = level.players[i];
+
+            //Set the hintstring
+            if (Distance(p.origin, self.origin) < 70)
             {
-                p = level.players[i];
-                b = level.buyWeapons[k];
-
-                //Set the hintstring
-                if (Distance(p.origin, b.origin) < 70)
+                if (p hasWeapon(self.name))
                 {
-                    if (p hasWeapon(b.name))
-                    {
-                        p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
-                    }
-                    else
-                    {
-                        p.hint = "^5Hold ^1[[{+activate}]] ^5to buy weapon";
-                    }
+                    p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
+                }
+                else
+                {
+                    p.hint = "^5Hold ^1[[{+activate}]] ^5to buy weapon";
+                }
 
-                    // Check for BUTTON press
+                // Check for BUTTON press
+                if (p UseButtonPressed())
+                {
+                    wait 0.1;
                     if (p UseButtonPressed())
                     {
-                        wait 0.1;
-                        if (p UseButtonPressed())
+                        if (p.type == "zombie")
                         {
-                            if (p.type == "zombie")
-                            {
-                                p thread PlayerMessageLeftUnder("Zombies can not buy a weapon!");
-                                p.hint = "";
-                                return;
-                            }
-
-                            if (p thread CheckMoney(b.price))  
-                            {  
-                                return;
-                            }
-                            
-                            if (p hasWeapon(b.name))
-                            {
-                                p thread GiveBuyWeapon(b.name, "You bought ammo!");
-                                p.hint = "";
-                            }
-                            else
-                            {
-                                p thread GiveBuyWeapon(b.name, "You bought the weapon!");
-                                p.hint = "";
-                            }
-                            
-                            p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
-                            wait 0.2;
+                            p thread PlayerMessageLeftUnder("Zombies can not buy a weapon!");
+                            p.hint = "";
+                            wait 0.5;
+                            return;
                         }
+
+                        if (p thread CheckMoney(self.price))
+                        {  
+                            return;
+                        }
+                        
+                        if (p hasWeapon(self.name))
+                        {
+                            p thread GiveBuyWeapon(self.name, "You bought ammo!");
+                            p.hint = "";
+                        }
+                        else
+                        {
+                            p thread GiveBuyWeapon(self.name, "You bought the weapon!");
+                            p.hint = "";
+                        }
+                        
+                        p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
                     }
                 }
-
-                // Remove the hintstring
-                if (Distance(p.origin, b.origin) > 70 && Distance(p.origin, b.origin) < 300)
-                {
-                    p.hint = "";
-                }
             }
+
+            // Remove the hintstring
+            if (Distance(p.origin, self.origin) > 70 && Distance(p.origin, self.origin) < 300)
+            {
+                p.hint = "";
+            }
+            wait 0.1;
         }
     }
 }
 
 // Rotate the buy weapon
-RotateWallWeapon(duration)
+RotateWallWeapon()
 {
 	while(1)
 	{
-  		self rotateYaw(360,duration);
-		wait ((duration)-0.1);
+  		self rotateYaw(360,7.5);
+		wait ((7.5)-0.1);
 	}
 }

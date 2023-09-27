@@ -21,7 +21,6 @@ LoadMap()
 
     // Check for teleport flags
     level thread CheckZiplines();
-    level thread HandleWallWeapon();
     level thread CheckHintString();
 
     // BACKUP code
