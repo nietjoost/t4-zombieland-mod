@@ -4,6 +4,7 @@ SetupSettings()
 	// Variables you can change
 	level.humanStartMoney = 3000;
 	level.humanKillMoney = 100;
+	level.humanSurvivingBonus = 50;
 	level.zombieStartMoney = 50;
 	level.zombieKillMoney = 50;
 	level.wallWeaponCost = 500;
