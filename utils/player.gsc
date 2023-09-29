@@ -47,6 +47,11 @@ GiveZombieClass()
         return;
     }
 
+    if (self getCurrentWeapon() == "357magnum_mp" && self.isInMegaZombie == true)
+    {
+        return;
+    }
+
     self thread GiveZombieClass();
 }
 

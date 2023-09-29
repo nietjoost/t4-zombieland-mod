@@ -93,6 +93,7 @@ GlobalSetting()
 	level.weaponFx = LoadFX("misc/ui_flagbase_gold");
 	level.boost = "prop_flag_american";
 	level.boostFx = LoadFX("misc/ui_flagbase_silver");
+	level.expBull = loadfx("explosions/grenadeExp_concrete_1");
 
 	level.collision = "collision_wall_32x32x10";
 	level.collisionModel = "global_barrel_scummy";

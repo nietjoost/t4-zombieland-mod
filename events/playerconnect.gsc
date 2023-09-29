@@ -21,6 +21,7 @@ OnPlayerConnectZL()
         player.nextPerk = 4;
         player.kills = 0;
         player.isInvisible = false;
+        player.isInMegaZombie = false;
 
         player thread OnPlayerSpawnedZL();
 
