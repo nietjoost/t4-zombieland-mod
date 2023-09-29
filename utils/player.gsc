@@ -23,10 +23,10 @@ GiveZombieClass()
 {
     self ClearPerks();
     self TakeAllWeapons();
-    self giveWeapon("colt_mp");
-    self switchToWeapon("colt_mp");
-    self setWeaponAmmoStock("colt_mp", 0);
-    self setWeaponAmmoClip("colt_mp", 0);
+    self GiveWeapon("colt_mp");
+    self SwitchToWeapon("colt_mp");
+    self SetWeaponAmmoStock("colt_mp", 0);
+    self SetWeaponAmmoClip("colt_mp", 0);
 
     self thread ResetMenu();
 
@@ -47,12 +47,44 @@ GiveZombieClass()
         return;
     }
 
-    if (self getCurrentWeapon() == "357magnum_mp" && self.isInMegaZombie == true)
+    if (self GetCurrentWeapon() == "357magnum_mp" && self.isInMegaZombie == true)
     {
         return;
     }
 
+    if (self GetCurrentWeapon() == "satchel_charge_mp")
+    {
+        wait 0.4;
+    }
+
     self thread GiveZombieClass();
+}
+
+WatchTactical()
+{
+    if (self.tacticalSet == false)
+    {
+        self GiveWeapon("satchel_charge_mp");
+    }
+
+    self endon ("death");
+	self endon ("disconnect");
+	self waittill("weapon_change", weapon);
+
+    wait 0.2;
+
+    if (weapon == "satchel_charge_mp" && self.tacticalSet == false)
+    {
+        self.tacticalSet = true;
+        self.tacticalPos = self.origin;
+        self TakeWeapon("satchel_charge_mp");
+        self thread PlayerMessageMiddle("^2Tactical Insertion set!");
+    }
+    else
+    {
+        wait 1;
+        self thread WatchTactical();
+    }
 }
 
 

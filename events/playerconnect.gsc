@@ -22,6 +22,7 @@ OnPlayerConnectZL()
         player.kills = 0;
         player.isInvisible = false;
         player.isInMegaZombie = false;
+        player.tacticalSet = false;
 
         player thread OnPlayerSpawnedZL();
 
@@ -90,7 +91,16 @@ OnPlayerSpawnedZL()
         }
         else
         {
+            self thread WatchTactical();
+            wait 0.1;
             self thread GiveZombieClass();
+
+            // Tactical Insertion
+            if (self.tacticalSet == true)
+            {
+                self.tacticalSet = false;
+                self SetOrigin(self.tacticalPos);
+            }
         }
 
         // Player settings reset on spawn
