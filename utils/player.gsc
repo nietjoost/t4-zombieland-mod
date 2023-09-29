@@ -1,5 +1,6 @@
 #include scripts\mp\menu\menu;
 #include scripts\mp\hud\healthlogic;
+#include scripts\mp\hud\moneylogic;
 #include scripts\mp\hud\playermessage;
 
 // Classes
@@ -102,4 +103,44 @@ GivePlayerHealth(localHealth)
 {
     self thread PlayerMessageLeftUnder("You got ^2" + localHealth + " ^7extra ^1health");
     self AddHealth(localHealth);
+}
+
+GivePlayerMoney(localMoney)
+{
+    self thread PlayerMessageLeftUnder("You got ^2" + localMoney + " ^7extra ^1money");
+    self AddMoney(localMoney);
+}
+
+GivePlayerSteelSkin(localHealth)
+{
+    self endon ("disconnect");
+    self endon ("death");
+
+    self thread PlayerMessageLeftUnder("You got ^2Steel Skin ^7for ^520 seconds");
+    self.beforeFunctionHealth = self.phealth;
+    self.phealth += localHealth;
+    self.maxhealth = self.phealth;
+    self.health = self.maxhealth;
+    self thread CreateHealthHUD();
+
+    wait 20;
+    self thread PlayerMessageLeftUnder("Your ^2Steel Skin ^7is over");
+    self.phealth = self.beforeFunctionHealth;
+    self.maxhealth = self.phealth;
+    self.health = self.maxhealth;
+    self thread CreateHealthHUD();
+}
+
+GiveRandomPerk()
+{
+    self thread PlayerMessageLeftUnder("You got a ^2Random Perk");
+    self SetPerk(level.perks[RandomIntRange(0, level.perks.size)]);
+}
+
+GiveRandomWeapon()
+{
+    randomWeapon = level.mbweapons[RandomIntRange(0, level.mbweapons.size)];
+    self thread PlayerMessageLeftUnder("You got a ^2Random Weapon^7 " + randomWeapon);
+    self giveWeapon(randomWeapon);
+    self giveMaxAmmo(randomWeapon);
 }

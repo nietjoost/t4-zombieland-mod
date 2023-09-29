@@ -16,17 +16,16 @@ WatchRandomDrop()
         for ( i = 0; i < level.players.size; i++ )
         {	
             p = level.players[i];
-            randomInt = RandomIntRange(1, 4);
 
             p thread PlayerMessageMiddle("^5You got a random drop!");
 
             if (p IsHuman())
             {
-                p thread GiveHumanDrop(randomInt);
+                p thread GiveHumanDrop();
             }
             else
             {
-                p thread GiveZombieDrop(randomInt);
+                p thread GiveZombieDrop();
             }
             wait 0.1;
         }
@@ -35,27 +34,48 @@ WatchRandomDrop()
     }
 }
 
-
 GiveHumanDrop(randomInt)
 {
-    if (randomInt == 1)
+    randomIntHuman = RandomIntRange(1, 8);
+
+    if (randomIntHuman == 1)
         self GiveInvisible(10);
     
-    if (randomInt == 2)
+    if (randomIntHuman == 2)
         self GivePlayerMaxAmmo();
 
-    if (randomInt == 3)
+    if (randomIntHuman == 3)
         self GivePlayerHealth(25);
+
+    if (randomIntHuman == 4)
+        self GivePlayerMoney(25);
+
+    if (randomIntHuman == 5)
+        self GivePlayerSteelSkin(1500);
+
+    if (randomIntHuman == 6)
+        self GiveRandomPerk();
+
+    if (randomIntHuman == 7)
+        self GiveRandomWeapon();
 }
 
 GiveZombieDrop(randomInt)
 {
-    if (randomInt == 1)
-        self GiveInvisible(10);
-    
-    if (randomInt == 2)
-        self GivePlayerMaxAmmo();
+    randomIntZombie = RandomIntRange(1, 7);
 
-    if (randomInt == 3)
+    if (randomIntZombie == 1)
+        self GiveInvisible(10);
+
+    if (randomIntZombie == 3)
         self GivePlayerHealth(50);
+
+    if (randomIntZombie == 4)
+        self GivePlayerMoney(25);
+
+    if (randomIntZombie == 5)
+        self GivePlayerSteelSkin(300);
+
+    if (randomIntZombie == 6)
+        self GiveRandomPerk();
 }

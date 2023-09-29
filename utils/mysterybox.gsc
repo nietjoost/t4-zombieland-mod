@@ -24,8 +24,13 @@ WatchMBHuman()
     while(1)
     {
         for ( i = 0; i < level.players.size; i++ )
-        {  
+        {
             p = level.players[i];
+
+            if (p IsHuman() == false) 
+		    {
+                continue;
+            }
 
             //Set the hintstring
             if (Distance(p.origin, self.origin) <= 50)

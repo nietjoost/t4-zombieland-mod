@@ -85,7 +85,7 @@ GiveM1Garand()
 // Give Perk functions
 GiveBuyPerk(perk, msg)
 {
-    self setperk(perk);
+    self SetPerk(perk);
     self thread PlayerMessageLeftUnder(msg);
 }
 
