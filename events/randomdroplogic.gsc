@@ -45,13 +45,31 @@ GiveHumanDrop(randomInt)
         self GivePlayerMaxAmmo();
 
     if (randomIntHuman == 3)
-        self GivePlayerHealth(25);
+    {
+        if (self.isInMegaZombie == true)
+        {
+            self GivePlayerMoney(25);
+        }
+        else
+        {
+            self GivePlayerHealth(25);
+        }
+    }
 
     if (randomIntHuman == 4)
         self GivePlayerMoney(25);
 
     if (randomIntHuman == 5)
-        self GivePlayerSteelSkin(1500);
+    {
+        if (self.isInMegaZombie == true)
+        {         
+            self GivePlayerMoney(25);
+        }
+        else
+        {
+            self GivePlayerSteelSkin(1500);
+        }
+    }
 
     if (randomIntHuman == 6)
         self GiveRandomPerk();

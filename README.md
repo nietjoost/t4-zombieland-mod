@@ -46,6 +46,8 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 - MegaZombie
 - Breakable doors
 - Mystery Box
+- Random Drops
+- Zombie Tactical Insertion
 - Ending game when a team has won
 - Able to disable the mod as a host
 - No extra advantages for the host
