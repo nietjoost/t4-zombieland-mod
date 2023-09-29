@@ -39,7 +39,6 @@ WatchZombieBoss()
 				p.zpos = zpos;
 				zpos++;
 				p.isInMegaZombie = true;
-				p TakeWeapon("colt_mp");
 				p FreezeControls(true);
 				p GiveMegaZombieClass();
 				p thread ZombieBossFire();
@@ -67,14 +66,15 @@ StartZombieBoss(zombies)
 		if(p.zpos == 2) p.newPos = (level.mzs.origin + (0,-40,130));
 		if(p.zpos == 3) p.newPos = (level.mzs.origin + (0,40,130));
 		if(p.zpos == 4) p.newPos = (level.mzs.origin + (0,0,180));
-		if(p.zpos == 5) p.newPos = (level.mzs.origin + (0,60,0));
-		if(p.zpos == 6) p.newPos = (level.mzs.origin + (0,-60,0));
+		if(p.zpos == 5) p.newPos = (level.mzs.origin + (0,-60,250));
+		if(p.zpos == 6) p.newPos = (level.mzs.origin + (0,-0,320));
 		if(p.zpos == 7) p.newPos = (level.mzs.origin + (0,-80,100));
 		if(p.zpos == 8) p.newPos = (level.mzs.origin + (0,80,100));
 		if(p.zpos == 9) p.newPos = (level.mzs.origin + (0,0,240));
 		if(p.zpos == 10) p.newPos = (level.mzs.origin + (0,60,250));
-		if(p.zpos == 11) p.newPos = (level.mzs.origin + (0,-60,250));
-		if(p.zpos == 12) p.newPos = (level.mzs.origin + (0,-0,320));
+		if(p.zpos == 11) p.newPos = (level.mzs.origin + (0,80,350));
+		if(p.zpos == 12) p.newPos = (level.mzs.origin + (0,-80,350));
+
 		if(p.zpos != 0)	p SetOrigin(p.newPos);
 		if(p.zpos != 0)	p LinkTo(level.mzs);
 
@@ -138,22 +138,29 @@ ZombieBossFire()
 
 	wait .2;
 
+	self TakeAllWeapons();
+	wait 0.5;
 	self GiveWeapon("357magnum_mp");
 	self SetWeaponAmmoClip("357magnum_mp", 1);
 	self SetWeaponAmmoStock("357magnum_mp", 0);
 	wait .1;
 	self SwitchToWeapon("357magnum_mp");
 	while(1)
-	{	
+	{
 		self waittill("weapon_fired");
-		my = self GetTagOrigin("j_head");
-		trace = BulletTrace(my, my + anglestoforward(self getplayerangles())*100000,true,self)["position"];
-		Playfx(level.expBull, trace);
-		self PlaySound("artillery_impact");
-		RadiusDamage(trace, 100, 51, 20, self);
-		EarthQuake(1.5, 1, self.origin, 20);
-		wait 1.5;
-		self SetWeaponAmmoClip("357magnum_mp", 1);
+		self TakeWeapon("colt_mp");
+
+		if (self GetCurrentWeapon() == "357magnum_mp" && self.isInMegaZombie == true)
+		{
+			my = self GetTagOrigin("j_head");
+			trace = BulletTrace(my, my + AnglesToForward(self GetPlayerAngles())*100000,true,self)["position"];
+			PlayFx(level.expBull, trace);
+			self PlaySound("artillery_impact");
+			RadiusDamage(trace, 100, 51, 20, self);
+			EarthQuake(0.9, 2, self.origin, 30);
+			wait 1.5;
+			self SetWeaponAmmoClip("357magnum_mp", 1);
+		}
 	}
 }
 
