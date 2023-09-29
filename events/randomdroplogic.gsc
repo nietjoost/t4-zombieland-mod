@@ -13,6 +13,13 @@ WatchRandomDrop()
     {
         level endon ("stop_zombieland");
 
+        // Block messages if game is ended
+        if (level.ended == true)
+        {
+            continue;
+        }
+
+        // Random drop logic
         for ( i = 0; i < level.players.size; i++ )
         {	
             p = level.players[i];

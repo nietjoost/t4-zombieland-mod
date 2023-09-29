@@ -12,6 +12,13 @@ Broadcast()
 
     while(1)
     {
+        // Block messages if game is ended
+        if (level.ended == true)
+        {
+            continue;
+        }
+
+        // Broadcast logic
         AllPlayerMessageLeftUnder(messages[messagesCount]);
         messagesCount++;
 
