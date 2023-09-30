@@ -18,6 +18,8 @@ OnPlayerConnectZL()
         player.usingZipline = false;
         player.type = "human";
         player.money = level.humanStartMoney;
+        player.moneyHudArray = [];
+        player.moneyHudArrayCount = 0;
         player.nextPerk = 4;
         player.kills = 0;
         player.isInvisible = false;

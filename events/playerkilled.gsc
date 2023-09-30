@@ -8,9 +8,9 @@
 OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeoffset, deathanimduration)
 {
     //DEBUG
-    //_self iPrintLn(_self);
+    _self iPrintLn(_self.name);
     //_self iPrintLn(inflictor);
-    //_self iPrintLn(attacker);
+    //attacker iPrintLn(attacker.name);
 
     // Check for running mod
 	if (level.stopZombieLand == true)
@@ -35,12 +35,15 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
     _self.kills++;
 
     // Surviving money
-    humans = GetPlayerHumans();
-    for ( i = 0; i < humans.size; i++ )
+    if (_self.type == "zombie")
     {
-        p = humans[i];
-        p thread PlayerMessageMiddle("You got ^2$" + level.humanSurvivingBonus + " ^7Survivor ^5Bonus!");
-        p thread AddMoney(level.humanSurvivingBonus);
+        humans = GetPlayerHumans();
+        for ( i = 0; i < humans.size; i++ )
+        {
+            p = humans[i];
+            p thread PlayerMessageMiddle("You got ^2$" + level.humanSurvivingBonus + " ^7Survivor ^5Bonus!");
+            p thread AddMoney(level.humanSurvivingBonus);
+        }
     }
 
     // Check END

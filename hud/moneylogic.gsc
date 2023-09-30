@@ -21,27 +21,41 @@ CreateMoneyHUD()
 // MONEY animation
 AnimateMoneyHUD(localMoney, color)
 {
-    self.hud_money_extra destroy();
+    if (self.moneyHudArrayCount == 5)
+    {
+        self.moneyHudArray[0] Destroy();
+        self.moneyHudArray[1] Destroy();
+        self.moneyHudArray[2] Destroy();
+        self.moneyHudArray[3] Destroy();
+        self.moneyHudArray[4] Destroy();
+        self.moneyHudArrayCount = 0;
+    }
 
-    self.hud_money_extra = newClientHudElem(self);
-    self.hud_money_extra.alignX = "left";
-    self.hud_money_extra.alignY = "left";
-    self.hud_money_extra.x = 10;
-    self.hud_money_extra.y = 190;
-    self.hud_money_extra.font = "objective";
-    self.hud_money_extra.fontscale = 2.3;
-    self.hud_money_extra.color = color;
-    self.hud_money_extra SetText("$" + localMoney);
-    self.hud_money_extra.hidewhendead = true;
-    self.hud_money_extra.hidewheninmenu = true;
-    self.hud_money_extra MoveOverTime(2);
-    self.hud_money_extra FadeOverTime(2);
-    self.hud_money_extra.x = RandomIntRange(130, 170);
-    self.hud_money_extra.y = RandomIntRange(190, 260);
+    self.moneyHudArray[self.moneyHudArrayCount] = newClientHudElem(self);
+    self.moneyHudArray[self.moneyHudArrayCount].alignX = "left";
+    self.moneyHudArray[self.moneyHudArrayCount].alignY = "left";
+    self.moneyHudArray[self.moneyHudArrayCount].x = 10;
+    self.moneyHudArray[self.moneyHudArrayCount].y = 190;
+    self.moneyHudArray[self.moneyHudArrayCount].font = "objective";
+    self.moneyHudArray[self.moneyHudArrayCount].fontscale = 2.3;
+    self.moneyHudArray[self.moneyHudArrayCount].color = color;
+    self.moneyHudArray[self.moneyHudArrayCount] SetText("$" + localMoney);
+    self.moneyHudArray[self.moneyHudArrayCount].hidewhendead = true;
+    self.moneyHudArray[self.moneyHudArrayCount].hidewheninmenu = true;
+    self.moneyHudArray[self.moneyHudArrayCount] MoveOverTime(2);
+    self.moneyHudArray[self.moneyHudArrayCount] FadeOverTime(2);
+    self.moneyHudArray[self.moneyHudArrayCount].x = RandomIntRange(130, 170);
+    self.moneyHudArray[self.moneyHudArrayCount].y = RandomIntRange(190, 260);
 
+    level thread DestroyAnimationHUD(self.moneyHudArray[self.moneyHudArrayCount]);
+
+    self.moneyHudArrayCount++;
+}
+
+DestroyAnimationHUD(hud)
+{
     wait 1.5;
-
-    self.hud_money_extra destroy();
+    hud Destroy();
 }
 
 // ADD money
