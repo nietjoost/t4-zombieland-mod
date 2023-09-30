@@ -10,7 +10,7 @@ StartZombieLand()
 {
     //Check for bots
     level thread SpawnBot();
-    
+
     // Stop logic when another player joins
     if (level.enoughPlayers == true)
     {
@@ -33,7 +33,7 @@ StartZombieLand()
     AllPlayerMessageMiddle("^12");
     wait 1;
     AllPlayerMessageMiddle("^11");
-    
+
     // Check for running mod
 	if (level.stopZombieLand == true)
 	{
@@ -103,7 +103,7 @@ CheckEnd()
         AllPlayerMessageMiddle("^2Player ^7" + GetPlayerWithMostKills().name + " ^2had the most kills!");
         AllPlayerMessageMiddle("^5The Humans Survived: ^7"+ level.minutes +" ^5mins and ^7"+ level.seconds +" ^5secs.");
         for ( i = 0; i < level.players.size; i++ )
-        {	
+        {
             p = level.players[i];
             p FreezeControls(true);
             p PlaySound("mp_defeat");

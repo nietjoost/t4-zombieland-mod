@@ -54,7 +54,7 @@ debug()
 	{
         level endon ("stop_zombieland");
 
-        wait 1;    
+        wait 1;
         level.onForfeit = ::FixForfeit;
 
         //DEBUG

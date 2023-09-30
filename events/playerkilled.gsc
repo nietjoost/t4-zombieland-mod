@@ -8,7 +8,7 @@
 OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeoffset, deathanimduration)
 {
     //DEBUG
-    _self iPrintLn(_self.name);
+    //_self iPrintLn(_self.name);
     //_self iPrintLn(inflictor);
     //attacker iPrintLn(attacker.name);
 
@@ -37,12 +37,15 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
     // Surviving money
     if (_self.type == "zombie")
     {
-        humans = GetPlayerHumans();
-        for ( i = 0; i < humans.size; i++ )
+        if (_self.name != attacker.name)
         {
-            p = humans[i];
-            p thread PlayerMessageMiddle("You got ^2$" + level.humanSurvivingBonus + " ^7Survivor ^5Bonus!");
-            p thread AddMoney(level.humanSurvivingBonus);
+            humans = GetPlayerHumans();
+            for ( i = 0; i < humans.size; i++ )
+            {
+                p = humans[i];
+                p thread PlayerMessageMiddle("You got ^2$" + level.humanSurvivingBonus + " ^7Survivor ^5Bonus!");
+                p thread AddMoney(level.humanSurvivingBonus);
+            }
         }
     }
 

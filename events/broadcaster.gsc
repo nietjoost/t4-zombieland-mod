@@ -24,7 +24,7 @@ Broadcast()
 
         if (messagesCount > messages.size)
         {
-            messagesCount = 0;      
+            messagesCount = 0;
         }
         wait 30;
     }

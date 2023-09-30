@@ -27,7 +27,7 @@ WatchMBHuman()
         {
             p = level.players[i];
 
-            if (p IsHuman() == false) 
+            if (p IsHuman() == false)
 		    {
                 continue;
             }
@@ -50,8 +50,8 @@ WatchMBHuman()
                             p SwitchToWeapon(self.randomWeapon);
                             p PlayerMessageLeftUnder("^5You got the weapon!");
                             p PlaySound("carbine_first_raise");
-                            self.currentWeapon Delete();     
-                            p.hint = "";        
+                            self.currentWeapon Delete();
+                            p.hint = "";
                             wait 2;
                             self.inUse = false;
                         }
@@ -69,7 +69,7 @@ WatchMBHuman()
                             continue;
                         }
 
-                        if (p thread CheckMoney(level.mysteryBoxCost))  
+                        if (p thread CheckMoney(level.mysteryBoxCost))
                         {
                             wait 1;
                             continue;
@@ -118,7 +118,7 @@ MBResetAfterSeconds(name, uses)
     wait 20;
     if (self.name == name && self.totalUses == uses)
     {
-        self.currentWeapon Delete();     
+        self.currentWeapon Delete();
         self.inUse = false;
     }
 }

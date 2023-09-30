@@ -27,7 +27,7 @@ WatchZombieBoss()
 			zombies = GetPlayerZombies();
 			megaZombies = [];
 			for ( i = 0; i < zombies.size; i++ )
-			{	
+			{
 				p = zombies[i];
 
 				if (megaZombies.size > 12)
@@ -44,7 +44,7 @@ WatchZombieBoss()
 				p thread ZombieBossFire();
 				megaZombies[megaZombies.size] = p;
 			}
-			
+
 			// Start MegaZombie
 			AllPlayerMessageMiddle("^3The zombies are forming a MegaZombie!");
 
@@ -58,7 +58,7 @@ StartZombieBoss(zombies)
 	// Link Zombies to ZombieBoss
 	level.mzs = Spawn("script_origin", level.zbdriver.origin);
 	level.mzs LinkTo(level.zbdriver);
-	
+
 	for ( i = 0; i < zombies.size; i++ )
 	{
 		p = zombies[i];
@@ -173,7 +173,7 @@ HandleZombieBossDeath()
 	for ( i = 0; i < level.players.size; i++ )
 	{
 		p = level.players[i];
-		if (p IsHuman() == false) 
+		if (p IsHuman() == false)
 		{
 			p.phealth = level.resetHealth;
 			p.maxhealth = p.phealth;

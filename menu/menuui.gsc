@@ -2,7 +2,7 @@
 #include maps\mp\gametypes\_hud_util;
 
 //UI utilities
-createText(fontSize, sorts, text, align, relative, x, y, alpha, color)
+CreateText(fontSize, sorts, text, align, relative, x, y, alpha, color)
 {
     uiElement = self createfontstring("default", fontSize);
     uiElement setPoint(align, relative, x, y);
@@ -18,8 +18,8 @@ createText(fontSize, sorts, text, align, relative, x, y, alpha, color)
     }
     return uiElement;
 }
- 
-createRectangle(align, relative, x, y, width, height, color, sort, alpha, shader)
+
+CreateRectangle(align, relative, x, y, width, height, color, sort, alpha, shader)
 {
     uiElement = newClientHudElem( self );
     uiElement.elemType = "bar";
@@ -39,14 +39,14 @@ createRectangle(align, relative, x, y, width, height, color, sort, alpha, shader
     uiElement setPoint(align,relative,x,y);
     return uiElement;
 }
- 
-affectElement(type, time, value)
+
+AffectElement(type, time, value)
 {
     if( type == "x" || type == "y" )
         self moveOverTime( time );
     else
         self fadeOverTime( time );
- 
+
     if( type == "x" )
         self.x = value;
     if( type == "y" )

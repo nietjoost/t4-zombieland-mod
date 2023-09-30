@@ -16,7 +16,7 @@ AllPlayerMessageMiddle(msg)
 	}
 
     for ( i = 0; i < level.players.size; i++ )
-    {	
+    {
         p = level.players[i];
         p thread PlayerMessageMiddle(msg);
     }
@@ -31,12 +31,12 @@ TeamPlayerMessageMiddle(team, msg)
 	}
 
     for ( i = 0; i < level.players.size; i++ )
-    {	
+    {
         p = level.players[i];
         if (self.pers["team"] == team)
         {
             p thread PlayerMessageMiddle(msg);
-        } 
+        }
     }
 }
 
@@ -55,7 +55,7 @@ AllPlayerMessageLeftUnder(msg)
 	}
 
     for ( i = 0; i < level.players.size; i++ )
-    {	
+    {
         p = level.players[i];
         p thread PlayerMessageLeftUnder(msg);
     }
@@ -76,7 +76,7 @@ AllPlayerTypeWriterText(msg)
 	}
 
     for ( i = 0; i < level.players.size; i++ )
-    {	
+    {
         p = level.players[i];
         p thread PlayerTypeWriterText(msg);
     }

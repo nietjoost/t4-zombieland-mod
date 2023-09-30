@@ -16,19 +16,19 @@ CreateFloor(model, start, end, angles, lengthspace, widthspace, heightspace)
     originy = (end[1] - start[1]) / blockswidth;
     originz = (end[2] - start[2]) / blocksheight;
     center = Spawn("script_origin", start);
-    
+
     for (l = 0; l <= blockslength; l ++)
     {
         for (w = 0; w <= blockswidth; w ++)
         {
             for (h = 0; h <= blocksheight; h ++)
             {
-                block = SpawnEntity("script_model", model, start + (originx * l, originy * w, originz * h), (0, 0, 0));                   
+                block = SpawnEntity("script_model", model, start + (originx * l, originy * w, originz * h), (0, 0, 0));
                 block LinkTo(center);
             }
         }
     }
-    
+
     center.angles = angles;
 
     level.spawnedModels[level.spawnedModels.size] = center;
@@ -72,7 +72,7 @@ SpawnEntity(class, model, origin, angles)
     solid = spawn("trigger_radius",origin,0,64,50);
 	solid setContents(1);
 	solid.targetname = "script_collision";
-    
+
     level.spawnedModels[level.spawnedModels.size] = entity;
     level.spawnedModels[level.spawnedModels.size] = solid;
     return entity;

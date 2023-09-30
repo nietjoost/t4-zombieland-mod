@@ -6,7 +6,7 @@
 // Door logic
 SpawnDoor(start, end, openLocation)
 {
-    door = CreateDoor(level.collisionModel, start, end, 35);      
+    door = CreateDoor(level.collisionModel, start, end, 35);
 
     doorTrigger = Spawn("trigger_radius", door[0].origin, 0, 150, 150);
     doorTrigger.closed = true;
@@ -86,7 +86,7 @@ WatchDoorHuman(door, openLocation)
                     if (p MeleeButtonPressed())
                     {
                         if (self.closed)
-                        {                
+                        {
                             door[0] MoveTo(door[0].origin + openLocation, 2);
                             for (i = 0; i < door.size; i++)
                             {
@@ -115,7 +115,7 @@ WatchDoorHuman(door, openLocation)
                         p PlayerMessageMiddle("^1The door is already at max health!");
                         continue;
                     }
-                    
+
                     if (p thread CheckMoney(level.doorRepairCost))
                     {
                         continue;
@@ -169,7 +169,7 @@ SpawnDoorEntity(class, model, origin, angles)
 	solid.targetname = "script_collision";
     solid LinkTo(entity);
     entity.solid = solid;
-    
+
     level.spawnedModels[level.spawnedModels.size] = entity;
     level.spawnedModels[level.spawnedModels.size] = solid;
     return entity;

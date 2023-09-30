@@ -10,7 +10,7 @@ ElevatorMonitor(solid, start, end, duration, waitduration)
 			self MoveTo(end, duration);
             solid MoveTo(end, duration);
         }
-		if (self.origin == end)	
+		if (self.origin == end)
         {
 			self MoveTo(start, duration);
             solid MoveTo(end, duration);

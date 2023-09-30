@@ -1,14 +1,14 @@
 // CHECK Hintstring
 CheckHintString()
 {
-    for(;;) 
+    for(;;)
     {
         level endon ("stop_zombieland");
-        
+
         wait 0.1;
 
         for ( i = 0; i < level.players.size; i++ )
-        {	
+        {
             p = level.players[i];
             p thread SetHintString();
             p thread SetSubHintString();

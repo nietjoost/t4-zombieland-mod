@@ -28,7 +28,7 @@ OnPlayerConnectZL()
 
         player thread OnPlayerSpawnedZL();
 
-        level thread StartZombieLand();                
+        level thread StartZombieLand();
     }
 }
 
@@ -38,7 +38,7 @@ OnPlayerSpawnedZL()
 {
     self endon ("disconnect");
     level endon ("stop_zombieland");
-    
+
     for(;;)
     {
         self waittill("spawned_player");

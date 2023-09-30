@@ -28,10 +28,10 @@ StopZombieLand()
     }
 
     level.stopZombieLand = true;
-    
+
     // Reset MegaZombie
     if (level.zombieBoss == true)
-    {        
+    {
         level thread HandleZombieBossDeath();
         wait 5;
     }

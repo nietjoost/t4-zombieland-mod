@@ -14,7 +14,7 @@ AddTestClients()
 	for(i = 0; i < (18-currentPlayersCount); i++)
 	{
 		ent[i] = addtestclient();
-		if (!isdefined(ent[i])) 
+		if (!isdefined(ent[i]))
 		{
 		    println("Could not add test client");
 		    wait 1;

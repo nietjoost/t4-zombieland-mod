@@ -10,22 +10,22 @@ GetMenuBuyText(cost)
 }
 
 //Not import functions
-getCurrent()
+GetCurrent()
 {
     return self.menu["currentMenu"];
 }
 
-getLocked()
+GetLocked()
 {
     return self.menu["isLocked"];
 }
 
-getUserIn()
+GetUserIn()
 {
     return self.playerSetting["isInMenu"];
 }
 
-getCursor()
+GetCursor()
 {
     return self.menu["curs"];
 }

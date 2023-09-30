@@ -26,7 +26,7 @@ UpgradeWeapon()
     }
 
     if (self thread CheckMoney(level.upgradeWeaponsMoney))
-    {      
+    {
         return;
     }
 
@@ -54,7 +54,7 @@ GiveBuyWeapon(weapon, msg)
 // Give Weapon functions
 GiveThompson()
 {
-    if (self thread CheckMoney(level.weapons["thompson_mp"]["money"]))     
+    if (self thread CheckMoney(level.weapons["thompson_mp"]["money"]))
     {
         return;
     }
@@ -148,7 +148,7 @@ FreezeZombies()
     zombies = level thread GetPlayerZombies();
 
     for ( i = 0; i < zombies.size; i++ )
-    {	
+    {
         p = zombies[i];
         p FreezeControls(true);
     }
@@ -157,7 +157,7 @@ FreezeZombies()
     wait 15;
 
     for ( i = 0; i < zombies.size; i++ )
-    {	
+    {
         p = zombies[i];
         p FreezeControls(false);
     }

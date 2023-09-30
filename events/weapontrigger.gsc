@@ -9,7 +9,7 @@ nukegun()
         nuke=loadfx("maps/mp_maps/fx_mp_nuked_nuclear_explosion");
         fx = playfx(nuke,trace);
         level.spawnedModels[level.spawnedModels.size] = fx;
-	    
+
         self playsound("amb_end_nuke");
         radiusdamage(trace,1000,2000,900,self);
     }

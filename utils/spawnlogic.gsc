@@ -25,7 +25,7 @@ SpawnFlag(pos1, pos2, showIcon)
         objective_position(level.objectId, pos1);
         level.objectId++;
     }
-    
+
     //Check TP
     level thread CheckFlags(startFlag);
 
@@ -51,7 +51,7 @@ SpawnZiplineBoth(pos1, pos2)
 
     // Spawn FX
     fx = PlayFX(level.ziplineFx, pos1);
-    level.spawnedModels[level.spawnedModels.size] = fx;	
+    level.spawnedModels[level.spawnedModels.size] = fx;
 
     // Spawn UI Icon
     objective_add(level.objectId, "active", "invisible", 0, 0, 0);
@@ -70,7 +70,7 @@ SpawnBoost(pos, height)
     booster = Spawn("script_model", pos);
 	booster SetModel(level.boost);
     level.spawnedModels[level.spawnedModels.size] = booster;
-	
+
 	wait .05;
 
     // Spawn FX
@@ -88,12 +88,12 @@ SpawnBoost(pos, height)
 	level thread CheckBooster(pos, height);
 }
 
-CheckBooster(pos, height)	
+CheckBooster(pos, height)
 {
 	while(1)
 	{
         level endon ("stop_zombieland");
-        
+
         players = level.players;
 		for ( index = 0; index < players.size; index++ )
 		{
@@ -127,8 +127,8 @@ BoostPlayerUp(pos, height)
 	end = (vec[0] * 160, vec[1] * 160, vec[2] * 10);
 	so = self.origin;
     soh = so + (0,0,60);
-	
-    if (BulletTracePassed(so, so + end, false, self) && BulletTracePassed(soh, soh + end, false, self)) 
+
+    if (BulletTracePassed(so, so + end, false, self) && BulletTracePassed(soh, soh + end, false, self))
     {
         self SetOrigin(self.origin + end);
     }

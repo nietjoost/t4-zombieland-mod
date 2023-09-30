@@ -21,7 +21,7 @@ WatchRandomDrop()
 
         // Random drop logic
         for ( i = 0; i < level.players.size; i++ )
-        {	
+        {
             p = level.players[i];
 
             p thread PlayerMessageMiddle("^5You got a random drop!");
@@ -47,7 +47,7 @@ GiveHumanDrop(randomInt)
 
     if (randomIntHuman == 1)
         self GiveInvisible(10);
-    
+
     if (randomIntHuman == 2)
         self GivePlayerMaxAmmo();
 
@@ -77,7 +77,7 @@ GiveZombieDrop(randomInt)
     if (randomIntZombie == 3)
     {
         if (self.isInMegaZombie == true)
-        {         
+        {
             self GivePlayerMoney(25);
         }
         else
@@ -92,7 +92,7 @@ GiveZombieDrop(randomInt)
     if (randomIntZombie == 5)
     {
         if (self.isInMegaZombie == true)
-        {         
+        {
             self GivePlayerMoney(25);
         }
         else

@@ -5,11 +5,11 @@ CheckZiplines()
 {
     level endon ("stop_zombieland");
 
-    for(;;) 
+    for(;;)
     {
         wait 0.2;
         for ( i = 0; i < level.players.size; i++ )
-        {	
+        {
             for ( k = 0; k < level.ziplines.size; k++ )
             {
                 p = level.players[i];

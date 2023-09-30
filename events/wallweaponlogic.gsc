@@ -22,7 +22,7 @@ CreateWallWeapon(model, location, price)
 
 WatchBuyWallWeapon()
 {
-    while(1) 
+    while(1)
     {
         level endon ("stop_zombieland");
 
@@ -57,10 +57,10 @@ WatchBuyWallWeapon()
                         }
 
                         if (p thread CheckMoney(self.price))
-                        {  
+                        {
                             return;
                         }
-                        
+
                         if (p hasWeapon(self.name))
                         {
                             p thread GiveBuyWeapon(self.name, "You bought ammo!");
@@ -71,7 +71,7 @@ WatchBuyWallWeapon()
                             p thread GiveBuyWeapon(self.name, "You bought the weapon!");
                             p.hint = "";
                         }
-                        
+
                         p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
                     }
                 }
