@@ -1,5 +1,6 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\moneylogic;
+#include scripts\mp\utils\utils;
 
 //Check money
 CheckMoney(cost)
@@ -134,4 +135,45 @@ GivePerkNext()
 
     self thread GiveBuyPerk(level.perks[self.nextPerk], "You bought the perk " + level.perks[self.nextPerk] + "!");
     self.nextPerk++;
+}
+
+FreezeZombies()
+{
+    if (self thread CheckMoney(level.freezeZombiesCost))
+    {
+        return;
+    }
+
+    self thread PlayerMessageLeftUnder("^2The zombies are now frozen for 15 seconds!");
+    zombies = level thread GetPlayerZombies();
+
+    for ( i = 0; i < zombies.size; i++ )
+    {	
+        p = zombies[i];
+        p FreezeControls(true);
+    }
+    AllPlayerMessageMiddle("^3The zombies are frozen!");
+
+    wait 15;
+
+    for ( i = 0; i < zombies.size; i++ )
+    {	
+        p = zombies[i];
+        p FreezeControls(false);
+    }
+    AllPlayerMessageMiddle("^3The zombies are un-frozen!");
+}
+
+BlockZiplines()
+{
+    if (self thread CheckMoney(level.blockZiplinesCost))
+    {
+        return;
+    }
+
+    self thread PlayerMessageLeftUnder("^2The zombies are blocked from using the ZipLine for 10 seconds!");
+    level.buyZiplineBlock = true;
+
+    wait 10;
+    level.buyZiplineBlock = false;
 }

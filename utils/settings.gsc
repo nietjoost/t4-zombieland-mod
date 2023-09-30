@@ -18,6 +18,8 @@ SetupSettings()
 	level.buyHealthCost = 100;
 	level.getHealthCost = 50;
 	level.mysteryBoxCost = 950;
+	level.freezeZombiesCost = 300;
+	level.blockZiplinesCost = 300;
 
     // Variables
     level.started = false;
@@ -30,6 +32,7 @@ SetupSettings()
 	level.spawnedModels = [];
 	level.zombieBoss = false;
 	level.zombieBossFinal = false;
+	level.buyZiplineBlock = false;
 
 	// ICONS
 	PrecacheShader("specialty_gas_mask");

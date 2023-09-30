@@ -46,7 +46,7 @@ SpawnZiplineBoth(pos1, pos2)
     //Spawn hint string [needs model]
     zipline = Spawn("script_model", pos1);
     zipline SetModel(level.zipline);
-    zipline.pos2 = pos2;  
+    zipline.pos2 = pos2;
     level.ziplines[level.ziplines.size] = zipline;
 
     // Spawn FX

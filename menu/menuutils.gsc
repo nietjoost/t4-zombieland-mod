@@ -9,18 +9,6 @@ GetMenuBuyText(cost)
     return "  [^1$"+ cost + "^7]";
 }
 
-// Get the name witout clan
-GetNameNotClan( player )
-{
-    for( a = 0; a < player.name.size; a++ )
-    {
-        if( player.name[a] == "[" )
-            return getSubStr(player.name , 6, player.name.size);
-        else
-            return player.name;
-    }
-}
-
 //Not import functions
 getCurrent()
 {

@@ -359,6 +359,8 @@ RunHumanShop()
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");
     self addMenuPar("Health" + self thread GetMenuBuyText(level.buyHealthCost), ::AddHealthMenu);
+    self addMenuPar("Freeze Zombies" + self thread GetMenuBuyText(level.freezeZombiesCost), ::FreezeZombies);
+    self addMenuPar("Block ZipLines" + self thread GetMenuBuyText(level.freezeZombiesCost), ::BlockZiplines);
 
 
     // HOST MENU

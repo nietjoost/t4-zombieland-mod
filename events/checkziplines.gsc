@@ -1,3 +1,5 @@
+#include scripts\mp\utils\utils;
+
 // CHECK Ziplines
 CheckZiplines()
 {
@@ -16,7 +18,14 @@ CheckZiplines()
                 //Set the hintstring
                 if (Distance(p.origin, z.origin) <= 50 && p.usingZipline == false)
                 {
-                    p.hint = "^5Hold ^1[[{+melee}]] ^5to use the ZipLine";
+                    if (level.buyZiplineBlock == true && p IsHuman() == false)
+                    {
+                        p.hint = "^1The ZipLines are blocked for Zombies";
+                    }
+                    else
+                    {
+                        p.hint = "^5Hold ^1[[{+melee}]] ^5to use the ZipLine";
+                    }
 
                     // Check for BUTTON press
                     if (p MeleeButtonPressed())
@@ -24,7 +33,13 @@ CheckZiplines()
                         wait 0.1;
                         if (p MeleeButtonPressed())
                         {
-                            p thread HandleZipline(z);
+                            if (level.buyZiplineBlock == true && p IsHuman() == false)
+                            {
+                            }
+                            else
+                            {
+                                p thread HandleZipline(z);
+                            }
                         }
                     }
                 }

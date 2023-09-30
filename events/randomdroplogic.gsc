@@ -52,31 +52,13 @@ GiveHumanDrop(randomInt)
         self GivePlayerMaxAmmo();
 
     if (randomIntHuman == 3)
-    {
-        if (self.isInMegaZombie == true)
-        {
-            self GivePlayerMoney(25);
-        }
-        else
-        {
-            self GivePlayerHealth(25);
-        }
-    }
+        self GivePlayerHealth(25);
 
     if (randomIntHuman == 4)
         self GivePlayerMoney(25);
 
     if (randomIntHuman == 5)
-    {
-        if (self.isInMegaZombie == true)
-        {         
-            self GivePlayerMoney(25);
-        }
-        else
-        {
-            self GivePlayerSteelSkin(1500);
-        }
-    }
+        self GivePlayerSteelSkin(1500);
 
     if (randomIntHuman == 6)
         self GiveRandomPerk();
@@ -93,13 +75,31 @@ GiveZombieDrop(randomInt)
         self GiveInvisible(10);
 
     if (randomIntZombie == 3)
-        self GivePlayerHealth(50);
+    {
+        if (self.isInMegaZombie == true)
+        {         
+            self GivePlayerMoney(25);
+        }
+        else
+        {
+            self GivePlayerHealth(50);
+        }
+    }
 
     if (randomIntZombie == 4)
         self GivePlayerMoney(25);
 
     if (randomIntZombie == 5)
-        self GivePlayerSteelSkin(300);
+    {
+        if (self.isInMegaZombie == true)
+        {         
+            self GivePlayerMoney(25);
+        }
+        else
+        {
+            self GivePlayerSteelSkin(300);
+        }
+    }
 
     if (randomIntZombie == 6)
         self GiveRandomPerk();
