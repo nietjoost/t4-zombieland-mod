@@ -8,9 +8,14 @@ SpawnDoor(start, end, openLocation)
 {
     door = CreateDoor(level.collisionModel, start, end, 35);
 
-    doorTrigger = Spawn("trigger_radius", door[0].origin, 0, 150, 150);
+    // Calculate middle point for trigger
+    doorLength = Distance(start, end);
+   	doorLengthCount = Ceil(doorLength / 35);
+    middleDoorOrigin = start + ((end - start) / doorLengthCount) * (doorLengthCount / 2);
+
+    doorTrigger = Spawn("trigger_radius", middleDoorOrigin, 0, 150, 150);
     doorTrigger.closed = true;
-    doorTrigger.closedPos = doorTrigger.origin;
+    doorTrigger.closedPos = door[0].origin;
     doorTrigger thread WatchDoorHealth(door, openLocation);
     doorTrigger thread WatchDoorHuman(door, openLocation);
 }
@@ -56,7 +61,7 @@ WatchDoorHuman(door, openLocation)
 {
     while(1)
     {
-        wait 0.1;
+        wait 0.01;
         for ( i = 0; i < level.players.size; i++ )
         {
             p = level.players[i];
@@ -70,12 +75,12 @@ WatchDoorHuman(door, openLocation)
             {
                 if (self.closed)
                 {
-                    p.hint = "^5Hold ^1[[{+melee}]] ^5to open the door";
-                    p.subHint = "[^2" + door[0].doorHealth + " ^7/^1" + level.doorHealth + "^7] Hold ^1[[{+activate}]] ^7to repair the door cost: ^7[^2" + level.doorRepairCost + "^7]";
+                    p.hint = "^5Hold ^1[{+melee}] ^5to open the door";
+                    p.subHint = "[^2" + door[0].doorHealth + " ^7/^1" + level.doorHealth + "^7] Hold ^1[{+activate}] ^7to repair the door [Cost: ^3" + level.doorRepairCost + "^7]";
                 }
                 else
                 {
-                    p.hint = "^5Hold ^1[[{+melee}]] ^5to close the door";
+                    p.hint = "^5Hold ^1[{+melee}] ^5to close the door";
                     p.subHint = "";
                 }
 

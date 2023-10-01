@@ -26,4 +26,5 @@ LoadMap()
     // BACKUP code
     // CreateFloor(level.collisionModel, (3139, 282, -52), (3366, 494, -52), self.angles, 35, 35, 60);
     // CreateElevator(level.collisionModel, (3346, 2606, -61), (3346, 2606, 505), (0,0,0), 10, 2);
+    // SpawnTurret( "misc_turret", (320, 142, 26), "mg42_bipod_stand_mp");
 }

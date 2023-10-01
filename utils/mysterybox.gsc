@@ -108,7 +108,7 @@ WatchMBHuman()
                 p.hint = "";
             }
         }
-        wait 0.1;
+        wait 0.01;
     }
 }
 

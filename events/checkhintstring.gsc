@@ -5,7 +5,7 @@ CheckHintString()
     {
         level endon ("stop_zombieland");
 
-        wait 0.1;
+        wait 0.01;
 
         for ( i = 0; i < level.players.size; i++ )
         {

@@ -27,7 +27,7 @@ OnPlayerSpawnedMenu()
 {
     self endon ("disconnect");
     level endon ("stop_zombieland");
-    
+
     for(;;)
     {
         self waittill("spawned_player");
@@ -38,7 +38,7 @@ OnPlayerSpawnedMenu()
         }
     }
 }
- 
+
 PlayerSetup()
 {
     // Check for running mod
@@ -51,7 +51,7 @@ PlayerSetup()
     self thread MenuBase();
     self RunMenuIndex();
 }
- 
+
 DefineVariables()
 {
     self.menu["curs"] = 0;
@@ -108,16 +108,16 @@ MenuBase()
                 {
                     self.menu["curs"] += self attackButtonPressed();
                     self.menu["curs"] -= self adsButtonPressed();
- 
+
                     if( self.menu["curs"] > self.menu["items"][self getCurrent()].name.size-1 )
                         self.menu["curs"] = 0;
                     if( self.menu["curs"] < 0 )
                         self.menu["curs"] = self.menu["items"][self getCurrent()].name.size-1;
- 
+
                     self thread scrollMenu();
                     wait 0.2;
                 }
- 
+
                 if( self useButtonPressed() )
                 {
                     self thread [[self.menu["items"][self getCurrent()].func[self getCursor()]]] (
@@ -125,10 +125,10 @@ MenuBase()
                         self.menu["items"][self getCurrent()].input2[self getCursor()],
                         self.menu["items"][self getCurrent()].input3[self getCursor()]
                     );
- 
+
                     wait 0.2;
                 }
- 
+
                 if( self meleeButtonPressed() )
                 {
                     if( isDefined(self.menu["items"][self getCurrent()].parent) )
@@ -155,7 +155,7 @@ scrollMenu()
         for(m = 0; m < 7; m++)
                 self.menu["ui"]["text"][m] setText(self.menu["items"][self getCurrent()].name[m]);
         self.menu["ui"]["scroller"] affectElement("y", 0.18, self.menu["ui"]["text"][self getCursor()].y);
- 
+
        for( a = 0; a < 7; a ++ )
         {
             if( a != self getCursor() )
@@ -182,7 +182,7 @@ scrollMenu()
             {
                 for( a = 0; a < 7; a ++ )
                     self.menu["ui"]["text"][a] affectElement("alpha", 0.18, .3);
-                self.menu["ui"]["text"][3] affectElement("alpha", 0.18, 1);    
+                self.menu["ui"]["text"][3] affectElement("alpha", 0.18, 1);
             }
         }
         else
@@ -199,7 +199,7 @@ scrollMenu()
         }
     }
 }
- 
+
 ControlMenu( type, par1 )
 {
     if( type == "open" )
@@ -214,7 +214,7 @@ ControlMenu( type, par1 )
         self.menu["ui"]["barTop"] scaleOverTime(.3, 210, 35);
         wait .2;
         self buildTextOptions(par1);
- 
+
         self.playerSetting["isInMenu"] = true;
     }
     if( type == "close" )
@@ -254,21 +254,21 @@ ControlMenu( type, par1 )
     {
         self ControlMenu("open");
     }
- 
+
     if( type == "close_animation" )
     {
         self.menu["ui"]["title"] affectElement("alpha", .2, 0);
         for( a = 7; a >= 0; a-- )
         {
             self.menu["ui"]["text"][a] affectElement("alpha", .2, 0);
-            wait .05;      
+            wait .05;
         }
         for( a = 7; a >= 0; a-- )
             self.menu["ui"]["text"][a] destroy();
         self.menu["ui"]["title"] destroy();
     }
 }
- 
+
 buildTextOptions(menu)
 {
     self.menu["currentMenu"] = menu;
@@ -282,7 +282,7 @@ buildTextOptions(menu)
     }
     self.menu["ui"]["text"][0] affectElement("alpha", .2, 1);
 }
- 
+
 //Menu utilities
 addMenu(menu, title, parent)
 {
@@ -294,15 +294,15 @@ addMenu(menu, title, parent)
         self.menu["items"][menu].input1 = [];
         self.menu["items"][menu].input2 = [];
         self.menu["items"][menu].input3 = [];
- 
+
         self.menu["items"][menu].title = title;
- 
+
         if( isDefined( parent ) )
             self.menu["items"][menu].parent = parent;
         else
             self.menu["items"][menu].parent = undefined;
     }
- 
+
     self.temp["memory"]["menu"]["currentmenu"] = menu;
 }
 
@@ -319,7 +319,7 @@ addMenuPar(name, func, input1, input2, input3)
     if( isDefined(input1) )
         self.menu["items"][menu].input3[count] = input3;
 }
- 
+
 RunMenuIndex()
 {
     if (self.type == "human")

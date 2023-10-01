@@ -35,11 +35,11 @@ WatchBuyWallWeapon()
             {
                 if (p hasWeapon(self.name))
                 {
-                    p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
+                    p.hint = "^5Hold ^1[{+activate}] ^5to buy ammo";
                 }
                 else
                 {
-                    p.hint = "^5Hold ^1[[{+activate}]] ^5to buy weapon";
+                    p.hint = "^5Hold ^1[{+activate}] ^5to buy weapon";
                 }
 
                 // Check for BUTTON press
@@ -72,7 +72,7 @@ WatchBuyWallWeapon()
                             p.hint = "";
                         }
 
-                        p.hint = "^5Hold ^1[[{+activate}]] ^5to buy ammo";
+                        p.hint = "^5Hold ^1[{+activate}] ^5to buy ammo";
                     }
                 }
             }
@@ -82,7 +82,7 @@ WatchBuyWallWeapon()
             {
                 p.hint = "";
             }
-            wait 0.1;
+            wait 0.01;
         }
     }
 }
