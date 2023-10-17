@@ -25,6 +25,7 @@ OnPlayerConnectZL()
         player.isInvisible = false;
         player.isInMegaZombie = false;
         player.tacticalSet = false;
+        player.hasExplosiveSniper = false;
 
         player thread OnPlayerSpawnedZL();
 

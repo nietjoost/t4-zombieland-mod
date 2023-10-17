@@ -43,7 +43,7 @@ WatchRandomDrop()
 
 GiveHumanDrop(randomInt)
 {
-    randomIntHuman = RandomIntRange(1, 8);
+    randomIntHuman = RandomIntRange(1, 9);
 
     if (randomIntHuman == 1)
         self GiveInvisible(10);
@@ -65,6 +65,9 @@ GiveHumanDrop(randomInt)
 
     if (randomIntHuman == 7)
         self GiveRandomWeapon();
+
+    if (randomIntHuman == 8)
+        self GiveExplosiveSniper();
 }
 
 GiveZombieDrop(randomInt)

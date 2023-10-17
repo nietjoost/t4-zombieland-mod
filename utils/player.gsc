@@ -181,3 +181,41 @@ GiveRandomWeapon()
     self giveWeapon(randomWeapon);
     self giveMaxAmmo(randomWeapon);
 }
+
+GiveExplosiveSniper()
+{
+    self endon ("disconnect");
+	self endon ("death");
+
+	if(self.hasExplosiveSniper == true)
+    {
+        self GivePlayerMoney(25);
+        return;
+    }
+	self.hasExplosiveSniper = true;
+
+	self thread PlayerMessageLeftUnder("You got a ^2Explosive Sniper");
+	self GiveWeapon("ptrs41_mp");
+	self GiveMaxAmmo("ptrs41_mp");
+	wait .5;
+	self SwitchToWeapon("ptrs41_mp");
+
+	while(1)
+	{
+        self waittill("weapon_fired");
+		weap = self GetCurrentWeapon();
+
+		if(weap != "ptrs41_mp")
+        {
+            wait .1;
+            continue;
+        }
+
+		my = self GetTagOrigin("j_head");
+        trace = BulletTrace(my, my + AnglesToForward(self GetPlayerAngles())*100000,true,self)["position"];
+        PlayFx(level.expBull, trace);
+        self PlaySound("artillery_impact");
+        RadiusDamage(trace, 60, 40, 10, self);
+        EarthQuake(0.9, 2, self.origin, 30);
+	}
+}
