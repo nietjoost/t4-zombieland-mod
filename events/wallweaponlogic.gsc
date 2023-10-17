@@ -1,6 +1,5 @@
 #include scripts\mp\menu\menubuylogic;
 #include scripts\mp\hud\playermessage;
-#include scripts\mp\utils\utils;
 
 CreateWallWeapon(model, location, price)
 {
@@ -28,10 +27,9 @@ WatchBuyWallWeapon()
         level endon ("game_ended");
         level endon ("stop_zombieland");
 
-        humans = GetPlayerHumans();
-        for ( i = 0; i < humans.size; i++ )
+        for ( i = 0; i < level.players.size; i++ )
         {
-            p = humans[i];
+            p = level.players[i];
 
             //Set the hintstring
             if (Distance(p.origin, self.origin) < 70)
@@ -51,22 +49,28 @@ WatchBuyWallWeapon()
                     wait 0.1;
                     if (p UseButtonPressed())
                     {
+                        if (p.type == "zombie")
+                        {
+                            p thread PlayerMessageLeftUnder("Zombies can not buy a weapon!");
+                            p.hint = "";
+                            wait 0.5;
+                            return;
+                        }
+
                         if (p thread CheckMoney(self.price))
                         {
                             return;
                         }
 
-                        if (p HasWeapon(self.name))
+                        if (p hasWeapon(self.name))
                         {
                             p thread GiveBuyWeapon(self.name, "You bought ammo!");
                             p.hint = "";
-                            wait 0.2;
                         }
                         else
                         {
                             p thread GiveBuyWeapon(self.name, "You bought the weapon!");
                             p.hint = "";
-                            wait 0.2;
                         }
 
                         p.hint = "^5Hold ^1[{+activate}] ^5to buy ammo";
