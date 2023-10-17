@@ -1,8 +1,8 @@
 ﻿using static System.Net.Mime.MediaTypeNames;
 
 // Console start message
-Console.WriteLine("Welcome by the RooieRonnie's GSC project to one file converter");
-Console.WriteLine("Paste the folder URL:");
+Console.WriteLine("Welcome to the RooieRonnie's GSC project to one file converter tool");
+Console.WriteLine("Paste the folder path to the init.gsc file:");
 
 // Read the folder line
 var folderPlace = Console.ReadLine();
@@ -11,6 +11,12 @@ var folderPlace = Console.ReadLine();
 if (folderPlace == null || folderPlace.Length == 0)
 {
     Console.WriteLine("No folder given!");
+    return;
+}
+
+if (Directory.Exists(folderPlace) == false)
+{
+    Console.WriteLine("The given folder does not exists!");
     return;
 }
 

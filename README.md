@@ -16,7 +16,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | mp_asylum   | ✔️        |
 | mp_castle   | ✔️        |
 
-## How
+## How to play this mod
 
 ### Install on Plutonium
 
@@ -101,7 +101,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | :-------------------------------------------------------: |
 |                          In-game                          |
 
-## Convert GSC ToOne File Tool
+## Tool: GSC project to one file converter
 
 | <img src="assets/github/GSCTool_1.png?raw=true" /> |
 | :------------------------------------------------: |
