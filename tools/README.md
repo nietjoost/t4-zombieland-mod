@@ -1,4 +1,4 @@
-# Convert a multiple GSC project into one GSC Tool
+# Convert a multiple GSC project into one GSC file Tool
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/nietjoost/t4-zombieland-mod/main/assets/github/GSCTool_1.png" />
