@@ -1,4 +1,5 @@
 // Includes
+#include scripts\mp\utils\clock;
 #include scripts\mp\utils\utils;
 #include scripts\mp\utils\settings;
 #include scripts\mp\utils\weaponsettings;
@@ -42,6 +43,9 @@ init()
     level thread WatchZombieBoss();
     level thread Broadcast();
     level thread WatchRandomDrop();
+
+    wait 1;
+    level thread CalculateGameTimeEndGame();
 
     // DEBUG
     wait 2;

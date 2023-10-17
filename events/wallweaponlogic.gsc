@@ -24,6 +24,7 @@ WatchBuyWallWeapon()
 {
     while(1)
     {
+        level endon ("game_ended");
         level endon ("stop_zombieland");
 
         for ( i = 0; i < level.players.size; i++ )
@@ -92,6 +93,7 @@ RotateWallWeapon()
 {
 	while(1)
 	{
+        level endon ("game_ended");
   		self rotateYaw(360,7.5);
 		wait ((7.5)-0.1);
 	}

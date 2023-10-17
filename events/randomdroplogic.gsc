@@ -12,6 +12,7 @@ WatchRandomDrop()
     while(1)
     {
         level endon ("stop_zombieland");
+        level endon ("game_ended");
 
         // Block messages if game is ended
         if (level.ended == true)

@@ -92,27 +92,31 @@ CheckEnd()
         {
             return;
         }
-
         level.ended = true;
-        visionSetNaked( "mpOutro", 2.0 );
+        level notify("game_ended");
 
         // Messages and player utils
-        AllPlayerTypeWriterText("^2The ^1Zombies ^2has won!");
+        AllPlayerTypeWriterText("^2The ^1Zombies ^2have won!");
 
-        wait 1;
-        AllPlayerMessageMiddle("^2Player ^7" + GetPlayerWithMostKills().name + " ^2had the most kills!");
-        AllPlayerMessageMiddle("^5The Humans Survived: ^7"+ level.minutes +" ^5mins and ^7"+ level.seconds +" ^5secs.");
-        for ( i = 0; i < level.players.size; i++ )
-        {
-            p = level.players[i];
-            p FreezeControls(true);
-            p PlaySound("mp_defeat");
-        }
-
-        wait 10;
-
-        level thread ChooseRandomMap();
+        level thread EndGameLogic();
     }
+}
+
+EndGameLogic()
+{
+    VisionSetNaked("mpOutro", 2.0);
+    wait 1;
+    AllPlayerMessageMiddle("^2Player ^7" + GetPlayerWithMostKills().name + " ^2had the most kills!");
+    AllPlayerMessageMiddle("^5The Humans Survived: ^7"+ level.minutes +" ^5mins and ^7"+ level.seconds +" ^5secs.");
+    for ( i = 0; i < level.players.size; i++ )
+    {
+        p = level.players[i];
+        p FreezeControls(true);
+        p PlaySound("mp_defeat");
+    }
+    wait 10;
+
+    level thread ChooseRandomMap();
 }
 
 ChooseRandomMap()

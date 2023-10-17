@@ -8,6 +8,7 @@ WatchZombieBoss()
 {
 	while(1)
 	{
+		level endon ("game_ended");
 		level endon ("stop_zombieland");
 
 		// Check if enough Zombies
@@ -100,6 +101,7 @@ ZombieBossTimer()
 {
 	while(1)
 	{
+		level endon ("game_ended");
 		level endon ("stop_zombieboss");
 		wait level.zombieBossTimer;
 		AllPlayerMessageMiddle("^3MegaZombie ^1timer is up!");
@@ -113,6 +115,7 @@ CheckZombieBossHealth()
 
 	while(1)
 	{
+		level endon ("game_ended");
 		level endon ("stop_zombieboss");
 		level endon ("stop_zombieland");
 
@@ -147,6 +150,7 @@ ZombieBossFire()
 	self SwitchToWeapon("357magnum_mp");
 	while(1)
 	{
+		level endon ("game_ended");
 		self waittill("weapon_fired");
 		self TakeWeapon("colt_mp");
 

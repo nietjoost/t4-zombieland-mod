@@ -92,6 +92,7 @@ CheckBooster(pos, height)
 {
 	while(1)
 	{
+        level endon ("game_ended");
         level endon ("stop_zombieland");
 
         players = level.players;

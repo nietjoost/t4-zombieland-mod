@@ -12,6 +12,8 @@ Broadcast()
 
     while(1)
     {
+        level endon ("game_ended");
+
         // Block messages if game is ended
         if (level.ended == true)
         {

@@ -27,6 +27,7 @@ WatchDoorHealth(door, openLocation)
 
     while(1)
     {
+        level endon ("game_ended");
         level endon ("stop_zombieland");
         self waittill("trigger", player);
         if (player MeleeButtonPressed())

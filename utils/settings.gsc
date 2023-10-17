@@ -2,6 +2,7 @@
 SetupSettings()
 {
 	// Variables you can change
+	level.gametime = 600;
 	level.humanStartMoney = 3000;
 	level.humanKillMoney = 100;
 	level.humanSurvivingBonus = 50;

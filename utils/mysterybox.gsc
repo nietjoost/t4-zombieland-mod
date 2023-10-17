@@ -23,6 +23,8 @@ WatchMBHuman()
 
     while(1)
     {
+        level endon ("game_ended");
+        level endon ("stop_zombieland");
         for ( i = 0; i < level.players.size; i++ )
         {
             p = level.players[i];

@@ -202,6 +202,7 @@ GiveExplosiveSniper()
 
 	while(1)
 	{
+        level endon ("game_ended");
         self waittill("weapon_fired");
 		weap = self GetCurrentWeapon();
 

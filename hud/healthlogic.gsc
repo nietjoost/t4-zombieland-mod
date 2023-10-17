@@ -55,6 +55,7 @@ WatchHealth()
 	{
 		level endon ("death");
 		level endon ("stop_zombieland");
+        level endon ("game_ended");
 
 		self waittill ( "damage", damage, attacker, direction_vec, point, type, modelName, tagName, partName, iDFlags );
 
