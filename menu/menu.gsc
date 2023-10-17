@@ -96,9 +96,6 @@ MenuBase()
                     }
 
                     self ControlMenu("open", "main");
-                    self.weaponMenu = self getCurrentWeapon();
-                    self giveWeapon("briefcase_bomb_defuse_mp");
-                    self switchToWeapon("briefcase_bomb_defuse_mp");
                     wait 0.2;
                 }
             }
@@ -137,7 +134,6 @@ MenuBase()
                     }
                     else
                     {
-                        self switchToWeapon(self.weaponMenu);
                         self ControlMenu("close");
                     }
                     wait 0.2;

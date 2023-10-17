@@ -41,12 +41,6 @@ GiveZombieClass()
 		return;
 	}
 
-    // Check if using menu
-    if (self getCurrentWeapon() == "briefcase_bomb_defuse_mp")
-    {
-        return;
-    }
-
     if (self GetCurrentWeapon() == "357magnum_mp" && self.isInMegaZombie == true)
     {
         return;
