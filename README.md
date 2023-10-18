@@ -15,6 +15,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | mp_airfield | ✔️        |
 | mp_asylum   | ✔️        |
 | mp_castle   | ✔️        |
+| mp_kwai     | ✔️        |
 
 ## How to play this mod
 

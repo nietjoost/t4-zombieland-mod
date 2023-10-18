@@ -107,6 +107,9 @@ GlobalSetting()
 	// Custom map models
 	if (GetDvar("mapname") == "mp_asylum")
 		level.collisionModel = "dest_opel_blitz_tire_front_left_dmg1";
+
+	if (GetDvar("mapname") == "mp_kwai")
+		level.collisionModel = "static_peleliu_crate_jpn_mrtr_clsd"; // Needs work
 }
 
 

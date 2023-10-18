@@ -19,6 +19,9 @@ LoadMap()
     if (mapName == "mp_castle")
         scripts\mp\maps\mp_castle::Load();
 
+    if (mapName == "mp_kwai")
+        scripts\mp\maps\mp_kwai::Load();
+
     // Check for teleport flags
     level thread CheckZiplines();
     level thread CheckHintString();
