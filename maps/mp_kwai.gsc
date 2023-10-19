@@ -4,7 +4,7 @@
 #include scripts\mp\utils\spawnwalllogic;
 #include scripts\mp\events\wallweaponlogic;
 
-// mp_castle
+// mp_kwai
 Load()
 {
     // Spawn flags

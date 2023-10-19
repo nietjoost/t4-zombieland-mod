@@ -44,8 +44,8 @@ init()
     level thread Broadcast();
     level thread WatchRandomDrop();
 
-    wait 1;
-    level thread CalculateGameTimeEndGame();
+    //wait 1;
+    //level thread CalculateGameTimeEndGame();
 
     // DEBUG
     wait 2;
