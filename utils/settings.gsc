@@ -105,7 +105,7 @@ GlobalSetting()
 	level.mysteryBoxModel = "test_sphere_silver";
 
 	// Custom map models
-	if (GetDvar("mapname") == "mp_asylum")
+	if (GetDvar("mapname") == "mp_asylum" || GetDvar("mapname") == "mp_bgate")
 		level.collisionModel = "dest_opel_blitz_tire_front_left_dmg1";
 
 	if (GetDvar("mapname") == "mp_kwai")

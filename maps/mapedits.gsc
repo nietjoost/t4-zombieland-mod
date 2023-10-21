@@ -16,6 +16,9 @@ LoadMap()
     if (mapName == "mp_asylum")
         scripts\mp\maps\mp_asylum::Load();
 
+    if (mapName == "mp_bgate")
+        scripts\mp\maps\mp_bgate::Load();
+
     if (mapName == "mp_castle")
         scripts\mp\maps\mp_castle::Load();
 

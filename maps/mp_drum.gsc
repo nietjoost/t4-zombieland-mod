@@ -4,7 +4,7 @@
 #include scripts\mp\utils\spawnwalllogic;
 #include scripts\mp\events\wallweaponlogic;
 
-// mp_drum
+// mp_drum - Not more map edits because of the mag G_spawn entities
 Load()
 {
     // Spawn flags

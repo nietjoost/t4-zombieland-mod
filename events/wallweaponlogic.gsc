@@ -31,6 +31,11 @@ WatchBuyWallWeapon()
         {
             p = level.players[i];
 
+            if (p.type == "zombie")
+            {
+                return;
+            }
+
             //Set the hintstring
             if (Distance(p.origin, self.origin) < 70)
             {
@@ -53,7 +58,6 @@ WatchBuyWallWeapon()
                         {
                             p thread PlayerMessageLeftUnder("Zombies can not buy a weapon!");
                             p.hint = "";
-                            wait 0.5;
                             return;
                         }
 
