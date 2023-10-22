@@ -28,6 +28,9 @@ LoadMap()
     if (mapName == "mp_kwai")
         scripts\mp\maps\mp_kwai::Load();
 
+    if (mapName == "mp_shrine")
+        scripts\mp\maps\mp_shrine::Load();
+
     // Check for teleport flags
     level thread CheckZiplines();
     level thread CheckHintString();

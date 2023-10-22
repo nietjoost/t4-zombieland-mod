@@ -108,7 +108,7 @@ GlobalSetting()
 	if (GetDvar("mapname") == "mp_asylum" || GetDvar("mapname") == "mp_bgate")
 		level.collisionModel = "dest_opel_blitz_tire_front_left_dmg1";
 
-	if (GetDvar("mapname") == "mp_kwai")
+	if (GetDvar("mapname") == "mp_kwai" || GetDvar("mapname") == "mp_shrine")
 		level.collisionModel = "static_peleliu_crate_jpn_mrtr_clsd";
 
 	if (GetDvar("mapname") == "mp_drum")
