@@ -31,6 +31,9 @@ LoadMap()
     if (mapName == "mp_shrine")
         scripts\mp\maps\mp_shrine::Load();
 
+    if (mapName == "mp_stalingrad")
+        scripts\mp\maps\mp_stalingrad::Load();
+
     // Check for teleport flags
     level thread CheckZiplines();
     level thread CheckHintString();
