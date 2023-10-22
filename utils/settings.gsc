@@ -113,6 +113,9 @@ GlobalSetting()
 
 	if (GetDvar("mapname") == "mp_drum")
 		level.collisionModel = "static_peleliu_blackbarrel01";
+
+	if (GetDvar("mapname") == "mp_courtyard")
+		level.collisionModel = "static_peleliu_crate_jpn_mrtr_clsd";
 }
 
 

@@ -10,14 +10,17 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 
 ## Supported maps:
 
-| Map         | Map edits |
-| ----------- | --------- |
-| mp_airfield | ✔️        |
-| mp_asylum   | ✔️        |
-| mp_bgate    | ✔️        |
-| mp_castle   | ✔️        |
-| mp_drum     | ✔️        |
-| mp_kwai     | ✔️        |
+| Map           | Map edits |
+| ------------- | --------- |
+| mp_airfield   | ✔️        |
+| mp_asylum     | ✔️        |
+| mp_bgate      | ✔️        |
+| mp_castle     | ✔️        |
+| mp_courtyard  | ✔️        |
+| mp_drum       | ✔️        |
+| mp_kwai       | ✔️        |
+| mp_shrine     | ✔️        |
+| mp_stalingrad | ✔️        |
 
 ## How to play this mod
 

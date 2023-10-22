@@ -22,6 +22,9 @@ LoadMap()
     if (mapName == "mp_castle")
         scripts\mp\maps\mp_castle::Load();
 
+    if (mapName == "mp_courtyard")
+        scripts\mp\maps\mp_courtyard::Load();
+
     if (mapName == "mp_drum")
         scripts\mp\maps\mp_drum::Load();
 
