@@ -108,14 +108,14 @@ GlobalSetting()
 	if (GetDvar("mapname") == "mp_asylum" || GetDvar("mapname") == "mp_bgate")
 		level.collisionModel = "dest_opel_blitz_tire_front_left_dmg1";
 
-	if (GetDvar("mapname") == "mp_kwai" || GetDvar("mapname") == "mp_shrine")
+	if (GetDvar("mapname") == "mp_kwai" || GetDvar("mapname") == "mp_shrine" || GetDvar("mapname") == "mp_courtyard")
 		level.collisionModel = "static_peleliu_crate_jpn_mrtr_clsd";
 
 	if (GetDvar("mapname") == "mp_drum")
 		level.collisionModel = "static_peleliu_blackbarrel01";
 
-	if (GetDvar("mapname") == "mp_courtyard")
-		level.collisionModel = "static_peleliu_crate_jpn_mrtr_clsd";
+	if (GetDvar("mapname") == "mp_dome")
+		level.collisionModel = "static_berlin_wood_ammobox_04";
 }
 
 
