@@ -28,6 +28,9 @@ LoadMap()
     if (mapName == "mp_dome")
         scripts\mp\maps\mp_dome::Load();
 
+    if (mapName == "mp_downfall")
+        scripts\mp\maps\mp_downfall::Load();
+
     if (mapName == "mp_drum")
         scripts\mp\maps\mp_drum::Load();
 

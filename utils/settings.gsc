@@ -116,6 +116,9 @@ GlobalSetting()
 
 	if (GetDvar("mapname") == "mp_dome")
 		level.collisionModel = "static_berlin_wood_ammobox_04";
+
+	if (GetDvar("mapname") == "mp_downfall")
+		level.collisionModel = "static_berlin_sandbags_lego_mdl";
 }
 
 
