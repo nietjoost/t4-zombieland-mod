@@ -15,6 +15,7 @@ WatchZombieBoss()
 		if (CalculateTotalZombies() < 3 || level.zombieBoss == true || level.zombieBossFinal == true)
 		{
 			wait 60;
+			continue;
 		}
 		else
 		{

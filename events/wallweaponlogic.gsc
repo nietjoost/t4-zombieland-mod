@@ -16,7 +16,7 @@ CreateWallWeapon(model, location, price)
     level.spawnedModels[level.spawnedModels.size] = fx;
 
     // Handle in-game
-    weapon thread RotateWallWeapon();
+    //weapon thread RotateWallWeapon();
     weapon thread WatchBuyWallWeapon();
 }
 
@@ -87,7 +87,7 @@ WatchBuyWallWeapon()
             {
                 p.hint = "";
             }
-            wait 0.01;
+            wait 0.1;
         }
     }
 }

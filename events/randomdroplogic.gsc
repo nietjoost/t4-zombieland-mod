@@ -35,7 +35,6 @@ WatchRandomDrop()
             {
                 p thread GiveZombieDrop();
             }
-            wait 0.1;
         }
 
         wait RandomIntRange(45, 75);
