@@ -46,6 +46,9 @@ LoadMap()
     if (mapName == "mp_makin_day")
         scripts\mp\maps\mp_makin_day::Load();
 
+    if (mapName == "mp_makin")
+        scripts\mp\maps\mp_makin::Load();
+
     if (mapName == "mp_shrine")
         scripts\mp\maps\mp_shrine::Load();
 

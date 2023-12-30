@@ -4,7 +4,7 @@
 #include scripts\mp\utils\spawnwalllogic;
 #include scripts\mp\events\wallweaponlogic;
 
-// mp_makin_day
+// mp_makin
 Load()
 {
     // Spawn flags
