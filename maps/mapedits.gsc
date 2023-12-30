@@ -49,6 +49,9 @@ LoadMap()
     if (mapName == "mp_makin")
         scripts\mp\maps\mp_makin::Load();
 
+    if (mapName == "mp_nachtfeuer")
+        scripts\mp\maps\mp_nachtfeuer::Load();
+
     if (mapName == "mp_shrine")
         scripts\mp\maps\mp_shrine::Load();
 
