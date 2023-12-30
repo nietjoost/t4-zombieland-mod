@@ -37,6 +37,9 @@ LoadMap()
     if (mapName == "mp_hangar")
         scripts\mp\maps\mp_hangar::Load();
 
+    if (mapName == "mp_kneedeep")
+        scripts\mp\maps\mp_kneedeep::Load();
+
     if (mapName == "mp_kwai")
         scripts\mp\maps\mp_kwai::Load();
 
