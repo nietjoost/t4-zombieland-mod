@@ -1,5 +1,6 @@
 #include scripts\mp\hud\moneylogic;
 #include scripts\mp\hud\playermessage;
+#include scripts\mp\menu\menu;
 #include scripts\mp\utils\player;
 #include scripts\mp\utils\utils;
 #include scripts\mp\events\gamelogic;
@@ -19,6 +20,8 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
     }
 
     // Logic
+    self thread ControlMenu("close");
+
     if (type == "MOD_SUICIDE")
     {
         return;
