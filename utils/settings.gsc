@@ -105,23 +105,29 @@ GlobalSetting()
 	level.mysteryBoxModel = "test_sphere_silver";
 
 	// Custom map models
-	if (GetDvar("mapname") == "mp_asylum" || GetDvar("mapname") == "mp_bgate")
+	mapname = GetDvar("mapname");
+
+	if (mapname == "mp_asylum" || mapname == "mp_bgate")
 		level.collisionModel = "dest_opel_blitz_tire_front_left_dmg1";
 
-	if (GetDvar("mapname") == "mp_kwai" || GetDvar("mapname") == "mp_shrine" || GetDvar("mapname") == "mp_courtyard" || GetDvar("mapname") == "mp_kneedeep" || GetDvar("mapname") == "mp_makin_day" || GetDvar("mapname") == "mp_makin")
+	if (mapname == "mp_kwai" || mapname == "mp_shrine" || mapname == "mp_courtyard" 
+	|| mapname == "mp_kneedeep" || mapname == "mp_makin_day" || mapname == "mp_makin")
 		level.collisionModel = "static_peleliu_crate_jpn_mrtr_clsd";
 
-	if (GetDvar("mapname") == "mp_drum")
+	if (mapname == "mp_drum")
 		level.collisionModel = "static_peleliu_blackbarrel01";
 
-	if (GetDvar("mapname") == "mp_dome")
+	if (mapname == "mp_dome")
 		level.collisionModel = "static_berlin_wood_ammobox_04";
 
-	if (GetDvar("mapname") == "mp_downfall" || GetDvar("mapname") == "mp_nachtfeuer")
+	if (mapname == "mp_downfall" || mapname == "mp_nachtfeuer")
 		level.collisionModel = "static_berlin_sandbags_lego_mdl";
 
-	if (GetDvar("mapname") == "mp_hangar")
+	if (mapname == "mp_hangar")
 		level.collisionModel = "static_peleliu_crate_jpn_mrtr_clsd";
+
+	if (mapname == "mp_outskirts")
+		level.collisionModel = "static_seelow_hay_bale_sqr";
 }
 
 

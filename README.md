@@ -26,6 +26,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | mp_makin_day  | ✔️        |
 | mp_makin      | ✔️        |
 | mp_nachtfeuer | ✔️        |
+| mp_outskirts  | ✔️        |
 | mp_shrine     | ✔️        |
 | mp_stalingrad | ✔️        |
 
