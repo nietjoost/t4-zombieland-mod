@@ -128,6 +128,10 @@ GlobalSetting()
 
 	if (mapname == "mp_outskirts")
 		level.collisionModel = "static_seelow_hay_bale_sqr";
+
+	if (mapname == "mp_vodka")
+		level.collisionModel = "vodka_barrel";
+		
 }
 
 

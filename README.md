@@ -29,6 +29,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | mp_outskirts  | ✔️        |
 | mp_shrine     | ✔️        |
 | mp_stalingrad | ✔️        |
+| mp_vodka      | ✔️        |
 
 ## How to play this mod
 
