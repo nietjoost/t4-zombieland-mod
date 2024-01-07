@@ -1,7 +1,7 @@
 # t4-zombieland-mod (includes PS3 version)
 
 <p align="center">
-    <img src="assets/github/banner.png?raw=true" />
+    <img src="assets/github/banner-2.png?raw=true" />
 </p>
 
 Call of Duty: World at War Zombieland by RooieRonnie is an exhilarating and spine-chilling mod for the critically acclaimed Call of Duty: World at War. This unique modification transforms the traditional military-based first-person shooter experience into a heart-pounding and adrenaline-pumping survival horror adventure.
