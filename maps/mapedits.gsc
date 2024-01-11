@@ -58,6 +58,9 @@ LoadMap()
     if (mapName == "mp_roundhouse")
         scripts\mp\maps\mp_roundhouse::Load();
 
+    if (mapName == "mp_seelow")
+        scripts\mp\maps\mp_seelow::Load();
+
     if (mapName == "mp_shrine")
         scripts\mp\maps\mp_shrine::Load();
 

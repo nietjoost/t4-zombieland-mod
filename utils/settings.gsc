@@ -126,7 +126,7 @@ GlobalSetting()
 	if (mapname == "mp_hangar")
 		level.collisionModel = "static_peleliu_crate_jpn_mrtr_clsd";
 
-	if (mapname == "mp_outskirts")
+	if (mapname == "mp_outskirts" || mapname == "mp_seelow")
 		level.collisionModel = "static_seelow_hay_bale_sqr";
 
 	if (mapname == "mp_vodka")
