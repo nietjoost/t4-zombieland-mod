@@ -55,6 +55,9 @@ LoadMap()
     if (mapName == "mp_outskirts")
         scripts\mp\maps\mp_outskirts::Load();
 
+    if (mapName == "mp_roundhouse")
+        scripts\mp\maps\mp_roundhouse::Load();
+
     if (mapName == "mp_shrine")
         scripts\mp\maps\mp_shrine::Load();
 
