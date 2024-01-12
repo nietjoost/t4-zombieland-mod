@@ -67,6 +67,9 @@ LoadMap()
     if (mapName == "mp_stalingrad")
         scripts\mp\maps\mp_stalingrad::Load();
 
+    if (mapName == "mp_subway")
+        scripts\mp\maps\mp_subway::Load();
+
     if (mapName == "mp_vodka")
         scripts\mp\maps\mp_vodka::Load();
 

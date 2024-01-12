@@ -117,7 +117,7 @@ GlobalSetting()
 	if (mapname == "mp_drum")
 		level.collisionModel = "static_peleliu_blackbarrel01";
 
-	if (mapname == "mp_dome")
+	if (mapname == "mp_dome" || mapname == "mp_subway")
 		level.collisionModel = "static_berlin_wood_ammobox_04";
 
 	if (mapname == "mp_downfall" || mapname == "mp_nachtfeuer")
@@ -130,8 +130,7 @@ GlobalSetting()
 		level.collisionModel = "static_seelow_hay_bale_sqr";
 
 	if (mapname == "mp_vodka")
-		level.collisionModel = "vodka_barrel";
-		
+		level.collisionModel = "vodka_barrel";		
 }
 
 
