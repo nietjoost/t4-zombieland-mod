@@ -32,6 +32,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | mp_seelow     | ✔️        |
 | mp_shrine     | ✔️        |
 | mp_stalingrad | ✔️        |
+| mp_suburban   | ✔️        |
 | mp_subway     | ✔️        |
 | mp_vodka      | ✔️        |
 

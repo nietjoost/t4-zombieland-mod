@@ -131,7 +131,10 @@ GlobalSetting()
 		level.collisionModel = "static_seelow_hay_bale_sqr";
 
 	if (mapname == "mp_vodka")
-		level.collisionModel = "vodka_barrel";		
+		level.collisionModel = "vodka_barrel";
+
+	if (mapname == "mp_suburban")
+		level.collisionModel = "static_seelow_blackbarrel";
 }
 
 
