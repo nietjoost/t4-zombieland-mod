@@ -111,7 +111,8 @@ GlobalSetting()
 		level.collisionModel = "dest_opel_blitz_tire_front_left_dmg1";
 
 	if (mapname == "mp_kwai" || mapname == "mp_shrine" || mapname == "mp_courtyard" 
-	|| mapname == "mp_kneedeep" || mapname == "mp_makin_day" || mapname == "mp_makin")
+	|| mapname == "mp_kneedeep" || mapname == "mp_makin_day" || mapname == "mp_makin"
+	|| mapname == "mp_docks")
 		level.collisionModel = "static_peleliu_crate_jpn_mrtr_clsd";
 
 	if (mapname == "mp_drum")

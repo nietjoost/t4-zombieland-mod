@@ -17,6 +17,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | mp_bgate      | ✔️        |
 | mp_castle     | ✔️        |
 | mp_courtyard  | ✔️        |
+| mp_docks      | ✔️        |
 | mp_dome       | ✔️        |
 | mp_downfall   | ✔️        |
 | mp_drum       | ✔️        |
