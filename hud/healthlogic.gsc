@@ -44,6 +44,12 @@ AddHealthMenu()
 RemoveHealth(localHealth)
 {
     self.phealth -= localHealth;
+
+    if (self.phealth < 0)
+    {
+        self.phealth = 0;
+    }
+    
     self.maxhealth = self.phealth;
     self.health = self.maxhealth;
     self thread CreateHealthHUD();

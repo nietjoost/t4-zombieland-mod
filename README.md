@@ -8,49 +8,26 @@ Call of Duty: World at War Zombieland by RooieRonnie is an exhilarating and spin
 
 Zombieland thrusts players into an alternate reality where a devastating viral outbreak has ravaged the world, leaving hordes of the undead roaming the Earth. Set in various iconic locations from the original Call of Duty: World at War, players must team up to survive and uncover the origins of the terrifying epidemic while battling against relentless zombies.
 
-## Supported maps:
-
-| Map           | Map edits |
-| ------------- | --------- |
-| mp_airfield   | ✔️        |
-| mp_asylum     | ✔️        |
-| mp_bgate      | ✔️        |
-| mp_castle     | ✔️        |
-| mp_courtyard  | ✔️        |
-| mp_docks      | ✔️        |
-| mp_dome       | ✔️        |
-| mp_downfall   | ✔️        |
-| mp_drum       | ✔️        |
-| mp_hangar     | ✔️        |
-| mp_kneedeep   | ✔️        |
-| mp_kwai       | ✔️        |
-| mp_makin_day  | ✔️        |
-| mp_makin      | ✔️        |
-| mp_nachtfeuer | ✔️        |
-| mp_outskirts  | ✔️        |
-| mp_roundhouse | ✔️        |
-| mp_seelow     | ✔️        |
-| mp_shrine     | ✔️        |
-| mp_stalingrad | ✔️        |
-| mp_suburban   | ✔️        |
-| mp_subway     | ✔️        |
-| mp_vodka      | ✔️        |
 
 ## How to play this mod
 
 ### Install on Plutonium
-
+#### Private Match
 - Step 1: Clone the repository
 - Step 2: Place the files in 'C:\Users\{user}\AppData\Local\Plutonium\storage\t4\raw\scripts\mp'
-- Step 3: Start a Private Match use the mod.
-  (For info to come for a Dedicated Server, or search online)
+- Step 3: Start a Private Match to use the mod.
+
+#### Dedicated Server
+- Step 1: Create a main_shared folder in your server root folder.
+- Step 2: Create maps/mp/gametypes folders inside said folder.
+- Step 3: Clone the repo and copy the init.gsc file + folders to the gametypes folder.
 
 ### Install on CFW PS3
 
-- Step 1: Download the file 'patch*mp_PS3*{version}.ff' on the GitHub page releases
-- Step 2: Go to the folder on the FTP: /dev_hdd0/game/BLES00354/USRDIR/english (BLES00354 or any COD: WAW game code)(english or any language)
-- Step 3: Delete the file patch_mp.ff
-- Step 4: Upload the downloaded file 'patch*mp_PS3*{version}.ff' to the directory and rename the file to 'patch_mp.ff'.
+- Step 1: Download the file 'patch_mp.for.the.PS3.{version}.ff' on the GitHub page releases.
+- Step 2: Go to the folder on the FTP: /dev_hdd0/game/BLES00354/USRDIR/english (BLES00354 or any COD: WAW game code)(english or any language).
+- Step 3: Delete the file patch_mp.ff.
+- Step 4: Upload the downloaded file 'patch_mp.for.the.PS3.{version}.ff' to the directory and rename the file to 'patch_mp.ff'.
 - Step 5: Start a Private Match or be the host in an online game to use the mod.
 
 ## Features
@@ -63,7 +40,7 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 - Boosters
 - Custom map edits (floors, walls)
 - Wall weapons
-- MegaZombie
+- Mega Zombie
 - Breakable doors
 - Mystery Box
 - Random Drops
@@ -121,6 +98,34 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | <img src="assets/github/PC/zombie_land_4.png?raw=true" /> |
 | :-------------------------------------------------------: |
 |                          In-game                          |
+
+## Supported maps:
+
+| Map           | Map edits |
+| ------------- | --------- |
+| mp_airfield   | ✔️        |
+| mp_asylum     | ✔️        |
+| mp_bgate      | ✔️        |
+| mp_castle     | ✔️        |
+| mp_courtyard  | ✔️        |
+| mp_docks      | ✔️        |
+| mp_dome       | ✔️        |
+| mp_downfall   | ✔️        |
+| mp_drum       | ✔️        |
+| mp_hangar     | ✔️        |
+| mp_kneedeep   | ✔️        |
+| mp_kwai       | ✔️        |
+| mp_makin_day  | ✔️        |
+| mp_makin      | ✔️        |
+| mp_nachtfeuer | ✔️        |
+| mp_outskirts  | ✔️        |
+| mp_roundhouse | ✔️        |
+| mp_seelow     | ✔️        |
+| mp_shrine     | ✔️        |
+| mp_stalingrad | ✔️        |
+| mp_suburban   | ✔️        |
+| mp_subway     | ✔️        |
+| mp_vodka      | ✔️        |
 
 ## Tool: GSC project to one file converter
 

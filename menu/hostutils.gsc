@@ -82,7 +82,6 @@ StopZombieLand()
     SetDvar("bg_fallDamageMinHeight", level.bg_fallDamageMinHeight);
 	SetDvar("bg_fallDamageMaxHeight", level.bg_fallDamageMaxHeight);
     SetDvar("scr_disable_weapondrop", level.scr_disable_weapondrop);
-    SetDvar("scr_tdm_scorelimit", level.scr_tdm_scorelimit);
 
     self thread PlayerMessageLeftUnder("Stopped all ^1ZombieLand ^5mod ^7related stuff!");
 }

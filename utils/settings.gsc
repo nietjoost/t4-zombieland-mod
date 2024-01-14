@@ -58,7 +58,6 @@ SetupSettings()
 	level.bg_fallDamageMinHeight = GetDvar("bg_fallDamageMinHeight");
 	level.bg_fallDamageMaxHeight = GetDvar("bg_fallDamageMaxHeight ");
 	level.scr_disable_weapondrop = GetDvar("scr_disable_weapondrop");
-	level.scr_tdm_scorelimit = GetDvar("scr_tdm_scorelimit");
 
     // Game settings
 	SetDvar("sv_cheats", "1");
