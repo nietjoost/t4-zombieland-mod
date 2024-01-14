@@ -1,16 +1,16 @@
 // CHECK Hintstring
 CheckHintString()
 {
+    level endon ("stop_zombieland");
+
     for(;;)
     {
-        level endon ("stop_zombieland");
-
-        wait 0.1;
-
         for ( i = 0; i < level.players.size; i++ )
         {
             level.players[i] thread SetHintString();
         }
+        
+        wait 0.1;
     }
 }
 
@@ -29,6 +29,7 @@ SetHintString()
     }
 
     self.hint_string Destroy();
+    self.hint_string = undefined;
     self.hint_string = NewClientHudElem(self);
     self.hint_string.alignX = "center";
     self.hint_string.alignY = "center";
@@ -43,6 +44,7 @@ SetHintString()
     self.hint_string SetText(self.hint);
 
     self.sub_hint_string Destroy();
+    self.sub_hint_string = undefined;
     self.sub_hint_string = NewClientHudElem(self);
     self.sub_hint_string.alignX = "center";
     self.sub_hint_string.alignY = "center";

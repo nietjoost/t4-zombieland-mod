@@ -17,14 +17,15 @@ SpawnMysteryBox(location, angle)
 // Check for pickup interaction
 WatchMBHuman()
 {
+    level endon ("game_ended");
+    level endon ("stop_zombieland");
+
     self.inUse = false;
     self.inAnimation = false;
     self.totalUses = 0;
 
     while(1)
     {
-        level endon ("game_ended");
-        level endon ("stop_zombieland");
         for ( i = 0; i < level.players.size; i++ )
         {
             p = level.players[i];
@@ -34,7 +35,7 @@ WatchMBHuman()
                 continue;
             }
 
-            //Set the hintstring
+            // Set the hintstring
             if (Distance(p.origin, self.origin) <= 50)
             {
                 if (self.inUse == true && self.inAnimation == false && self.user == p.name)

@@ -180,6 +180,7 @@ GiveExplosiveSniper()
 {
     self endon ("disconnect");
 	self endon ("death");
+    level endon ("game_ended");
 
 	if(self.hasExplosiveSniper == true)
     {
@@ -196,7 +197,6 @@ GiveExplosiveSniper()
 
 	while(1)
 	{
-        level endon ("game_ended");
         self waittill("weapon_fired");
 		weap = self GetCurrentWeapon();
 

@@ -16,17 +16,17 @@ CreateWallWeapon(model, location, price)
     level.spawnedModels[level.spawnedModels.size] = fx;
 
     // Handle in-game
-    //weapon thread RotateWallWeapon();
+    weapon thread RotateWallWeapon();
     weapon thread WatchBuyWallWeapon();
 }
 
 WatchBuyWallWeapon()
 {
+    level endon ("game_ended");
+    level endon ("stop_zombieland");
+    
     while(1)
     {
-        level endon ("game_ended");
-        level endon ("stop_zombieland");
-
         for ( i = 0; i < level.players.size; i++ )
         {
             p = level.players[i];
@@ -36,7 +36,7 @@ WatchBuyWallWeapon()
                 return;
             }
 
-            //Set the hintstring
+            // Set the hintstring
             if (Distance(p.origin, self.origin) < 70)
             {
                 if (p hasWeapon(self.name))
@@ -95,9 +95,10 @@ WatchBuyWallWeapon()
 // Rotate the buy weapon
 RotateWallWeapon()
 {
+    level endon ("game_ended");
+
 	while(1)
 	{
-        level endon ("game_ended");
   		self rotateYaw(360,7.5);
 		wait ((7.5)-0.1);
 	}

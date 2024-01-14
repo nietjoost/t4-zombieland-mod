@@ -118,7 +118,7 @@ OnPlayerSpawnedZL()
         self thread CreateHealthHUD();
         self thread WatchHealth();
 
-        //PROMOD
+        // PROMOD
         self setClientDvar("cg_fov", "95");
         self setClientDvar("cg_gun_x", "6");
         self setclientdvar("cg_fovmin", "1");

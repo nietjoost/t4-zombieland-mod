@@ -23,12 +23,13 @@ SpawnDoor(start, end, openLocation)
 
 WatchDoorHealth(door, openLocation)
 {
+    level endon ("game_ended");
+    level endon ("stop_zombieland");
+
     door[0].doorHealth = level.doorHealth;
 
     while(1)
     {
-        level endon ("game_ended");
-        level endon ("stop_zombieland");
         self waittill("trigger", player);
         if (player MeleeButtonPressed())
         {

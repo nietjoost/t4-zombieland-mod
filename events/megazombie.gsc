@@ -6,11 +6,11 @@
 // Mega ZombieCode
 WatchZombieBoss()
 {
+	level endon ("game_ended");
+	level endon ("stop_zombieland");
+
 	while(1)
 	{
-		level endon ("game_ended");
-		level endon ("stop_zombieland");
-
 		// Check if enough Zombies
 		if (CalculateTotalZombies() < 3 || level.zombieBoss == true || level.zombieBossFinal == true)
 		{
@@ -100,10 +100,11 @@ StartZombieBoss(zombies)
 
 ZombieBossTimer()
 {
+	level endon ("game_ended");
+	level endon ("stop_zombieboss");
+
 	while(1)
 	{
-		level endon ("game_ended");
-		level endon ("stop_zombieboss");
 		wait level.zombieBossTimer;
 		AllPlayerMessageMiddle("^3MegaZombie ^1timer is up!");
 		HandleZombieBossDeath();
@@ -112,14 +113,14 @@ ZombieBossTimer()
 
 CheckZombieBossHealth()
 {
+	level endon ("game_ended");
+	level endon ("stop_zombieboss");
+	level endon ("stop_zombieland");
+
 	level.zombieBossHealthLocal = level.zombieBossHealth;
 
 	while(1)
 	{
-		level endon ("game_ended");
-		level endon ("stop_zombieboss");
-		level endon ("stop_zombieland");
-
 		self waittill ( "damage", damage, attacker, direction_vec, point, type, modelName, tagName, partName, iDFlags );
 		if(attacker.team != "axis" && self.isInMegaZombie == true)
 		{
@@ -139,6 +140,7 @@ ZombieBossFire()
 	self endon ("disconnect");
 	self endon ("death");
 	level endon ("stop_zombieboss");
+	level endon ("game_ended");
 
 	wait .2;
 
@@ -151,7 +153,6 @@ ZombieBossFire()
 	self SwitchToWeapon("357magnum_mp");
 	while(1)
 	{
-		level endon ("game_ended");
 		self waittill("weapon_fired");
 		self TakeWeapon("colt_mp");
 

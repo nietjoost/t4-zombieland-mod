@@ -5,15 +5,15 @@
 // Random drop logic
 WatchRandomDrop()
 {
+    level endon ("stop_zombieland");
+    level endon ("game_ended");
+
     // Wait 1 minute before giving random drops
     wait 60;
 
     // Start Random Drops
     while(1)
     {
-        level endon ("stop_zombieland");
-        level endon ("game_ended");
-
         // Block messages if game is ended
         if (level.ended == true)
         {

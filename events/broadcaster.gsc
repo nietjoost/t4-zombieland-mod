@@ -3,6 +3,8 @@
 // Broadcast messages to Players logic
 Broadcast()
 {
+    level endon ("game_ended");
+
     messages = [];
     messages[0] = "Press [{+melee}] | [{+speed_throw}] at the same time to open the menu!";
     messages[1] = "You can buy items and perks in the menu!";
@@ -12,8 +14,6 @@ Broadcast()
 
     while(1)
     {
-        level endon ("game_ended");
-
         // Block messages if game is ended
         if (level.ended == true)
         {

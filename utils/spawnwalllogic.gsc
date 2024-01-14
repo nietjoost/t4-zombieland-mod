@@ -34,7 +34,7 @@ CreateFloor(model, start, end, angles, lengthspace, widthspace, heightspace)
     level.spawnedModels[level.spawnedModels.size] = center;
 }
 
-//Spawn a ramp
+// Spawn a ramp
 CreateRamp(model, start, end, lengthspace)
 {
     length = Distance(start, end);
@@ -46,7 +46,7 @@ CreateRamp(model, start, end, lengthspace)
     }
 }
 
-//Create elevator
+// Create elevator
 CreateElevator(model, start, end, angles, duration, waitduration)
 {
     elevator = SpawnEntity("script_model", model, start, angles);

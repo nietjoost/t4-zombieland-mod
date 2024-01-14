@@ -2,6 +2,7 @@
 CreateMoneyHUD()
 {
     self.hud_money destroy();
+    self.hud_money = undefined;
 
     self.hud_money = newClientHudElem(self);
     self.hud_money.alignX = "left";
@@ -31,6 +32,8 @@ AnimateMoneyHUD(localMoney, color)
         self.moneyHudArrayCount = 0;
     }
 
+    self.moneyHudArray[self.moneyHudArrayCount] Destroy();
+    self.moneyHudArray[self.moneyHudArrayCount] = undefined;
     self.moneyHudArray[self.moneyHudArrayCount] = newClientHudElem(self);
     self.moneyHudArray[self.moneyHudArrayCount].alignX = "left";
     self.moneyHudArray[self.moneyHudArrayCount].alignY = "left";

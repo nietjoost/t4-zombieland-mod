@@ -67,6 +67,4 @@ HandleZipline(zipline)
     self unlink();
     ziplineEnt Delete();
     self.usingZipline = false;
-
-    level.spawnedModels[level.spawnedModels.size] = ziplineEnt;
 }

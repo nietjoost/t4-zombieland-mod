@@ -3,7 +3,7 @@ PlayerMessageMiddle(msg)
 {
     self iPrintlnBold(msg);
 
-    //WEAPON DEBUG
+    // WEAPON DEBUG
     //self iPrintln(self getCurrentWeapon());
 }
 

@@ -1,10 +1,10 @@
 // Monitor the elevator
 ElevatorMonitor(solid, start, end, duration, waitduration)
 {
+    level endon ("stop_zombieland");
+    
 	while (IsDefined(self))
     {
-        level endon ("stop_zombieland");
-
     	if (self.origin == start)
         {
 			self MoveTo(end, duration);

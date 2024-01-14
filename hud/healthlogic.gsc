@@ -4,6 +4,7 @@
 CreateHealthHUD()
 {
     self.hud_health Destroy();
+    self.hud_health = undefined;
 
     self.hud_health = NewClientHudElem(self);
     self.hud_health.alignX = "left";
@@ -51,12 +52,12 @@ RemoveHealth(localHealth)
 // Watch Health logic
 WatchHealth()
 {
+    level endon ("death");
+    level endon ("stop_zombieland");
+    level endon ("game_ended");
+
     while(1)
 	{
-		level endon ("death");
-		level endon ("stop_zombieland");
-        level endon ("game_ended");
-
 		self waittill ( "damage", damage, attacker, direction_vec, point, type, modelName, tagName, partName, iDFlags );
 
         // Cancel health if ZombieBoss is enabled

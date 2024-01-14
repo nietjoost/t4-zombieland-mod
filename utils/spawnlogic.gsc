@@ -84,21 +84,21 @@ SpawnBoost(pos, height)
     objective_position(level.objectId, pos);
     level.objectId++;
 
-	wait .05;
+	wait 1;
 	level thread CheckBooster(pos, height);
 }
 
 CheckBooster(pos, height)
 {
+    level endon ("game_ended");
+    level endon ("stop_zombieland");
+
 	while(1)
 	{
-        level endon ("game_ended");
-        level endon ("stop_zombieland");
-
-        players = level.players;
-		for ( index = 0; index < players.size; index++ )
+		for ( index = 0; index < level.players.size; index++ )
 		{
-            player = players[index];
+            player = undefined;
+            player = level.players[0];
 			if (Distance(pos, player.origin) <= 50)
 			{
                 player SetOrigin(pos);

@@ -26,6 +26,7 @@ init()
 
     // Replace functions
     level.onPlayerKilled = ::OnPlayerKilled;
+    level.onForfeit = ::FixForfeit;
 
     // ZombieLand scripts
     level thread SetupSettings();
@@ -44,23 +45,20 @@ init()
     level thread Broadcast();
     level thread WatchRandomDrop();
 
-    //wait 1;
-    //level thread CalculateGameTimeEndGame();
+    wait 1;
+    level thread CalculateGameTimeEndGame();
 
     // DEBUG
-    wait 2;
-    level thread debug();
+    //level thread debug();
 }
 
 debug()
 {
+    level endon ("stop_zombieland");
+    wait 2;
+
     for(;;)
 	{
-        level endon ("stop_zombieland");
-
-        wait 1;
-        level.onForfeit = ::FixForfeit;
-
         //DEBUG
         wait 3;
         level.players[0] iPrintln(level.players[0].origin);
