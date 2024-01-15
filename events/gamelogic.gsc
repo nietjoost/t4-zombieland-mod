@@ -19,7 +19,7 @@ StartZombieLand()
     level.enoughPlayers = true;
 
     //Start the zombie choose logic
-    wait 10;
+    wait level.preLobbyTimer;
     AllPlayerMessageMiddle("^1Choosing zombies in 20 seconds!");
     wait 10;
     AllPlayerMessageMiddle("^1Choosing zombies in 10 seconds!");

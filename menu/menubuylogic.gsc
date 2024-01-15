@@ -137,6 +137,38 @@ GivePerkNext()
     self.nextPerk++;
 }
 
+// Killstreaks
+GiveUav()
+{
+    if (self thread CheckMoney(level.uavCost))
+    {
+        return;
+    }
+
+    GiveBuyWeapon("radar_mp", "You bought the killstreak UAV!");
+}
+
+GiveArtillery()
+{
+    if (self thread CheckMoney(level.artilleryCost))
+    {
+        return;
+    }
+
+    GiveBuyWeapon("artillery_mp", "You bought the killstreak Artillery!");
+}
+
+GiveDogs()
+{
+    if (self thread CheckMoney(level.dogsCost))
+    {
+        return;
+    }
+
+    GiveBuyWeapon("dogs_mp", "You bought the killstreak Artillery!");
+}
+
+// Specials
 FreezeZombies()
 {
     if (self thread CheckMoney(level.freezeZombiesCost))

@@ -37,7 +37,7 @@ AddHealthMenu()
         return;
     }
 
-    self AddHealth(level.getHealthCost);
+    self AddHealth(level.getHealthMenu);
 }
 
 // REMOVE money

@@ -4,7 +4,7 @@ SetupWeaponSettings()
     // Initialize
     level.weapons = [];
     level.weapons["init"] = [];
-    level.upgradeWeaponsMoney = 100;
+    level.upgradeWeaponsMoney = 500;
 
     // Submachines settings
     level.weapons["thompson_mp"]["name"] = "thompson_mp";
@@ -12,17 +12,17 @@ SetupWeaponSettings()
     level.weapons["thompson_mp"]["upgradeName"] = "thompson_bigammo_mp";
 
     level.weapons["mp40_mp"]["name"] = "mp40_mp";
-    level.weapons["mp40_mp"]["money"] = 100;
+    level.weapons["mp40_mp"]["money"] = 150;
     level.weapons["mp40_mp"]["upgradeName"] = "mp40_bigammo_mp";
 
     level.weapons["type100smg_mp"]["name"] = "type100smg_mp";
-    level.weapons["type100smg_mp"]["money"] = 100;
+    level.weapons["type100smg_mp"]["money"] = 200;
     level.weapons["type100smg_mp"]["upgradeName"] = "type100smg_bigammo_mp";
 
     // Submachines settings
     level.weapons["m1garand_mp"] = [];
     level.weapons["m1garand_mp"]["name"] = "m1garand_mp";
-    level.weapons["m1garand_mp"]["money"] = 100;
+    level.weapons["m1garand_mp"]["money"] = 50;
     level.weapons["m1garand_mp"]["upgradeName"] = "m1garand_bayonet_mp";
 
     // Array with all weapons
@@ -135,7 +135,7 @@ SetupWeaponSettings()
 SetupPerkSettings()
 {
     // Initialize
-    level.perksMoney = 100;
+    level.perksMoney = 50;
     level.perks = [];
     level.perks[1] = "specialty_fastreload";
     level.perks[2] = "specialty_longersprint";

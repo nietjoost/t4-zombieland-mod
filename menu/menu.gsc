@@ -335,6 +335,7 @@ RunHumanShop()
     // Main menu
     self addMenuPar("Weapon shop", ::ControlMenu, "newMenu", "weapon_menu");
     self addMenuPar("Perk shop", ::ControlMenu, "newMenu", "perk_menu");
+    self addMenuPar("Killstreak shop", ::ControlMenu, "newMenu", "killstreak_menu");
     self addMenuPar("Specials shop", ::ControlMenu, "newMenu", "specials_menu");
     self addMenuPar("Host menu", ::ControlMenu, "newMenu", "host_menu");
 
@@ -351,6 +352,12 @@ RunHumanShop()
     self addMenuPar("Sleight of Hand" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkSleight);
     self addMenuPar("Extreme Conditioning" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkSprint);
     self addMenuPar("Stopping Power" + self thread GetMenuBuyText(level.perksMoney), ::GivePerkStoppingPower);
+
+    // Killstreak menu
+    self addmenu("killstreak_menu", "^5Killstreak shop", "main");
+    self addMenuPar("UAV" + self thread GetMenuBuyText(level.uavCost), ::GiveUav);
+    self addMenuPar("Artillery" + self thread GetMenuBuyText(level.artilleryCost), ::GiveArtillery);
+    self addMenuPar("Dogs" + self thread GetMenuBuyText(level.dogsCost), ::GiveDogs);
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");

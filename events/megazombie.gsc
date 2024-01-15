@@ -81,7 +81,7 @@ StartZombieBoss(zombies)
 		if(p.zpos != 0)	p LinkTo(level.mzs);
 
 		// ZombieBoss health logic
-		p.phealth = 99999;
+		p.phealth = level.zombieBossHealth;
 		p.maxhealth = p.phealth;
 		p.health = p.maxhealth;
 		p thread CheckZombieBossHealth();

@@ -3,22 +3,26 @@ SetupSettings()
 {
 	// Variables you can change
 	level.gametime = 600;
-	level.humanStartMoney = 3000;
-	level.humanKillMoney = 100;
-	level.humanSurvivingBonus = 50;
+	level.preLobbyTimer = 30; // in seconds
+	level.humanStartMoney = 100;
+	level.humanKillMoney = 50;
+	level.humanSurvivingBonus = 25;
 	level.zombieStartMoney = 50;
-	level.zombieKillMoney = 50;
-	level.wallWeaponCost = 500;
-	level.zombieBossHealth = 100;
+	level.zombieKillMoney = 25;
+	level.wallWeaponCost = 300;
+	level.zombieBossHealth = 99999;
 	level.zombieBossTimer = 60;
 	level.doorHealth = 100;
-	level.doorDamage = 10;
+	level.doorDamage = 7.5;
 	level.doorDamageCost = 25;
-	level.doorRepairCost = 1000;
+	level.doorRepairCost = 600;
 	level.resetHealth = 100;
 	level.buyHealthCost = 100;
-	level.getHealthCost = 50;
+	level.getHealthMenu = 50;
 	level.mysteryBoxCost = 950;
+	level.uavCost = 200;
+	level.artilleryCost = 400;
+	level.dogsCost = 600;
 	level.freezeZombiesCost = 300;
 	level.blockZiplinesCost = 300;
 
