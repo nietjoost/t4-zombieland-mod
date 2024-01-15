@@ -25,6 +25,18 @@ SetupSettings()
 	level.dogsCost = 600;
 	level.freezeZombiesCost = 300;
 	level.blockZiplinesCost = 300;
+	level.addBots = true;
+	
+	level.playerStartWeapon = "mp40_mp";
+	level.zombieStartWeapon = "colt_mp";
+	level.tacticalInsertion = "satchel_charge_mp";
+	level.explosiveSniper = "ptrs41_mp";
+	level.megaZombieWeapon = "357magnum_mp";
+	level.explosiveGunSound = "artillery_impact";
+	level.endGameSound = "mp_defeat";
+	level.noMoneySound = "ui_mp_suitcasebomb_timer";
+	level.upgradeSound = "mp_level_up";
+	level.buySound = "carbine_first_raise";
 
     // Variables
     level.started = false;

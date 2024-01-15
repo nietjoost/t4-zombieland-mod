@@ -8,12 +8,12 @@ GivePlayerClass()
 {
     self clearPerks();
     self takeAllWeapons();
-    self giveWeapon("mp40_mp");
-    self giveMaxAmmo("mp40_mp");
-    self switchToWeapon("mp40_mp");
+    self giveWeapon(level.playerStartWeapon);
+    self giveMaxAmmo(level.playerStartWeapon);
+    self switchToWeapon(level.playerStartWeapon);
 
-    self giveWeapon("colt_mp");
-    self giveMaxAmmo("colt_mp");
+    self giveWeapon(level.zombieStartWeapon);
+    self giveMaxAmmo(level.zombieStartWeapon);
 
     self FreezeControls(false);
 }
@@ -23,10 +23,10 @@ GiveZombieClass()
 {
     self ClearPerks();
     self TakeAllWeapons();
-    self GiveWeapon("colt_mp");
-    self SwitchToWeapon("colt_mp");
-    self SetWeaponAmmoStock("colt_mp", 0);
-    self SetWeaponAmmoClip("colt_mp", 0);
+    self GiveWeapon(level.zombieStartWeapon);
+    self SwitchToWeapon(level.zombieStartWeapon);
+    self SetWeaponAmmoStock(level.zombieStartWeapon, 0);
+    self SetWeaponAmmoClip(level.zombieStartWeapon, 0);
 
     self thread ResetMenu();
 
@@ -41,12 +41,12 @@ GiveZombieClass()
 		return;
 	}
 
-    if (self GetCurrentWeapon() == "357magnum_mp" && self.isInMegaZombie == true)
+    if (self GetCurrentWeapon() == level.megaZombieWeapon && self.isInMegaZombie == true)
     {
         return;
     }
 
-    if (self GetCurrentWeapon() == "satchel_charge_mp")
+    if (self GetCurrentWeapon() == level.tacticalInsertion)
     {
         wait 0.4;
     }
@@ -58,7 +58,7 @@ WatchTactical()
 {
     if (self.tacticalSet == false)
     {
-        self GiveWeapon("satchel_charge_mp");
+        self GiveWeapon(level.tacticalInsertion);
     }
 
     self endon ("death");
@@ -67,11 +67,11 @@ WatchTactical()
 
     wait 0.2;
 
-    if (weapon == "satchel_charge_mp" && self.tacticalSet == false)
+    if (weapon == level.tacticalInsertion && self.tacticalSet == false)
     {
         self.tacticalSet = true;
         self.tacticalPos = self.origin;
-        self TakeWeapon("satchel_charge_mp");
+        self TakeWeapon(level.tacticalInsertion);
         self thread PlayerMessageMiddle("^2Tactical Insertion set!");
     }
     else
@@ -190,17 +190,17 @@ GiveExplosiveSniper()
 	self.hasExplosiveSniper = true;
 
 	self thread PlayerMessageLeftUnder("You got a ^2Explosive Sniper");
-	self GiveWeapon("ptrs41_mp");
-	self GiveMaxAmmo("ptrs41_mp");
+	self GiveWeapon(level.explosiveSniper);
+	self GiveMaxAmmo(level.explosiveSniper);
 	wait .5;
-	self SwitchToWeapon("ptrs41_mp");
+	self SwitchToWeapon(level.explosiveSniper);
 
 	while(1)
 	{
         self waittill("weapon_fired");
 		weap = self GetCurrentWeapon();
 
-		if(weap != "ptrs41_mp")
+		if(weap != level.explosiveSniper)
         {
             wait .1;
             continue;
@@ -209,7 +209,7 @@ GiveExplosiveSniper()
 		my = self GetTagOrigin("j_head");
         trace = BulletTrace(my, my + AnglesToForward(self GetPlayerAngles())*100000,true,self)["position"];
         PlayFx(level.expBull, trace);
-        self PlaySound("artillery_impact");
+        self PlaySound(level.megaZombieGunSound);
         RadiusDamage(trace, 60, 40, 10, self);
         EarthQuake(0.9, 2, self.origin, 30);
 	}

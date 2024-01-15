@@ -11,7 +11,7 @@ CheckMoney(cost)
         return false;
     }
 
-    self PlaySound("ui_mp_suitcasebomb_timer");
+    self PlaySound(level.noMoneySound);
     self thread PlayerMessageLeftUnder("You do not have enough money!");
     return true;
 }
@@ -37,7 +37,7 @@ UpgradeWeapon()
     self TakeWeapon(currentWeapon);
 
     self thread PlayerMessageLeftUnder("You upgraded your current weapon!");
-    self PlaySound("mp_level_up");
+    self PlaySound(level.upgradeSound);
 }
 
 // Give the weapon
@@ -48,7 +48,7 @@ GiveBuyWeapon(weapon, msg)
     self switchToWeapon(weapon);
 
     self thread PlayerMessageLeftUnder(msg);
-    self PlaySound("carbine_first_raise");
+    self PlaySound(level.buySound);
 }
 
 // Give Weapon functions

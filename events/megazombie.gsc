@@ -146,26 +146,26 @@ ZombieBossFire()
 
 	self TakeAllWeapons();
 	wait 0.5;
-	self GiveWeapon("357magnum_mp");
-	self SetWeaponAmmoClip("357magnum_mp", 1);
-	self SetWeaponAmmoStock("357magnum_mp", 0);
+	self GiveWeapon(level.megaZombieWeapon);
+	self SetWeaponAmmoClip(level.megaZombieWeapon, 1);
+	self SetWeaponAmmoStock(level.megaZombieWeapon, 0);
 	wait .1;
-	self SwitchToWeapon("357magnum_mp");
+	self SwitchToWeapon(level.megaZombieWeapon);
 	while(1)
 	{
 		self waittill("weapon_fired");
-		self TakeWeapon("colt_mp");
+		self TakeWeapon(level.zombieStartWeapon);
 
-		if (self GetCurrentWeapon() == "357magnum_mp" && self.isInMegaZombie == true)
+		if (self GetCurrentWeapon() == level.megaZombieWeapon && self.isInMegaZombie == true)
 		{
 			my = self GetTagOrigin("j_head");
 			trace = BulletTrace(my, my + AnglesToForward(self GetPlayerAngles())*100000,true,self)["position"];
 			PlayFx(level.expBull, trace);
-			self PlaySound("artillery_impact");
+			self PlaySound(level.megaZombieGunSound);
 			RadiusDamage(trace, 50, 20, 5, self);
 			EarthQuake(0.9, 2, self.origin, 30);
 			wait 1.5;
-			self SetWeaponAmmoClip("357magnum_mp", 1);
+			self SetWeaponAmmoClip(level.megaZombieWeapon, 1);
 		}
 	}
 }
@@ -212,8 +212,8 @@ GiveMegaZombieClass()
 	self ClearPerks();
     self TakeAllWeapons();
 	wait 0.1;
-    self GiveWeapon("colt_mp");
-    self SwitchToWeapon("colt_mp");
-    self SetWeaponAmmoStock("colt_mp", 8);
-    self SetWeaponAmmoClip("colt_mp", 8);
+    self GiveWeapon(level.zombieStartWeapon);
+    self SwitchToWeapon(level.zombieStartWeapon);
+    self SetWeaponAmmoStock(level.zombieStartWeapon, 8);
+    self SetWeaponAmmoClip(level.zombieStartWeapon, 8);
 }

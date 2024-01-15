@@ -52,7 +52,7 @@ WatchMBHuman()
                             p GiveMaxAmmo(self.randomWeapon);
                             p SwitchToWeapon(self.randomWeapon);
                             p PlayerMessageLeftUnder("^5You got the weapon!");
-                            p PlaySound("carbine_first_raise");
+                            p PlaySound(level.buySound);
                             self.currentWeapon Delete();
                             p.hint = "";
                             wait 2;
@@ -97,7 +97,7 @@ WatchMBHuman()
                         {
                             self.randomWeapon = level.mbweapons[RandomIntRange(0, level.mbweapons.size)];
                             self.currentWeapon SetModel(GetWeaponModel(self.randomWeapon));
-                            p PlaySound("ui_mp_suitcasebomb_timer");
+                            p PlaySound(level.noMoneySound);
                             wait 0.3;
                         }
                         self.currentWeapon MoveTo(self.currentWeapon.origin + (0, 0, -30), 30, 2, 2);

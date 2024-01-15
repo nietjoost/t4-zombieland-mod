@@ -43,7 +43,7 @@ WatchDoorHealth(door, openLocation)
             player thread PlayerMessageLeftUnder("^2You did ^1" + level.doorDamage + " damage");
             player thread AddMoney(level.doorDamageCost);
             player thread PlayerMessageLeftUnder("Door Health [^2" + door[0].doorHealth + " ^7/^1" + level.doorHealth + "^7]");
-            if (door[0].doorHealth == 0)
+            if (door[0].doorHealth <= 0)
             {
                 player thread PlayerMessageMiddle("^2The door broke!");
                 door[0] MoveTo(door[0].origin + openLocation, 2);

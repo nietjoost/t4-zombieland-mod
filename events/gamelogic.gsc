@@ -40,7 +40,7 @@ StartZombieLand()
 		return;
 	}
 
-    if (level.players.size < 2)
+    if (level.players.size < 2 && level.addBots)
     {
         level.enoughPlayers = false;
         AllPlayerMessageMiddle("^1There are not enough players!");
@@ -112,7 +112,7 @@ EndGameLogic()
     {
         p = level.players[i];
         p FreezeControls(true);
-        p PlaySound("mp_defeat");
+        p PlaySound(level.endGameSound);
     }
     wait 10;
 
