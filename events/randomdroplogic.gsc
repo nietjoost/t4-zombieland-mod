@@ -43,7 +43,7 @@ WatchRandomDrop()
 
 GiveHumanDrop(randomInt)
 {
-    randomIntHuman = RandomIntRange(1, 9);
+    randomIntHuman = RandomIntRange(1, 10);
 
     if (randomIntHuman == 1)
         self GiveInvisible(10);
@@ -68,11 +68,14 @@ GiveHumanDrop(randomInt)
 
     if (randomIntHuman == 8)
         self GiveExplosiveSniper();
+
+    if (randomIntHuman == 9)
+        GivePlayerBurn("zombie", 5);
 }
 
 GiveZombieDrop(randomInt)
 {
-    randomIntZombie = RandomIntRange(1, 7);
+    randomIntZombie = RandomIntRange(1, 8);
 
     if (randomIntZombie == 1)
         self GiveInvisible(10);
@@ -106,4 +109,7 @@ GiveZombieDrop(randomInt)
 
     if (randomIntZombie == 6)
         self GiveRandomPerk();
+
+    if (randomIntZombie == 7)
+        GivePlayerBurn("human", 10);
 }

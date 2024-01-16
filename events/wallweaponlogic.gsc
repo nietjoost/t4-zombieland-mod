@@ -5,11 +5,9 @@ CreateWallWeapon(model, location, price)
 {
     weapon = Spawn("script_model", location + (0, 0, 50));
     weapon SetModel(getWeaponModel(model));
-
     weapon.price = price;
     weapon.name = model;
-
-    level.buyWeapons[level.buyWeapons.size] = weapon;
+    level.spawnedModels[level.spawnedModels.size] = weapon;
 
 	// Spawn FX
     fx = PlayFX(level.weaponFx, location);

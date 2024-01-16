@@ -191,8 +191,8 @@ HandleZombieBossDeath()
 		else
 		{
 			p PlayerMessageMiddle("^5You survided the ^1MegaZombie^2!");
-			p PlayerMessageMiddle("^2You won $500!");
-			p AddMoney(500);
+			p PlayerMessageMiddle("^2You won $" + level.megaZombieSurvivor + "!");
+			p AddMoney(level.megaZombieSurvivor);
 		}
 	}
 

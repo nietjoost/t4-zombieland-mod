@@ -12,6 +12,7 @@ SetupSettings()
 	level.wallWeaponCost = 300;
 	level.zombieBossHealth = 99999;
 	level.zombieBossTimer = 60;
+	level.megaZombieSurvivor = 300;
 	level.doorHealth = 100;
 	level.doorDamage = 7.5;
 	level.doorDamageCost = 25;
@@ -25,6 +26,7 @@ SetupSettings()
 	level.dogsCost = 600;
 	level.freezeZombiesCost = 300;
 	level.blockZiplinesCost = 300;
+	level.slowerZombiesCost = 200;
 	level.addBots = true;
 	
 	level.playerStartWeapon = "mp40_mp";
@@ -43,13 +45,13 @@ SetupSettings()
     level.enoughPlayers = false;
 	level.ended = false;
 	level.ziplines = [];
-	level.buyWeapons = [];
 	level.objectId = 1;
 	level.stopZombieLand = false;
 	level.spawnedModels = [];
 	level.zombieBoss = false;
 	level.zombieBossFinal = false;
 	level.buyZiplineBlock = false;
+	level.buySlowerZombies = false;
 
 	// ICONS
 	PrecacheShader("specialty_gas_mask");

@@ -19,11 +19,25 @@ SetupWeaponSettings()
     level.weapons["type100smg_mp"]["money"] = 200;
     level.weapons["type100smg_mp"]["upgradeName"] = "type100smg_bigammo_mp";
 
-    // Submachines settings
+    level.weapons["ppsh_mp"]["name"] = "ppsh_mp";
+    level.weapons["ppsh_mp"]["money"] = 400;
+    level.weapons["ppsh_mp"]["upgradeName"] = "ppsh_bigammo_mp";
+
+    // Rifles settings
     level.weapons["m1garand_mp"] = [];
     level.weapons["m1garand_mp"]["name"] = "m1garand_mp";
     level.weapons["m1garand_mp"]["money"] = 50;
     level.weapons["m1garand_mp"]["upgradeName"] = "m1garand_bayonet_mp";
+
+    level.weapons["stg44_mp"]["name"] = "stg44_mp";
+    level.weapons["stg44_mp"]["money"] = 300;
+    level.weapons["stg44_mp"]["upgradeName"] = "stg44_flash_mp";
+
+    // Machine Guns settings
+    level.weapons["fg42_mp"] = [];
+    level.weapons["fg42_mp"]["name"] = "fg42_mp";
+    level.weapons["fg42_mp"]["money"] = 300;
+    level.weapons["fg42_mp"]["upgradeName"] = "fg42_telescopic_mp";
 
     // Array with all weapons
     level.mbweapons = [];

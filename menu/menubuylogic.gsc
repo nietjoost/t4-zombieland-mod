@@ -60,6 +60,7 @@ GiveThompson()
     }
 
     self thread GiveBuyWeapon(level.weapons["thompson_mp"]["name"], "You bought the weapon Thompson!");
+    self PlaySound(level.buySound);
 }
 
 GiveType100()
@@ -70,6 +71,18 @@ GiveType100()
     }
 
     self thread GiveBuyWeapon(level.weapons["type100smg_mp"]["name"], "You bought the weapon Type 100!");
+    self PlaySound(level.buySound);
+}
+
+GivePpsh()
+{
+    if (self thread CheckMoney(level.weapons["ppsh_mp"]["money"]))
+    {
+        return;
+    }
+
+    self thread GiveBuyWeapon(level.weapons["ppsh_mp"]["name"], "You bought the weapon Ppsh!");
+    self PlaySound(level.buySound);
 }
 
 GiveM1Garand()
@@ -79,7 +92,30 @@ GiveM1Garand()
         return;
     }
 
-    self thread GiveBuyWeapon(level.weapons["m1garand_mp"]["name"], "You bought the weapon Type 100!");
+    self thread GiveBuyWeapon(level.weapons["m1garand_mp"]["name"], "You bought the weapon M1 Garand!");
+    self PlaySound(level.buySound);
+}
+
+GiveStg44()
+{
+    if (self thread CheckMoney(level.weapons["stg44_mp"]["money"]))
+    {
+        return;
+    }
+
+    self thread GiveBuyWeapon(level.weapons["stg44_mp"]["name"], "You bought the weapon Stg44!");
+    self PlaySound(level.buySound);
+}
+
+GiveFg42()
+{
+    if (self thread CheckMoney(level.weapons["fg42_mp"]["money"]))
+    {
+        return;
+    }
+
+    self thread GiveBuyWeapon(level.weapons["fg42_mp"]["name"], "You bought the weapon Fg42!");
+    self PlaySound(level.buySound);
 }
 
 
@@ -98,6 +134,7 @@ GivePerkSleight()
     }
 
     self thread GiveBuyPerk(level.perks[1], "You bought the perk Sleight of Hand!");
+    self PlaySound(level.buySound);
 }
 
 GivePerkSprint()
@@ -108,6 +145,7 @@ GivePerkSprint()
     }
 
     self thread GiveBuyPerk(level.perks[2], "You bought the perk Longer Sprint!");
+    self PlaySound(level.buySound);
 }
 
 GivePerkStoppingPower()
@@ -118,6 +156,7 @@ GivePerkStoppingPower()
     }
 
     self thread GiveBuyPerk(level.perks[3], "You bought the perk Stopping Power!");
+    self PlaySound(level.buySound);
 }
 
 GivePerkNext()
@@ -135,6 +174,7 @@ GivePerkNext()
 
     self thread GiveBuyPerk(level.perks[self.nextPerk], "You bought the perk " + level.perks[self.nextPerk] + "!");
     self.nextPerk++;
+    self PlaySound(level.buySound);
 }
 
 // Killstreaks
@@ -146,6 +186,7 @@ GiveUav()
     }
 
     GiveBuyWeapon("radar_mp", "You bought the killstreak UAV!");
+    self PlaySound(level.buySound);
 }
 
 GiveArtillery()
@@ -156,6 +197,7 @@ GiveArtillery()
     }
 
     GiveBuyWeapon("artillery_mp", "You bought the killstreak Artillery!");
+    self PlaySound(level.buySound);
 }
 
 GiveDogs()
@@ -166,6 +208,7 @@ GiveDogs()
     }
 
     GiveBuyWeapon("dogs_mp", "You bought the killstreak Artillery!");
+    self PlaySound(level.buySound);
 }
 
 // Specials
@@ -177,6 +220,8 @@ FreezeZombies()
     }
 
     self thread PlayerMessageLeftUnder("^2The zombies are now frozen for 15 seconds!");
+    self PlaySound(level.buySound);
+
     zombies = level thread GetPlayerZombies();
 
     for ( i = 0; i < zombies.size; i++ )
@@ -204,8 +249,25 @@ BlockZiplines()
     }
 
     self thread PlayerMessageLeftUnder("^2The zombies are blocked from using the ZipLine for 10 seconds!");
+    self PlaySound(level.buySound);
     level.buyZiplineBlock = true;
 
     wait 10;
     level.buyZiplineBlock = false;
+}
+
+SlowerZombies()
+{
+    if (self thread CheckMoney(level.slowerZombiesCost))
+    {
+        return;
+    }
+
+    self thread PlayerMessageLeftUnder("^2The zombies are now walking slower for 20 seconds!");
+    self PlaySound(level.buySound);
+    AllPlayerMessageMiddle("^1Someone bought slower zombies for 20 seconds!");
+    level.buySlowerZombies = true;
+
+    wait 20;
+    level.buySlowerZombies = false;
 }

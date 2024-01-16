@@ -2,6 +2,7 @@
 #include scripts\mp\hud\healthlogic;
 #include scripts\mp\hud\moneylogic;
 #include scripts\mp\hud\playermessage;
+#include scripts\mp\utils\utils;
 
 // Classes
 GivePlayerClass()
@@ -213,4 +214,24 @@ GiveExplosiveSniper()
         RadiusDamage(trace, 60, 40, 10, self);
         EarthQuake(0.9, 2, self.origin, 30);
 	}
+}
+
+GivePlayerBurn(type, time)
+{
+    for ( i = 0; i < level.players.size; i++ )
+    {
+        p = level.players[i];
+
+        p thread PlayerMessageLeftUnder("You got distracted ^1by the enemy^7!");
+
+        if (type == "human" && p IsHuman() == true)
+        {
+            p SetBurn(time);
+        }
+        
+        if (type == "zombie" && p IsHuman() == false)
+        {
+            p SetBurn(time);
+        }
+    }
 }

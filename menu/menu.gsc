@@ -344,7 +344,10 @@ RunHumanShop()
     self addMenuPar("Upgrade current weapon" + self thread GetMenuBuyText(level.upgradeWeaponsMoney), ::UpgradeWeapon);
     self addMenuPar("Thompson" + self thread GetMenuBuyText(level.weapons["thompson_mp"]["money"]), ::GiveThompson);
     self addMenuPar("Type 100" + self thread GetMenuBuyText(level.weapons["type100smg_mp"]["money"]), ::GiveType100);
+    self addMenuPar("Ppsh" + self thread GetMenuBuyText(level.weapons["ppsh_mp"]["money"]), ::GivePpsh);
     self addMenuPar("M1 Garand" + self thread GetMenuBuyText(level.weapons["m1garand_mp"]["money"]), ::GiveM1Garand);
+    self addMenuPar("Stg44" + self thread GetMenuBuyText(level.weapons["stg44_mp"]["money"]), ::GiveStg44);
+    self addMenuPar("Fg42" + self thread GetMenuBuyText(level.weapons["fg42_mp"]["money"]), ::GiveFg42);
 
     // Perk menu
     self addmenu("perk_menu", "^5Perk shop", "main");
@@ -363,8 +366,8 @@ RunHumanShop()
     self addmenu("specials_menu", "^5Specials shop", "main");
     self addMenuPar("Health" + self thread GetMenuBuyText(level.buyHealthCost), ::AddHealthMenu);
     self addMenuPar("Freeze Zombies" + self thread GetMenuBuyText(level.freezeZombiesCost), ::FreezeZombies);
-    self addMenuPar("Block ZipLines" + self thread GetMenuBuyText(level.freezeZombiesCost), ::BlockZiplines);
-
+    self addMenuPar("Block ZipLines" + self thread GetMenuBuyText(level.blockZiplinesCost), ::BlockZiplines);
+    self addMenuPar("Slower zombies" + self thread GetMenuBuyText(level.slowerZombiesCost), ::SlowerZombies);
 
     // HOST MENU
     if (self.name != level.players[0].name)

@@ -104,6 +104,16 @@ OnPlayerSpawnedZL()
                 self.tacticalSet = false;
                 self SetOrigin(self.tacticalPos);
             }
+
+            // Set Zombie
+            if (level.buySlowerZombies == true)
+            {
+                self SetMoveSpeedScale(0.7);
+            }
+            else
+            {
+                self SetMoveSpeedScale(1);
+            }
         }
 
         // Player settings reset on spawn

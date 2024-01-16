@@ -38,6 +38,7 @@ AddHealthMenu()
     }
 
     self AddHealth(level.getHealthMenu);
+    self PlaySound(level.buySound);
 }
 
 // REMOVE money

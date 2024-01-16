@@ -1,6 +1,7 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\moneylogic;
 #include scripts\mp\hud\healthlogic;
+#include scripts\mp\events\checkhintstring;
 #include scripts\mp\events\megazombie;
 
 KillAllPlayersMenu()
@@ -38,13 +39,21 @@ StopZombieLand()
 
     // Stopping while loops and message
     level thread AllPlayerMessageLeftUnder("^1ZombieLand ^5mod ^7was running but is stopped by the Host!");
-    level notify("stop_zombieland");
     self thread PlayerMessageLeftUnder("Stopping the ^1ZombieLand ^5mod!");
     wait 1;
 
     // Stopping the messages and functions
     level thread RemoveAllMoneyHud();
     level thread RemoveAllHealthHud();
+
+    // Notify all functions to stop
+    level notify("stop_zombieland");
+
+    // Delete on-screen messages
+    for ( i = 0; i < level.players.size; i++ )
+    {
+        level.players[i] thread SetHintString();
+    }
 
     wait 1;
     // Delete the mini-map icons

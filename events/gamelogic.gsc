@@ -85,7 +85,7 @@ PickZombies()
 // END LOGIC
 CheckEnd()
 {
-    if (level.started == true && CalculateTotalHumans() == 0)
+    if (level.started == true && CalculateTotalHumans() <= 0)
     {
         // Check for already triggerd
         if (level.ended == true)
@@ -128,13 +128,12 @@ ChooseRandomMap()
 // Gamelogic Utils
 SpawnBot()
 {
-    wait 10;
+    wait 25;
 
     // Check total players
     if (level.players.size < 2)
     {
-        wait 10;
-        level thread AddTestClients(5);
+        level thread AddTestClients();
         AllPlayerMessageMiddle("^6Adding bots because there are not enough people!");
         return;
     }
