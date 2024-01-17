@@ -54,6 +54,6 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
     }
 
     // Check END
-    //wait 15;
+    wait 15;
     CheckEnd();
 }

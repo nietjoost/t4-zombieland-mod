@@ -106,7 +106,13 @@ EndGameLogic()
 {
     VisionSetNaked("mpOutro", 2.0);
     wait 1;
-    AllPlayerMessageMiddle("^2Player ^7" + GetPlayerWithMostKills().name + " ^2had the most kills!");
+    
+    winner = GetPlayerWithMostKills();
+
+    if (winner.kills > 0)
+    {
+        AllPlayerMessageMiddle("^2Player ^7" + winner.name + " ^2had the most kills!");
+    }
     AllPlayerMessageMiddle("^5The Humans Survived: ^7"+ level.minutes +" ^5mins and ^7"+ level.seconds +" ^5secs.");
     for ( i = 0; i < level.players.size; i++ )
     {
