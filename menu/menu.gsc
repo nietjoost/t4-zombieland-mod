@@ -55,6 +55,10 @@ MenuBase()
                         return;
                     }
 
+                    self ResetMenu();
+                    self DefineVariables();
+                    self RunMenuIndex();
+                    wait 0.01;
                     self ControlMenu("open", "main");
                     wait 0.2;
                 }
@@ -297,7 +301,7 @@ RunHumanShop()
     self addMenuPar("Perk shop", ::ControlMenu, "newMenu", "perk_menu");
     self addMenuPar("Killstreak shop", ::ControlMenu, "newMenu", "killstreak_menu");
     self addMenuPar("Specials shop", ::ControlMenu, "newMenu", "specials_menu");
-    self addMenuPar("Host menu", ::ControlMenu, "newMenu", "host_menu");
+    self addMenuPar("Host menu", ::ControlMenu, "newMenu", "debug_menu");
 
     // Weapon menu
     self addmenu("weapon_menu", "^5Weapon shop", "main");
@@ -329,13 +333,13 @@ RunHumanShop()
     self addMenuPar("Block ZipLines" + self thread GetMenuBuyText(level.blockZiplinesCost), ::BlockZiplines);
     self addMenuPar("Slower zombies" + self thread GetMenuBuyText(level.slowerZombiesCost), ::SlowerZombies);
 
-    // HOST MENU
+    // DEBUG MENU
     if (self.name != level.players[0].name)
     {
         return;
     }
 
-    self addmenu("host_menu", "^5Host menu", "main");
+    self addmenu("debug_menu", "^5Debug menu", "main");
     self addMenuPar("Kill all players", ::KillAllPlayersMenu);
     self addMenuPar("Stop ^1ZombieLand", ::StopZombieLand);
 }
