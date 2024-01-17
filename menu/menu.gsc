@@ -7,49 +7,17 @@
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
 
-StartMenu()
-{
-    level thread OnPlayerConnectMenu();
-}
-
-OnPlayerConnectMenu()
-{
-    level endon ("stop_zombieland");
-
-    for(;;)
-    {
-        level waittill("connecting", player);
-        player thread OnPlayerSpawnedMenu();
-    }
-}
-
-OnPlayerSpawnedMenu()
-{
-    self endon ("disconnect");
-    level endon ("stop_zombieland");
-
-    for(;;)
-    {
-        self waittill("spawned_player");
-        if( !self.stopThreading )
-        {
-            self PlayerSetup();
-            self.stopThreading = true;
-        }
-    }
-}
-
-PlayerSetup()
+PlayerSetupMenu()
 {
     // Check for running mod
 	if (level.stopZombieLand == true)
     {
 		return;
     }
-
+    
+    wait 0.1;
     self DefineVariables();
     self thread MenuBase();
-    self RunMenuIndex();
 }
 
 DefineVariables()
@@ -65,16 +33,15 @@ DefineVariables()
 
 ResetMenu()
 {
+    self.menu["items"] = undefined;
     self.menu = undefined;
     self.temp = undefined;
     self.playerSetting = undefined;
-
-    PlayerSetup();
 }
 
 MenuBase()
 {
-    while( true )
+    while(self.menuAlive)
     {
         if( !self getLocked())
         {
@@ -85,13 +52,6 @@ MenuBase()
                     // Check for running mod
                     if (level.stopZombieLand == true)
                     {
-                        return;
-                    }
-
-                    // BLOCK ZOMBIE MENU FOR NOW!
-                    if (self.type == "zombie")
-                    {
-                        self thread PlayerMessageLeftUnder("The zombie menu is blocked for now!");
                         return;
                     }
 
@@ -364,7 +324,7 @@ RunHumanShop()
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");
-    self addMenuPar("Health" + self thread GetMenuBuyText(level.buyHealthCost), ::AddHealthMenu);
+    self addMenuPar("Extra health" + self thread GetMenuBuyText(level.buyHealthCost), ::AddHealthMenu);
     self addMenuPar("Freeze Zombies" + self thread GetMenuBuyText(level.freezeZombiesCost), ::FreezeZombies);
     self addMenuPar("Block ZipLines" + self thread GetMenuBuyText(level.blockZiplinesCost), ::BlockZiplines);
     self addMenuPar("Slower zombies" + self thread GetMenuBuyText(level.slowerZombiesCost), ::SlowerZombies);
@@ -382,5 +342,9 @@ RunHumanShop()
 
 RunZombieShop()
 {
+    self addmenu("main", "^1Zombie shop");
 
+    // General Zombie shop
+    self addMenuPar("Extra health" + self thread GetMenuBuyText(level.buyHealthZombieCost), ::AddHealthZombieMenu);
+    self addMenuPar("Grenade" + self thread GetMenuBuyText(level.buyGrenadeCost), ::BuyGrenade);
 }

@@ -41,6 +41,17 @@ AddHealthMenu()
     self PlaySound(level.buySound);
 }
 
+AddHealthZombieMenu()
+{
+    if (self thread CheckMoney(level.buyHealthZombieCost))
+    {
+        return;
+    }
+
+    self AddHealth(level.buyHealthZombie);
+    self PlaySound(level.buySound);
+}
+
 // REMOVE money
 RemoveHealth(localHealth)
 {

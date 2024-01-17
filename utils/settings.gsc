@@ -20,6 +20,7 @@ SetupSettings()
 	level.resetHealth = 100;
 	level.buyHealthCost = 100;
 	level.getHealthMenu = 50;
+	level.buyHealthZombie = 25;
 	level.mysteryBoxCost = 950;
 	level.uavCost = 200;
 	level.artilleryCost = 400;
@@ -27,6 +28,8 @@ SetupSettings()
 	level.freezeZombiesCost = 300;
 	level.blockZiplinesCost = 300;
 	level.slowerZombiesCost = 200;
+	level.buyHealthZombieCost = 25;
+	level.buyGrenadeCost = 125;
 	level.addBots = true;
 	
 	level.playerStartWeapon = "mp40_mp";

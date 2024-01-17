@@ -35,7 +35,6 @@ init()
     level thread SetupPerkSettings();
     level thread PreCache();
     level thread OnPlayerConnectZL();
-    level thread StartMenu();
 
     wait 2;
     level thread LoadMap();

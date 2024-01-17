@@ -1,8 +1,9 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\events\gamelogic;
-#include scripts\mp\utils\player;
 #include scripts\mp\hud\moneylogic;
 #include scripts\mp\hud\healthlogic;
+#include scripts\mp\menu\menu;
+#include scripts\mp\utils\player;
 
 // PLAYER connect functions
 OnPlayerConnectZL()
@@ -43,7 +44,8 @@ OnPlayerSpawnedZL()
     for(;;)
     {
         self waittill("spawned_player");
-
+        self.menuAlive = true;
+        
         // If game is started -> zombie
         if (level.started == true && self.type == "human")
         {
@@ -90,6 +92,9 @@ OnPlayerSpawnedZL()
         if (self.type == "human")
         {
             self thread GivePlayerClass();
+            self ResetMenu();
+            self thread RunHumanShop();
+            self PlayerSetupMenu();
             //self thread maps\mp\gametypes\_hud_message::oldNotifyMessage("Welcome " + self.name + "!", "To RooieRonnie's Zombieland", "hud_icon_ppsh", (1, 0, (55 / 255)), "mp_level_up", 5);
         }
         else
@@ -97,6 +102,9 @@ OnPlayerSpawnedZL()
             self thread WatchTactical();
             wait 0.1;
             self thread GiveZombieClass();
+            self ResetMenu();
+            self PlayerSetupMenu();
+            self thread RunZombieShop();
 
             // Tactical Insertion
             if (self.tacticalSet == true)

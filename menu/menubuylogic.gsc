@@ -271,3 +271,14 @@ SlowerZombies()
     wait 20;
     level.buySlowerZombies = false;
 }
+
+BuyGrenade()
+{
+    if (self thread CheckMoney(level.buyGrenadeCost))
+    {
+        return;
+    }
+
+    GiveBuyWeapon("frag_grenade_mp", "You bought a grenade!");
+    self PlaySound(level.buySound);
+}

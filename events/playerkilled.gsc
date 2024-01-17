@@ -21,6 +21,7 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
 
     // Logic
     self thread ControlMenu("close");
+    self.menuAlive = false;
 
     if (type == "MOD_SUICIDE")
     {
