@@ -274,11 +274,21 @@ SlowerZombies()
 
 BuyGrenade()
 {
+    currentAmmo = self GetWeaponAmmoClip("frag_grenade_mp");
+
+    if (currentAmmo >= 4)
+    {
+        self thread PlayerMessageLeftUnder("^1You already have 4 grenades!");
+        return;
+    }
+
     if (self thread CheckMoney(level.buyGrenadeCost))
     {
         return;
     }
 
+    newCurrentAmmo = currentAmmo + 1;
     GiveBuyWeapon("frag_grenade_mp", "You bought a grenade!");
+    self SetWeaponAmmoClip("frag_grenade_mp", newCurrentAmmo);
     self PlaySound(level.buySound);
 }

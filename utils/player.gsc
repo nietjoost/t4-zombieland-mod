@@ -55,6 +55,24 @@ GiveZombieClass()
     self thread GiveZombieClass();
 }
 
+ZombieNoBullets()
+{
+    self endon ("death");
+	self endon ("disconnect");
+    level endon ("stop_zombieland");
+
+    for (;;)
+    {
+        self waittill("weapon_fired");
+        if (self GetCurrentWeapon() == level.zombieStartWeapon)
+        {
+            self SetWeaponAmmoStock(level.zombieStartWeapon, 0);
+            self SetWeaponAmmoClip(level.zombieStartWeapon, 0);
+            self thread PlayerMessageMiddle("^1You are not allowed to shoot!");
+        }
+    }
+}
+
 WatchTactical()
 {
     if (self.tacticalSet == false)

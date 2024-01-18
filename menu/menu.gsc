@@ -55,6 +55,7 @@ MenuBase()
                         return;
                     }
 
+                    self ControlMenu("close");
                     self ResetMenu();
                     self DefineVariables();
                     self RunMenuIndex();
@@ -301,7 +302,7 @@ RunHumanShop()
     self addMenuPar("Perk shop", ::ControlMenu, "newMenu", "perk_menu");
     self addMenuPar("Killstreak shop", ::ControlMenu, "newMenu", "killstreak_menu");
     self addMenuPar("Specials shop", ::ControlMenu, "newMenu", "specials_menu");
-    self addMenuPar("Host menu", ::ControlMenu, "newMenu", "debug_menu");
+    self addMenuPar("Debug menu", ::ControlMenu, "newMenu", "debug_menu");
 
     // Weapon menu
     self addmenu("weapon_menu", "^5Weapon shop", "main");

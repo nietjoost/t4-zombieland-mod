@@ -102,6 +102,7 @@ OnPlayerSpawnedZL()
             self thread WatchTactical();
             wait 0.1;
             self thread GiveZombieClass();
+            self thread ZombieNoBullets();
             self ResetMenu();
             self PlayerSetupMenu();
             self thread RunZombieShop();
