@@ -207,7 +207,7 @@ GiveDogs()
         return;
     }
 
-    GiveBuyWeapon("dogs_mp", "You bought the killstreak Artillery!");
+    GiveBuyWeapon("dogs_mp", "You bought the killstreak Dogs!");
     self PlaySound(level.buySound);
 }
 
@@ -291,4 +291,33 @@ BuyGrenade()
     GiveBuyWeapon("frag_grenade_mp", "You bought a grenade!");
     self SetWeaponAmmoClip("frag_grenade_mp", newCurrentAmmo);
     self PlaySound(level.buySound);
+}
+
+BuyMaxAmmoCurrentWeapon()
+{
+    if (self thread CheckMoney(level.buyMaxAmmoCurrentWeapon))
+    {
+        return;
+    }
+
+    self thread PlayerMessageLeftUnder("You bought ^2max ammo ^7for your current weapon");
+    self SetWeaponAmmoClip(self GetCurrentWeapon(), WeaponClipSize(self GetCurrentWeapon()));
+	self GiveMaxAmmo(self GetCurrentWeapon());
+}
+
+BuyMaxAmmoAllWeapons()
+{
+    if (self thread CheckMoney(level.buyMaxAmmoAllWeapons))
+    {
+        return;
+    }
+
+    self thread PlayerMessageLeftUnder("You bought ^2max ammo ^7for all your weapons");
+    
+    weapons = self GetWeaponsList();
+	for (i=0; i < weapons.size; i++ )
+	{
+		self SetWeaponAmmoClip(weapons[i], WeaponClipSize(weapons[i]));
+	    self GiveMaxAmmo(weapons[i]);
+	}
 }

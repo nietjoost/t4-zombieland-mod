@@ -111,13 +111,13 @@ MenuBase()
 
 scrollMenu()
 {
-    if(!isDefined(self.menu["items"][self getCurrent()].name[self getCursor()-3]) || self.menu["items"][self getCurrent()].name.size <= 7)
+    if(!isDefined(self.menu["items"][self getCurrent()].name[self getCursor()-3]) || self.menu["items"][self getCurrent()].name.size <= 9)
     {
-        for(m = 0; m < 7; m++)
+        for(m = 0; m < 9; m++)
                 self.menu["ui"]["text"][m] setText(self.menu["items"][self getCurrent()].name[m]);
         self.menu["ui"]["scroller"] affectElement("y", 0.18, self.menu["ui"]["text"][self getCursor()].y);
 
-       for( a = 0; a < 7; a ++ )
+       for( a = 0; a < 9; a ++ )
         {
             if( a != self getCursor() )
                 self.menu["ui"]["text"][a] affectElement("alpha", 0.18, .3);
@@ -141,22 +141,22 @@ scrollMenu()
                 self.menu["ui"]["scroller"] affectElement("y", 0.18, self.menu["ui"]["text"][3].y);
             if( self.menu["ui"]["text"][3].alpha != 1 )
             {
-                for( a = 0; a < 7; a ++ )
+                for( a = 0; a < 9; a ++ )
                     self.menu["ui"]["text"][a] affectElement("alpha", 0.18, .3);
                 self.menu["ui"]["text"][3] affectElement("alpha", 0.18, 1);
             }
         }
         else
         {
-            for(m = 0; m < 7; m++)
-                self.menu["ui"]["text"][m] setText(self.menu["items"][self getCurrent()].name[self.menu["items"][self getCurrent()].name.size+(m-7)]);
-            self.menu["ui"]["scroller"] affectElement("y", 0.18, self.menu["ui"]["text"][((self getCursor()-self.menu["items"][self getCurrent()].name.size)+7)].y);
-            for( a = 0; a < 7; a ++ )
+            for(m = 0; m < 9; m++)
+                self.menu["ui"]["text"][m] setText(self.menu["items"][self getCurrent()].name[self.menu["items"][self getCurrent()].name.size+(m-9)]);
+            self.menu["ui"]["scroller"] affectElement("y", 0.18, self.menu["ui"]["text"][((self getCursor()-self.menu["items"][self getCurrent()].name.size)+9)].y);
+            for( a = 0; a < 9; a ++ )
             {
-                if( a != ((self getCursor()-self.menu["items"][self getCurrent()].name.size)+7) )
+                if( a != ((self getCursor()-self.menu["items"][self getCurrent()].name.size)+9) )
                     self.menu["ui"]["text"][a] affectElement("alpha", 0.18, .3);
             }
-            self.menu["ui"]["text"][((self getCursor()-self.menu["items"][self getCurrent()].name.size)+7)] affectElement("alpha", 0.18, 1);
+            self.menu["ui"]["text"][((self getCursor()-self.menu["items"][self getCurrent()].name.size)+9)] affectElement("alpha", 0.18, 1);
         }
     }
 }
@@ -219,12 +219,12 @@ ControlMenu( type, par1 )
     if( type == "close_animation" )
     {
         self.menu["ui"]["title"] affectElement("alpha", .2, 0);
-        for( a = 7; a >= 0; a-- )
+        for( a = 9; a >= 0; a-- )
         {
             self.menu["ui"]["text"][a] affectElement("alpha", .2, 0);
             wait .05;
         }
-        for( a = 7; a >= 0; a-- )
+        for( a = 9; a >= 0; a-- )
             self.menu["ui"]["text"][a] destroy();
         self.menu["ui"]["title"] destroy();
     }
@@ -235,7 +235,7 @@ buildTextOptions(menu)
     self.menu["currentMenu"] = menu;
     self.menu["ui"]["title"] = self createText(1.5, 5, self.menu["items"][menu].title, "CENTER", "CENTER", 0, -75, 0);
     self.menu["ui"]["title"] affectElement("alpha", .2, 1);
-    for( a = 0; a < 7; a ++ )
+    for( a = 0; a < 9; a ++ )
     {
         self.menu["ui"]["text"][a] = self createText(1.2, 5, self.menu["items"][menu].name[a], "CENTER", "CENTER", 0, -40+(a*20), 0);
         self.menu["ui"]["text"][a] affectElement("alpha", .2, .3);
@@ -298,11 +298,17 @@ RunHumanShop()
     self addmenu("main", "^2Human shop");
 
     // Main menu
+    self addMenuPar("Ammo shop", ::ControlMenu, "newMenu", "ammo_menu");
     self addMenuPar("Weapon shop", ::ControlMenu, "newMenu", "weapon_menu");
     self addMenuPar("Perk shop", ::ControlMenu, "newMenu", "perk_menu");
     self addMenuPar("Killstreak shop", ::ControlMenu, "newMenu", "killstreak_menu");
     self addMenuPar("Specials shop", ::ControlMenu, "newMenu", "specials_menu");
     self addMenuPar("Debug menu", ::ControlMenu, "newMenu", "debug_menu");
+
+    // Ammo menu
+    self addmenu("ammo_menu", "^5Ammo shop", "main");
+    self addMenuPar("Max ammo current weapon" + self thread GetMenuBuyText(level.buyMaxAmmoCurrentWeapon), ::BuyMaxAmmoCurrentWeapon);
+    self addMenuPar("Max ammo all weapons" + self thread GetMenuBuyText(level.buyMaxAmmoAllWeapons), ::BuyMaxAmmoAllWeapons);
 
     // Weapon menu
     self addmenu("weapon_menu", "^5Weapon shop", "main");

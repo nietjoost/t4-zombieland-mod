@@ -30,6 +30,8 @@ SetupSettings()
 	level.slowerZombiesCost = 200;
 	level.buyHealthZombieCost = 25;
 	level.buyGrenadeCost = 125;
+	level.buyMaxAmmoCurrentWeapon = 200;
+	level.buyMaxAmmoAllWeapons = 500;
 	level.addBots = true;
 	
 	level.playerStartWeapon = "mp40_mp";
