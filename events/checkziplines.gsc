@@ -7,7 +7,6 @@ CheckZiplines()
 
     for(;;)
     {
-        wait 0.5;
         for ( i = 0; i < level.players.size; i++ )
         {
             for ( k = 0; k < level.ziplines.size; k++ )
@@ -15,42 +14,48 @@ CheckZiplines()
                 p = level.players[i];
                 z = level.ziplines[k];
 
-                //Set the hintstring
-                if (Distance(p.origin, z.origin) <= 50 && p.usingZipline == false)
-                {
-                    if (level.buyZiplineBlock == true && p IsHuman() == false)
-                    {
-                        p.hint = "^1The ZipLines are blocked for Zombies";
-                    }
-                    else
-                    {
-                        p.hint = "^5Hold ^1[{+melee}] ^5to use the ZipLine";
-                    }
+                level thread WatchZiplinePlayer(p, z);
+            }
+        }
+        wait 0.1;
+    }
+}
 
-                    // Check for BUTTON press
-                    if (p MeleeButtonPressed())
-                    {
-                        wait 0.1;
-                        if (p MeleeButtonPressed())
-                        {
-                            if (level.buyZiplineBlock == true && p IsHuman() == false)
-                            {
-                            }
-                            else
-                            {
-                                p thread HandleZipline(z);
-                            }
-                        }
-                    }
+WatchZiplinePlayer(p, z)
+{
+    //Set the hintstring
+    if (Distance(p.origin, z.origin) <= 70 && p.usingZipline == false)
+    {
+        if (level.buyZiplineBlock == true && p IsHuman() == false)
+        {
+            p.hint = "^1The ZipLines are blocked for Zombies";
+        }
+        else
+        {
+            p.hint = "^5Hold ^1[{+melee}] ^5to use the ZipLine";
+        }
+
+        // Check for BUTTON press
+        if (p MeleeButtonPressed())
+        {
+            wait 0.1;
+            if (p MeleeButtonPressed())
+            {
+                if (level.buyZiplineBlock == true && p IsHuman() == false)
+                {
                 }
-
-                // Remove the hintstring
-                if (Distance(p.origin, z.origin) > 50 && Distance(p.origin, z.origin) < 300)
+                else
                 {
-                    p.hint = "";
+                    p thread HandleZipline(z);
                 }
             }
         }
+    }
+
+    // Remove the hintstring
+    if (Distance(p.origin, z.origin) > 70 && Distance(p.origin, z.origin) < 300)
+    {
+        p.hint = "";
     }
 }
 

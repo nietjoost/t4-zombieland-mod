@@ -38,6 +38,12 @@ OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeo
     }
     _self.kills++;
 
+    if (_self.kills % 10 == 0)
+    {
+        _self thread maps\mp\gametypes\_hud_message::oldNotifyMessage("^1You are on a rampage!", "^2Extra money is earned!", undefined, (1, 0, (55 / 255)), "mp_level_up", 5);
+        _self thread GivePlayerMoney(level.rampageExtraCash);
+    }
+
     // Surviving money
     if (_self.type == "zombie")
     {

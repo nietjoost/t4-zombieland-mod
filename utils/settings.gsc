@@ -9,6 +9,7 @@ SetupSettings()
 	level.humanSurvivingBonus = 25;
 	level.zombieStartMoney = 50;
 	level.zombieKillMoney = 25;
+	level.rampageExtraCash = 50;
 	level.wallWeaponCost = 300;
 	level.zombieBossHealth = 99999;
 	level.zombieBossTimer = 60;
@@ -171,4 +172,7 @@ PreCache()
 	PrecacheModel(level.collision);
 	PrecacheModel(level.collisionModel);
 	PrecacheModel(level.mysteryBoxModel);
+
+	// ITEMS
+	PrecacheItem("satchel_charge_mp");
 }

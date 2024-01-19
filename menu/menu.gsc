@@ -41,13 +41,13 @@ ResetMenu()
 
 MenuBase()
 {
-    while(self.menuAlive)
+    while (self.menuAlive)
     {
         if( !self getLocked())
         {
-            if( !self getUserIn() )
+            if (!self getUserIn() )
             {
-                if( self adsButtonPressed() && self meleeButtonPressed() )
+                if(self adsButtonPressed() && self meleeButtonPressed())
                 {
                     // Check for running mod
                     if (level.stopZombieLand == true)
@@ -55,7 +55,6 @@ MenuBase()
                         return;
                     }
 
-                    self ControlMenu("close");
                     self ResetMenu();
                     self DefineVariables();
                     self RunMenuIndex();

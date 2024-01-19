@@ -95,7 +95,6 @@ OnPlayerSpawnedZL()
             self ResetMenu();
             self thread RunHumanShop();
             self PlayerSetupMenu();
-            //self thread maps\mp\gametypes\_hud_message::oldNotifyMessage("Welcome " + self.name + "!", "To RooieRonnie's Zombieland", "hud_icon_ppsh", (1, 0, (55 / 255)), "mp_level_up", 5);
         }
         else
         {

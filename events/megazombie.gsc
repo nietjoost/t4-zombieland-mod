@@ -25,6 +25,12 @@ WatchZombieBoss()
 			SetExpFog(200, 1000, 0.5, 0.4, 0.4, 6);
 			zpos = 0;
 
+			// Sound
+			for (s = 0; s < level.players.size; s++ )
+			{
+				level.players[s] PlaySound("veh_explo_small");
+			}
+
 			// Set ZombieBoss position
 			zombies = GetPlayerZombies();
 			megaZombies = [];
