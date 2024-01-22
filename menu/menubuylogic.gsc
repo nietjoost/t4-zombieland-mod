@@ -1,5 +1,6 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\moneylogic;
+#include scripts\mp\utils\player;
 #include scripts\mp\utils\utils;
 
 //Check money
@@ -320,4 +321,53 @@ BuyMaxAmmoAllWeapons()
 		self SetWeaponAmmoClip(weapons[i], WeaponClipSize(weapons[i]));
 	    self GiveMaxAmmo(weapons[i]);
 	}
+}
+
+BuyTeleportPlayer()
+{
+    if (self thread CheckMoney(level.buyTeleport))
+    {
+        return;
+    }
+
+    self thread PlayerMessageLeftUnder("You bought the ^2teleport selector");
+    self thread TeleportPlayer();
+}
+
+BuyInstaKill()
+{
+    if (self.hasInstaKill)
+    {
+        self thread PlayerMessageLeftUnder("^1You already have Insta Kill");
+        return;
+    }
+
+    if (self thread CheckMoney(level.buyInstaKill))
+    {
+        return;
+    }
+
+    self endon ("death");
+    self thread PlayerMessageLeftUnder("You bought ^2Insta Kill ^7for 30 seconds");
+    self.hasInstaKill = true;
+    wait 30;
+    self.hasInstaKill = false;
+    self thread PlayerMessageLeftUnder("^2Insta Kill ^1has ended");
+}
+
+BuyInvisible()
+{
+    if (self.isInvisible)
+    {
+        self thread PlayerMessageLeftUnder("^1You already have invisibility");
+        return;
+    }
+
+    if (self thread CheckMoney(level.buyInvisible))
+    {
+        return;
+    }
+
+    self thread PlayerMessageLeftUnder("You bought ^2invisibility for 20 seconds");
+    self thread GiveInvisible(20);
 }

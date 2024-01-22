@@ -27,6 +27,7 @@ OnPlayerConnectZL()
         player.isInMegaZombie = false;
         player.tacticalSet = false;
         player.hasExplosiveSniper = false;
+        player.buyWallWeapon = false;
 
         player thread OnPlayerSpawnedZL();
 
@@ -98,9 +99,9 @@ OnPlayerSpawnedZL()
         }
         else
         {
-            self thread WatchTactical();
             wait 0.1;
             self thread GiveZombieClass();
+            self thread WatchTactical();
             self thread ZombieNoBullets();
             self ResetMenu();
             self PlayerSetupMenu();
@@ -130,6 +131,8 @@ OnPlayerSpawnedZL()
         self.health = self.maxhealth;
         self.hint = "";
         self.subHint = "";
+        self.hasInstaKill = false;
+        self.isInMegaZombie = false;
 
         // MENU logic
         self thread CreateMoneyHUD();

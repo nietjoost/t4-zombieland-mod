@@ -253,3 +253,12 @@ GivePlayerBurn(type, time)
         }
     }
 }
+
+TeleportPlayer()
+{ 
+	self BeginLocationSelection("map_artillery_selector");
+	self waittill("confirm_location", location);
+    newLocation = PhysicsTrace(location + (0, 0, 1000), location - (0, 0, 1000));
+	self SetOrigin(newLocation);
+	self EndLocationSelection();
+}

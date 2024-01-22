@@ -33,6 +33,9 @@ SetupSettings()
 	level.buyGrenadeCost = 125;
 	level.buyMaxAmmoCurrentWeapon = 200;
 	level.buyMaxAmmoAllWeapons = 500;
+	level.buyTeleport = 500;
+	level.buyInstaKill = 400;
+	level.buyInvisible = 100;
 	level.addBots = true;
 	
 	level.playerStartWeapon = "mp40_mp";

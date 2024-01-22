@@ -9,9 +9,9 @@
 OnPlayerKilled(_self, inflictor, attacker, type, mod, weapon, dir, hitloc, timeoffset, deathanimduration)
 {
     //DEBUG
-    //_self iPrintLn(_self.name);
+    //_self iPrintLn("self: " + _self.name);
     //_self iPrintLn(inflictor);
-    //attacker iPrintLn(attacker.name);
+    //_self iPrintLn("attacker: " + attacker.name);
 
     // Check for running mod
 	if (level.stopZombieLand == true)

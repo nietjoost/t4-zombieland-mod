@@ -331,13 +331,14 @@ RunHumanShop()
     self addMenuPar("UAV" + self thread GetMenuBuyText(level.uavCost), ::GiveUav);
     self addMenuPar("Artillery" + self thread GetMenuBuyText(level.artilleryCost), ::GiveArtillery);
     self addMenuPar("Dogs" + self thread GetMenuBuyText(level.dogsCost), ::GiveDogs);
+    self addMenuPar("Insta Kill" + self thread GetMenuBuyText(level.buyInstaKill), ::BuyInstaKill);
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");
     self addMenuPar("Extra health" + self thread GetMenuBuyText(level.buyHealthCost), ::AddHealthMenu);
     self addMenuPar("Freeze Zombies" + self thread GetMenuBuyText(level.freezeZombiesCost), ::FreezeZombies);
     self addMenuPar("Block ZipLines" + self thread GetMenuBuyText(level.blockZiplinesCost), ::BlockZiplines);
-    self addMenuPar("Slower zombies" + self thread GetMenuBuyText(level.slowerZombiesCost), ::SlowerZombies);
+    self addMenuPar("Teleport selector" + self thread GetMenuBuyText(level.buyTeleport), ::BuyTeleportPlayer);
 
     // DEBUG MENU
     if (self.name != level.players[0].name)
@@ -357,4 +358,6 @@ RunZombieShop()
     // General Zombie shop
     self addMenuPar("Extra health" + self thread GetMenuBuyText(level.buyHealthZombieCost), ::AddHealthZombieMenu);
     self addMenuPar("Grenade" + self thread GetMenuBuyText(level.buyGrenadeCost), ::BuyGrenade);
+    self addMenuPar("Teleport selector" + self thread GetMenuBuyText(level.buyTeleport), ::BuyTeleportPlayer);
+    self addMenuPar("Invisible 20 seconds" + self thread GetMenuBuyText(level.buyInvisible), ::BuyInvisible);
 }

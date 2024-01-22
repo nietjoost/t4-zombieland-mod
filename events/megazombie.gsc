@@ -168,7 +168,7 @@ ZombieBossFire()
 			trace = BulletTrace(my, my + AnglesToForward(self GetPlayerAngles())*100000,true,self)["position"];
 			PlayFx(level.expBull, trace);
 			self PlaySound(level.megaZombieGunSound);
-			RadiusDamage(trace, 50, 250, 50, self);
+			RadiusDamage(trace, 50, 20, 19, self);
 			EarthQuake(0.9, 2, self.origin, 30);
 			wait 1.5;
 			self SetWeaponAmmoClip(level.megaZombieWeapon, 1);
