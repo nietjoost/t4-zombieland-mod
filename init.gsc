@@ -6,7 +6,6 @@
 #include scripts\mp\maps\mapedits;
 #include scripts\mp\menu\menu;
 #include scripts\mp\events\broadcaster;
-#include scripts\mp\events\playerDamage;
 #include scripts\mp\events\playerkilled;
 #include scripts\mp\events\playerconnect;
 #include scripts\mp\events\playerconnecterror;
@@ -27,7 +26,6 @@ init()
 
     // Replace functions
     level.onPlayerKilled = ::OnPlayerKilled;
-    level.onPlayerDamage = ::onPlayerDamage;
     level.onForfeit = ::FixForfeit;
 
     // ZombieLand scripts

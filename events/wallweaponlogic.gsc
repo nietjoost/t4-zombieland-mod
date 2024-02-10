@@ -31,7 +31,7 @@ WatchBuyWallWeapon()
 
             p thread WatchBuyWallWeaponPlayer(self);
         }
-        wait 2;
+        wait 0.5;
     }
 }
 

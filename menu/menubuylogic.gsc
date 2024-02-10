@@ -1,3 +1,4 @@
+#include scripts\mp\events\instaKill;
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\moneylogic;
 #include scripts\mp\utils\player;
@@ -338,7 +339,7 @@ BuyInstaKill()
 {
     if (self.hasInstaKill)
     {
-        self thread PlayerMessageLeftUnder("^1You already have Insta Kill");
+        self thread PlayerMessageLeftUnder("^1You already have Insta Kill!");
         return;
     }
 
@@ -350,9 +351,17 @@ BuyInstaKill()
     self endon ("death");
     self thread PlayerMessageLeftUnder("You bought ^2Insta Kill ^7for 30 seconds");
     self.hasInstaKill = true;
+
+    // Watch for instakill
+    for ( i = 0; i < level.players.size; i++ )
+    {
+        p = level.players[i];
+        p thread CheckInstaKillHealth(self);
+    }
+
     wait 30;
     self.hasInstaKill = false;
-    self thread PlayerMessageLeftUnder("^2Insta Kill ^1has ended");
+    self thread PlayerMessageLeftUnder("^2Insta Kill ^1has ended!");
 }
 
 BuyInvisible()
