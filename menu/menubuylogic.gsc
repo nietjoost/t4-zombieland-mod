@@ -1,6 +1,7 @@
 #include scripts\mp\events\instaKill;
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\moneylogic;
+#include scripts\mp\menu\menu;
 #include scripts\mp\utils\player;
 #include scripts\mp\utils\utils;
 
@@ -350,6 +351,7 @@ BuyInstaKill()
 
     self endon ("death");
     self thread PlayerMessageLeftUnder("You bought ^2Insta Kill ^7for 30 seconds");
+    self thread ControlMenu("close");
     self.hasInstaKill = true;
 
     // Watch for instakill

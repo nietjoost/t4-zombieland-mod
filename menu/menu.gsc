@@ -4,6 +4,7 @@
 #include scripts\mp\menu\hostutils;
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\healthlogic;
+#include scripts\mp\killstreaks\jetpack;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
 
@@ -333,6 +334,7 @@ RunHumanShop()
     self addMenuPar("Dogs" + self thread GetMenuBuyText(level.dogsCost), ::GiveDogs);
     self addMenuPar("Insta Kill" + self thread GetMenuBuyText(level.buyInstaKill), ::BuyInstaKill);
     self addMenuPar("Slower zombies" + self thread GetMenuBuyText(level.slowerZombiesCost), ::SlowerZombies);
+    self addMenuPar("JetPack" + self thread GetMenuBuyText(level.buyJetPack), ::BuyJetPack);
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");
@@ -361,4 +363,5 @@ RunZombieShop()
     self addMenuPar("Grenade" + self thread GetMenuBuyText(level.buyGrenadeCost), ::BuyGrenade);
     self addMenuPar("Teleport selector" + self thread GetMenuBuyText(level.buyTeleport), ::BuyTeleportPlayer);
     self addMenuPar("Invisible 20 seconds" + self thread GetMenuBuyText(level.buyInvisible), ::BuyInvisible);
+    self addMenuPar("JetPack 40 seconds" + self thread GetMenuBuyText(level.buyJetPackZombie), ::BuyJetPackZombie);
 }

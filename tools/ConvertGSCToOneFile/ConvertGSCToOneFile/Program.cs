@@ -1,115 +1,109 @@
-﻿using static System.Net.Mime.MediaTypeNames;
+﻿using ConvertGSCToOneFile.Infrastructure.Layer.Const;
+using ConvertGSCToOneFile.Infrastructure.Layer.Utils;
 
-const string CYAN = "\x1b[96m";
-const string RED = "\x1b[91m";
-const string GREEN = "\x1b[92m";
-const string NORMAL = "\x1b[39m";
+namespace ConvertGSCToOneFile {
 
-// Console start message
-Console.WriteLine("Welcome to the RooieRonnie's GSC project to one file converter tool");
-Console.WriteLine("Paste the folder path to the init.gsc file:");
-
-// Read the folder line
-var folderPlace = Console.ReadLine();
-
-// If folder is null, stop the process
-if (folderPlace == null || folderPlace.Length == 0)
-{
-    Console.WriteLine($"{RED}No folder given!{NORMAL}");
-    return;
-}
-
-if (Directory.Exists(folderPlace) == false)
-{
-    Console.WriteLine($"{RED}The given folder does not exists!{NORMAL}");
-    return;
-}
-
-if (File.Exists($"{folderPlace}/init.gsc") == false)
-{
-    Console.WriteLine($"{RED}The given folder does not contain an valid start file (init.gsc)!{NORMAL}");
-    return;
-}
-
-// Get all the files in the given directory
-var files = Directory.GetFiles(folderPlace, "*.*", SearchOption.AllDirectories);
-
-// Remove unwanted files
-var cleanedFiles = files.Where(f => !f.Contains(".git"))
-    .Where(f => !f.Contains("assets"))
-    .Where(f => !f.Contains("tools"))
-    .Where(f => !f.Contains("README.md"))
-    .Where(f => !f.Contains("callbacks.gsc"))
-    .Where(f => f.Contains(".gsc"))
-    .ToList();
-Console.WriteLine($"Total files found: {GREEN}{cleanedFiles.Count}{NORMAL}");
-
-// Set variables for the custom map edits
-var loadMapCount = 1;
-var loadFunctionCount = 1;
-
-// Check if the directory exests
-bool folderExists = Directory.Exists($"{folderPlace}/exports/");
-
-if (!folderExists)
-{
-    Directory.CreateDirectory($"{folderPlace}/exports/");
-}
-
-// Removes export file if exists
-string path = $"{folderPlace}/exports/Export.txt";
-
-if (File.Exists(path))
-{
-    File.Delete(path);
-}
-
-// Check each line if we want to include it in the file
-foreach (var file in cleanedFiles)
-{
-    Console.WriteLine($"Converting file {CYAN}{Path.GetFileName(file)}{NORMAL}");
-    string text = File.ReadAllText(file);
-    string[] lines = text.Split(Environment.NewLine);
-
-    foreach (var line in lines)
+    public class Program
     {
-        var newLine = line;
+        const string DEFAULT_FILE = "init.gsc";
+        const string DEFAUL_EXPORT_FOLDER = "\\exports\\";
+        const string DEFAUL_EXPORT_FILE_NAME = "Export.txt";
 
-        if (newLine.Contains("#include scripts"))
+        static void Main(string[] args)
         {
-            continue;
-        }
+            // Default vars
+            var loadMapCount = 1;
+            var loadFunctionCount = 1;
 
-        if (newLine.Contains("#include"))
-        {
-            continue;
-        }
+            // Console start message
+            Console.WriteLine($"Welcome to the {COLOR.CYAN}RooieRonnie's {COLOR.NORMAL}GSC project to one file converter tool");
+            Console.WriteLine($"Paste the folder path to the {DEFAULT_FILE} file:");
 
-        if (newLine.Contains("::Load();"))
-        {
-            newLine = newLine.Replace(newLine, $"Load{loadMapCount}();");
-            loadMapCount++;
-        }
+            // Read the folder line
+            var folderPlace = Console.ReadLine();
 
-        if (newLine.StartsWith("Load()"))
-        {
-            newLine = newLine.Replace(newLine, $"Load{loadFunctionCount}()");
-            loadFunctionCount++;
-        }
+            // If folder is null, stop the process
+            if (folderPlace == null || folderPlace.Length == 0)
+            {
+                Console.WriteLine($"{COLOR.RED}No folder given!{COLOR.NORMAL}");
+                return;
+            }
 
-        if (newLine.StartsWith("init()"))
-        {
-            newLine = newLine.Replace(newLine, "ZombieLand()");
-        }
+            if (FolderUtils.FolderExists(Path.Combine(folderPlace, DEFAULT_FILE)))
+            {
+                Console.WriteLine($"{COLOR.RED}The given folder does not contain an init file!{COLOR.NORMAL}");
+                return;
+            }
 
-        File.AppendAllLines(path, new[] { newLine });
+            // Get all the files in the given directory
+            var files = FolderUtils.GetFolderFiles(folderPlace);
+            Console.WriteLine($"Total files found: {COLOR.GREEN}{files.Count}{COLOR.NORMAL}");
+
+            // Check if the directory exests
+            bool folderExists = FolderUtils.FolderExists(Path.Combine(folderPlace, DEFAUL_EXPORT_FOLDER));
+
+            if (!folderExists)
+            {
+                Directory.CreateDirectory(Path.Combine(folderPlace, DEFAUL_EXPORT_FOLDER));
+            }
+
+            // Removes export file if exists
+            string exportPath = Path.Combine(folderPlace, DEFAUL_EXPORT_FOLDER, DEFAUL_EXPORT_FILE_NAME);
+
+            if (File.Exists(exportPath))
+            {
+                File.Delete(exportPath);
+            }
+
+            // Check each line if we want to include it in the file
+            foreach (var file in files)
+            {
+                Console.WriteLine($"Converting file {COLOR.CYAN}{Path.GetFileName(file)}{COLOR.NORMAL}");
+                string text = File.ReadAllText(file);
+                string[] lines = text.Split(Environment.NewLine);
+
+                foreach (var line in lines)
+                {
+                    var newLine = line;
+
+                    if (newLine.Contains("#include scripts"))
+                    {
+                        continue;
+                    }
+
+                    if (newLine.Contains("#include"))
+                    {
+                        continue;
+                    }
+
+                    if (newLine.Contains("::Load();"))
+                    {
+                        newLine = newLine.Replace(newLine, $"Load{loadMapCount}();");
+                        loadMapCount++;
+                    }
+
+                    if (newLine.StartsWith("Load()"))
+                    {
+                        newLine = newLine.Replace(newLine, $"Load{loadFunctionCount}()");
+                        loadFunctionCount++;
+                    }
+
+                    if (newLine.StartsWith("init()"))
+                    {
+                        newLine = newLine.Replace(newLine, "ZombieLand()");
+                    }
+
+                    File.AppendAllLines(exportPath, new[] { newLine });
+                }
+            }
+
+            // Export file with at the beginning #includes (#includes at start otherwise the script does not work)
+            string content = File.ReadAllText(exportPath);
+            content = "#include maps\\mp\\_utility;" + "\n" + "#include maps\\mp\\gametypes\\_hud_util;" + "\n" + content;
+            File.WriteAllText(exportPath, content);
+
+            Console.WriteLine();
+            Console.WriteLine($"File is saved to: {COLOR.GREEN}{exportPath}{COLOR.NORMAL}");
+        }
     }
 }
-
-// Export file with at the beginning #includes (#includes at start otherwise the script does not work)
-string content = File.ReadAllText(path);
-content = "#include maps\\mp\\_utility;" + "\n" + "#include maps\\mp\\gametypes\\_hud_util;" + "\n" + content;
-File.WriteAllText(path, content);
-
-Console.WriteLine();
-Console.WriteLine($"File is saved to: {GREEN}{path}{NORMAL}");

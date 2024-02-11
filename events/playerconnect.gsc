@@ -28,6 +28,7 @@ OnPlayerConnectZL()
         player.tacticalSet = false;
         player.hasExplosiveSniper = false;
         player.buyWallWeapon = false;
+        player.hasJetPack = false;
 
         player thread OnPlayerSpawnedZL();
 

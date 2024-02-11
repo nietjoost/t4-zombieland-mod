@@ -1,4 +1,5 @@
 #include scripts\mp\hud\playermessage;
+#include scripts\mp\killstreaks\jetpack;
 #include scripts\mp\utils\utils;
 #include scripts\mp\utils\player;
 
@@ -75,7 +76,7 @@ GiveHumanDrop(randomInt)
 
 GiveZombieDrop(randomInt)
 {
-    randomIntZombie = RandomIntRange(1, 8);
+    randomIntZombie = RandomIntRange(1, 9);
 
     if (randomIntZombie == 1)
         self GiveInvisible(10);
@@ -112,4 +113,7 @@ GiveZombieDrop(randomInt)
 
     if (randomIntZombie == 7)
         GivePlayerBurn("human", 10);
+
+    if (randomIntZombie == 8)
+        GiveFreeJetPack();
 }
