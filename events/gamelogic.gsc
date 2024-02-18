@@ -113,7 +113,7 @@ EndGameLogic()
     {
         AllPlayerMessageMiddle("^2Player ^7" + winner.name + " ^2had the most kills!");
     }
-    AllPlayerMessageMiddle("^5The Humans Survived: ^7"+ level.minutes +" ^5mins and ^7"+ level.seconds +" ^5secs.");
+    AllPlayerMessageMiddle("^5The Humans Survived: ^7"+ level.minutes +" ^5mins and ^7"+ level.seconds +" ^5secondss.");
     for ( i = 0; i < level.players.size; i++ )
     {
         p = level.players[i];

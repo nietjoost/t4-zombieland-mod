@@ -287,7 +287,7 @@ TeleportPlayer()
 
 GivePlayerScare()
 {
-    self thread PlayerMessageLeftUnder("You got scared!");
+    self thread PlayerMessageLeftUnder("^1You got scared!");
     self.blackscreen = NewClientHudElem(self);
     self.blackscreen.x = 0;
     self.blackscreen.y = 0;
