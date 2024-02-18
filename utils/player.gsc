@@ -3,6 +3,7 @@
 #include scripts\mp\hud\moneylogic;
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\utils\utils;
+#include scripts\mp\killstreaks\predatormissile;
 
 // Classes
 GivePlayerClass()
@@ -17,6 +18,9 @@ GivePlayerClass()
     self giveMaxAmmo(level.zombieStartWeapon);
 
     self FreezeControls(false);
+
+    wait 6;
+    //self thread StartPredator();
 }
 
 

@@ -334,6 +334,7 @@ RunHumanShop()
     self addMenuPar("Insta Kill" + self thread GetMenuBuyText(level.buyInstaKill), ::BuyInstaKill);
     self addMenuPar("Slower zombies" + self thread GetMenuBuyText(level.slowerZombiesCost), ::SlowerZombies);
     self addMenuPar("JetPack" + self thread GetMenuBuyText(level.buyJetPack), ::BuyJetPack);
+    self addMenuPar("Predator missile" + self thread GetMenuBuyText(level.BuyPredator), ::BuyPredator);
 
     // Special menu
     self addmenu("specials_menu", "^5Specials shop", "main");

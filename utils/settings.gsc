@@ -38,7 +38,9 @@ SetupSettings()
 	level.buyInvisible = 100;
 	level.buyJetPack = 800;
 	level.buyJetPackZombie = 100;
+	level.BuyPredator = 10;
 	level.addBots = true;
+	level.predatorInUse = false;
 	
 	level.playerStartWeapon = "mp40_mp";
 	level.zombieStartWeapon = "colt_mp";

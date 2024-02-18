@@ -17,7 +17,7 @@ JetPack()
 
     while (self.hasJetPack)
     {
-        if (self UseButtonPressed() && self.jetboots > 0)
+        if (self UseButtonPressed() && self.jetboots > 0 && self.isInMegaZombie == false)
         {
             self PlaySound("artillery_launch");
             PlayFx(level.expBull, self GetTagOrigin("J_Ankle_LE"));

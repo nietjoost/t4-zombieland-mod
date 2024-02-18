@@ -72,7 +72,6 @@ WatchBuyWallWeaponPlayer(weapon)
                     return;
                 }
 
-                self PlaySound(level.buySound);
                 if (self hasWeapon(weapon.name))
                 {
                     self thread GiveBuyWeapon(weapon.name, "You bought ammo!");
