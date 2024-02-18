@@ -44,7 +44,7 @@ WatchRandomDrop()
 
 GiveHumanDrop(randomInt)
 {
-    randomIntHuman = RandomIntRange(1, 10);
+    randomIntHuman = RandomIntRange(1, 12);
 
     if (randomIntHuman == 1)
         self GiveInvisible(10);
@@ -72,11 +72,17 @@ GiveHumanDrop(randomInt)
 
     if (randomIntHuman == 9)
         GivePlayerBurn("zombie", 5);
+
+    if (randomIntHuman == 10)
+        self GiveFlickering(30);
+
+    if (randomIntHuman == 11)
+        self GivePlayerScare();
 }
 
 GiveZombieDrop(randomInt)
 {
-    randomIntZombie = RandomIntRange(1, 9);
+    randomIntZombie = RandomIntRange(1, 11);
 
     if (randomIntZombie == 1)
         self GiveInvisible(10);
@@ -116,4 +122,10 @@ GiveZombieDrop(randomInt)
 
     if (randomIntZombie == 8)
         GiveFreeJetPack();
+
+    if (randomIntZombie == 9)
+        self GiveFlickering(30);
+
+    if (randomIntZombie == 10)
+        self GivePlayerScare();
 }

@@ -61,7 +61,6 @@ MenuBase()
                     self RunMenuIndex();
                     wait 0.01;
                     self ControlMenu("open", "main");
-                    wait 0.2;
                 }
             }
             else

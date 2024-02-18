@@ -137,9 +137,31 @@ GiveInvisible(time)
 
 GiveFlickering(time)
 {
+    if (self.isFlickering == true)
+    {
+        self thread PlayerMessageLeftUnder("^1You are already ^2flickering^1!");
+        return;
+    }
+
+    self endon ("death");
     self thread PlayerMessageLeftUnder("You are now ^2flickering ^7for " + time + " seconds");
+    self.isFlickering = true;
+    self thread Flick();
     wait time;
     self thread PlayerMessageLeftUnder("You are ^1no longer ^72flickering");
+    self.isFlickering = false;
+}
+
+Flick()
+{
+    self endon("death");
+
+    while(self.isFlickering)
+    {
+        self Hide();
+        wait 0.5;
+        self Show();
+    }
 }
 
 GivePlayerMaxAmmo()
@@ -240,15 +262,15 @@ GivePlayerBurn(type, time)
     {
         p = level.players[i];
 
-        p thread PlayerMessageLeftUnder("You got distracted ^1by the enemy^7!");
-
         if (type == "human" && p IsHuman() == true)
         {
+            p thread PlayerMessageLeftUnder("You got distracted ^1by the enemy^7!");
             p SetBurn(time);
         }
         
         if (type == "zombie" && p IsHuman() == false)
         {
+            p thread PlayerMessageLeftUnder("You got distracted ^1by the enemy^7!");
             p SetBurn(time);
         }
     }
@@ -261,4 +283,24 @@ TeleportPlayer()
     newLocation = PhysicsTrace(location + (0, 0, 1000), location - (0, 0, 1000));
 	self SetOrigin(newLocation + (0, 0, 10));
 	self EndLocationSelection();
+}
+
+GivePlayerScare()
+{
+    self thread PlayerMessageLeftUnder("You got scared!");
+    self.blackscreen = NewClientHudElem(self);
+    self.blackscreen.x = 0;
+    self.blackscreen.y = 0;
+    self.blackscreen.alignX = "left";
+    self.blackscreen.alignY = "top";
+    self.blackscreen.horzAlign = "fullscreen";
+    self.blackscreen.vertAlign = "fullscreen";
+    self.blackscreen.sort = -5;
+    self.blackscreen.color = (0,0,0);
+    self.blackscreen.archived = false;
+    self.blackscreen SetShader("black", 640, 480);	
+    self.blackscreen.alpha = 1;
+
+    wait 1;
+    self.blackscreen Destroy();
 }

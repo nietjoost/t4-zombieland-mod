@@ -26,7 +26,7 @@ JetPack()
 
             if(self GetVelocity()[2] < 300)
             {
-                //self setVelocity( ( 0, 0, 0 ) );
+                //self setvelocity(self getvelocity()+(0,0,60));
                 self SetOrigin(self.origin + (0, 0, 50));
             }
         }

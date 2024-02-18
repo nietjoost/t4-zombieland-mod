@@ -134,6 +134,7 @@ OnPlayerSpawnedZL()
         self.subHint = "";
         self.hasInstaKill = false;
         self.isInMegaZombie = false;
+        self.isFlickering = false;
 
         // MENU logic
         self thread CreateMoneyHUD();
