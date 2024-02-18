@@ -38,7 +38,7 @@ SetupSettings()
 	level.buyInvisible = 100;
 	level.buyJetPack = 800;
 	level.buyJetPackZombie = 100;
-	level.BuyPredator = 10;
+	level.BuyPredator = 200;
 	level.addBots = true;
 	level.predatorInUse = false;
 	
@@ -69,6 +69,7 @@ SetupSettings()
 	// ICONS
 	PrecacheShader("specialty_gas_mask");
 	PrecacheShader("specialty_exposeenemy");
+	PrecacheShader("tank_turret_mp");
 
 	// Save Game settings for reset
 	level.sv_cheats = GetDvar("sv_cheats");
