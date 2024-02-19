@@ -37,7 +37,7 @@ PredatorCircleAround(bombEnt, originalPos)
     wait 10;
     bombEnt MoveTo(pos1, 10);
     wait 10;
-    self thread PlayerMessageMiddle("Press ^1[{+activate}] ^7within ^210 seconds!");
+    self thread PlayerMessageMiddle("Press ^1[{+attack}] ^7within ^210 seconds!");
     bombEnt MoveTo(pos2, 10);
     wait 10;
     level notify ("predator_stop_pre_timeup");
@@ -58,13 +58,13 @@ WatchPredatorMissile(bombEnt, originalPos)
 {
     level endon ("predator_stop_pre_timeup");
 
-    self thread PlayerMessageMiddle("Hold ^1[{+activate}] ^7to fire the ^2Predator Missile!");
+    self thread PlayerMessageMiddle("Hold ^1[{+attack}] ^7to fire the ^2Predator Missile!");
 
     while (true)
     {
-        if (self UseButtonPressed())
+        if (self AttackButtonPressed())
         {
-            self PlaySound("flare_exp");
+            self PlaySound(level.fupppSound);
             EarthQuake(.5, .2, self.origin, 850);
             self thread GoMissile(bombEnt, originalPos);
 
@@ -94,7 +94,7 @@ GoMissile(bombEnt, originalPos)
 
     RadiusDamage(trace, 600, 600, 600, self);
     EarthQuake(.5, .2, self.origin, 850);
-    self PlaySound("artillery_launch");
+    self PlaySound(level.artilleryLaunchSound);
     wait 0.1;
     PlayFx(level.expBull, trace);
 

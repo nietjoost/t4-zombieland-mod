@@ -29,6 +29,7 @@ OnPlayerConnectZL()
         player.hasExplosiveSniper = false;
         player.buyWallWeapon = false;
         player.hasJetPack = false;
+        player.moveSpeedScale = 1;
 
         player thread OnPlayerSpawnedZL();
 

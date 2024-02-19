@@ -83,7 +83,7 @@ WatchMBHuman()
                         self.user = p.name;
                         self.totalUses++;
                         p PlayerMessageLeftUnder("^5You purchased the ^1Mystery Box^5!");
-                        p PlaySound("flare_exp");
+                        p PlaySound(level.fupppSound);
                         p.hint = "";
 
                         // Mystery Box show logic

@@ -5,6 +5,7 @@
 #include scripts\mp\hud\playermessage;
 #include scripts\mp\hud\healthlogic;
 #include scripts\mp\killstreaks\jetpack;
+#include scripts\mp\utils\utils;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
 
@@ -162,12 +163,25 @@ scrollMenu()
 
 ControlMenu( type, par1 )
 {
+    if (self IsHuman())
+    {
+        color = (0, 0.5, 0);
+    }
+    else
+    {
+        color = (0.5, 0, 0);
+    }
+
     if( type == "open" )
     {
+        self.menu["ui"]["background"] Destroy();
+        self.menu["ui"]["scroller"] Destroy();
+        self.menu["ui"]["barTop"] Destroy();
+
         self.menu["curs"] = 0;
         self.menu["ui"]["background"] = self createRectangle("CENTER", "CENTER", 0, 0, 210, 200, (0, 0, 0), 1, 0, "white");
-        self.menu["ui"]["scroller"] = self createRectangle("CENTER", "CENTER", 0, -40, 210, 20, (0, 0, .5), 2, 0, "white");
-        self.menu["ui"]["barTop"] = self createRectangle("CENTER", "CENTER", 0, -75, 0, 35, (0, 0, .5), 3, 0, "white");
+        self.menu["ui"]["scroller"] = self createRectangle("CENTER", "CENTER", 0, -40, 210, 20, color, 2, 0, "white");
+        self.menu["ui"]["barTop"] = self createRectangle("CENTER", "CENTER", 0, -75, 0, 35, color, 3, 0, "white");
         self.menu["ui"]["background"] affectElement("alpha", .2, .5);
         self.menu["ui"]["scroller"] affectElement("alpha", .2, .9);
         self.menu["ui"]["barTop"] affectElement("alpha", .1, .9);
@@ -308,6 +322,9 @@ RunHumanShop()
     self addmenu("ammo_menu", "^5Ammo shop", "main");
     self addMenuPar("Max ammo current weapon" + self thread GetMenuBuyText(level.buyMaxAmmoCurrentWeapon), ::BuyMaxAmmoCurrentWeapon);
     self addMenuPar("Max ammo all weapons" + self thread GetMenuBuyText(level.buyMaxAmmoAllWeapons), ::BuyMaxAmmoAllWeapons);
+    self addMenuPar("Grenade" + self thread GetMenuBuyText(level.buyGrenadeCost), ::BuyGrenade);
+    self addMenuPar("Sticky grenade" + self thread GetMenuBuyText(level.buyGrenadeCost), ::BuyStickyGrenade);
+    self addMenuPar("Molotov" + self thread GetMenuBuyText(level.buyGrenadeCost), ::BuyMolotov);
 
     // Weapon menu
     self addmenu("weapon_menu", "^5Weapon shop", "main");
@@ -342,6 +359,7 @@ RunHumanShop()
     self addMenuPar("Freeze Zombies" + self thread GetMenuBuyText(level.freezeZombiesCost), ::FreezeZombies);
     self addMenuPar("Block ZipLines" + self thread GetMenuBuyText(level.blockZiplinesCost), ::BlockZiplines);
     self addMenuPar("Teleport selector" + self thread GetMenuBuyText(level.buyTeleport), ::BuyTeleportPlayer);
+    self addMenuPar("Increase walk speed" + self thread GetMenuBuyText(level.buyIncreaseSpeed), ::BuyIncreaseSpeed);
 
     // DEBUG MENU
     if (self.name != level.players[0].name)

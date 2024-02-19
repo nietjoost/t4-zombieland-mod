@@ -386,3 +386,55 @@ BuyPredator()
     wait 2;
     self thread StartPredator();
 }
+
+BuyIncreaseSpeed()
+{
+    if (self thread CheckMoney(level.buyIncreaseSpeed))
+    {
+        return;
+    }
+
+    self thread PlayerMessageLeftUnder("You bought ^5extra ^7walk speed");
+    self.moveSpeedScale += 0.1;
+    self SetMoveSpeedScale(self.moveSpeedScale);
+}
+
+BuyStickyGrenade()
+{
+    currentAmmo = self GetWeaponAmmoClip("sticky_grenade_mp");
+
+    if (currentAmmo >= 4)
+    {
+        self thread PlayerMessageLeftUnder("^1You already have 4 sticky grenades!");
+        return;
+    }
+
+    if (self thread CheckMoney(level.buyGrenadeCost))
+    {
+        return;
+    }
+
+    newCurrentAmmo = currentAmmo + 1;
+    GiveBuyWeapon("sticky_grenade_mp", "You bought a sticky grenades!");
+    self SetWeaponAmmoClip("sticky_grenade_mp", newCurrentAmmo);
+}
+
+BuyMolotov()
+{
+    currentAmmo = self GetWeaponAmmoClip("molotov_mp");
+
+    if (currentAmmo >= 4)
+    {
+        self thread PlayerMessageLeftUnder("^1You already have 4 molotov's!");
+        return;
+    }
+
+    if (self thread CheckMoney(level.buyGrenadeCost))
+    {
+        return;
+    }
+
+    newCurrentAmmo = currentAmmo + 1;
+    GiveBuyWeapon("molotov_mp", "You bought a molotov!");
+    self SetWeaponAmmoClip("molotov_mp", newCurrentAmmo);
+}

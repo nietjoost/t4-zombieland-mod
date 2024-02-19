@@ -103,7 +103,7 @@ CheckBooster(pos, height)
 			{
                 player SetOrigin(pos);
 				player thread BoostPlayerUp(pos, height);
-				player PlaySound("artillery_launch");
+				player PlaySound(level.artilleryLaunchSound);
 				wait 3;
 			}
 			wait 0.01;

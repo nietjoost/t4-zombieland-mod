@@ -39,6 +39,7 @@ SetupSettings()
 	level.buyJetPack = 800;
 	level.buyJetPackZombie = 100;
 	level.BuyPredator = 200;
+	level.buyIncreaseSpeed = 500;
 	level.addBots = true;
 	level.predatorInUse = false;
 	
@@ -52,6 +53,11 @@ SetupSettings()
 	level.noMoneySound = "ui_mp_suitcasebomb_timer";
 	level.upgradeSound = "mp_level_up";
 	level.buySound = "carbine_first_raise";
+	level.megaZombieSound = "veh_explo_small";
+	level.artilleryLaunchSound = "artillery_launch";
+	level.fupppSound = "flare_exp";
+	level.team1Icon = "specialty_gas_mask";
+	level.team2Icon = "specialty_exposeenemy";
 
     // Variables
     level.started = false;
@@ -67,8 +73,8 @@ SetupSettings()
 	level.buySlowerZombies = false;
 
 	// ICONS
-	PrecacheShader("specialty_gas_mask");
-	PrecacheShader("specialty_exposeenemy");
+	PrecacheShader(level.team1Icon);
+	PrecacheShader(level.team2Icon);
 	PrecacheShader("tank_turret_mp");
 
 	// Save Game settings for reset
@@ -105,8 +111,8 @@ SetupSettings()
 	SetDvar("g_ScoresColor_Allies", "0 1 0");
 	SetDvar("g_teamColor_Axis", "1 0 0");
 	SetDvar("g_ScoresColor_Axis", "1 0 0");
-	SetDvar("g_TeamIcon_Allies", "specialty_gas_mask");
-	SetDvar("g_TeamIcon_Axis", "specialty_exposeenemy");
+	SetDvar("g_TeamIcon_Allies", level.team1Icon);
+	SetDvar("g_TeamIcon_Axis", level.team2Icon);
 	SetDvar("bg_fallDamageMinHeight", 999999);
 	SetDvar("bg_fallDamageMaxHeight ", 999999);
 	SetDvar("motd ", "^3You Played COD5 Zombieland, ^2Created by RooieRonnie!");

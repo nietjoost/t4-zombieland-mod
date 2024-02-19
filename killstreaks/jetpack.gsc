@@ -19,7 +19,7 @@ JetPack()
     {
         if (self UseButtonPressed() && self.jetboots > 0 && self.isInMegaZombie == false)
         {
-            self PlaySound("artillery_launch");
+            self PlaySound(level.artilleryLaunchSound);
             PlayFx(level.expBull, self GetTagOrigin("J_Ankle_LE"));
             EarthQuake(.15, .2, self.origin, 200);
             self.jetboots--;

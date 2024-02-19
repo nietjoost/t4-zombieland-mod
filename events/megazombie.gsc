@@ -28,7 +28,7 @@ WatchZombieBoss()
 			// Sound
 			for (s = 0; s < level.players.size; s++ )
 			{
-				level.players[s] PlaySound("veh_explo_small");
+				level.players[s] PlaySound(level.megaZombieSound);
 			}
 
 			// Set ZombieBoss position
