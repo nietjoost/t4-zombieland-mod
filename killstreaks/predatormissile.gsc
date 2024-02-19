@@ -7,11 +7,10 @@ StartPredator()
     // Setup
     level.predatorInUse = true;
     self.weapons = self GetWeaponsList();
-    self FreezeControls(false);
     self TakeAllWeapons();
+    self Hide();
 
     originalPos = self.origin;
-    self SetOrigin(self.origin + (0, 0, 1400));
     bombEnt = Spawn("script_origin", self.origin);
 	self LinkTo(bombEnt);
 
@@ -28,6 +27,16 @@ PredatorCircleAround(bombEnt, originalPos)
 {
     level endon ("predator_stop_timeup");
 
+    // BOTOM LOGIC
+    travelTime = 4;
+    self FreezeControls(true);
+    bombEnt MoveTo(self.origin + (0, 0, 1400), travelTime);
+    self SetPlayerAngles((84, -180, 0));
+
+    wait travelTime;
+    self FreezeControls(false);
+
+    // TOP LOGIC
     pos1 = self.origin + (800, 800, 0);
     pos2 = self.origin - (800, 800, 0);
 
@@ -46,6 +55,7 @@ PredatorCircleAround(bombEnt, originalPos)
     wait 0.1;
     self SetOrigin(originalPos);
     self thread GiveWeaponsBack();
+    self Show();
     self.predatorUI Destroy();
     bombEnt Destroy();
     self thread PlayerMessageMiddle("^2Your predator missile time is up!");
@@ -77,6 +87,7 @@ WatchPredatorMissile(bombEnt, originalPos)
 
 GoMissile(bombEnt, originalPos)
 {
+    self FreezeControls(true);
     my = self GetTagOrigin("j_head");
     trace = BulletTrace(my, my + AnglesToForward(self GetPlayerAngles())*900000, true, self)["position"];
 
@@ -89,6 +100,8 @@ GoMissile(bombEnt, originalPos)
 
     self SetOrigin(originalPos);
     self thread GiveWeaponsBack();
+    self FreezeControls(false);
+    self Show();
     self.predatorUI Destroy();
     wait 0.1;
 
@@ -128,7 +141,7 @@ SetPredatorUI()
     self.predatorUI.alpha = 1;
     self.predatorUI.font = "objective";
     self.predatorUI.fontscale = 12;
-    self.predatorUI.color = (1, 1, 1);
+    self.predatorUI.color = (1, 0, 0);
     //self.predatorUI SetShader("tank_turret_mp", 640, 480 );
     self.predatorUI SetText("+");
 }
