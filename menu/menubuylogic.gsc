@@ -383,7 +383,7 @@ BuyPredator()
     self thread PlayerMessageLeftUnder("You bought the ^2predator missile!");
     self thread ControlMenu("close");
 
-    wait 2;
+    wait 1;
     self thread StartPredator();
 }
 

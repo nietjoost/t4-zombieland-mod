@@ -7,18 +7,33 @@ StartPredator()
     // Setup
     level.predatorInUse = true;
     self.weapons = self GetWeaponsList();
-    self TakeAllWeapons();
     self Hide();
+    self FreezeControls(true);
+
+    // FADE
+    self.fadeToBlack = NewClientHudElem(self);
+    self.fadeToBlack.x = 0; 
+    self.fadeToBlack.y = 0; 
+    self.fadeToBlack.alpha = 0; 
+    self.fadeToBlack.horzAlign = "fullscreen"; 
+    self.fadeToBlack.vertAlign = "fullscreen"; 
+    self.fadeToBlack.foreground = true; 
+    self.fadeToBlack SetShader( "black", 640, 480 ); 
+    self.fadeToBlack FadeOverTime(.5); 
+    self.fadeToBlack.alpha = 1;
+
+    wait 0.5;
 
     originalPos = self.origin;
     bombEnt = Spawn("script_origin", self.origin);
 	self LinkTo(bombEnt);
-
+    self TakeAllWeapons();
     
     // Watch Thread
-    self thread SetPredatorUI();
     self thread PredatorCircleAround(bombEnt, originalPos);
     self thread WatchPredatorMissile(bombEnt, originalPos);
+    wait 0.5;
+    self thread SetPredatorUI();
 }
 
 
@@ -26,15 +41,18 @@ StartPredator()
 PredatorCircleAround(bombEnt, originalPos)
 {
     level endon ("predator_stop_timeup");
+    self endon ("death");
+    self endon ("disconnect");
 
     // BOTOM LOGIC
     travelTime = 4;
-    self FreezeControls(true);
     bombEnt MoveTo(self.origin + (0, 0, 1400), travelTime);
     self SetPlayerAngles((84, -180, 0));
 
     wait travelTime;
     self FreezeControls(false);
+    self.fadeToBlack FadeOverTime(1);
+    self.fadeToBlack.alpha = 0;
 
     // TOP LOGIC
     pos1 = self.origin + (800, 800, 0);
@@ -58,6 +76,7 @@ PredatorCircleAround(bombEnt, originalPos)
     self Show();
     self.predatorUI Destroy();
     bombEnt Destroy();
+    self.fadeToBlack Destroy();
     self thread PlayerMessageMiddle("^2Your predator missile time is up!");
 
     wait 0.5;
@@ -67,7 +86,10 @@ PredatorCircleAround(bombEnt, originalPos)
 WatchPredatorMissile(bombEnt, originalPos)
 {
     level endon ("predator_stop_pre_timeup");
+    self endon ("death");
+    self endon ("disconnect");
 
+    wait 2;
     self thread PlayerMessageMiddle("Hold ^1[{+attack}] ^7to fire the ^2Predator Missile!");
 
     while (true)
@@ -96,6 +118,7 @@ GoMissile(bombEnt, originalPos)
 
     self Unlink();
     bombEnt Destroy();
+    self.fadeToBlack Destroy();
     wait 0.1;
 
     self SetOrigin(originalPos);
@@ -125,6 +148,7 @@ GiveWeaponsBack()
         wait 0.1;
 		self SetWeaponAmmoClip(self.weapons[i], WeaponClipSize(self.weapons[i]));
 	    self GiveMaxAmmo(self.weapons[i]);
+        self SwitchToWeapon(self.weapons[i]);
 	}
 }
 
