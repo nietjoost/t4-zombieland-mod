@@ -136,6 +136,8 @@ OnPlayerSpawnedZL()
         self.hasInstaKill = false;
         self.isInMegaZombie = false;
         self.isFlickering = false;
+        self.fadeToBlack Destroy();
+        self.predatorUI Destroy();
 
         // MENU logic
         self thread CreateMoneyHUD();

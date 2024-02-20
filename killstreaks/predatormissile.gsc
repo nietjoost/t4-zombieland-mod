@@ -64,7 +64,7 @@ PredatorCircleAround(bombEnt, originalPos)
     wait 10;
     bombEnt MoveTo(pos1, 10);
     wait 10;
-    self thread PlayerMessageMiddle("Press ^1[{+attack}] ^7within ^210 seconds!");
+    self thread PlayerMessageMiddle("Hold ^1[{+attack}] ^7within ^210 seconds!");
     bombEnt MoveTo(pos2, 10);
     wait 10;
     level notify ("predator_stop_pre_timeup");

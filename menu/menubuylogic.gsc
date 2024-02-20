@@ -369,7 +369,7 @@ BuyInvisible()
 
 BuyPredator()
 {
-    if (level.predatorInUse == true)
+    if (level.predatorInUse == true || self.usingZipline == true)
     {
         self thread PlayerMessageLeftUnder("^1The predator missile is already in use!");
         return;
