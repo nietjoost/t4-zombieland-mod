@@ -19,6 +19,29 @@ KillAllPlayersMenu()
     self thread PlayerMessageLeftUnder("All players have been ^1killed!");
 }
 
+ForceHost()
+{
+    // Is enabled so disable it ->
+    if (level.foreHost)
+    {
+        level.foreHost = false;
+        SetDvar("party_connectToOthers" , "1");
+        SetDvar("partyMigrate_disabled" , "0");
+        SetDvar("party_mergingEnabled" , "1");
+        SetDvar("allowAllNAT", "0");
+        self thread PlayerMessageLeftUnder("Force Host : ^1OFF");
+    }
+    else
+    {
+        level.foreHost = true;
+        SetDvar("party_connectToOthers" , "0");
+        SetDvar("partyMigrate_disabled" , "1");
+        SetDvar("party_mergingEnabled" , "0");
+        SetDvar("allowAllNAT", "1");
+        self thread PlayerMessageLeftUnder("Force Host : ^2ON");
+    }
+}
+
 StopZombieLand()
 {
     if (level.stopZombieLand == true)

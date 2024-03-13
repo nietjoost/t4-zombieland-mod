@@ -71,6 +71,7 @@ SetupSettings()
 	level.zombieBossFinal = false;
 	level.buyZiplineBlock = false;
 	level.buySlowerZombies = false;
+	level.foreHost = false;
 
 	// ICONS
 	PrecacheShader(level.team1Icon);

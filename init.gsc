@@ -48,10 +48,10 @@ init()
     level thread CalculateGameTimeEndGame();
 
     // DEBUG
-    //level thread debug();
+    //level thread Debug();
 }
 
-debug()
+Debug()
 {
     level endon ("stop_zombieland");
     wait 2;

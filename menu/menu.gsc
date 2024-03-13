@@ -368,8 +368,9 @@ RunHumanShop()
     }
 
     self addmenu("debug_menu", "^5Debug menu", "main");
-    self addMenuPar("Kill all players", ::KillAllPlayersMenu);
     self addMenuPar("Stop ^1ZombieLand", ::StopZombieLand);
+    self addMenuPar("Kill all players", ::KillAllPlayersMenu);
+    self addMenuPar("Force Host", ::ForceHost);
 }
 
 RunZombieShop()
