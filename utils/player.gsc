@@ -152,7 +152,7 @@ GiveFlickering(time)
     self.isFlickering = true;
     self thread Flick();
     wait time;
-    self thread PlayerMessageLeftUnder("You are ^1no longer ^72flickering");
+    self thread PlayerMessageLeftUnder("You are ^1no longer ^7flickering");
     self.isFlickering = false;
 }
 

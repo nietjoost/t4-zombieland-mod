@@ -34,6 +34,8 @@ OnPlayerConnectZL()
         player thread OnPlayerSpawnedZL();
 
         level thread StartZombieLand();
+
+        player thread EnableCoolClanTags();
     }
 }
 
@@ -149,5 +151,16 @@ OnPlayerSpawnedZL()
         self setClientDvar("cg_gun_x", "6");
         self setclientdvar("cg_fovmin", "1");
         self setClientDvar("cg_fovscale", "1.15");
+    }
+}
+
+
+// Enable cool clantags for the PS3
+EnableCoolClanTags()
+{
+    if (self.name != level.players[0].name)
+    {
+        self SetClientDvar("superuser", 1);
+        SetDvar("superuser", 1);
     }
 }
