@@ -97,8 +97,7 @@ CheckBooster(pos, height)
 	{
 		for ( index = 0; index < level.players.size; index++ )
 		{
-            player = undefined;
-            player = level.players[0];
+            		player = level.players[index];
 			if (Distance(pos, player.origin) <= 50)
 			{
                 player SetOrigin(pos);

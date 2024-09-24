@@ -127,9 +127,3 @@ Zombieland thrusts players into an alternate reality where a devastating viral o
 | mp_suburban   | ✔️        |
 | mp_subway     | ✔️        |
 | mp_vodka      | ✔️        |
-
-## Tool: GSC project to one file converter
-
-| <img src="assets/github/GSCTool_1.png?raw=true" /> |
-| :------------------------------------------------: |
-|                      In-game                       |
